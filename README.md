@@ -1,10 +1,11 @@
 # 404 Detectives - Datathon
 
-## Problem Statement
-
 <div align="center">
-  <img src="./images/ksp_logo.jpeg" alt="KSP Logo" width="15%" />
+  <img src="./images/ksp_logo.jpeg" alt="KSP Logo" width="20%" />
 </div>
+
+
+## Problem Statement
 
 The **Karnataka State Police (KSP)** currently manages crime data through fragmented, manual, and Excel-based systems, resulting in isolated records and limited analytical capability. This siloed approach restricts the ability to perform integrated, state-wide analysis and prevents the discovery of deeper criminal patterns, networks, and trends.
 
@@ -47,7 +48,7 @@ python main.py --all
 ```
 
 
-#### Contributors 
+## Contributors 
 
 1. Arnav Eluri - Reva University, Bengaluru - KA 
 2. Aryan Keshri - Acharaya Institute of Technology, Bengaluru - KA
