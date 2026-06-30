@@ -13,6 +13,10 @@ As a result, policing remains largely **reactive** rather than proactive, with m
 
 There is a critical need for an intelligent, AI-driven platform that integrates crime data across jurisdictions and enables advanced analytics, geospatial visualization, network analysis, and predictive modeling to support proactive and evidence-based policing.
 
+## Solution
+
+CrimeDNA is an AI-powered Crime Intelligence Platform that unifies crime data from multiple police sources and transforms it into a living behavioral intelligence network. Instead of treating each FIR or case as an isolated record, the platform analyzes behavioral patterns, modus operandi, locations, timelines, and relationships to create a unique "Crime DNA" for every incident. It continuously identifies hidden links between cases, tracks evolving criminal behavior, detects emerging hotspots and anomalies, and generates explainable investigative insights with actionable recommendations. By providing real-time intelligence through interactive visualizations, network analysis, and predictive analytics, CrimeDNA enables the Karnataka State Police to shift from reactive investigations to proactive, data-driven policing.
+
 ## File Structure
 
 ```text
