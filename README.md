@@ -12,6 +12,41 @@ As a result, policing remains largely **reactive** rather than proactive, with m
 
 There is a critical need for an intelligent, AI-driven platform that integrates crime data across jurisdictions and enables advanced analytics, geospatial visualization, network analysis, and predictive modeling to support proactive and evidence-based policing.
 
+## File Structure
+
+```text
+datathon_404_detectives/
+├── main.py                     # CLI: --generate-mock, --run, --all
+├── config.py                   # DB path, categories, station config
+├── data_generation.py          # Generates mock FIRs
+├── data_processing.py          # Reads CSVs, aggregates, trains classifier, and filters
+├── database_operations.py      # SQLAlchemy ORM, engine, session, upserts
+├── pipeline_orchestrator.py    # End-to-end: load → aggregate → classify → store
+├── requirements.txt            # pandas, scikit-learn, sqlalchemy
+├── data/
+│   ├── labeled_crimes.csv      # Your 60-example training set
+│   └── firs/                   # Generated mock CSVs
+└── crime_pipeline.db           # Created at runtime
+```
+
+## How to use
+
+1. **Generate mock FIR data only**
+```bash
+python main.py --generate-mock
+```
+
+2. **Full pipeline (requires labeled_crimes.csv)**
+```bash
+python main.py --run
+```
+
+3. **Generate + run together**
+```bash
+python main.py --all
+```
+
+
 #### Contributors 
 
 1. Arnav Eluri - Reva University, Bengaluru - KA 

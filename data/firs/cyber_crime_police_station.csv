@@ -1,0 +1,101 @@
+fir_number,date_reported,crime_time,description,status,station_name
+FIR-003-0001,2026-01-19,09:18,"Phishing attack targeted employees at Residential Colony, credentials stolen",Pending Review,Cyber Crime Police Station
+FIR-003-0002,2025-07-03,22:11,"Insurance fraud investigation launched at Shopping Mall, false claim of Rs.2,00,000",Pending Review,Cyber Crime Police Station
+FIR-003-0003,2025-12-03,18:55,"Social engineering scam at Market Square, Rs.50,000 transferred fraudulently",Closed,Cyber Crime Police Station
+FIR-003-0004,2026-01-22,13:23,"Construction material theft from site at Residential Colony, loss of Rs.2,00,000",Open,Cyber Crime Police Station
+FIR-003-0005,2025-12-08,11:46,"Possession of narcotics found on suspect at Residential Colony, Rs.2,00,000 worth",Open,Cyber Crime Police Station
+FIR-003-0006,2026-02-28,23:59,"Embezzlement of company funds amounting to Rs.5,00,000 at Temple Street",Under Investigation,Cyber Crime Police Station
+FIR-003-0007,2025-09-12,08:36,Ganja cultivation discovered in farmland near Main Road,Open,Cyber Crime Police Station
+FIR-003-0008,2025-07-19,01:56,"Chain snatching incident at School Zone, accused fled on motorcycle",Pending Review,Cyber Crime Police Station
+FIR-003-0009,2025-07-23,02:45,"Fake online store fraud, victims lost Rs.75,000, operated from Shopping Mall",Pending Review,Cyber Crime Police Station
+FIR-003-0010,2025-08-27,02:11,"Credit card fraud of Rs.1,00,000 reported from Market Square",Closed,Cyber Crime Police Station
+FIR-003-0011,2026-06-19,22:48,"Office break-in at Residential Colony, electronics worth Rs.10,00,000 stolen",Closed,Cyber Crime Police Station
+FIR-003-0012,2025-12-23,15:50,"Fake online store fraud, victims lost Rs.1,00,000, operated from School Zone",Open,Cyber Crime Police Station
+FIR-003-0013,2025-10-12,04:01,"SIM swapping fraud reported at Market Square, bank accounts drained of Rs.2,00,000",Open,Cyber Crime Police Station
+FIR-003-0014,2025-07-25,08:06,"Trespassing complaint filed at Railway Station, suspect identified",Open,Cyber Crime Police Station
+FIR-003-0015,2025-07-27,02:56,Smuggling of controlled substances across border near Hospital Road,Open,Cyber Crime Police Station
+FIR-003-0016,2026-05-10,02:07,"Homicide investigation at School Zone, body discovered in the morning",Open,Cyber Crime Police Station
+FIR-003-0017,2026-06-16,20:51,"Pharmaceutical drug abuse case at Temple Street, 3 injections seized",Open,Cyber Crime Police Station
+FIR-003-0018,2026-03-19,01:17,"Phishing attack targeted employees at Hospital Road, credentials stolen",Open,Cyber Crime Police Station
+FIR-003-0019,2025-07-18,03:07,"Ponzi scheme worth Rs.25,000 uncovered in Shopping Mall, 2 investors affected",Closed,Cyber Crime Police Station
+FIR-003-0020,2026-06-18,03:55,"Embezzlement of company funds amounting to Rs.10,00,000 at Railway Station",Closed,Cyber Crime Police Station
+FIR-003-0021,2025-09-18,23:06,"Bicycle theft from Hospital Road, CCTV footage under review",Closed,Cyber Crime Police Station
+FIR-003-0022,2025-08-29,05:30,"Drug peddling near school zone at Bus Terminal, 2 juveniles involved",Pending Review,Cyber Crime Police Station
+FIR-003-0023,2025-09-11,18:15,"Armed robbery at Main Road involving a firearm, loot worth Rs.50,000",Under Investigation,Cyber Crime Police Station
+FIR-003-0024,2026-01-13,03:28,Ganja cultivation discovered in farmland near Residential Colony,Closed,Cyber Crime Police Station
+FIR-003-0025,2026-01-03,03:53,"Cheque bouncing case filed for amount Rs.25,000 at Market Square",Closed,Cyber Crime Police Station
+FIR-003-0026,2026-05-08,21:07,"Social engineering scam at Shopping Mall, Rs.2,00,000 transferred fraudulently",Pending Review,Cyber Crime Police Station
+FIR-003-0027,2026-04-29,13:02,"Ransomware attack on systems at Market Square, demand of Rs.75,000 in Bitcoin",Open,Cyber Crime Police Station
+FIR-003-0028,2025-09-30,22:58,"Cheque bouncing case filed for amount Rs.75,000 at Industrial Area",Open,Cyber Crime Police Station
+FIR-003-0029,2026-01-17,20:16,"Bicycle theft from Shopping Mall, CCTV footage under review",Pending Review,Cyber Crime Police Station
+FIR-003-0030,2026-05-26,19:53,"Storehouse theft of goods worth Rs.25,000 at School Zone",Pending Review,Cyber Crime Police Station
+FIR-003-0031,2025-08-25,20:00,"Pharmaceutical drug abuse case at Main Road, 6 injections seized",Closed,Cyber Crime Police Station
+FIR-003-0032,2025-10-22,06:25,"Social engineering scam at Hospital Road, Rs.2,00,000 transferred fraudulently",Closed,Cyber Crime Police Station
+FIR-003-0033,2025-12-23,14:02,"Burglary at Railway Station, valuables worth Rs.25,000 stolen",Pending Review,Cyber Crime Police Station
+FIR-003-0034,2026-01-17,02:13,"Trespassing complaint filed at Bus Terminal, suspect identified",Pending Review,Cyber Crime Police Station
+FIR-003-0035,2026-01-19,15:02,"Identity theft reported from Temple Street, social media accounts hacked",Closed,Cyber Crime Police Station
+FIR-003-0036,2026-05-11,04:51,"Kidnapping of a 30-year-old near Hospital Road, ransom demand received",Open,Cyber Crime Police Station
+FIR-003-0037,2026-01-06,07:01,"Jewelry theft from residence at Industrial Area, valuables worth Rs.25,000",Open,Cyber Crime Police Station
+FIR-003-0038,2026-05-09,13:38,"Cheque bouncing case filed for amount Rs.75,000 at Railway Station",Under Investigation,Cyber Crime Police Station
+FIR-003-0039,2026-04-03,09:21,"Fake online store fraud, victims lost Rs.2,00,000, operated from Market Square",Pending Review,Cyber Crime Police Station
+FIR-003-0040,2025-10-06,12:13,"Homicide investigation at Shopping Mall, body discovered in the morning",Pending Review,Cyber Crime Police Station
+FIR-003-0041,2026-04-11,02:35,"Data breach at Main Road, 5 customer records compromised",Pending Review,Cyber Crime Police Station
+FIR-003-0042,2026-04-23,09:57,"Street fight escalated into grievous hurt at Railway Station, 3 persons arrested",Open,Cyber Crime Police Station
+FIR-003-0043,2025-10-18,20:27,"Burglary at Railway Station, valuables worth Rs.2,00,000 stolen",Open,Cyber Crime Police Station
+FIR-003-0044,2025-07-13,05:18,"Street fight escalated into grievous hurt at Hospital Road, 2 persons arrested",Under Investigation,Cyber Crime Police Station
+FIR-003-0045,2026-04-18,04:17,"Pharmaceutical drug abuse case at Hospital Road, 4 injections seized",Pending Review,Cyber Crime Police Station
+FIR-003-0046,2025-12-26,12:21,Smuggling of controlled substances across border near Industrial Area,Open,Cyber Crime Police Station
+FIR-003-0047,2026-01-01,17:59,"Forgery of financial documents at Market Square, fake signatures detected",Open,Cyber Crime Police Station
+FIR-003-0048,2026-06-19,19:18,Cyber stalking case filed by victim residing at Bus Terminal,Under Investigation,Cyber Crime Police Station
+FIR-003-0049,2025-08-19,18:18,"Attempted murder case filed, victim attacked with a sharp weapon at Main Road",Pending Review,Cyber Crime Police Station
+FIR-003-0050,2026-06-13,12:27,"Fatal overdose case investigated at Temple Street, substance identified",Closed,Cyber Crime Police Station
+FIR-003-0051,2025-07-13,04:57,"Cheque bouncing case filed for amount Rs.5,00,000 at Hospital Road",Closed,Cyber Crime Police Station
+FIR-003-0052,2025-08-08,01:41,"Physical assault reported near Residential Colony, victim sustained injuries",Under Investigation,Cyber Crime Police Station
+FIR-003-0053,2026-06-23,17:03,"Trespassing complaint filed at Railway Station, suspect identified",Pending Review,Cyber Crime Police Station
+FIR-003-0054,2026-03-21,22:40,"Phishing attack targeted employees at School Zone, credentials stolen",Open,Cyber Crime Police Station
+FIR-003-0055,2025-08-15,18:35,"Burglary at Temple Street, valuables worth Rs.5,00,000 stolen",Open,Cyber Crime Police Station
+FIR-003-0056,2025-12-14,11:52,"Office break-in at Hospital Road, electronics worth Rs.2,00,000 stolen",Pending Review,Cyber Crime Police Station
+FIR-003-0057,2025-10-19,12:04,"Money laundering operation busted at Temple Street, Rs.5,00,000 seized",Open,Cyber Crime Police Station
+FIR-003-0058,2025-07-12,02:30,"Bicycle theft from School Zone, CCTV footage under review",Open,Cyber Crime Police Station
+FIR-003-0059,2026-01-17,01:24,"Bicycle theft from Bus Terminal, CCTV footage under review",Pending Review,Cyber Crime Police Station
+FIR-003-0060,2026-04-09,17:46,"MDMA seizure of 6 tablets at Industrial Area, 6 persons arrested",Pending Review,Cyber Crime Police Station
+FIR-003-0061,2025-08-11,03:44,"Forgery of financial documents at Shopping Mall, fake signatures detected",Open,Cyber Crime Police Station
+FIR-003-0062,2025-09-24,17:20,"Storehouse theft of goods worth Rs.5,00,000 at Bus Terminal",Pending Review,Cyber Crime Police Station
+FIR-003-0063,2025-08-18,08:06,"Cocaine trafficking via courier, package intercepted at Main Road",Pending Review,Cyber Crime Police Station
+FIR-003-0064,2025-07-19,19:09,"Insurance fraud investigation launched at Market Square, false claim of Rs.5,00,000",Closed,Cyber Crime Police Station
+FIR-003-0065,2026-04-01,04:18,Cyber stalking case filed by victim residing at School Zone,Open,Cyber Crime Police Station
+FIR-003-0066,2026-01-07,20:48,"Ransomware attack on systems at Market Square, demand of Rs.10,00,000 in Bitcoin",Open,Cyber Crime Police Station
+FIR-003-0067,2026-02-11,16:25,"Drug peddling near school zone at Industrial Area, 4 juveniles involved",Closed,Cyber Crime Police Station
+FIR-003-0068,2025-07-25,00:02,"Chain snatching incident at School Zone, accused fled on motorcycle",Closed,Cyber Crime Police Station
+FIR-003-0069,2025-07-31,12:00,"Storehouse theft of goods worth Rs.10,00,000 at School Zone",Open,Cyber Crime Police Station
+FIR-003-0070,2025-11-16,23:03,"Street fight escalated into grievous hurt at Railway Station, 3 persons arrested",Open,Cyber Crime Police Station
+FIR-003-0071,2026-02-28,03:49,"Storehouse theft of goods worth Rs.75,000 at Market Square",Pending Review,Cyber Crime Police Station
+FIR-003-0072,2025-09-11,12:52,"Vehicle theft reported from Market Square, car valued at Rs.5,00,000",Pending Review,Cyber Crime Police Station
+FIR-003-0073,2026-05-05,18:01,"Money laundering operation busted at School Zone, Rs.10,00,000 seized",Pending Review,Cyber Crime Police Station
+FIR-003-0074,2026-06-16,17:25,"Embezzlement of company funds amounting to Rs.1,00,000 at Market Square",Under Investigation,Cyber Crime Police Station
+FIR-003-0075,2025-08-24,04:37,Unauthorized network intrusion detected at Shopping Mall,Pending Review,Cyber Crime Police Station
+FIR-003-0076,2025-09-23,17:25,"Online banking fraud of Rs.5,00,000 via phishing link sent to Shopping Mall",Under Investigation,Cyber Crime Police Station
+FIR-003-0077,2025-09-22,01:31,"Identity theft reported from Temple Street, social media accounts hacked",Open,Cyber Crime Police Station
+FIR-003-0078,2025-12-01,08:56,"Chain snatching incident at Residential Colony, accused fled on motorcycle",Closed,Cyber Crime Police Station
+FIR-003-0079,2026-01-12,21:39,"Online banking fraud of Rs.50,000 via phishing link sent to Temple Street",Pending Review,Cyber Crime Police Station
+FIR-003-0080,2025-12-22,08:33,"Trespassing complaint filed at School Zone, suspect identified",Closed,Cyber Crime Police Station
+FIR-003-0081,2026-02-21,10:53,"SIM swapping fraud reported at Shopping Mall, bank accounts drained of Rs.50,000",Pending Review,Cyber Crime Police Station
+FIR-003-0082,2026-06-10,11:25,"Pharmaceutical drug abuse case at Railway Station, 4 injections seized",Open,Cyber Crime Police Station
+FIR-003-0083,2026-06-21,21:43,"Embezzlement of company funds amounting to Rs.50,000 at Industrial Area",Open,Cyber Crime Police Station
+FIR-003-0084,2026-05-23,08:14,"SIM swapping fraud reported at Railway Station, bank accounts drained of Rs.25,000",Closed,Cyber Crime Police Station
+FIR-003-0085,2025-10-01,01:39,"Kidnapping of a 25-year-old near Bus Terminal, ransom demand received",Pending Review,Cyber Crime Police Station
+FIR-003-0086,2025-10-31,20:57,"Office break-in at Temple Street, electronics worth Rs.50,000 stolen",Closed,Cyber Crime Police Station
+FIR-003-0087,2025-09-15,01:47,"Drug peddling near school zone at Shopping Mall, 3 juveniles involved",Under Investigation,Cyber Crime Police Station
+FIR-003-0088,2026-04-12,03:09,"Forgery of financial documents at Railway Station, fake signatures detected",Pending Review,Cyber Crime Police Station
+FIR-003-0089,2025-08-16,06:26,"Fatal overdose case investigated at Market Square, substance identified",Open,Cyber Crime Police Station
+FIR-003-0090,2025-07-07,06:05,"Dacoity at Shopping Mall, group of 3 individuals looted the premises",Under Investigation,Cyber Crime Police Station
+FIR-003-0091,2026-04-28,21:49,"Housebreaking at Hospital Road, 2 suspects entered during daytime",Pending Review,Cyber Crime Police Station
+FIR-003-0092,2025-10-11,15:46,"Forgery of financial documents at Industrial Area, fake signatures detected",Closed,Cyber Crime Police Station
+FIR-003-0093,2025-10-14,19:29,Smuggling of controlled substances across border near Industrial Area,Closed,Cyber Crime Police Station
+FIR-003-0094,2025-10-15,13:48,"Fake online store fraud, victims lost Rs.1,00,000, operated from Hospital Road",Under Investigation,Cyber Crime Police Station
+FIR-003-0095,2025-08-25,08:33,"Housebreaking at Market Square, 4 suspects entered during daytime",Pending Review,Cyber Crime Police Station
+FIR-003-0096,2026-05-20,15:12,"Fatal overdose case investigated at Main Road, substance identified",Open,Cyber Crime Police Station
+FIR-003-0097,2026-02-15,23:28,"Burglary at Shopping Mall, valuables worth Rs.50,000 stolen",Pending Review,Cyber Crime Police Station
+FIR-003-0098,2025-10-25,04:58,"Bank fraud of Rs.2,00,000 detected at Railway Station, account compromised",Pending Review,Cyber Crime Police Station
+FIR-003-0099,2026-06-28,05:17,"Fake online store fraud, victims lost Rs.25,000, operated from Industrial Area",Under Investigation,Cyber Crime Police Station
+FIR-003-0100,2026-03-24,00:39,Ganja cultivation discovered in farmland near Main Road,Closed,Cyber Crime Police Station

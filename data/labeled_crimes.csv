@@ -1,0 +1,61 @@
+description,category
+"Armed robbery at a bank involving a firearm and stolen cash",Violent
+"Physical assault on a pedestrian near the market leaving them injured",Violent
+"Homicide investigation after a body was discovered in a residential area",Violent
+"Kidnapping of a 30-year-old executive near the railway station with ransom demand",Violent
+"Street fight escalated into grievous hurt outside a shopping complex",Violent
+"Attempted murder with a sharp weapon in an industrial area",Violent
+"Dacoity by a group of armed men at a jewelry store",Violent
+"Extortion threat demanding protection money from a shopkeeper",Violent
+"Chain snatching by motorcycle-borne assailants on main road",Violent
+"Domestic violence complaint filed by a resident of the colony",Violent
+"Bank fraud detected where an account was compromised for large transfer",Financial
+"Ponzi scheme defrauding hundreds of investors in the city",Financial
+"Cheque bouncing case involving a payment dispute of 2 lakh rupees",Financial
+"Credit card fraud reported after unauthorized transactions",Financial
+"Insurance fraud investigation into a false vehicle accident claim",Financial
+"Money laundering operation busted and cash seized from a premises",Financial
+"Forgery of financial documents detected at a government office",Financial
+"Loan default fraud involving non-repayment of a business loan",Financial
+"Cryptocurrency scam where investors were promised high returns",Financial
+"Embezzlement of company funds by a senior accountant over several years",Financial
+"Phishing attack targeting employees to steal corporate login credentials",Cyber
+"Ransomware attack encrypting hospital systems demanding Bitcoin payment",Cyber
+"Identity theft reported after social media accounts were compromised",Cyber
+"Online banking fraud through a phishing link sent to customers",Cyber
+"Cyber stalking case filed by a victim who received repeated threats online",Cyber
+"Data breach exposing millions of customer records from an e-commerce platform",Cyber
+"Unauthorized network intrusion detected in a corporate IT infrastructure",Cyber
+"Fake online store that collected payments but never delivered products",Cyber
+"Social engineering scam tricking a victim into transferring funds",Cyber
+"SIM swapping fraud resulting in draining of multiple bank accounts",Cyber
+"Burglary at a residence where valuables and electronics were stolen",Property
+"Housebreaking during daytime when occupants were away at work",Property
+"Vehicle theft of a car parked outside the owners residence at night",Property
+"Vandalism of public property causing damage to park equipment",Property
+"Trespassing complaint filed against an unknown individual on private land",Property
+"Storehouse theft of goods and inventory worth several lakhs",Property
+"Bicycle theft from a locked compound captured on CCTV footage",Property
+"Office break-in where laptops and monitors were stolen overnight",Property
+"Jewelry theft from a home during a family function celebration",Property
+"Construction material theft from an active building site",Property
+"Drug trafficking ring busted and large quantity of contraband seized",Drug-related
+"Possession of narcotics found on a suspect during a routine vehicle check",Drug-related
+"Illegal drug manufacturing lab discovered in a rented apartment",Drug-related
+"MDMA tablets seized in a raid at a party venue with multiple arrests",Drug-related
+"Cocaine trafficking via courier service intercepted at a sorting facility",Drug-related
+"Ganja cultivation discovered on agricultural land in a rural area",Drug-related
+"Pharmaceutical drug abuse case with hundreds of injections seized",Drug-related
+"Drug peddling near a school zone endangering minor children",Drug-related
+"Smuggling of controlled substances across the state border in a truck",Drug-related
+"Fatal overdose case investigated as possible drug poisoning",Drug-related
+"Minor traffic violation on city road without any criminal intent",Other
+"Lost and found report for a misplaced mobile phone at a bus stop",Other
+"Public nuisance complaint about loud music from a neighborhood party",Other
+"Stray cattle on road causing traffic disruption near the market",Other
+"Water dispute between two neighbors over shared pipeline connection",Other
+"Noise complaint against a construction site operating late at night",Other
+"Lost document report for a passport and other identification cards",Other
+"Property boundary dispute between adjacent landowners in the village",Other
+"Barking dog complaint from a residential society about a neighbors pet",Other
+"Garbage dumping violation in a residential area causing health hazard",Other
