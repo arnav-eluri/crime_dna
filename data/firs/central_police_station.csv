@@ -1,101 +1,101 @@
 fir_number,date_reported,crime_time,description,status,station_name
-FIR-001-0001,2025-08-09,03:53,Illegal drug manufacturing lab discovered at Shopping Mall,Under Investigation,Central Police Station
-FIR-001-0002,2026-02-24,01:32,"Fatal overdose case investigated at Industrial Area, substance identified",Pending Review,Central Police Station
-FIR-001-0003,2026-02-20,06:05,"Insurance fraud investigation launched at Main Road, false claim of Rs.25,000",Pending Review,Central Police Station
-FIR-001-0004,2025-10-03,13:02,Ganja cultivation discovered in farmland near School Zone,Under Investigation,Central Police Station
-FIR-001-0005,2025-08-19,14:40,"Social engineering scam at School Zone, Rs.50,000 transferred fraudulently",Pending Review,Central Police Station
-FIR-001-0006,2026-02-21,06:08,"Insurance fraud investigation launched at Shopping Mall, false claim of Rs.5,00,000",Closed,Central Police Station
-FIR-001-0007,2026-04-15,17:02,"Drug peddling near school zone at Industrial Area, 5 juveniles involved",Open,Central Police Station
-FIR-001-0008,2025-09-09,03:18,"Credit card fraud of Rs.5,00,000 reported from Residential Colony",Open,Central Police Station
-FIR-001-0009,2026-06-17,16:35,"Armed robbery at Shopping Mall involving a firearm, loot worth Rs.50,000",Pending Review,Central Police Station
-FIR-001-0010,2025-12-13,19:19,"Credit card fraud of Rs.25,000 reported from Industrial Area",Open,Central Police Station
-FIR-001-0011,2026-04-20,17:58,"Ransomware attack on systems at Market Square, demand of Rs.10,00,000 in Bitcoin",Open,Central Police Station
-FIR-001-0012,2025-07-28,02:27,"Extortion threat received by shopkeeper at Market Square, demanded Rs.1,00,000",Under Investigation,Central Police Station
-FIR-001-0013,2026-02-20,17:12,"Pharmaceutical drug abuse case at Railway Station, 4 injections seized",Open,Central Police Station
-FIR-001-0014,2026-05-28,20:55,Cyber stalking case filed by victim residing at Hospital Road,Closed,Central Police Station
-FIR-001-0015,2025-08-19,06:32,"Loan default fraud of Rs.5,00,000 reported at Shopping Mall",Closed,Central Police Station
-FIR-001-0016,2025-08-15,02:28,"Kidnapping of a 40-year-old near Hospital Road, ransom demand received",Open,Central Police Station
-FIR-001-0017,2026-03-08,06:47,"Homicide investigation at Industrial Area, body discovered in the morning",Closed,Central Police Station
-FIR-001-0018,2026-05-09,22:41,"Vehicle theft reported from Residential Colony, car valued at Rs.75,000",Under Investigation,Central Police Station
-FIR-001-0019,2025-09-20,03:09,"Ransomware attack on systems at Market Square, demand of Rs.1,00,000 in Bitcoin",Under Investigation,Central Police Station
-FIR-001-0020,2026-01-16,21:59,"Drug peddling near school zone at Shopping Mall, 6 juveniles involved",Closed,Central Police Station
-FIR-001-0021,2025-10-17,02:03,"Street fight escalated into grievous hurt at Railway Station, 4 persons arrested",Open,Central Police Station
-FIR-001-0022,2025-07-12,20:08,"Trespassing complaint filed at Bus Terminal, suspect identified",Under Investigation,Central Police Station
-FIR-001-0023,2025-07-23,04:38,Domestic violence complaint registered by victim at School Zone,Closed,Central Police Station
-FIR-001-0024,2026-05-12,21:29,"Identity theft reported from Hospital Road, social media accounts hacked",Closed,Central Police Station
-FIR-001-0025,2026-01-05,20:13,"Office break-in at Residential Colony, electronics worth Rs.10,00,000 stolen",Closed,Central Police Station
-FIR-001-0026,2026-05-28,03:23,Unauthorized network intrusion detected at Temple Street,Under Investigation,Central Police Station
-FIR-001-0027,2025-10-07,09:35,"Bank fraud of Rs.50,000 detected at Residential Colony, account compromised",Under Investigation,Central Police Station
-FIR-001-0028,2025-07-10,19:36,"Attempted murder case filed, victim attacked with a sharp weapon at Residential Colony",Under Investigation,Central Police Station
-FIR-001-0029,2026-03-12,17:42,"Attempted murder case filed, victim attacked with a sharp weapon at Industrial Area",Under Investigation,Central Police Station
-FIR-001-0030,2026-04-27,12:18,"Cocaine trafficking via courier, package intercepted at Shopping Mall",Pending Review,Central Police Station
-FIR-001-0031,2026-02-09,01:12,"Construction material theft from site at Market Square, loss of Rs.75,000",Closed,Central Police Station
-FIR-001-0032,2025-10-10,12:22,"Cheque bouncing case filed for amount Rs.75,000 at Temple Street",Pending Review,Central Police Station
-FIR-001-0033,2025-07-04,04:11,"Forgery of financial documents at Industrial Area, fake signatures detected",Closed,Central Police Station
-FIR-001-0034,2025-11-07,10:13,"Extortion threat received by shopkeeper at Hospital Road, demanded Rs.5,00,000",Closed,Central Police Station
-FIR-001-0035,2026-03-24,03:36,"Possession of narcotics found on suspect at School Zone, Rs.2,00,000 worth",Open,Central Police Station
-FIR-001-0036,2025-12-10,11:59,"Armed robbery at Bus Terminal involving a firearm, loot worth Rs.75,000",Under Investigation,Central Police Station
-FIR-001-0037,2026-05-20,01:57,"Street fight escalated into grievous hurt at Bus Terminal, 3 persons arrested",Pending Review,Central Police Station
-FIR-001-0038,2025-11-04,07:45,"Forgery of financial documents at Market Square, fake signatures detected",Under Investigation,Central Police Station
-FIR-001-0039,2025-11-21,18:38,Unauthorized network intrusion detected at Railway Station,Open,Central Police Station
-FIR-001-0040,2026-05-21,14:38,"Phishing attack targeted employees at Railway Station, credentials stolen",Open,Central Police Station
-FIR-001-0041,2026-04-28,22:23,"Trespassing complaint filed at Bus Terminal, suspect identified",Closed,Central Police Station
-FIR-001-0042,2025-11-24,23:59,"Ransomware attack on systems at Temple Street, demand of Rs.1,00,000 in Bitcoin",Under Investigation,Central Police Station
-FIR-001-0043,2026-01-10,12:09,"Forgery of financial documents at Railway Station, fake signatures detected",Under Investigation,Central Police Station
-FIR-001-0044,2025-08-28,23:33,"Burglary at School Zone, valuables worth Rs.25,000 stolen",Pending Review,Central Police Station
-FIR-001-0045,2026-01-22,11:34,"Chain snatching incident at School Zone, accused fled on motorcycle",Open,Central Police Station
-FIR-001-0046,2025-12-23,17:07,"Cheque bouncing case filed for amount Rs.5,00,000 at Temple Street",Open,Central Police Station
-FIR-001-0047,2026-03-31,16:15,"Possession of narcotics found on suspect at Bus Terminal, Rs.50,000 worth",Closed,Central Police Station
-FIR-001-0048,2025-10-30,03:31,Ganja cultivation discovered in farmland near Shopping Mall,Pending Review,Central Police Station
-FIR-001-0049,2026-01-05,09:14,"Trespassing complaint filed at Residential Colony, suspect identified",Pending Review,Central Police Station
-FIR-001-0050,2026-05-07,00:35,Illegal drug manufacturing lab discovered at Market Square,Closed,Central Police Station
-FIR-001-0051,2025-07-28,07:52,"Armed robbery at Temple Street involving a firearm, loot worth Rs.5,00,000",Open,Central Police Station
-FIR-001-0052,2026-05-13,05:20,"Phishing attack targeted employees at Residential Colony, credentials stolen",Under Investigation,Central Police Station
-FIR-001-0053,2026-04-17,20:37,Illegal drug manufacturing lab discovered at Railway Station,Pending Review,Central Police Station
-FIR-001-0054,2026-03-06,06:45,"Vehicle theft reported from Shopping Mall, car valued at Rs.10,00,000",Closed,Central Police Station
-FIR-001-0055,2026-03-16,16:48,Illegal drug manufacturing lab discovered at Hospital Road,Closed,Central Police Station
-FIR-001-0056,2025-12-09,13:03,"Possession of narcotics found on suspect at Hospital Road, Rs.1,00,000 worth",Pending Review,Central Police Station
-FIR-001-0057,2026-05-17,00:53,"Drug trafficking ring busted at Market Square, 5 kg of contraband seized",Pending Review,Central Police Station
-FIR-001-0058,2025-08-14,20:19,"Money laundering operation busted at Temple Street, Rs.10,00,000 seized",Open,Central Police Station
-FIR-001-0059,2025-11-16,18:25,"Ransomware attack on systems at Bus Terminal, demand of Rs.10,00,000 in Bitcoin",Pending Review,Central Police Station
-FIR-001-0060,2026-01-04,07:38,"Drug peddling near school zone at Residential Colony, 2 juveniles involved",Closed,Central Police Station
-FIR-001-0061,2025-11-08,04:55,"Housebreaking at Shopping Mall, 2 suspects entered during daytime",Closed,Central Police Station
-FIR-001-0062,2026-03-05,11:30,"Construction material theft from site at Bus Terminal, loss of Rs.1,00,000",Under Investigation,Central Police Station
-FIR-001-0063,2025-12-14,11:43,"Construction material theft from site at School Zone, loss of Rs.1,00,000",Pending Review,Central Police Station
-FIR-001-0064,2025-08-20,13:01,Smuggling of controlled substances across border near Residential Colony,Under Investigation,Central Police Station
-FIR-001-0065,2025-08-03,01:39,"Housebreaking at Industrial Area, 3 suspects entered during daytime",Pending Review,Central Police Station
-FIR-001-0066,2025-11-17,12:41,"Online banking fraud of Rs.25,000 via phishing link sent to Hospital Road",Open,Central Police Station
-FIR-001-0067,2025-08-13,14:10,"Housebreaking at Temple Street, 2 suspects entered during daytime",Closed,Central Police Station
-FIR-001-0068,2026-06-29,13:33,"Embezzlement of company funds amounting to Rs.5,00,000 at Temple Street",Open,Central Police Station
-FIR-001-0069,2025-10-26,11:26,"Jewelry theft from residence at Market Square, valuables worth Rs.2,00,000",Under Investigation,Central Police Station
-FIR-001-0070,2026-03-29,17:16,"Attempted murder case filed, victim attacked with a sharp weapon at Shopping Mall",Open,Central Police Station
-FIR-001-0071,2026-01-05,12:49,"Credit card fraud of Rs.1,00,000 reported from Market Square",Under Investigation,Central Police Station
-FIR-001-0072,2026-06-21,11:44,"Extortion threat received by shopkeeper at Market Square, demanded Rs.25,000",Under Investigation,Central Police Station
-FIR-001-0073,2025-08-11,20:48,Cyber stalking case filed by victim residing at Industrial Area,Open,Central Police Station
-FIR-001-0074,2025-11-21,19:21,"Physical assault reported near Railway Station, victim sustained injuries",Closed,Central Police Station
-FIR-001-0075,2025-11-13,06:15,Cyber stalking case filed by victim residing at Main Road,Closed,Central Police Station
-FIR-001-0076,2026-04-20,20:23,"Vandalism of public property at Temple Street, estimated damage Rs.10,00,000",Closed,Central Police Station
-FIR-001-0077,2025-09-02,15:32,"Online banking fraud of Rs.75,000 via phishing link sent to Temple Street",Open,Central Police Station
-FIR-001-0078,2026-04-01,11:37,"Construction material theft from site at Main Road, loss of Rs.25,000",Open,Central Police Station
-FIR-001-0079,2026-05-17,21:47,Ganja cultivation discovered in farmland near School Zone,Open,Central Police Station
-FIR-001-0080,2025-09-23,04:21,"Ransomware attack on systems at Residential Colony, demand of Rs.1,00,000 in Bitcoin",Open,Central Police Station
-FIR-001-0081,2025-08-21,06:46,"Attempted murder case filed, victim attacked with a sharp weapon at Temple Street",Closed,Central Police Station
-FIR-001-0082,2025-07-31,09:00,"Social engineering scam at School Zone, Rs.25,000 transferred fraudulently",Closed,Central Police Station
-FIR-001-0083,2026-02-13,23:40,"Insurance fraud investigation launched at Main Road, false claim of Rs.50,000",Closed,Central Police Station
-FIR-001-0084,2026-04-15,16:19,"Kidnapping of a 35-year-old near Main Road, ransom demand received",Pending Review,Central Police Station
-FIR-001-0085,2025-10-04,09:08,"Armed robbery at Railway Station involving a firearm, loot worth Rs.75,000",Under Investigation,Central Police Station
-FIR-001-0086,2026-03-08,02:27,"Extortion threat received by shopkeeper at Shopping Mall, demanded Rs.5,00,000",Open,Central Police Station
-FIR-001-0087,2025-09-08,20:04,Smuggling of controlled substances across border near Railway Station,Under Investigation,Central Police Station
-FIR-001-0088,2025-08-15,12:45,"Kidnapping of a 45-year-old near Market Square, ransom demand received",Open,Central Police Station
-FIR-001-0089,2025-11-24,22:00,"Homicide investigation at Hospital Road, body discovered in the morning",Closed,Central Police Station
-FIR-001-0090,2026-01-04,22:45,"Data breach at Main Road, 6 customer records compromised",Closed,Central Police Station
-FIR-001-0091,2025-08-10,13:24,"Pharmaceutical drug abuse case at Bus Terminal, 6 injections seized",Pending Review,Central Police Station
-FIR-001-0092,2026-03-28,02:36,"Cryptocurrency scam worth Rs.5,00,000 at Hospital Road, 4 victims identified",Under Investigation,Central Police Station
-FIR-001-0093,2026-02-13,18:09,Smuggling of controlled substances across border near Temple Street,Open,Central Police Station
-FIR-001-0094,2025-11-29,10:51,"Drug trafficking ring busted at Main Road, 5 kg of contraband seized",Closed,Central Police Station
-FIR-001-0095,2025-07-22,14:43,"Money laundering operation busted at Market Square, Rs.75,000 seized",Open,Central Police Station
-FIR-001-0096,2026-03-15,17:36,"Drug trafficking ring busted at Bus Terminal, 2 kg of contraband seized",Closed,Central Police Station
-FIR-001-0097,2025-07-25,08:01,"Pharmaceutical drug abuse case at Hospital Road, 3 injections seized",Open,Central Police Station
-FIR-001-0098,2025-12-25,22:34,Domestic violence complaint registered by victim at Market Square,Open,Central Police Station
-FIR-001-0099,2026-01-08,21:30,Unauthorized network intrusion detected at Bus Terminal,Open,Central Police Station
-FIR-001-0100,2026-04-08,22:25,"Dacoity at Market Square, group of 3 individuals looted the premises",Pending Review,Central Police Station
+FIR-001-0001,2025-07-02,23:55,"Homicide investigation at Market Square, body discovered in the morning",Closed,Central Police Station
+FIR-001-0002,2025-07-05,18:57,"Cryptocurrency scam worth Rs.10,00,000 at Main Road, 2 victims identified",Under Investigation,Central Police Station
+FIR-001-0003,2026-05-29,02:39,Domestic violence complaint registered by victim at Bus Terminal,Under Investigation,Central Police Station
+FIR-001-0004,2025-08-10,20:56,"Extortion threat received by shopkeeper at Industrial Area, demanded Rs.50,000",Under Investigation,Central Police Station
+FIR-001-0005,2026-05-22,05:41,"Data breach at Residential Colony, 5 customer records compromised",Under Investigation,Central Police Station
+FIR-001-0006,2025-08-04,19:26,"Cheque bouncing case filed for amount Rs.1,00,000 at Hospital Road",Under Investigation,Central Police Station
+FIR-001-0007,2025-09-09,00:14,Illegal drug manufacturing lab discovered at Market Square,Under Investigation,Central Police Station
+FIR-001-0008,2025-08-30,21:48,"Office break-in at Temple Street, electronics worth Rs.50,000 stolen",Closed,Central Police Station
+FIR-001-0009,2025-12-17,15:19,"Possession of narcotics found on suspect at Market Square, Rs.10,00,000 worth",Pending Review,Central Police Station
+FIR-001-0010,2026-02-05,05:43,"Phishing attack targeted employees at Temple Street, credentials stolen",Closed,Central Police Station
+FIR-001-0011,2025-08-26,08:35,"Trespassing complaint filed at Market Square, suspect identified",Pending Review,Central Police Station
+FIR-001-0012,2025-10-23,01:20,"Dacoity at Market Square, group of 4 individuals looted the premises",Pending Review,Central Police Station
+FIR-001-0013,2025-12-08,16:44,"Drug peddling near school zone at Residential Colony, 4 juveniles involved",Pending Review,Central Police Station
+FIR-001-0014,2025-07-23,20:02,"Fatal overdose case investigated at Residential Colony, substance identified",Pending Review,Central Police Station
+FIR-001-0015,2025-10-07,17:12,"Storehouse theft of goods worth Rs.5,00,000 at Hospital Road",Closed,Central Police Station
+FIR-001-0016,2026-03-08,11:32,"Forgery of financial documents at School Zone, fake signatures detected",Pending Review,Central Police Station
+FIR-001-0017,2026-02-28,04:05,"Vandalism of public property at Shopping Mall, estimated damage Rs.10,00,000",Under Investigation,Central Police Station
+FIR-001-0018,2026-01-25,06:53,"Online banking fraud of Rs.25,000 via phishing link sent to Residential Colony",Under Investigation,Central Police Station
+FIR-001-0019,2025-12-20,12:27,Cyber stalking case filed by victim residing at School Zone,Closed,Central Police Station
+FIR-001-0020,2026-03-13,12:55,"Vandalism of public property at Market Square, estimated damage Rs.2,00,000",Open,Central Police Station
+FIR-001-0021,2025-10-21,08:30,Unauthorized network intrusion detected at Temple Street,Under Investigation,Central Police Station
+FIR-001-0022,2025-10-27,06:36,"Social engineering scam at Hospital Road, Rs.50,000 transferred fraudulently",Under Investigation,Central Police Station
+FIR-001-0023,2026-06-26,12:35,"Bank fraud of Rs.75,000 detected at Industrial Area, account compromised",Open,Central Police Station
+FIR-001-0024,2025-12-30,18:01,"Ransomware attack on systems at Hospital Road, demand of Rs.1,00,000 in Bitcoin",Open,Central Police Station
+FIR-001-0025,2025-08-31,15:26,"Social engineering scam at Temple Street, Rs.2,00,000 transferred fraudulently",Pending Review,Central Police Station
+FIR-001-0026,2026-04-29,07:13,Illegal drug manufacturing lab discovered at Hospital Road,Pending Review,Central Police Station
+FIR-001-0027,2025-10-10,08:47,"Ponzi scheme worth Rs.50,000 uncovered in Market Square, 3 investors affected",Under Investigation,Central Police Station
+FIR-001-0028,2026-03-24,22:01,"Cheque bouncing case filed for amount Rs.5,00,000 at Residential Colony",Open,Central Police Station
+FIR-001-0029,2026-03-23,01:41,"Construction material theft from site at Main Road, loss of Rs.50,000",Open,Central Police Station
+FIR-001-0030,2026-05-27,10:04,"Social engineering scam at Hospital Road, Rs.10,00,000 transferred fraudulently",Under Investigation,Central Police Station
+FIR-001-0031,2026-04-12,01:51,"Physical assault reported near Market Square, victim sustained injuries",Pending Review,Central Police Station
+FIR-001-0032,2026-02-22,13:13,"Armed robbery at Shopping Mall involving a firearm, loot worth Rs.1,00,000",Under Investigation,Central Police Station
+FIR-001-0033,2026-01-16,21:49,Ganja cultivation discovered in farmland near Railway Station,Open,Central Police Station
+FIR-001-0034,2025-09-30,14:01,"Cheque bouncing case filed for amount Rs.10,00,000 at Industrial Area",Closed,Central Police Station
+FIR-001-0035,2026-03-31,03:32,"Attempted murder case filed, victim attacked with a sharp weapon at Shopping Mall",Open,Central Police Station
+FIR-001-0036,2025-08-03,21:26,"Forgery of financial documents at School Zone, fake signatures detected",Open,Central Police Station
+FIR-001-0037,2025-10-27,22:05,"Credit card fraud of Rs.1,00,000 reported from Bus Terminal",Under Investigation,Central Police Station
+FIR-001-0038,2026-06-11,21:01,"Identity theft reported from School Zone, social media accounts hacked",Open,Central Police Station
+FIR-001-0039,2025-12-12,01:05,"Cheque bouncing case filed for amount Rs.1,00,000 at School Zone",Closed,Central Police Station
+FIR-001-0040,2025-10-25,10:12,"Data breach at Shopping Mall, 3 customer records compromised",Under Investigation,Central Police Station
+FIR-001-0041,2025-07-18,02:42,"Identity theft reported from Industrial Area, social media accounts hacked",Under Investigation,Central Police Station
+FIR-001-0042,2025-08-27,05:48,Unauthorized network intrusion detected at Industrial Area,Closed,Central Police Station
+FIR-001-0043,2026-01-19,15:54,"Social engineering scam at Residential Colony, Rs.5,00,000 transferred fraudulently",Under Investigation,Central Police Station
+FIR-001-0044,2025-12-28,10:41,"Drug trafficking ring busted at Bus Terminal, 2 kg of contraband seized",Pending Review,Central Police Station
+FIR-001-0045,2026-06-25,20:32,"Cryptocurrency scam worth Rs.10,00,000 at Industrial Area, 5 victims identified",Open,Central Police Station
+FIR-001-0046,2025-11-28,08:19,"Jewelry theft from residence at Main Road, valuables worth Rs.75,000",Closed,Central Police Station
+FIR-001-0047,2026-06-27,22:37,"Embezzlement of company funds amounting to Rs.5,00,000 at Hospital Road",Closed,Central Police Station
+FIR-001-0048,2026-05-15,09:29,Smuggling of controlled substances across border near Industrial Area,Under Investigation,Central Police Station
+FIR-001-0049,2025-10-22,06:11,"Burglary at Residential Colony, valuables worth Rs.75,000 stolen",Under Investigation,Central Police Station
+FIR-001-0050,2026-02-01,17:48,"Attempted murder case filed, victim attacked with a sharp weapon at Railway Station",Under Investigation,Central Police Station
+FIR-001-0051,2026-06-07,21:50,"Phishing attack targeted employees at Shopping Mall, credentials stolen",Open,Central Police Station
+FIR-001-0052,2025-11-16,04:10,"Phishing attack targeted employees at Railway Station, credentials stolen",Under Investigation,Central Police Station
+FIR-001-0053,2025-12-04,18:01,"Homicide investigation at Railway Station, body discovered in the morning",Under Investigation,Central Police Station
+FIR-001-0054,2025-10-28,03:53,Ganja cultivation discovered in farmland near Hospital Road,Closed,Central Police Station
+FIR-001-0055,2025-10-15,14:40,"Ponzi scheme worth Rs.1,00,000 uncovered in Bus Terminal, 2 investors affected",Pending Review,Central Police Station
+FIR-001-0056,2025-08-01,00:47,Smuggling of controlled substances across border near Temple Street,Pending Review,Central Police Station
+FIR-001-0057,2026-01-09,03:12,"Cheque bouncing case filed for amount Rs.50,000 at Market Square",Open,Central Police Station
+FIR-001-0058,2026-05-22,10:37,"Cheque bouncing case filed for amount Rs.50,000 at School Zone",Pending Review,Central Police Station
+FIR-001-0059,2026-06-17,08:46,"Chain snatching incident at Shopping Mall, accused fled on motorcycle",Pending Review,Central Police Station
+FIR-001-0060,2026-05-03,17:57,"Money laundering operation busted at Market Square, Rs.2,00,000 seized",Pending Review,Central Police Station
+FIR-001-0061,2026-03-19,07:43,"Online banking fraud of Rs.75,000 via phishing link sent to Hospital Road",Under Investigation,Central Police Station
+FIR-001-0062,2026-01-15,16:40,"Attempted murder case filed, victim attacked with a sharp weapon at Railway Station",Closed,Central Police Station
+FIR-001-0063,2025-10-22,21:18,"Office break-in at Bus Terminal, electronics worth Rs.1,00,000 stolen",Under Investigation,Central Police Station
+FIR-001-0064,2026-06-30,01:29,"Street fight escalated into grievous hurt at School Zone, 5 persons arrested",Pending Review,Central Police Station
+FIR-001-0065,2025-07-20,11:19,"Housebreaking at School Zone, 2 suspects entered during daytime",Pending Review,Central Police Station
+FIR-001-0066,2026-03-31,20:24,"Housebreaking at Railway Station, 2 suspects entered during daytime",Pending Review,Central Police Station
+FIR-001-0067,2026-04-20,19:23,"Extortion threat received by shopkeeper at Shopping Mall, demanded Rs.25,000",Open,Central Police Station
+FIR-001-0068,2025-11-23,19:13,"Bicycle theft from Hospital Road, CCTV footage under review",Open,Central Police Station
+FIR-001-0069,2026-06-04,16:52,"Money laundering operation busted at Industrial Area, Rs.10,00,000 seized",Closed,Central Police Station
+FIR-001-0070,2025-07-06,03:10,Domestic violence complaint registered by victim at Industrial Area,Closed,Central Police Station
+FIR-001-0071,2026-02-06,00:48,"Burglary at Main Road, valuables worth Rs.1,00,000 stolen",Pending Review,Central Police Station
+FIR-001-0072,2026-04-05,01:35,"Homicide investigation at Railway Station, body discovered in the morning",Closed,Central Police Station
+FIR-001-0073,2025-11-22,04:53,"Insurance fraud investigation launched at Main Road, false claim of Rs.25,000",Pending Review,Central Police Station
+FIR-001-0074,2026-04-11,23:33,"Vehicle theft reported from Shopping Mall, car valued at Rs.75,000",Closed,Central Police Station
+FIR-001-0075,2025-07-16,18:36,"Bicycle theft from Temple Street, CCTV footage under review",Under Investigation,Central Police Station
+FIR-001-0076,2025-08-02,04:25,"Housebreaking at Industrial Area, 3 suspects entered during daytime",Under Investigation,Central Police Station
+FIR-001-0077,2026-06-03,21:44,"Homicide investigation at Hospital Road, body discovered in the morning",Pending Review,Central Police Station
+FIR-001-0078,2026-05-30,16:18,"Construction material theft from site at Industrial Area, loss of Rs.10,00,000",Open,Central Police Station
+FIR-001-0079,2025-09-08,11:01,"Housebreaking at Shopping Mall, 4 suspects entered during daytime",Closed,Central Police Station
+FIR-001-0080,2025-08-18,02:20,Ganja cultivation discovered in farmland near Industrial Area,Closed,Central Police Station
+FIR-001-0081,2025-12-13,19:54,"Credit card fraud of Rs.2,00,000 reported from Market Square",Pending Review,Central Police Station
+FIR-001-0082,2025-09-13,23:41,Cyber stalking case filed by victim residing at Industrial Area,Pending Review,Central Police Station
+FIR-001-0083,2026-06-10,10:22,"Dacoity at Main Road, group of 4 individuals looted the premises",Open,Central Police Station
+FIR-001-0084,2026-04-23,20:55,"Loan default fraud of Rs.75,000 reported at Railway Station",Under Investigation,Central Police Station
+FIR-001-0085,2026-02-04,17:05,"Vandalism of public property at School Zone, estimated damage Rs.75,000",Under Investigation,Central Police Station
+FIR-001-0086,2026-06-13,20:22,"Office break-in at Bus Terminal, electronics worth Rs.1,00,000 stolen",Open,Central Police Station
+FIR-001-0087,2026-06-20,19:38,"Storehouse theft of goods worth Rs.75,000 at Shopping Mall",Pending Review,Central Police Station
+FIR-001-0088,2026-02-23,18:02,"Cryptocurrency scam worth Rs.50,000 at School Zone, 5 victims identified",Open,Central Police Station
+FIR-001-0089,2025-09-30,00:55,"Construction material theft from site at Industrial Area, loss of Rs.50,000",Open,Central Police Station
+FIR-001-0090,2026-03-13,22:02,"Armed robbery at Main Road involving a firearm, loot worth Rs.50,000",Pending Review,Central Police Station
+FIR-001-0091,2025-10-17,00:54,"Identity theft reported from School Zone, social media accounts hacked",Under Investigation,Central Police Station
+FIR-001-0092,2025-12-18,14:01,"Homicide investigation at Railway Station, body discovered in the morning",Pending Review,Central Police Station
+FIR-001-0093,2026-01-10,14:46,"Trespassing complaint filed at School Zone, suspect identified",Open,Central Police Station
+FIR-001-0094,2025-11-02,10:59,Illegal drug manufacturing lab discovered at Market Square,Closed,Central Police Station
+FIR-001-0095,2025-09-04,18:20,Smuggling of controlled substances across border near Hospital Road,Under Investigation,Central Police Station
+FIR-001-0096,2025-12-07,21:55,"MDMA seizure of 4 tablets at School Zone, 4 persons arrested",Under Investigation,Central Police Station
+FIR-001-0097,2025-07-07,14:14,"Possession of narcotics found on suspect at Main Road, Rs.2,00,000 worth",Under Investigation,Central Police Station
+FIR-001-0098,2026-06-25,22:26,"Trespassing complaint filed at Market Square, suspect identified",Under Investigation,Central Police Station
+FIR-001-0099,2025-11-04,13:10,"Forgery of financial documents at Residential Colony, fake signatures detected",Open,Central Police Station
+FIR-001-0100,2026-03-28,10:37,Unauthorized network intrusion detected at Industrial Area,Under Investigation,Central Police Station

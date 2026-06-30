@@ -1,9 +1,9 @@
-﻿import csv
+import csv
 import os
 import random
 from datetime import datetime, timedelta
 
-from config import DATA_DIR, MOCK_STATIONS, MOCK_RECORDS_PER_STATION
+from filtering.config import DATA_DIR, MOCK_STATIONS, MOCK_RECORDS_PER_STATION
 
 CRIME_TEMPLATES = {
     "Violent": [

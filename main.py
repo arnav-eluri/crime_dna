@@ -34,7 +34,7 @@ def main():
     if args.all:
         run_pipeline(generate_mock=True)
     elif args.generate_mock:
-        from data_generation import generate_all_mock_firs
+        from filtering.data_generation import generate_all_mock_firs
 
         print("Generating mock FIR datasets...")
         generate_all_mock_firs()

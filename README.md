@@ -18,12 +18,13 @@ There is a critical need for an intelligent, AI-driven platform that integrates 
 ```text
 datathon_404_detectives/
 ├── main.py                     # CLI: --generate-mock, --run, --all
-├── config.py                   # DB path, categories, station config
-├── data_generation.py          # Generates mock FIRs
-├── data_processing.py          # Reads CSVs, aggregates, trains classifier, and filters
-├── database_operations.py      # SQLAlchemy ORM, engine, session, upserts
 ├── pipeline_orchestrator.py    # End-to-end: load → aggregate → classify → store
 ├── requirements.txt            # pandas, scikit-learn, sqlalchemy
+├── filtering/
+│   ├── config.py               # DB path, categories, station config
+│   ├── data_generation.py      # Generates mock FIRs
+│   ├── data_processing.py      # Reads CSVs, aggregates, trains classifier, and filters
+│   └── database_operations.py  # SQLAlchemy ORM, engine, session, upserts
 ├── data/
 │   ├── labeled_crimes.csv      # Your 60-example training set
 │   └── firs/                   # Generated mock CSVs

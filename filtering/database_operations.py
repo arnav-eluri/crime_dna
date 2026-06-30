@@ -1,9 +1,9 @@
-﻿from datetime import date
+from datetime import date
 from sqlalchemy import create_engine, Column, Integer, String, Date, Float, DateTime, ForeignKey, Text
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 from sqlalchemy.sql import func
 
-from config import DATABASE_URL
+from filtering.config import DATABASE_URL
 
 Base = declarative_base()
 

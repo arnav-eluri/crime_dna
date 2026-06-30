@@ -1,11 +1,11 @@
-﻿import os
+import os
 import glob
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 
-from config import DATA_DIR, LABELED_DATA_PATH, TARGET_CATEGORIES
+from filtering.config import DATA_DIR, LABELED_DATA_PATH, TARGET_CATEGORIES
 
 
 def load_all_firs(data_dir=None):

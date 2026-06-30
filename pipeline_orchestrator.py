@@ -1,13 +1,13 @@
-﻿from data_generation import generate_all_mock_firs
-from data_processing import load_all_firs, aggregate_datasets, train_classifier, classify_and_filter
-from database_operations import (
+from filtering.data_generation import generate_all_mock_firs
+from filtering.data_processing import load_all_firs, aggregate_datasets, train_classifier, classify_and_filter
+from filtering.database_operations import (
     init_db,
     get_session,
     upsert_stations,
     upsert_firs,
     upsert_filtered_crimes,
 )
-from config import MOCK_STATIONS
+from filtering.config import MOCK_STATIONS
 
 
 def run_pipeline(generate_mock=False):
