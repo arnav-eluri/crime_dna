@@ -23,6 +23,13 @@ CrimeDNA features a dynamic, non-destructive **Filtering Engine** that powers ou
 3. **Hybrid Spatial Hotspot Detection**: Automatically executes **DBSCAN Spatial Clustering** on valid coordinate data. If coordinates are corrupted, it gracefully falls back to a strict 95th-percentile statistical frequency thresholding on localized address strings to flag true `Hotspot_Flag` instances.
 4. **Graph Intelligence Mapping**: Pre-computes structural syndicate links (`Syndicate_Link_Flag`) to feed directly into Neo4j for network investigation.
 
+## Dataset
+
+The raw FIR data used in this project is sourced from Kaggle:
+[FIR Details - Karnataka Police Dataset](https://www.kaggle.com/datasets/vanshangaria/fir-details-karnataka-police)
+
+Please download the dataset and place the CSV files inside the `datasets/` directory before running the pipelines.
+
 ## Enterprise ETL File Structure
 
 ```text
@@ -62,3 +69,4 @@ python src/loaders/test_ingestion.py
 1. Arnav Eluri - Reva University, Bengaluru - KA 
 2. Aryan Keshri - Acharaya Institute of Technology, Bengaluru - KA
 3. Ruhi Sharma - Reva University, Bengaluru - KA
+4. Spandana S R - Reva University, Bengaluru - KA 
