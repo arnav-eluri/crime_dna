@@ -29,7 +29,7 @@ CrimeDNA/
 ├── src/                        # Core ETL Source Code
 │   ├── ingestion/              # Validation, cleaning, and deduplication
 │   ├── features/               # AI feature engineering and graph building
-│   ├── loaders/                # PostgreSQL and Neo4j loading scripts
+│   ├── loaders/                # SQLite and Neo4j loading scripts
 │   └── utils/                  # DB connections, helpers
 ├── orchestration/              # Airflow/Prefect execution DAGs
 ├── tests/                      # Unit tests for data transformations
