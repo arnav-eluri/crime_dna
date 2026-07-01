@@ -4,7 +4,6 @@
   <img src="./images/ksp_logo.jpeg" alt="KSP Logo" width="20%" />
 </div>
 
-
 ## Problem Statement
 
 The **Karnataka State Police (KSP)** currently manages crime data through fragmented, manual, and Excel-based systems, resulting in isolated records and limited analytical capability. This siloed approach restricts the ability to perform integrated, state-wide analysis and prevents the discovery of deeper criminal patterns, networks, and trends.
@@ -17,41 +16,34 @@ There is a critical need for an intelligent, AI-driven platform that integrates 
 
 CrimeDNA is an AI-powered Crime Intelligence Platform that unifies crime data from multiple police sources and transforms it into a living behavioral intelligence network. Instead of treating each FIR or case as an isolated record, the platform analyzes behavioral patterns, modus operandi, locations, timelines, and relationships to create a unique "Crime DNA" for every incident. It continuously identifies hidden links between cases, tracks evolving criminal behavior, detects emerging hotspots and anomalies, and generates explainable investigative insights with actionable recommendations. By providing real-time intelligence through interactive visualizations, network analysis, and predictive analytics, CrimeDNA enables the Karnataka State Police to shift from reactive investigations to proactive, data-driven policing.
 
-## File Structure
+## Enterprise ETL File Structure
 
 ```text
-datathon_404_detectives/
-├── main.py                     # CLI: --generate-mock, --run, --all
-├── pipeline_orchestrator.py    # End-to-end: load → aggregate → classify → store
-├── requirements.txt            # pandas, scikit-learn, sqlalchemy
-├── filtering/
-│   ├── config.py               # DB path, categories, station config
-│   ├── data_generation.py      # Generates mock FIRs
-│   ├── data_processing.py      # Reads CSVs, aggregates, trains classifier, and filters
-│   └── database_operations.py  # SQLAlchemy ORM, engine, session, upserts
-├── data/
-│   ├── labeled_crimes.csv      # Your 60-example training set
-│   └── firs/                   # Generated mock CSVs
-└── crime_pipeline.db           # Created at runtime
+CrimeDNA/
+├── data/                       # Local data storage (ignored by git)
+│   ├── 01_raw/                 # Immutable, original Kaggle FIR dataset drops
+│   ├── 02_staging/             # Temporary files during processing
+│   ├── 03_processed/           # Cleaned, standardized data ready for DB loading
+│   └── 04_archive/             # Processed raw files moved here post-ingestion
+├── datasets/                   # The original FIR dataset files
+├── src/                        # Core ETL Source Code
+│   ├── ingestion/              # Validation, cleaning, and deduplication
+│   ├── features/               # AI feature engineering and graph building
+│   ├── loaders/                # PostgreSQL and Neo4j loading scripts
+│   └── utils/                  # DB connections, helpers
+├── orchestration/              # Airflow/Prefect execution DAGs
+├── tests/                      # Unit tests for data transformations
+├── config/                     # Configuration files
+├── requirements.txt
+└── README.md
 ```
 
 ## How to use
 
-1. **Generate mock FIR data only**
+Run the test ingestion pipeline (requires the raw dataset in `datasets/`):
 ```bash
-python main.py --generate-mock
+python src/loaders/test_ingestion.py
 ```
-
-2. **Full pipeline (requires labeled_crimes.csv)**
-```bash
-python main.py --run
-```
-
-3. **Generate + run together**
-```bash
-python main.py --all
-```
-
 
 ## Contributors 
 
