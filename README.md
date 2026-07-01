@@ -12,9 +12,16 @@ As a result, policing remains largely **reactive** rather than proactive, with m
 
 There is a critical need for an intelligent, AI-driven platform that integrates crime data across jurisdictions and enables advanced analytics, geospatial visualization, network analysis, and predictive modeling to support proactive and evidence-based policing.
 
-## Solution
+## Solution: CrimeDNA
 
-CrimeDNA is an AI-powered Crime Intelligence Platform that unifies crime data from multiple police sources and transforms it into a living behavioral intelligence network. Instead of treating each FIR or case as an isolated record, the platform analyzes behavioral patterns, modus operandi, locations, timelines, and relationships to create a unique "Crime DNA" for every incident. It continuously identifies hidden links between cases, tracks evolving criminal behavior, detects emerging hotspots and anomalies, and generates explainable investigative insights with actionable recommendations. By providing real-time intelligence through interactive visualizations, network analysis, and predictive analytics, CrimeDNA enables the Karnataka State Police to shift from reactive investigations to proactive, data-driven policing.
+CrimeDNA is an AI-powered Crime Intelligence Platform that unifies crime data from multiple police sources and transforms it into a living behavioral intelligence network. Instead of treating each FIR or case as an isolated record, the platform analyzes behavioral patterns, modus operandi, locations, timelines, and relationships to create a unique "Crime DNA" for every incident. 
+
+### Multi-Layer Filtering Engine & Intelligence
+CrimeDNA features a dynamic, non-destructive **Filtering Engine** that powers our intelligence:
+1. **Ingestion Validation**: Prevents data loss via median-imputation and mathematical clamping rather than destructive row-dropping.
+2. **Predictive Risk Classification**: Computes a robust `Severity_Score` weighted heavily by IPC codes (e.g. Murder, NDPS, POCSO) and victim multipliers to generate a `Predicted_Risk_Class`.
+3. **Hybrid Spatial Hotspot Detection**: Automatically executes **DBSCAN Spatial Clustering** on valid coordinate data. If coordinates are corrupted, it gracefully falls back to a strict 95th-percentile statistical frequency thresholding on localized address strings to flag true `Hotspot_Flag` instances.
+4. **Graph Intelligence Mapping**: Pre-computes structural syndicate links (`Syndicate_Link_Flag`) to feed directly into Neo4j for network investigation.
 
 ## Enterprise ETL File Structure
 
@@ -30,7 +37,7 @@ CrimeDNA/
 │   ├── ingestion/              # Validation, cleaning, and deduplication
 │   ├── features/               # AI feature engineering and graph building
 │   ├── loaders/                # SQLite and Neo4j loading scripts
-│   └── utils/                  # DB connections, helpers
+│   └── utils/                  # Filter Engine class, DB connections, dashboard API
 ├── orchestration/              # Airflow/Prefect execution DAGs
 ├── tests/                      # Unit tests for data transformations
 ├── config/                     # Configuration files
@@ -40,7 +47,12 @@ CrimeDNA/
 
 ## How to use
 
-Run the test ingestion pipeline (requires the raw dataset in `datasets/`):
+Run the comprehensive multi-layer filtering engine test (requires raw data in `datasets/`):
+```bash
+python orchestration/test_filters.py
+```
+
+Run the legacy ingestion test directly to SQLite:
 ```bash
 python src/loaders/test_ingestion.py
 ```
