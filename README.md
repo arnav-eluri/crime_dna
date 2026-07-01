@@ -14,6 +14,11 @@ There is a critical need for an intelligent, AI-driven platform that integrates 
 
 ## Solution: CrimeDNA
 
+<div align="center">
+  <img src="./images/flowchart.png" alt="CrimeDNA Flowchart" width="60%" />
+  <p><i>Fig 1: CrimeDNA Workflow Diagram</i></p>
+</div>
+
 CrimeDNA is an AI-powered Crime Intelligence Platform that unifies crime data from multiple police sources and transforms it into a living behavioral intelligence network. Instead of treating each FIR or case as an isolated record, the platform analyzes behavioral patterns, modus operandi, locations, timelines, and relationships to create a unique "Crime DNA" for every incident. 
 
 ### Multi-Layer Filtering Engine & Intelligence
