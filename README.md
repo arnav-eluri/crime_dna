@@ -35,37 +35,37 @@ The raw FIR data used in this project is sourced from Kaggle:
 
 Please download the dataset and place the CSV files inside the `datasets/` directory before running the pipelines.
 
-## Enterprise ETL File Structure
+## Enterprise File Structure (Zoho Catalyst & Data Pipeline)
 
 ```text
 CrimeDNA/
-├── data/                       # Local data storage (ignored by git)
-│   ├── 01_raw/                 # Immutable, original Kaggle FIR dataset drops
-│   ├── 02_staging/             # Temporary files during processing
-│   ├── 03_processed/           # Cleaned, standardized data ready for DB loading
-│   └── 04_archive/             # Processed raw files moved here post-ingestion
-├── datasets/                   # The original FIR dataset files
-├── src/                        # Core ETL Source Code
-│   ├── ingestion/              # Validation, cleaning, and deduplication
-│   ├── features/               # AI feature engineering and graph building
-│   ├── loaders/                # SQLite and Neo4j loading scripts
-│   └── utils/                  # Filter Engine class, DB connections, dashboard API
-├── orchestration/              # Airflow/Prefect execution DAGs
-├── tests/                      # Unit tests for data transformations
-├── config/                     # Configuration files
-├── requirements.txt
+├── client/                     # Zoho Catalyst React Frontend
+├── functions/                  # Zoho Catalyst Node.js Backend API
+│   └── crime_dna/              
+├── data_processing/            # Data Processing & ML Pipeline
+│   ├── data/                   # Local data storage (ignored by git)
+│   ├── datasets/               # The original FIR dataset files
+│   ├── src/                    # Core ETL Source Code
+│   ├── orchestration/          # Airflow/Prefect execution DAGs
+│   ├── tests/                  # Unit tests for data transformations
+│   ├── config/                 # Configuration files
+│   └── requirements.txt
+├── catalyst.json               # Catalyst deployment config
+├── .catalystrc                 # Catalyst environment settings
 └── README.md
 ```
 
 ## How to use
 
-Run the comprehensive multi-layer filtering engine test (requires raw data in `datasets/`):
+Run the comprehensive multi-layer filtering engine test (requires raw data in `data_processing/datasets/`):
 ```bash
+cd data_processing
 python orchestration/test_filters.py
 ```
 
 Run the legacy ingestion test directly to SQLite:
 ```bash
+cd data_processing
 python src/loaders/test_ingestion.py
 ```
 

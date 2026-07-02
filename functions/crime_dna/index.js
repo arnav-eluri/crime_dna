@@ -1,24 +1,36 @@
-'use strict';
+const express = require('express');
+const catalyst = require('zcatalyst-sdk-node');
 
-const { IncomingMessage, ServerResponse } = require("http");
+const app = express();
+app.use(express.json());
 
-/**
- * 
- * @param {IncomingMessage} req 
- * @param {ServerResponse} res 
- */
-module.exports = (req, res) => {
-	var url = req.url;
+// Middleware to initialize the Catalyst SDK for every request
+app.use((req, res, next) => {
+    const catalystApp = catalyst.initialize(req);
+    res.locals.catalyst = catalystApp;
+    next();
+});
 
-	switch (url) {
-		case '/':
-			res.writeHead(200, { 'Content-Type': 'text/html' });
-			res.write('<h1>Hello from index.js<h1>');
-			break;
-		default:
-			res.writeHead(404);
-			res.write('You might find the page you are looking for at "/" path');
-			break;
-	}
-	res.end();
-};
+// Basic Health Check Endpoint
+app.get('/', (req, res) => {
+    res.status(200).send({ message: "CrimeDNA API is running!" });
+});
+
+// Example Endpoint: Fetch FIRs from Catalyst Data Store
+app.get('/firs', async (req, res) => {
+    try {
+        const catalystApp = res.locals.catalyst;
+        // This query will fail until the CaseMaster table is actually created in the Catalyst Console
+        const zcql = catalystApp.zcql();
+        const query = `SELECT * FROM CaseMaster`;
+        const result = await zcql.executeZCQLQuery(query);
+        
+        res.status(200).send({ data: result });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ error: "Failed to fetch FIRs. Ensure the CaseMaster table is created in Catalyst Data Store.", details: err.message });
+    }
+});
+
+// Export the Express app as a module so Catalyst can handle the routing
+module.exports = app;
