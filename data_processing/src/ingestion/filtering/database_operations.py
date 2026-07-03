@@ -3,7 +3,7 @@ from sqlalchemy import create_engine, Column, Integer, String, Date, Float, Date
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 from sqlalchemy.sql import func
 
-from filtering.config import DATABASE_URL
+from src.ingestion.filtering.config import DATABASE_URL
 
 Base = declarative_base()
 

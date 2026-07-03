@@ -1,24 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import Navbar from './components/Navbar';
+import Dashboard from './pages/Dashboard';
+import CrimeMap from './pages/CrimeMap';
+import Trends from './pages/Trends';
+import Alerts from './pages/Alerts';
+import Severity from './pages/Severity';
+import NetworkGraph from './pages/NetworkGraph';
+import FIRList from './pages/FIRList';
 import './App.css';
 
+const PAGES: Record<string, React.ReactNode> = {
+  '/': <Dashboard />,
+  '/map': <CrimeMap />,
+  '/trends': <Trends />,
+  '/alerts': <Alerts />,
+  '/severity': <Severity />,
+  '/network': <NetworkGraph />,
+  '/firs': <FIRList />,
+};
+
 function App() {
+  const [path, setPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handler = () => setPath(window.location.pathname);
+    window.addEventListener('popstate', handler);
+    return () => window.removeEventListener('popstate', handler);
+  }, []);
+
+  const navigate = (to: string) => {
+    window.history.pushState({}, '', to);
+    setPath(to);
+  };
+
+  const page = PAGES[path] || <Dashboard />;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-layout">
+      <Navbar currentPath={path} onNavigate={navigate} />
+      <main className="app-main">
+        {page}
+      </main>
     </div>
   );
 }

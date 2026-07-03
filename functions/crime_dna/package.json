@@ -1,8 +1,9 @@
 {
 	"name": "crime_dna",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"main": "index.js",
-	"author": "",
+	"author": "404 Detectives",
+	"description": "CrimeDNA Intelligence API — serves analysis results to the React frontend",
 	"dependencies": {
 		"express": "^5.2.1",
 		"zcatalyst-sdk-node": "latest"

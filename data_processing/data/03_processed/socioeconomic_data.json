@@ -1,0 +1,25 @@
+[
+  {
+    "district": "BAGALKOT",
+    "crime_rate_per_100k": 400.0,
+    "total_firs": 1000,
+    "top_crimes": {
+      "KARNATAKA POLICE ACT 1963": 204,
+      "CRPC": 140,
+      "MOTOR VEHICLE ACCIDENTS FATAL": 121,
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 100,
+      "KARNATAKA STATE LOCAL ACT": 100
+    },
+    "severity_breakdown": {
+      "LOW": 741,
+      "HIGH": 164,
+      "CRITICAL": 95
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 250,
+      "urbanization_percent": 28,
+      "literacy_rate_percent": 68,
+      "avg_annual_income_inr": 85000
+    }
+  }
+]

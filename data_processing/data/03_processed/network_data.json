@@ -1,0 +1,366 @@
+{
+  "nodes": [
+    {
+      "id": "KARNATAKA POLICE ACT 1963",
+      "group": "crime_type",
+      "size": 204
+    },
+    {
+      "id": "BAGALKOT",
+      "group": "district",
+      "size": 1000
+    },
+    {
+      "id": "CRPC",
+      "group": "crime_type",
+      "size": 140
+    },
+    {
+      "id": "MOTOR VEHICLE ACCIDENTS FATAL",
+      "group": "crime_type",
+      "size": 121
+    },
+    {
+      "id": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "group": "crime_type",
+      "size": 100
+    },
+    {
+      "id": "KARNATAKA STATE LOCAL ACT",
+      "group": "crime_type",
+      "size": 100
+    },
+    {
+      "id": "MOLESTATION",
+      "group": "crime_type",
+      "size": 54
+    },
+    {
+      "id": "MISSING PERSON",
+      "group": "crime_type",
+      "size": 42
+    },
+    {
+      "id": "CASES OF HURT",
+      "group": "crime_type",
+      "size": 29
+    },
+    {
+      "id": "RIOTS",
+      "group": "crime_type",
+      "size": 25
+    },
+    {
+      "id": "THEFT",
+      "group": "crime_type",
+      "size": 23
+    },
+    {
+      "id": "ATTEMPT TO MURDER",
+      "group": "crime_type",
+      "size": 16
+    },
+    {
+      "id": "POCSO",
+      "group": "crime_type",
+      "size": 14
+    },
+    {
+      "id": "BURGLARY - NIGHT",
+      "group": "crime_type",
+      "size": 13
+    },
+    {
+      "id": "CHEATING",
+      "group": "crime_type",
+      "size": 12
+    },
+    {
+      "id": "MURDER",
+      "group": "crime_type",
+      "size": 12
+    },
+    {
+      "id": "SCHEDULED CASTE AND THE SCHEDULED TRIBES",
+      "group": "crime_type",
+      "size": 10
+    },
+    {
+      "id": "CONSUMER",
+      "group": "crime_type",
+      "size": 8
+    },
+    {
+      "id": "KIDNAPPING AND ABDUCTION",
+      "group": "crime_type",
+      "size": 7
+    },
+    {
+      "id": "OFFENCES AGAINST PUBLIC SERVANTS (PUBLIC SERVANT IS A VICTIM)",
+      "group": "crime_type",
+      "size": 7
+    },
+    {
+      "id": "CRUELTY BY HUSBAND",
+      "group": "crime_type",
+      "size": 6
+    },
+    {
+      "id": "ELECTION",
+      "group": "crime_type",
+      "size": 5
+    },
+    {
+      "id": "DEATHS DUE TO RASHNESS/NEGLIGENCE",
+      "group": "crime_type",
+      "size": 5
+    },
+    {
+      "id": "CRIMINAL INTIMIDATION",
+      "group": "crime_type",
+      "size": 5
+    },
+    {
+      "id": "PUBLIC SAFETY",
+      "group": "crime_type",
+      "size": 4
+    },
+    {
+      "id": "REPRESENTATION OF PEOPLE ACT 1951 & 1988",
+      "group": "crime_type",
+      "size": 3
+    },
+    {
+      "id": "EXPOSURE AND ABANDONMENT OF CHILD",
+      "group": "crime_type",
+      "size": 3
+    },
+    {
+      "id": "SUICIDE",
+      "group": "crime_type",
+      "size": 3
+    },
+    {
+      "id": "FORGERY",
+      "group": "crime_type",
+      "size": 2
+    },
+    {
+      "id": "ARSON",
+      "group": "crime_type",
+      "size": 2
+    },
+    {
+      "id": "CRIMES RELATED TO WOMEN",
+      "group": "crime_type",
+      "size": 2
+    },
+    {
+      "id": "SYNDICATE_BAGALKOT",
+      "group": "syndicate",
+      "size": 3
+    }
+  ],
+  "edges": [
+    {
+      "source": "KARNATAKA POLICE ACT 1963",
+      "target": "BAGALKOT",
+      "weight": 204
+    },
+    {
+      "source": "CRPC",
+      "target": "BAGALKOT",
+      "weight": 140
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS FATAL",
+      "target": "BAGALKOT",
+      "weight": 121
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "BAGALKOT",
+      "weight": 100
+    },
+    {
+      "source": "KARNATAKA STATE LOCAL ACT",
+      "target": "BAGALKOT",
+      "weight": 100
+    },
+    {
+      "source": "MOLESTATION",
+      "target": "BAGALKOT",
+      "weight": 54
+    },
+    {
+      "source": "MISSING PERSON",
+      "target": "BAGALKOT",
+      "weight": 42
+    },
+    {
+      "source": "CASES OF HURT",
+      "target": "BAGALKOT",
+      "weight": 29
+    },
+    {
+      "source": "RIOTS",
+      "target": "BAGALKOT",
+      "weight": 25
+    },
+    {
+      "source": "THEFT",
+      "target": "BAGALKOT",
+      "weight": 23
+    },
+    {
+      "source": "ATTEMPT TO MURDER",
+      "target": "BAGALKOT",
+      "weight": 16
+    },
+    {
+      "source": "POCSO",
+      "target": "BAGALKOT",
+      "weight": 14
+    },
+    {
+      "source": "BURGLARY - NIGHT",
+      "target": "BAGALKOT",
+      "weight": 13
+    },
+    {
+      "source": "CHEATING",
+      "target": "BAGALKOT",
+      "weight": 12
+    },
+    {
+      "source": "MURDER",
+      "target": "BAGALKOT",
+      "weight": 12
+    },
+    {
+      "source": "SCHEDULED CASTE AND THE SCHEDULED TRIBES",
+      "target": "BAGALKOT",
+      "weight": 10
+    },
+    {
+      "source": "CONSUMER",
+      "target": "BAGALKOT",
+      "weight": 8
+    },
+    {
+      "source": "KIDNAPPING AND ABDUCTION",
+      "target": "BAGALKOT",
+      "weight": 7
+    },
+    {
+      "source": "OFFENCES AGAINST PUBLIC SERVANTS (PUBLIC SERVANT IS A VICTIM)",
+      "target": "BAGALKOT",
+      "weight": 7
+    },
+    {
+      "source": "CRUELTY BY HUSBAND",
+      "target": "BAGALKOT",
+      "weight": 6
+    },
+    {
+      "source": "ELECTION",
+      "target": "BAGALKOT",
+      "weight": 5
+    },
+    {
+      "source": "DEATHS DUE TO RASHNESS/NEGLIGENCE",
+      "target": "BAGALKOT",
+      "weight": 5
+    },
+    {
+      "source": "CRIMINAL INTIMIDATION",
+      "target": "BAGALKOT",
+      "weight": 5
+    },
+    {
+      "source": "PUBLIC SAFETY",
+      "target": "BAGALKOT",
+      "weight": 4
+    },
+    {
+      "source": "REPRESENTATION OF PEOPLE ACT 1951 & 1988",
+      "target": "BAGALKOT",
+      "weight": 3
+    },
+    {
+      "source": "EXPOSURE AND ABANDONMENT OF CHILD",
+      "target": "BAGALKOT",
+      "weight": 3
+    },
+    {
+      "source": "SUICIDE",
+      "target": "BAGALKOT",
+      "weight": 3
+    },
+    {
+      "source": "FORGERY",
+      "target": "BAGALKOT",
+      "weight": 2
+    },
+    {
+      "source": "ARSON",
+      "target": "BAGALKOT",
+      "weight": 2
+    },
+    {
+      "source": "CRIMES RELATED TO WOMEN",
+      "target": "BAGALKOT",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "KARNATAKA POLICE ACT 1963",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "KARNATAKA POLICE ACT 1963",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "CRUELTY BY HUSBAND",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "KARNATAKA POLICE ACT 1963",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "CRPC",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "CRPC",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "CRPC",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "CRPC",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "CRPC",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "CRPC",
+      "weight": 2
+    }
+  ]
+}

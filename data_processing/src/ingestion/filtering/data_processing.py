@@ -5,7 +5,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 
-from filtering.config import DATA_DIR, LABELED_DATA_PATH, TARGET_CATEGORIES
+from src.ingestion.filtering.config import DATA_DIR, LABELED_DATA_PATH, TARGET_CATEGORIES
 
 
 def load_all_firs(data_dir=None):

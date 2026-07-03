@@ -3,7 +3,7 @@ import os
 import random
 from datetime import datetime, timedelta
 
-from filtering.config import DATA_DIR, MOCK_STATIONS, MOCK_RECORDS_PER_STATION
+from src.ingestion.filtering.config import DATA_DIR, MOCK_STATIONS, MOCK_RECORDS_PER_STATION
 
 CRIME_TEMPLATES = {
     "Violent": [

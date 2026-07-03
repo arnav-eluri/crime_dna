@@ -1,0 +1,671 @@
+{
+  "total_firs": 1000,
+  "active_cases": 650,
+  "hotspot_count": 214,
+  "spatiotemporal_hotspot_count": 233,
+  "critical_count": 95,
+  "anomaly_count": 519,
+  "syndicate_link_count": 328,
+  "crime_type_distribution": {
+    "KARNATAKA POLICE ACT 1963": 204,
+    "CRPC": 140,
+    "MOTOR VEHICLE ACCIDENTS FATAL": 121,
+    "MOTOR VEHICLE ACCIDENTS NON-FATAL": 100,
+    "KARNATAKA STATE LOCAL ACT": 100,
+    "MOLESTATION": 54,
+    "MISSING PERSON": 42,
+    "CASES OF HURT": 29,
+    "RIOTS": 25,
+    "THEFT": 23,
+    "ATTEMPT TO MURDER": 16,
+    "POCSO": 14,
+    "BURGLARY - NIGHT": 13,
+    "CHEATING": 12,
+    "MURDER": 12,
+    "SCHEDULED CASTE AND THE SCHEDULED TRIBES": 10,
+    "CONSUMER": 8,
+    "KIDNAPPING AND ABDUCTION": 7,
+    "OFFENCES AGAINST PUBLIC SERVANTS (PUBLIC SERVANT IS A VICTIM)": 7,
+    "CRUELTY BY HUSBAND": 6
+  },
+  "severity_distribution": {
+    "LOW": 741,
+    "HIGH": 164,
+    "CRITICAL": 95
+  },
+  "district_distribution": {
+    "BAGALKOT": 1000
+  },
+  "risk_class_distribution": {
+    "0": 741,
+    "1": 164,
+    "2": 95
+  },
+  "monthly_trends": {
+    "2016-01": 15,
+    "2016-02": 29,
+    "2016-03": 14,
+    "2016-04": 14,
+    "2016-05": 21,
+    "2016-06": 18,
+    "2016-07": 18,
+    "2016-08": 30,
+    "2016-09": 16,
+    "2016-10": 18,
+    "2016-11": 8,
+    "2016-12": 10,
+    "2017-01": 15,
+    "2017-02": 19,
+    "2017-03": 21,
+    "2017-04": 14,
+    "2017-05": 21,
+    "2017-06": 25,
+    "2017-07": 24,
+    "2017-08": 13,
+    "2017-09": 12,
+    "2017-10": 11,
+    "2017-11": 11,
+    "2017-12": 11,
+    "2018-01": 20,
+    "2018-02": 41,
+    "2018-03": 17,
+    "2018-04": 25,
+    "2018-05": 14,
+    "2018-06": 14,
+    "2018-07": 22,
+    "2018-08": 6,
+    "2018-09": 7,
+    "2018-10": 12,
+    "2018-11": 7,
+    "2018-12": 12,
+    "2019-01": 5,
+    "2019-02": 4,
+    "2019-03": 12,
+    "2019-04": 12,
+    "2019-05": 5,
+    "2019-06": 11,
+    "2019-07": 12,
+    "2019-08": 8,
+    "2019-09": 4,
+    "2019-10": 13,
+    "2019-11": 7,
+    "2019-12": 13,
+    "2020-01": 4,
+    "2020-02": 12,
+    "2020-03": 19,
+    "2020-04": 14,
+    "2020-05": 14,
+    "2020-06": 6,
+    "2020-07": 6,
+    "2020-08": 3,
+    "2020-09": 16,
+    "2020-10": 15,
+    "2020-11": 17,
+    "2020-12": 8
+  },
+  "hotspot_locations": [
+    {
+      "lat": 16.054967,
+      "lng": 75.950667,
+      "frequency": 1,
+      "crime_type": "KARNATAKA POLICE ACT 1963",
+      "severity": "HIGH"
+    },
+    {
+      "lat": 16.141122,
+      "lng": 75.910169,
+      "frequency": 1,
+      "crime_type": "KARNATAKA STATE LOCAL ACT",
+      "severity": "LOW"
+    },
+    {
+      "lat": 16.135827,
+      "lng": 75.919221,
+      "frequency": 1,
+      "crime_type": "MOTOR VEHICLE ACCIDENTS FATAL",
+      "severity": "LOW"
+    },
+    {
+      "lat": 16.083599,
+      "lng": 75.904582,
+      "frequency": 1,
+      "crime_type": "KARNATAKA POLICE ACT 1963",
+      "severity": "HIGH"
+    },
+    {
+      "lat": 16.083886,
+      "lng": 75.904352,
+      "frequency": 1,
+      "crime_type": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "severity": "LOW"
+    },
+    {
+      "lat": 16.056361,
+      "lng": 75.943909,
+      "frequency": 1,
+      "crime_type": "MISCHIEF",
+      "severity": "LOW"
+    },
+    {
+      "lat": 15.93417,
+      "lng": 75.879748,
+      "frequency": 1,
+      "crime_type": "MOTOR VEHICLE ACCIDENTS FATAL",
+      "severity": "LOW"
+    },
+    {
+      "lat": 16.043274,
+      "lng": 75.940423,
+      "frequency": 1,
+      "crime_type": "MISSING PERSON",
+      "severity": "LOW"
+    },
+    {
+      "lat": 16.10198,
+      "lng": 75.867421,
+      "frequency": 1,
+      "crime_type": "MISSING PERSON",
+      "severity": "LOW"
+    },
+    {
+      "lat": 16.083766,
+      "lng": 75.904571,
+      "frequency": 1,
+      "crime_type": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "severity": "LOW"
+    },
+    {
+      "lat": 16.041359,
+      "lng": 75.937019,
+      "frequency": 1,
+      "crime_type": "KARNATAKA POLICE ACT 1963",
+      "severity": "LOW"
+    },
+    {
+      "lat": 16.061612,
+      "lng": 75.925439,
+      "frequency": 1,
+      "crime_type": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "severity": "LOW"
+    },
+    {
+      "lat": 16.056551,
+      "lng": 75.943564,
+      "frequency": 1,
+      "crime_type": "MISSING PERSON",
+      "severity": "LOW"
+    },
+    {
+      "lat": 16.091968,
+      "lng": 75.873126,
+      "frequency": 1,
+      "crime_type": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "severity": "LOW"
+    },
+    {
+      "lat": 16.093687,
+      "lng": 75.864756,
+      "frequency": 1,
+      "crime_type": "MOTOR VEHICLE ACCIDENTS FATAL",
+      "severity": "LOW"
+    },
+    {
+      "lat": 16.055231,
+      "lng": 75.953662,
+      "frequency": 1,
+      "crime_type": "KARNATAKA POLICE ACT 1963",
+      "severity": "LOW"
+    },
+    {
+      "lat": 16.056489,
+      "lng": 75.94398,
+      "frequency": 1,
+      "crime_type": "MISSING PERSON",
+      "severity": "LOW"
+    },
+    {
+      "lat": 16.109557,
+      "lng": 75.868217,
+      "frequency": 1,
+      "crime_type": "INSULTING MODESTY OF WOMEN (EVE TEASING)",
+      "severity": "HIGH"
+    },
+    {
+      "lat": 16.05462,
+      "lng": 75.953419,
+      "frequency": 1,
+      "crime_type": "MOLESTATION",
+      "severity": "LOW"
+    },
+    {
+      "lat": 16.054514,
+      "lng": 75.953465,
+      "frequency": 1,
+      "crime_type": "MOLESTATION",
+      "severity": "LOW"
+    }
+  ],
+  "alerts": [
+    {
+      "district": "BAGALKOT",
+      "crime_category": "KARNATAKA POLICE ACT 1963",
+      "alert_level": "CRITICAL",
+      "current_count": 204,
+      "historical_avg": 1.0,
+      "percent_change": 1000.0,
+      "trend_direction": "up"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 121,
+      "historical_avg": 1.0,
+      "percent_change": 600.0,
+      "trend_direction": "up"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 100,
+      "historical_avg": 1.0,
+      "percent_change": 300.0,
+      "trend_direction": "up"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "CASES OF HURT",
+      "alert_level": "CRITICAL",
+      "current_count": 29,
+      "historical_avg": 1.0,
+      "percent_change": 200.0,
+      "trend_direction": "up"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "MISSING PERSON",
+      "alert_level": "CRITICAL",
+      "current_count": 42,
+      "historical_avg": 1.0,
+      "percent_change": 100.0,
+      "trend_direction": "up"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "ANIMAL",
+      "alert_level": "ELEVATED",
+      "current_count": 1,
+      "historical_avg": 1.0,
+      "percent_change": -100.0,
+      "trend_direction": "down"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "ARSON",
+      "alert_level": "ELEVATED",
+      "current_count": 2,
+      "historical_avg": 1.0,
+      "percent_change": -100.0,
+      "trend_direction": "down"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "ATTEMPTING TO COMMIT OFFENCES",
+      "alert_level": "ELEVATED",
+      "current_count": 1,
+      "historical_avg": 1.0,
+      "percent_change": -100.0,
+      "trend_direction": "down"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "BURGLARY - DAY",
+      "alert_level": "ELEVATED",
+      "current_count": 2,
+      "historical_avg": 1.0,
+      "percent_change": -100.0,
+      "trend_direction": "down"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "BURGLARY - NIGHT",
+      "alert_level": "ELEVATED",
+      "current_count": 13,
+      "historical_avg": 1.0,
+      "percent_change": -100.0,
+      "trend_direction": "down"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "CHILDREN ACT",
+      "alert_level": "ELEVATED",
+      "current_count": 2,
+      "historical_avg": 1.0,
+      "percent_change": -100.0,
+      "trend_direction": "down"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "COMMUNAL / RELIGION",
+      "alert_level": "ELEVATED",
+      "current_count": 2,
+      "historical_avg": 1.0,
+      "percent_change": -100.0,
+      "trend_direction": "down"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "CONSUMER",
+      "alert_level": "ELEVATED",
+      "current_count": 8,
+      "historical_avg": 1.0,
+      "percent_change": -100.0,
+      "trend_direction": "down"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "CRIMES RELATED TO WOMEN",
+      "alert_level": "ELEVATED",
+      "current_count": 2,
+      "historical_avg": 1.0,
+      "percent_change": -100.0,
+      "trend_direction": "down"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "CRIMINAL BREACH OF TRUST",
+      "alert_level": "ELEVATED",
+      "current_count": 2,
+      "historical_avg": 1.0,
+      "percent_change": -100.0,
+      "trend_direction": "down"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "CRIMINAL CONSPIRACY",
+      "alert_level": "ELEVATED",
+      "current_count": 1,
+      "historical_avg": 1.0,
+      "percent_change": -100.0,
+      "trend_direction": "down"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "CRIMINAL INTIMIDATION",
+      "alert_level": "ELEVATED",
+      "current_count": 5,
+      "historical_avg": 1.0,
+      "percent_change": -100.0,
+      "trend_direction": "down"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "CRIMINAL TRESPASS",
+      "alert_level": "ELEVATED",
+      "current_count": 2,
+      "historical_avg": 1.0,
+      "percent_change": -100.0,
+      "trend_direction": "down"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "CRPC",
+      "alert_level": "ELEVATED",
+      "current_count": 140,
+      "historical_avg": 1.0,
+      "percent_change": -100.0,
+      "trend_direction": "down"
+    },
+    {
+      "district": "BAGALKOT",
+      "crime_category": "CRUELTY BY HUSBAND",
+      "alert_level": "ELEVATED",
+      "current_count": 6,
+      "historical_avg": 1.0,
+      "percent_change": -100.0,
+      "trend_direction": "down"
+    }
+  ],
+  "spatiotemporal_clusters": [
+    {
+      "lat": 16.056361,
+      "lng": 75.943909,
+      "time_bucket": "NIGHT",
+      "frequency": 35,
+      "crime_categories": {
+        "KARNATAKA POLICE ACT 1963": 12,
+        "MOTOR VEHICLE ACCIDENTS FATAL": 4,
+        "MISSING PERSON": 3
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 16.055231,
+      "lng": 75.953662,
+      "time_bucket": "NIGHT",
+      "frequency": 19,
+      "crime_categories": {
+        "KARNATAKA POLICE ACT 1963": 7,
+        "MOTOR VEHICLE ACCIDENTS NON-FATAL": 2,
+        "CRIMINAL INTIMIDATION": 2
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 16.043274,
+      "lng": 75.940423,
+      "time_bucket": "NIGHT",
+      "frequency": 16,
+      "crime_categories": {
+        "KARNATAKA POLICE ACT 1963": 5,
+        "MISSING PERSON": 4,
+        "MOLESTATION": 1
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 15.940025,
+      "lng": 75.917794,
+      "time_bucket": "NIGHT",
+      "frequency": 15,
+      "crime_categories": {
+        "KARNATAKA POLICE ACT 1963": 5,
+        "MOLESTATION": 2,
+        "MOTOR VEHICLE ACCIDENTS FATAL": 2
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 16.020779,
+      "lng": 75.881059,
+      "time_bucket": "NIGHT",
+      "frequency": 11,
+      "crime_categories": {
+        "THEFT": 3,
+        "ATTEMPT TO MURDER": 2,
+        "CHEATING": 2
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 15.937514,
+      "lng": 75.914504,
+      "time_bucket": "NIGHT",
+      "frequency": 10,
+      "crime_categories": {
+        "KARNATAKA POLICE ACT 1963": 4,
+        "MISSING PERSON": 3,
+        "CHEATING": 2
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 16.091968,
+      "lng": 75.873126,
+      "time_bucket": "NIGHT",
+      "frequency": 10,
+      "crime_categories": {
+        "MOTOR VEHICLE ACCIDENTS NON-FATAL": 5,
+        "MOTOR VEHICLE ACCIDENTS FATAL": 4,
+        "DEATHS DUE TO RASHNESS/NEGLIGENCE": 1
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 16.10198,
+      "lng": 75.867421,
+      "time_bucket": "NIGHT",
+      "frequency": 10,
+      "crime_categories": {
+        "KARNATAKA POLICE ACT 1963": 5,
+        "MISSING PERSON": 2,
+        "BURGLARY - NIGHT": 1
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 16.100974,
+      "lng": 75.863888,
+      "time_bucket": "NIGHT",
+      "frequency": 9,
+      "crime_categories": {
+        "KARNATAKA POLICE ACT 1963": 4,
+        "MOTOR VEHICLE ACCIDENTS NON-FATAL": 2,
+        "MOTOR VEHICLE ACCIDENTS FATAL": 2
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 16.109557,
+      "lng": 75.868217,
+      "time_bucket": "NIGHT",
+      "frequency": 8,
+      "crime_categories": {
+        "KARNATAKA POLICE ACT 1963": 4,
+        "KARNATAKA STATE LOCAL ACT": 2,
+        "INSULTING MODESTY OF WOMEN (EVE TEASING)": 1
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 15.978069,
+      "lng": 75.907997,
+      "time_bucket": "NIGHT",
+      "frequency": 6,
+      "crime_categories": {
+        "CRIMINAL INTIMIDATION": 2,
+        "MISSING PERSON": 1,
+        "KARNATAKA STATE LOCAL ACT": 1
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 16.054967,
+      "lng": 75.950667,
+      "time_bucket": "NIGHT",
+      "frequency": 6,
+      "crime_categories": {
+        "MOLESTATION": 2,
+        "KARNATAKA POLICE ACT 1963": 1,
+        "CHEATING": 1
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 16.083112,
+      "lng": 75.91674,
+      "time_bucket": "NIGHT",
+      "frequency": 6,
+      "crime_categories": {
+        "MOTOR VEHICLE ACCIDENTS FATAL": 3,
+        "MOLESTATION": 2,
+        "BURGLARY - NIGHT": 1
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 16.109622,
+      "lng": 75.931844,
+      "time_bucket": "NIGHT",
+      "frequency": 6,
+      "crime_categories": {
+        "RIOTS": 2,
+        "SCHEDULED CASTE AND THE SCHEDULED TRIBES": 1,
+        "CASES OF HURT": 1
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 16.135827,
+      "lng": 75.919221,
+      "time_bucket": "NIGHT",
+      "frequency": 6,
+      "crime_categories": {
+        "MOTOR VEHICLE ACCIDENTS FATAL": 3,
+        "KARNATAKA POLICE ACT 1963": 1,
+        "MOTOR VEHICLE ACCIDENTS NON-FATAL": 1
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 15.868249,
+      "lng": 75.950888,
+      "time_bucket": "NIGHT",
+      "frequency": 5,
+      "crime_categories": {
+        "MOLESTATION": 2,
+        "CASES OF HURT": 1,
+        "BURGLARY - NIGHT": 1
+      },
+      "severity_level": "CRITICAL"
+    },
+    {
+      "lat": 16.061612,
+      "lng": 75.925439,
+      "time_bucket": "NIGHT",
+      "frequency": 5,
+      "crime_categories": {
+        "MOTOR VEHICLE ACCIDENTS FATAL": 2,
+        "MOTOR VEHICLE ACCIDENTS NON-FATAL": 1,
+        "KARNATAKA STATE LOCAL ACT": 1
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 16.141122,
+      "lng": 75.910169,
+      "time_bucket": "NIGHT",
+      "frequency": 5,
+      "crime_categories": {
+        "KARNATAKA STATE LOCAL ACT": 1,
+        "CASES OF HURT": 1,
+        "CRIMINAL CONSPIRACY": 1
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 15.93417,
+      "lng": 75.879748,
+      "time_bucket": "NIGHT",
+      "frequency": 4,
+      "crime_categories": {
+        "MOTOR VEHICLE ACCIDENTS FATAL": 2,
+        "MOTOR VEHICLE ACCIDENTS NON-FATAL": 2
+      },
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 15.934547,
+      "lng": 75.886343,
+      "time_bucket": "NIGHT",
+      "frequency": 4,
+      "crime_categories": {
+        "MOTOR VEHICLE ACCIDENTS FATAL": 2,
+        "MURDER": 1,
+        "CHILDREN ACT": 1
+      },
+      "severity_level": "HIGH"
+    }
+  ]
+}
