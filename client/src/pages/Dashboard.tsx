@@ -66,11 +66,11 @@ export default function Dashboard() {
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={crimeChartData}>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-              <XAxis dataKey="name" tick={{ fill: '#8395a7', fontSize: 11 }} angle={-20} textAnchor="end" height={60} />
-              <YAxis tick={{ fill: '#8395a7', fontSize: 11 }} />
+              <XAxis dataKey="name" tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 11 }} angle={-20} textAnchor="end" height={60} />
+              <YAxis tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 11 }} />
               <Tooltip
-                contentStyle={{ background: '#0d2137', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8 }}
-                labelStyle={{ color: '#c8d6e5' }}
+                contentStyle={{ background: 'var(--color-surface-container-lowest)', border: '1px solid var(--color-surface-container-highest)', borderRadius: 8 }}
+                labelStyle={{ color: 'var(--color-on-surface)' }}
               />
               <Bar dataKey="value" fill="#2eD573" radius={[4, 4, 0, 0]} />
             </BarChart>
@@ -99,11 +99,11 @@ export default function Dashboard() {
           <ResponsiveContainer width="100%" height={250}>
             <BarChart data={districtData} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-              <XAxis type="number" tick={{ fill: '#8395a7', fontSize: 11 }} />
-              <YAxis dataKey="name" type="category" tick={{ fill: '#8395a7', fontSize: 11 }} width={100} />
+              <XAxis type="number" tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 11 }} />
+              <YAxis dataKey="name" type="category" tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 11 }} width={100} />
               <Tooltip
-                contentStyle={{ background: '#0d2137', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8 }}
-                labelStyle={{ color: '#c8d6e5' }}
+                contentStyle={{ background: 'var(--color-surface-container-lowest)', border: '1px solid var(--color-surface-container-highest)', borderRadius: 8 }}
+                labelStyle={{ color: 'var(--color-on-surface)' }}
               />
               <Bar dataKey="value" fill="#1e90ff" radius={[0, 4, 4, 0]} />
             </BarChart>
@@ -131,17 +131,19 @@ export default function Dashboard() {
 }
 
 const styles: Record<string, React.CSSProperties> = {
-  container: { padding: '24px 32px' },
-  title: { fontSize: 28, fontWeight: 700, color: '#fff', marginBottom: 24 },
-  loading: { padding: 40, color: '#8395a7', fontSize: 16, textAlign: 'center' as const },
-  error: { padding: 40, color: '#ff4757', fontSize: 16 },
+  container: { padding: 'var(--spacing-container-padding)' },
+  title: { fontFamily: 'var(--font-family-display)', fontSize: 28, fontWeight: 700, color: 'var(--color-on-surface)', marginBottom: 24 },
+  loading: { padding: 40, color: 'var(--color-on-surface-variant)', fontSize: 16, textAlign: 'center' as const },
+  error: { padding: 40, color: 'var(--color-error)', fontSize: 16 },
   kpiRow: { display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' as const },
   chartsRow: { display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' as const },
   chartCard: {
     flex: '1 1 400px',
-    background: 'rgba(255,255,255,0.03)',
-    borderRadius: 12,
-    padding: 20,
+    background: 'var(--color-surface-container-lowest)',
+    borderRadius: 'var(--radius-lg)',
+    padding: 24,
+    boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.04)',
+    border: '1px solid var(--color-surface-container-highest)',
   },
-  chartTitle: { fontSize: 16, fontWeight: 600, color: '#c8d6e5', marginBottom: 16 },
+  chartTitle: { fontFamily: 'var(--font-family-display)', fontSize: 18, fontWeight: 600, color: 'var(--color-on-surface)', marginBottom: 16 },
 };

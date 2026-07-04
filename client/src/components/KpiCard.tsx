@@ -26,11 +26,13 @@ export default function KpiCard({ title, value, subtitle, color = '#2eD573', ico
 
 const styles: Record<string, React.CSSProperties> = {
   card: {
-    background: 'rgba(255,255,255,0.04)',
-    borderRadius: 12,
+    background: 'var(--color-surface-container-lowest)',
+    borderRadius: 'var(--radius-lg)',
     padding: '20px 24px',
     minWidth: 180,
     flex: 1,
+    boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.04)',
+    border: '1px solid var(--color-surface-container-highest)',
   },
   header: {
     display: 'flex',
@@ -41,18 +43,22 @@ const styles: Record<string, React.CSSProperties> = {
   icon: { fontSize: 18 },
   title: {
     fontSize: 13,
-    color: '#8395a7',
+    color: 'var(--color-on-surface-variant)',
     textTransform: 'uppercase',
     letterSpacing: 1,
+    fontFamily: 'var(--font-family-body)',
+    fontWeight: 600,
   },
   value: {
+    fontFamily: 'var(--font-family-display)',
     fontSize: 36,
     fontWeight: 700,
     lineHeight: 1.1,
   },
   subtitle: {
+    fontFamily: 'var(--font-family-body)',
     fontSize: 12,
-    color: '#576574',
+    color: 'var(--color-on-surface-variant)',
     marginTop: 6,
   },
 };

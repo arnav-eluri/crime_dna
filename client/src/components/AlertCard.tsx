@@ -49,11 +49,13 @@ export default function AlertCard({
 
 const styles: Record<string, React.CSSProperties> = {
   card: {
-    background: 'rgba(255,255,255,0.03)',
-    borderRadius: 10,
+    background: 'var(--color-surface-container-lowest)',
+    borderRadius: 'var(--radius-lg)',
     padding: '16px 20px',
     minWidth: 260,
     flex: '1 0 260px',
+    boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.04)',
+    border: '1px solid var(--color-surface-container-highest)',
   },
   header: {
     display: 'flex',
@@ -63,22 +65,23 @@ const styles: Record<string, React.CSSProperties> = {
   },
   badge: {
     padding: '2px 10px',
-    borderRadius: 4,
+    borderRadius: 'var(--radius-sm)',
+    fontFamily: 'var(--font-family-mono)',
     fontSize: 11,
     fontWeight: 700,
     color: '#fff',
     letterSpacing: 1,
   },
-  district: { fontSize: 14, fontWeight: 600, color: '#c8d6e5' },
-  category: { fontSize: 12, color: '#8395a7', marginBottom: 10 },
+  district: { fontFamily: 'var(--font-family-display)', fontSize: 14, fontWeight: 600, color: 'var(--color-on-surface)' },
+  category: { fontFamily: 'var(--font-family-body)', fontSize: 12, color: 'var(--color-on-surface-variant)', marginBottom: 10 },
   stats: {
     display: 'flex',
     alignItems: 'center',
     gap: 8,
     marginBottom: 4,
   },
-  stat: { fontSize: 18, fontWeight: 700 },
-  arrow: { fontSize: 16, fontWeight: 700 },
-  change: { fontSize: 14, fontWeight: 600 },
-  avg: { fontSize: 11, color: '#576574' },
+  stat: { fontFamily: 'var(--font-family-display)', fontSize: 18, fontWeight: 700 },
+  arrow: { fontFamily: 'var(--font-family-display)', fontSize: 16, fontWeight: 700 },
+  change: { fontFamily: 'var(--font-family-display)', fontSize: 14, fontWeight: 600 },
+  avg: { fontFamily: 'var(--font-family-body)', fontSize: 11, color: 'var(--color-on-surface-variant)' },
 };

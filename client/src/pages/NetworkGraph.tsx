@@ -72,7 +72,7 @@ export default function NetworkGraph() {
 
     links.forEach(link => {
       const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      line.setAttribute('stroke', 'rgba(255,255,255,0.1)');
+      line.setAttribute('stroke', 'rgba(0,0,0,0.1)');
       line.setAttribute('stroke-width', String(Math.max(1, Math.min(6, link.weight))));
       linkGroup.appendChild(line);
       linkElements.push(line);
@@ -99,7 +99,8 @@ export default function NetworkGraph() {
 
       const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
       text.textContent = node.id.length > 15 ? node.id.substring(0, 14) + '…' : node.id;
-      text.setAttribute('fill', '#c8d6e5');
+      text.setAttribute('fill', '#191c1d');
+      text.setAttribute('font-family', 'Inter, sans-serif');
       text.setAttribute('font-size', '10');
       text.setAttribute('text-anchor', 'middle');
       text.setAttribute('dy', String(r + 14));
@@ -217,7 +218,7 @@ export default function NetworkGraph() {
         });
         linkElements.forEach((line, li) => {
           const l = links[li];
-          line.setAttribute('stroke', l.source === node.id || l.target === node.id ? 'rgba(46,213,115,0.6)' : 'rgba(255,255,255,0.03)');
+          line.setAttribute('stroke', l.source === node.id || l.target === node.id ? 'rgba(202, 138, 4, 0.6)' : 'rgba(0,0,0,0.03)');
         });
       });
 
@@ -230,7 +231,7 @@ export default function NetworkGraph() {
           if (nAny._circle) (nAny._circle as SVGCircleElement).setAttribute('opacity', '0.9');
           if (nAny._textEl) (nAny._textEl as SVGTextElement).setAttribute('opacity', '1');
         });
-        linkElements.forEach(line => line.setAttribute('stroke', 'rgba(255,255,255,0.1)'));
+        linkElements.forEach(line => line.setAttribute('stroke', 'rgba(0,0,0,0.1)'));
       });
     });
 
@@ -261,16 +262,16 @@ export default function NetworkGraph() {
 }
 
 const styles: Record<string, React.CSSProperties> = {
-  container: { padding: '24px 32px' },
+  container: { padding: 'var(--spacing-container-padding)' },
   header: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12, flexWrap: 'wrap' as const, gap: 12 },
-  title: { fontSize: 28, fontWeight: 700, color: '#fff', margin: 0 },
+  title: { fontFamily: 'var(--font-family-display)', fontSize: 28, fontWeight: 700, color: 'var(--color-on-surface)', margin: 0 },
   legend: { display: 'flex', gap: 16 },
-  legendItem: { display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: '#8395a7' },
+  legendItem: { display: 'flex', alignItems: 'center', gap: 6, fontFamily: 'var(--font-family-body)', fontSize: 12, color: 'var(--color-on-surface)' },
   dot: { width: 10, height: 10, borderRadius: '50%' },
   statsRow: { display: 'flex', gap: 16, marginBottom: 12, alignItems: 'center' },
-  stat: { fontSize: 13, color: '#8395a7' },
-  statHint: { fontSize: 11, color: '#576574', fontStyle: 'italic' },
-  svg: { width: '100%', height: 500, background: 'rgba(255,255,255,0.02)', borderRadius: 12 },
-  loading: { padding: 40, color: '#8395a7', fontSize: 16, textAlign: 'center' as const },
-  error: { padding: 40, color: '#ff4757', fontSize: 16 },
+  stat: { fontFamily: 'var(--font-family-body)', fontSize: 13, color: 'var(--color-on-surface)' },
+  statHint: { fontFamily: 'var(--font-family-body)', fontSize: 11, color: 'var(--color-on-surface-variant)', fontStyle: 'italic' },
+  svg: { width: '100%', height: 500, background: 'var(--color-surface-container-lowest)', borderRadius: 'var(--radius-lg)', boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.04)', border: '1px solid var(--color-surface-container-highest)' },
+  loading: { padding: 40, color: 'var(--color-on-surface-variant)', fontSize: 16, textAlign: 'center' as const, fontFamily: 'var(--font-family-body)' },
+  error: { padding: 40, color: 'var(--color-error)', fontSize: 16, fontFamily: 'var(--font-family-body)' },
 };

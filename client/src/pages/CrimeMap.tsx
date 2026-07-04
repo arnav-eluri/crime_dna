@@ -95,29 +95,30 @@ export default function CrimeMap() {
 }
 
 const styles: Record<string, React.CSSProperties> = {
-  container: { padding: '24px 32px' },
+  container: { padding: 'var(--spacing-container-padding)' },
   header: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, flexWrap: 'wrap' as const, gap: 12 },
-  title: { fontSize: 28, fontWeight: 700, color: '#fff', margin: 0 },
+  title: { fontFamily: 'var(--font-family-display)', fontSize: 28, fontWeight: 700, color: 'var(--color-on-surface)', margin: 0 },
   filters: { display: 'flex', gap: 8 },
   filterBtn: {
-    padding: '8px 16px', borderRadius: 8, border: '1px solid rgba(255,255,255,0.1)',
-    background: 'rgba(255,255,255,0.03)', color: '#8395a7', cursor: 'pointer', fontSize: 13,
+    padding: '8px 16px', borderRadius: 'var(--radius-default)', border: '1px solid var(--color-surface-container-highest)',
+    background: 'var(--color-surface-container-lowest)', color: 'var(--color-on-surface-variant)', cursor: 'pointer', 
+    fontFamily: 'var(--font-family-body)', fontSize: 13, transition: 'all 0.2s', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.02)'
   },
-  filterBtnActive: { background: '#2eD573', color: '#0a1628', border: '1px solid #2eD573', fontWeight: 600 },
+  filterBtnActive: { background: 'var(--color-primary-container)', color: 'var(--color-on-primary-container)', borderColor: 'var(--color-primary-container)', fontWeight: 600, boxShadow: '0px 4px 8px rgba(202, 138, 4, 0.2)' },
   loadingOverlay: {
     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
     display: 'flex', alignItems: 'center', justifyContent: 'center',
-    color: '#8395a7', fontSize: 16,
-    background: 'rgba(10, 22, 40, 0.8)', zIndex: 1000
+    color: 'var(--color-on-surface)', fontSize: 16, fontFamily: 'var(--font-family-body)',
+    background: 'rgba(255, 255, 255, 0.8)', zIndex: 1000, backdropFilter: 'blur(4px)'
   },
   emptyOverlay: {
     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
     display: 'flex', alignItems: 'center', justifyContent: 'center',
-    color: '#8395a7', fontSize: 14,
-    background: 'rgba(10, 22, 40, 0.8)', zIndex: 1000
+    color: 'var(--color-on-surface-variant)', fontSize: 14, fontFamily: 'var(--font-family-body)',
+    background: 'rgba(255, 255, 255, 0.8)', zIndex: 1000, backdropFilter: 'blur(4px)'
   },
   legend: { display: 'flex', alignItems: 'center', gap: 16, marginTop: 12, flexWrap: 'wrap' as const },
-  legendTitle: { fontSize: 13, color: '#8395a7' },
-  legendItem: { display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: '#c8d6e5' },
+  legendTitle: { fontFamily: 'var(--font-family-body)', fontSize: 13, color: 'var(--color-on-surface-variant)' },
+  legendItem: { display: 'flex', alignItems: 'center', gap: 6, fontFamily: 'var(--font-family-body)', fontSize: 12, color: 'var(--color-on-surface)' },
   legendDot: { width: 10, height: 10, borderRadius: '50%' },
 };
