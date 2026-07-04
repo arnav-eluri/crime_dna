@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { api } from '../api';
 import { SpatiotemporalCluster } from '../types';
+import { MapContainer, TileLayer, CircleMarker, Tooltip } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
 const SEVERITY_COLORS: Record<string, string> = {
   CRITICAL: '#ff4757',
@@ -9,7 +11,6 @@ const SEVERITY_COLORS: Record<string, string> = {
 };
 
 export default function CrimeMap() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [clusters, setClusters] = useState<SpatiotemporalCluster[]>([]);
   const [loading, setLoading] = useState(true);
   const [filterTime, setFilterTime] = useState<string>('ALL');
@@ -22,76 +23,11 @@ export default function CrimeMap() {
   }, []);
 
   const filtered = filterTime === 'ALL' ? clusters : clusters.filter(c => c.time_bucket === filterTime);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas || filtered.length === 0) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const w = canvas.width = canvas.offsetWidth * 2;
-    const h = canvas.height = canvas.offsetHeight * 2;
-    ctx.scale(2, 2);
-    ctx.clearRect(0, 0, w, h);
-
-    const cw = canvas.offsetWidth;
-    const ch = canvas.offsetHeight;
-
-    // Background
-    ctx.fillStyle = '#0a1628';
-    ctx.fillRect(0, 0, cw, ch);
-
-    // Grid
-    ctx.strokeStyle = 'rgba(255,255,255,0.03)';
-    ctx.lineWidth = 1;
-    for (let x = 0; x < cw; x += 40) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, ch); ctx.stroke(); }
-    for (let y = 0; y < ch; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(cw, y); ctx.stroke(); }
-
-    // Normalize coordinates
-    const lats = filtered.map(c => c.lat);
-    const lngs = filtered.map(c => c.lng);
-    const minLat = Math.min(...lats);
-    const maxLat = Math.max(...lats);
-    const minLng = Math.min(...lngs);
-    const maxLng = Math.max(...lngs);
-    const pad = 0.02;
-    const latRange = (maxLat - minLat) || 1;
-    const lngRange = (maxLng - minLng) || 1;
-
-    const toX = (lng: number) => ((lng - minLng + pad) / (lngRange + 2 * pad)) * (cw - 60) + 30;
-    const toY = (lat: number) => ch - ((lat - minLat + pad) / (latRange + 2 * pad)) * (ch - 60) - 30;
-
-    // Draw clusters
-    const maxFreq = Math.max(...filtered.map(c => c.frequency), 1);
-    filtered.forEach(c => {
-      const x = toX(c.lng);
-      const y = toY(c.lat);
-      const radius = 5 + (c.frequency / maxFreq) * 20;
-      const color = SEVERITY_COLORS[c.severity_level] || '#8395a7';
-
-      // Glow
-      const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius * 2);
-      gradient.addColorStop(0, color + '60');
-      gradient.addColorStop(1, color + '00');
-      ctx.fillStyle = gradient;
-      ctx.beginPath();
-      ctx.arc(x, y, radius * 2, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Point
-      ctx.fillStyle = color;
-      ctx.beginPath();
-      ctx.arc(x, y, radius, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Border
-      ctx.strokeStyle = 'rgba(255,255,255,0.3)';
-      ctx.lineWidth = 1;
-      ctx.stroke();
-    });
-  }, [filtered]);
-
+  const maxFreq = Math.max(...filtered.map(c => c.frequency), 1);
   const timeBuckets = ['ALL', 'MORNING', 'AFTERNOON', 'EVENING', 'NIGHT'];
+
+  // Default to Bangalore coordinates if no data
+  const center: [number, number] = [12.9716, 77.5946];
 
   return (
     <div style={styles.container}>
@@ -107,8 +43,35 @@ export default function CrimeMap() {
         </div>
       </div>
 
-      <div style={{ position: 'relative' }}>
-        <canvas ref={canvasRef} style={styles.canvas} />
+      <div style={{ position: 'relative', height: 500, borderRadius: 12, overflow: 'hidden' }}>
+        <MapContainer center={center} zoom={11} style={{ width: '100%', height: '100%' }}>
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {filtered.map((c, i) => (
+            <CircleMarker
+              key={i}
+              center={[c.lat, c.lng]}
+              radius={5 + (c.frequency / maxFreq) * 20}
+              pathOptions={{
+                color: SEVERITY_COLORS[c.severity_level] || '#8395a7',
+                fillColor: SEVERITY_COLORS[c.severity_level] || '#8395a7',
+                fillOpacity: 0.6,
+                weight: 2
+              }}
+            >
+              <Tooltip>
+                <div>
+                  <strong>Severity:</strong> {c.severity_level}<br />
+                  <strong>Frequency:</strong> {c.frequency}<br />
+                  <strong>Time Bucket:</strong> {c.time_bucket}
+                </div>
+              </Tooltip>
+            </CircleMarker>
+          ))}
+        </MapContainer>
+
         {loading && <div style={styles.loadingOverlay}>Loading map data...</div>}
         {!loading && filtered.length === 0 && (
           <div style={styles.emptyOverlay}>
@@ -141,16 +104,17 @@ const styles: Record<string, React.CSSProperties> = {
     background: 'rgba(255,255,255,0.03)', color: '#8395a7', cursor: 'pointer', fontSize: 13,
   },
   filterBtnActive: { background: '#2eD573', color: '#0a1628', border: '1px solid #2eD573', fontWeight: 600 },
-  canvas: { width: '100%', height: 500, borderRadius: 12, display: 'block' },
   loadingOverlay: {
     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     color: '#8395a7', fontSize: 16,
+    background: 'rgba(10, 22, 40, 0.8)', zIndex: 1000
   },
   emptyOverlay: {
     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     color: '#8395a7', fontSize: 14,
+    background: 'rgba(10, 22, 40, 0.8)', zIndex: 1000
   },
   legend: { display: 'flex', alignItems: 'center', gap: 16, marginTop: 12, flexWrap: 'wrap' as const },
   legendTitle: { fontSize: 13, color: '#8395a7' },

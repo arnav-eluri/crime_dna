@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Dashboard from './pages/Dashboard';
 import CrimeMap from './pages/CrimeMap';
@@ -9,39 +9,24 @@ import NetworkGraph from './pages/NetworkGraph';
 import FIRList from './pages/FIRList';
 import './App.css';
 
-const PAGES: Record<string, React.ReactNode> = {
-  '/': <Dashboard />,
-  '/map': <CrimeMap />,
-  '/trends': <Trends />,
-  '/alerts': <Alerts />,
-  '/severity': <Severity />,
-  '/network': <NetworkGraph />,
-  '/firs': <FIRList />,
-};
-
 function App() {
-  const [path, setPath] = useState(window.location.pathname);
-
-  useEffect(() => {
-    const handler = () => setPath(window.location.pathname);
-    window.addEventListener('popstate', handler);
-    return () => window.removeEventListener('popstate', handler);
-  }, []);
-
-  const navigate = (to: string) => {
-    window.history.pushState({}, '', to);
-    setPath(to);
-  };
-
-  const page = PAGES[path] || <Dashboard />;
-
   return (
-    <div className="app-layout">
-      <Navbar currentPath={path} onNavigate={navigate} />
-      <main className="app-main">
-        {page}
-      </main>
-    </div>
+    <BrowserRouter>
+      <div className="app-layout">
+        <Navbar />
+        <main className="app-main">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/map" element={<CrimeMap />} />
+            <Route path="/trends" element={<Trends />} />
+            <Route path="/alerts" element={<Alerts />} />
+            <Route path="/severity" element={<Severity />} />
+            <Route path="/network" element={<NetworkGraph />} />
+            <Route path="/firs" element={<FIRList />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }
 

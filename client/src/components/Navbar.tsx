@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 interface NavItem {
   label: string;
@@ -16,12 +17,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'FIR Records', path: '/firs', icon: '📋' },
 ];
 
-interface NavbarProps {
-  currentPath: string;
-  onNavigate: (path: string) => void;
-}
-
-export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
+export default function Navbar() {
   return (
     <div style={styles.sidebar}>
       <div style={styles.logo}>
@@ -33,17 +29,17 @@ export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
       </div>
       <nav style={styles.nav}>
         {NAV_ITEMS.map((item) => (
-          <button
+          <NavLink
             key={item.path}
-            onClick={() => onNavigate(item.path)}
-            style={{
+            to={item.path}
+            style={({ isActive }) => ({
               ...styles.navItem,
-              ...(currentPath === item.path ? styles.navItemActive : {}),
-            }}
+              ...(isActive ? styles.navItemActive : {}),
+            })}
           >
             <span style={styles.navIcon}>{item.icon}</span>
             <span>{item.label}</span>
-          </button>
+          </NavLink>
         ))}
       </nav>
       <div style={styles.footer}>
