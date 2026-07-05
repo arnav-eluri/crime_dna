@@ -224,3 +224,10 @@ app.get('/api/firs/:id', (req, res) => {
 });
 
 module.exports = app;
+
+if (require.main === module) {
+  const PORT = process.env.PORT || 9000;
+  app.listen(PORT, () => {
+    console.log(`CrimeDNA API server running on port ${PORT}`);
+  });
+}

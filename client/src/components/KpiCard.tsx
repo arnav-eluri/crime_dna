@@ -10,7 +10,7 @@ interface KpiCardProps {
 
 export default function KpiCard({ title, value, subtitle, color = '#2eD573', icon }: KpiCardProps) {
   return (
-    <div className="shadow-hover" style={{
+    <div style={{
       ...styles.card,
       borderLeft: `4px solid ${color}`,
     }}>
@@ -31,12 +31,8 @@ const styles: Record<string, React.CSSProperties> = {
     padding: '20px 24px',
     minWidth: 180,
     flex: 1,
-    boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.2)',
+    boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.04)',
     border: '1px solid var(--color-surface-container-highest)',
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-    backdropFilter: 'blur(24px)',
-    WebkitBackdropFilter: 'blur(24px)',
-    cursor: 'pointer',
   },
   header: {
     display: 'flex',
