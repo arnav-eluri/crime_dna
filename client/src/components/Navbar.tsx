@@ -101,7 +101,7 @@ const styles: Record<string, React.CSSProperties> = {
     fontWeight: 600,
     boxShadow: '0 4px 12px rgba(202, 138, 4, 0.2)',
   },
-  navIconImg: { width: 28, height: 28, borderRadius: '50%', objectFit: 'cover' },
+  navIconImg: { width: 48, height: 48, borderRadius: '50%', objectFit: 'cover' },
   footer: {
     padding: '20px',
     borderTop: '1px solid var(--color-surface-container-highest)',
@@ -110,8 +110,8 @@ const styles: Record<string, React.CSSProperties> = {
     gap: 10,
   },
   footerLogo: {
-    width: 48,
-    height: 48,
+    width: 64,
+    height: 64,
     borderRadius: '50%',
     objectFit: 'cover'
   },

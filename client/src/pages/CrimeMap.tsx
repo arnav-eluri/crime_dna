@@ -1,8 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../api';
 import { SpatiotemporalCluster } from '../types';
-import { MapContainer, TileLayer, CircleMarker, Tooltip } from 'react-leaflet';
+import { MapContainer, TileLayer, useMap } from 'react-leaflet';
+import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import 'leaflet.heat';
+
+const HeatmapLayer = ({ points }: { points: [number, number, number][] }) => {
+  const map = useMap();
+  
+  useEffect(() => {
+    // @ts-ignore
+    const heat = L.heatLayer(points, {
+      radius: 25,
+      blur: 20,
+      maxZoom: 13,
+      max: Math.max(...points.map(p => p[2]), 1),
+      gradient: {
+        0.2: '#3b82f6', // blue
+        0.4: '#22d3ee', // cyan
+        0.6: '#22c55e', // green
+        0.8: '#eab308', // yellow
+        1.0: '#ef4444'  // red
+      }
+    }).addTo(map);
+
+    return () => {
+      map.removeLayer(heat);
+    };
+  }, [map, points]);
+
+  return null;
+};
 
 const SEVERITY_COLORS: Record<string, string> = {
   CRITICAL: '#ff4757',
@@ -29,6 +58,8 @@ export default function CrimeMap() {
   // Default to Bangalore coordinates if no data
   const center: [number, number] = [12.9716, 77.5946];
 
+  const points: [number, number, number][] = filtered.map(c => [c.lat, c.lng, c.frequency]);
+
   return (
     <div style={styles.container}>
       <div style={styles.header}>
@@ -46,30 +77,10 @@ export default function CrimeMap() {
       <div style={{ position: 'relative', height: 500, borderRadius: 12, overflow: 'hidden' }}>
         <MapContainer center={center} zoom={11} style={{ width: '100%', height: '100%' }}>
           <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
           />
-          {filtered.map((c, i) => (
-            <CircleMarker
-              key={i}
-              center={[c.lat, c.lng]}
-              radius={5 + (c.frequency / maxFreq) * 20}
-              pathOptions={{
-                color: SEVERITY_COLORS[c.severity_level] || '#8395a7',
-                fillColor: SEVERITY_COLORS[c.severity_level] || '#8395a7',
-                fillOpacity: 0.6,
-                weight: 2
-              }}
-            >
-              <Tooltip>
-                <div>
-                  <strong>Severity:</strong> {c.severity_level}<br />
-                  <strong>Frequency:</strong> {c.frequency}<br />
-                  <strong>Time Bucket:</strong> {c.time_bucket}
-                </div>
-              </Tooltip>
-            </CircleMarker>
-          ))}
+          <HeatmapLayer points={points} />
         </MapContainer>
 
         {loading && <div style={styles.loadingOverlay}>Loading map data...</div>}
@@ -81,14 +92,13 @@ export default function CrimeMap() {
       </div>
 
       <div style={styles.legend}>
-        <span style={styles.legendTitle}>Severity:</span>
-        {Object.entries(SEVERITY_COLORS).map(([k, v]) => (
-          <span key={k} style={styles.legendItem}>
-            <span style={{ ...styles.legendDot, background: v }} />
-            {k}
-          </span>
-        ))}
-        <span style={{ ...styles.legendTitle, marginLeft: 24 }}>Circle size = crime frequency</span>
+        <span style={styles.legendTitle}>Heatmap Intensity:</span>
+        <div style={styles.gradientBar} />
+        <span style={styles.legendLabels}>
+          <span>Low (Blue)</span>
+          <span>Medium (Green/Yellow)</span>
+          <span>High (Red)</span>
+        </span>
       </div>
     </div>
   );
@@ -104,21 +114,34 @@ const styles: Record<string, React.CSSProperties> = {
     background: 'var(--color-surface-container-lowest)', color: 'var(--color-on-surface-variant)', cursor: 'pointer', 
     fontFamily: 'var(--font-family-body)', fontSize: 13, transition: 'all 0.2s', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.02)'
   },
-  filterBtnActive: { background: 'var(--color-primary-container)', color: 'var(--color-on-primary-container)', borderColor: 'var(--color-primary-container)', fontWeight: 600, boxShadow: '0px 4px 8px rgba(202, 138, 4, 0.2)' },
+  filterBtnActive: { background: 'var(--color-primary-container)', color: 'var(--color-on-primary-container)', borderColor: 'var(--color-primary-container)', fontWeight: 600, boxShadow: '0px 4px 8px rgba(59, 130, 246, 0.2)' },
   loadingOverlay: {
     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     color: 'var(--color-on-surface)', fontSize: 16, fontFamily: 'var(--font-family-body)',
-    background: 'rgba(255, 255, 255, 0.8)', zIndex: 1000, backdropFilter: 'blur(4px)'
+    background: 'rgba(15, 23, 42, 0.6)', zIndex: 1000, backdropFilter: 'blur(8px)',
+    WebkitBackdropFilter: 'blur(8px)'
   },
   emptyOverlay: {
     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     color: 'var(--color-on-surface-variant)', fontSize: 14, fontFamily: 'var(--font-family-body)',
-    background: 'rgba(255, 255, 255, 0.8)', zIndex: 1000, backdropFilter: 'blur(4px)'
+    background: 'rgba(15, 23, 42, 0.6)', zIndex: 1000, backdropFilter: 'blur(8px)',
+    WebkitBackdropFilter: 'blur(8px)'
   },
-  legend: { display: 'flex', alignItems: 'center', gap: 16, marginTop: 12, flexWrap: 'wrap' as const },
-  legendTitle: { fontFamily: 'var(--font-family-body)', fontSize: 13, color: 'var(--color-on-surface-variant)' },
-  legendItem: { display: 'flex', alignItems: 'center', gap: 6, fontFamily: 'var(--font-family-body)', fontSize: 12, color: 'var(--color-on-surface)' },
-  legendDot: { width: 10, height: 10, borderRadius: '50%' },
+  legend: { display: 'flex', flexDirection: 'column' as const, gap: 8, marginTop: 16, maxWidth: 400 },
+  legendTitle: { fontFamily: 'var(--font-family-body)', fontSize: 13, color: 'var(--color-on-surface-variant)', fontWeight: 600 },
+  gradientBar: {
+    height: 12,
+    borderRadius: 6,
+    background: 'linear-gradient(to right, #3b82f6, #22d3ee, #22c55e, #eab308, #ef4444)'
+  },
+  legendLabels: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    fontFamily: 'var(--font-family-body)',
+    fontSize: 11,
+    color: 'var(--color-on-surface-variant)',
+    opacity: 0.8
+  }
 };

@@ -61,11 +61,10 @@ export default function Dashboard() {
       </div>
 
       <div style={styles.chartsRow}>
-        <div style={styles.chartCard}>
+        <div className="shadow-hover" style={styles.chartCard}>
           <h3 style={styles.chartTitle}>Top Crime Categories</h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={crimeChartData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
               <XAxis dataKey="name" tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 11 }} angle={-20} textAnchor="end" height={60} />
               <YAxis tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 11 }} />
               <Tooltip
@@ -77,7 +76,7 @@ export default function Dashboard() {
           </ResponsiveContainer>
         </div>
 
-        <div style={styles.chartCard}>
+        <div className="shadow-hover" style={styles.chartCard}>
           <h3 style={styles.chartTitle}>Severity Distribution</h3>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
@@ -94,11 +93,10 @@ export default function Dashboard() {
       </div>
 
       <div style={styles.chartsRow}>
-        <div style={styles.chartCard}>
+        <div className="shadow-hover" style={styles.chartCard}>
           <h3 style={styles.chartTitle}>District Distribution</h3>
           <ResponsiveContainer width="100%" height={250}>
             <BarChart data={districtData} layout="vertical">
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
               <XAxis type="number" tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 11 }} />
               <YAxis dataKey="name" type="category" tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 11 }} width={100} />
               <Tooltip
@@ -110,7 +108,7 @@ export default function Dashboard() {
           </ResponsiveContainer>
         </div>
 
-        <div style={styles.chartCard}>
+        <div className="shadow-hover" style={styles.chartCard}>
           <h3 style={styles.chartTitle}>Risk Class Distribution</h3>
           <ResponsiveContainer width="100%" height={250}>
             <PieChart>
@@ -142,8 +140,9 @@ const styles: Record<string, React.CSSProperties> = {
     background: 'var(--color-surface-container-lowest)',
     borderRadius: 'var(--radius-lg)',
     padding: 24,
-    boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.04)',
     border: '1px solid var(--color-surface-container-highest)',
+    backdropFilter: 'blur(24px)',
+    WebkitBackdropFilter: 'blur(24px)',
   },
   chartTitle: { fontFamily: 'var(--font-family-display)', fontSize: 18, fontWeight: 600, color: 'var(--color-on-surface)', marginBottom: 16 },
 };

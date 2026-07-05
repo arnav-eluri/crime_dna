@@ -1,102 +1,41 @@
 :root {
-  /* Colors */
-  --color-surface: #f8f9fa;
-  --color-surface-dim: #d9dadb;
-  --color-surface-bright: #f8f9fa;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #f3f4f5;
-  --color-surface-container: #edeeef;
-  --color-surface-container-high: #e7e8e9;
-  --color-surface-container-highest: #e1e3e4;
-  --color-on-surface: #191c1d;
-  --color-on-surface-variant: #514535;
-  --color-inverse-surface: #2e3132;
-  --color-inverse-on-surface: #f0f1f2;
-  --color-outline: #837562;
-  --color-outline-variant: #d5c4ae;
-  --color-surface-tint: #805600;
-  --color-primary: #805600;
+  /* Colors - Premium Dark Theme */
+  --color-surface: #1e293b;
+  --color-surface-dim: #0f172a;
+  --color-surface-container-lowest: rgba(15, 23, 42, 0.4);
+  --color-surface-container-low: rgba(30, 41, 59, 0.5);
+  --color-surface-container: rgba(30, 41, 59, 0.7);
+  --color-surface-container-highest: rgba(255, 255, 255, 0.1);
+  --color-on-surface: #f8fafc;
+  --color-on-surface-variant: #94a3b8;
+  
+  --color-primary: #3b82f6;
   --color-on-primary: #ffffff;
-  --color-primary-container: #ca8a04;
-  --color-on-primary-container: #422a00;
-  --color-inverse-primary: #ffba46;
-  --color-secondary: #545f73;
-  --color-on-secondary: #ffffff;
-  --color-secondary-container: #d5e0f8;
-  --color-on-secondary-container: #586377;
-  --color-tertiary: #494bd6;
-  --color-on-tertiary: #ffffff;
-  --color-tertiary-container: #878bff;
-  --color-on-tertiary-container: #1000a6;
-  --color-error: #ba1a1a;
+  --color-primary-container: rgba(59, 130, 246, 0.2);
+  --color-on-primary-container: #93c5fd;
+  
+  --color-error: #ef4444;
   --color-on-error: #ffffff;
-  --color-error-container: #ffdad6;
-  --color-on-error-container: #93000a;
-  --color-primary-fixed: #ffddb0;
-  --color-primary-fixed-dim: #ffba46;
-  --color-on-primary-fixed: #281800;
-  --color-on-primary-fixed-variant: #614000;
-  --color-secondary-fixed: #d8e3fb;
-  --color-secondary-fixed-dim: #bcc7de;
-  --color-on-secondary-fixed: #111c2d;
-  --color-on-secondary-fixed-variant: #3c475a;
-  --color-tertiary-fixed: #e1e0ff;
-  --color-tertiary-fixed-dim: #c0c1ff;
-  --color-on-tertiary-fixed: #07006c;
-  --color-on-tertiary-fixed-variant: #2f2ebe;
-  --color-background: #f8f9fa;
-  --color-on-background: #191c1d;
-  --color-surface-variant: #e1e3e4;
+  
+  --color-background: #0b1120;
+  --color-on-background: #f8fafc;
+  --color-surface-variant: rgba(255, 255, 255, 0.05);
 
   /* Typography */
   --font-family-display: 'Hanken Grotesk', sans-serif;
   --font-family-body: 'Inter', sans-serif;
   --font-family-mono: 'JetBrains Mono', monospace;
   
-  --font-size-display-lg: 48px;
-  --font-weight-display-lg: 700;
-  --line-height-display-lg: 56px;
-  --letter-spacing-display-lg: -0.02em;
-
-  --font-size-headline-lg: 32px;
-  --font-weight-headline-lg: 600;
-  --line-height-headline-lg: 40px;
-
-  --font-size-title-md: 20px;
-  --font-weight-title-md: 600;
-  --line-height-title-md: 28px;
-
-  --font-size-body-lg: 18px;
-  --font-weight-body-lg: 400;
-  --line-height-body-lg: 28px;
-
-  --font-size-body-md: 16px;
-  --font-weight-body-md: 400;
-  --line-height-body-md: 24px;
-
-  --font-size-label-sm: 12px;
-  --font-weight-label-sm: 500;
-  --line-height-label-sm: 16px;
-
-  --font-size-data-mono: 14px;
-  --font-weight-data-mono: 400;
-  --line-height-data-mono: 20px;
-
   /* Rounded */
   --radius-sm: 0.25rem;
-  --radius-default: 0.5rem; /* 8px */
-  --radius-md: 0.75rem; /* 12px */
-  --radius-lg: 1rem; /* 16px */
-  --radius-xl: 1.5rem; /* 24px */
+  --radius-default: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
   --radius-full: 9999px;
 
   /* Spacing */
-  --spacing-base: 8px;
   --spacing-container-padding: 32px;
-  --spacing-gutter: 24px;
-  --spacing-margin-sm: 16px;
-  --spacing-margin-md: 24px;
-  --spacing-margin-lg: 48px;
 }
 
 body {
@@ -106,9 +45,11 @@ body {
   color: var(--color-on-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Abstract subtle gradient to make glassmorphism pop */
-  background-image: radial-gradient(circle at 15% 50%, rgba(202, 138, 4, 0.05), transparent 25%),
-                    radial-gradient(circle at 85% 30%, rgba(73, 75, 214, 0.03), transparent 25%);
+  /* Deep vibrant abstract gradient for intelligence platform aesthetic */
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.15), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(239, 68, 68, 0.05), transparent 50%);
   background-attachment: fixed;
 }
 
@@ -179,18 +120,21 @@ a {
 
 /* Glassmorphism utility */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(30, 41, 59, 0.4) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 /* Soft shadows */
 .shadow-soft {
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.2);
+}
+.shadow-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .shadow-hover:hover {
-  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
-  transition: all 0.3s ease;
+  box-shadow: 0px 12px 48px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2) !important;
 }
