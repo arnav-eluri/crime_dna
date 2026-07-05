@@ -28,8 +28,8 @@ const styles: Record<string, React.CSSProperties> = {
   card: {
     background: 'var(--color-surface-container-lowest)',
     borderRadius: 'var(--radius-lg)',
-    padding: '20px 24px',
-    minWidth: 180,
+    padding: '16px 20px',
+    minWidth: 140,
     flex: 1,
     boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.04)',
     border: '1px solid var(--color-surface-container-highest)',
