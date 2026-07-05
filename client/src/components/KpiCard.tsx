@@ -15,7 +15,7 @@ export default function KpiCard({ title, value, subtitle, color = '#2eD573', ico
       borderLeft: `4px solid ${color}`,
     }}>
       <div style={styles.header}>
-        {icon && <span style={styles.icon}>{icon}</span>}
+        {icon && <img src={icon} alt="icon" style={styles.iconImg} />}
         <span style={styles.title}>{title}</span>
       </div>
       <div style={{ ...styles.value, color }}>{value}</div>
@@ -40,7 +40,7 @@ const styles: Record<string, React.CSSProperties> = {
     gap: 8,
     marginBottom: 12,
   },
-  icon: { fontSize: 18 },
+  iconImg: { width: 36, height: 36, borderRadius: '50%', objectFit: 'cover' },
   title: {
     fontSize: 13,
     color: 'var(--color-on-surface-variant)',

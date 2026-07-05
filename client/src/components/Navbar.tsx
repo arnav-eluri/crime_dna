@@ -8,20 +8,20 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { label: 'Dashboard', path: '/', icon: '📊' },
-  { label: 'Crime Map', path: '/map', icon: '🗺️' },
-  { label: 'Trends', path: '/trends', icon: '📈' },
-  { label: 'Alerts', path: '/alerts', icon: '🔔' },
-  { label: 'Severity', path: '/severity', icon: '⚠️' },
-  { label: 'Network Graph', path: '/network', icon: '🔗' },
-  { label: 'FIR Records', path: '/firs', icon: '📋' },
+  { label: 'Dashboard', path: '/', icon: '/img-1.png' },
+  { label: 'Crime Map', path: '/map', icon: '/img-2.png' },
+  { label: 'Trends', path: '/trends', icon: '/img-3.png' },
+  { label: 'Alerts', path: '/alerts', icon: '/img-4.png' },
+  { label: 'Severity', path: '/severity', icon: '/img-5.png' },
+  { label: 'Network Graph', path: '/network', icon: '/img-6.png' },
+  { label: 'FIR Records', path: '/firs', icon: '/img-7.png' },
 ];
 
 export default function Navbar() {
   return (
     <div style={styles.sidebar}>
       <div style={styles.logo}>
-        <div style={styles.logoIcon}>🔍</div>
+        <div style={styles.logoIcon}></div>
         <div>
           <div style={styles.logoTitle}>CrimeDNA</div>
           <div style={styles.logoSub}>Intelligence Platform</div>
@@ -37,13 +37,13 @@ export default function Navbar() {
               ...(isActive ? styles.navItemActive : {}),
             })}
           >
-            <span style={styles.navIcon}>{item.icon}</span>
+            {item.icon && <img src={item.icon} alt={item.label} style={styles.navIconImg} />}
             <span>{item.label}</span>
           </NavLink>
         ))}
       </nav>
       <div style={styles.footer}>
-        <div style={styles.footerLogo}>KSP</div>
+        <img src="/ksp_logo.jpeg" alt="KSP Logo" style={styles.footerLogo} />
         <div style={styles.footerText}>Karnataka State Police</div>
       </div>
     </div>
@@ -101,7 +101,7 @@ const styles: Record<string, React.CSSProperties> = {
     fontWeight: 600,
     boxShadow: '0 4px 12px rgba(202, 138, 4, 0.2)',
   },
-  navIcon: { fontSize: 16, width: 24 },
+  navIconImg: { width: 28, height: 28, borderRadius: '50%', objectFit: 'cover' },
   footer: {
     padding: '20px',
     borderTop: '1px solid var(--color-surface-container-highest)',
@@ -110,17 +110,10 @@ const styles: Record<string, React.CSSProperties> = {
     gap: 10,
   },
   footerLogo: {
-    width: 32,
-    height: 32,
+    width: 48,
+    height: 48,
     borderRadius: '50%',
-    background: 'var(--color-primary-container)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontFamily: 'var(--font-family-display)',
-    fontSize: 12,
-    fontWeight: 700,
-    color: 'var(--color-on-primary-container)',
+    objectFit: 'cover'
   },
   footerText: { fontFamily: 'var(--font-family-body)', fontSize: 11, color: 'var(--color-on-surface-variant)' },
 };

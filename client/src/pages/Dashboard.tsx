@@ -39,24 +39,24 @@ export default function Dashboard() {
       <h1 style={styles.title}>Crime Intelligence Dashboard</h1>
 
       <div style={styles.kpiRow}>
-        <KpiCard title="Total FIRs" value={data.total_firs.toLocaleString()} icon="📝" color="#2eD573"
+        <KpiCard title="Total FIRs" value={data.total_firs.toLocaleString()} icon="/img-1.png" color="#2eD573"
           subtitle="All registered cases" />
-        <KpiCard title="Active Cases" value={data.active_cases.toLocaleString()} icon="🕐" color="#1e90ff"
+        <KpiCard title="Active Cases" value={data.active_cases.toLocaleString()} icon="/img-2.png" color="#1e90ff"
           subtitle="Under investigation" />
-        <KpiCard title="Hotspots" value={data.hotspot_count} icon="🔥" color="#ff4757"
+        <KpiCard title="Hotspots" value={data.hotspot_count} icon="/img-3.png" color="#ff4757"
           subtitle={`${data.spatiotemporal_hotspot_count} spatiotemporal`} />
-        <KpiCard title="Critical" value={data.critical_count} icon="🚨" color="#ff6b81"
+        <KpiCard title="Critical" value={data.critical_count} icon="/img-4.png" color="#ff6b81"
           subtitle="High severity incidents" />
       </div>
 
       <div style={styles.kpiRow}>
-        <KpiCard title="Anomalies" value={data.anomaly_count} icon="⚠️" color="#ffa502"
+        <KpiCard title="Anomalies" value={data.anomaly_count} icon="/img-5.png" color="#ffa502"
           subtitle="Statistical outliers detected" />
-        <KpiCard title="Alerts" value={data.alerts?.length || 0} icon="🔔" color="#ff4757"
+        <KpiCard title="Alerts" value={data.alerts?.length || 0} icon="/img-6.png" color="#ff4757"
           subtitle={`${data.alerts?.filter(a => a.alert_level === 'CRITICAL').length || 0} critical`} />
-        <KpiCard title="Syndicate Links" value={data.syndicate_link_count} icon="🔗" color="#a29bfe"
+        <KpiCard title="Syndicate Links" value={data.syndicate_link_count} icon="/img-7.png" color="#a29bfe"
           subtitle="Repeat offender networks" />
-        <KpiCard title="Risk Classes" value={Object.values(data.risk_class_distribution || {}).reduce((a, b) => a + b, 0)} icon="🎯" color="#00cec9"
+        <KpiCard title="Risk Classes" value={Object.values(data.risk_class_distribution || {}).reduce((a, b) => a + b, 0)} icon="" color="#00cec9"
           subtitle="ML-classified risk levels" />
       </div>
 

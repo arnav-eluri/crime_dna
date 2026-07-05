@@ -45,11 +45,11 @@ export default function Alerts() {
         </button>
         <button onClick={() => setFilterLevel('CRITICAL')}
           style={{ ...styles.filterBtn, ...(filterLevel === 'CRITICAL' ? styles.filterBtnActive : {}), borderColor: '#ff4757' }}>
-          🔴 Critical
+          Critical
         </button>
         <button onClick={() => setFilterLevel('ELEVATED')}
           style={{ ...styles.filterBtn, ...(filterLevel === 'ELEVATED' ? styles.filterBtnActive : {}), borderColor: '#ffa502' }}>
-          🟡 Elevated
+          Elevated
         </button>
       </div>
 
