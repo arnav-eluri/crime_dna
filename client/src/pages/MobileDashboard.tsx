@@ -71,8 +71,8 @@ export default function MobileDashboard({ data }: Props) {
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(0,0,0,0.05)" />
-              <XAxis dataKey="name" tick={{ fill: '#514535', fontSize: 10 }} angle={-45} textAnchor="end" height={60} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: '#514535', fontSize: 10 }} axisLine={false} tickLine={false} />
+              <XAxis dataKey="name" tick={{ fill: '#514535', fontSize: 12 }} angle={-45} textAnchor="end" height={60} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: '#514535', fontSize: 12 }} axisLine={false} tickLine={false} />
               <Tooltip
                 cursor={{ fill: 'rgba(0,0,0,0.02)' }}
                 contentStyle={{ background: '#ffffff', border: 'none', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}
@@ -96,7 +96,7 @@ export default function MobileDashboard({ data }: Props) {
               <Tooltip 
                 contentStyle={{ background: '#ffffff', border: 'none', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}
               />
-              <Legend iconType="circle" wrapperStyle={{ fontSize: 11, color: '#191c1d' }} verticalAlign="bottom" height={36} />
+              <Legend iconType="circle" wrapperStyle={{ fontSize: 13, color: '#191c1d' }} verticalAlign="bottom" height={36} />
             </PieChart>
           </ResponsiveContainer>
           <div style={styles.chartInsight}>Breakdown of incidents by risk severity level.</div>
@@ -113,8 +113,8 @@ export default function MobileDashboard({ data }: Props) {
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="rgba(0,0,0,0.05)" />
-              <XAxis type="number" tick={{ fill: '#514535', fontSize: 10 }} axisLine={false} tickLine={false} />
-              <YAxis dataKey="name" type="category" tick={{ fill: '#514535', fontSize: 10 }} width={70} axisLine={false} tickLine={false} />
+              <XAxis type="number" tick={{ fill: '#514535', fontSize: 12 }} axisLine={false} tickLine={false} />
+              <YAxis dataKey="name" type="category" tick={{ fill: '#514535', fontSize: 12 }} width={80} axisLine={false} tickLine={false} />
               <Tooltip
                 cursor={{ fill: 'rgba(0,0,0,0.02)' }}
                 contentStyle={{ background: '#ffffff', border: 'none', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}
@@ -137,7 +137,7 @@ export default function MobileDashboard({ data }: Props) {
 
 const styles: Record<string, React.CSSProperties> = {
   container: {
-    background: '#f8f9fa',
+    background: 'transparent',
     minHeight: '100vh',
     paddingBottom: 25, // space for bottom nav
   },
@@ -271,16 +271,16 @@ const styles: Record<string, React.CSSProperties> = {
   },
   chartInsight: {
     fontFamily: 'var(--font-family-body)',
-    fontSize: 11,
+    fontSize: 13,
     color: '#837562',
-    marginTop: 12,
+    marginTop: 16,
     textAlign: 'center',
-    lineHeight: 1.4,
+    lineHeight: 1.5,
   },
   watermark: {
     fontFamily: 'var(--font-family-body)',
     fontSize: 10,
-    color: '#83756255',
+    color: '#837562a4',
     textAlign: 'center',
     marginTop: 24,
     marginBottom: 8,

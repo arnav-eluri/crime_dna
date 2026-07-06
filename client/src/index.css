@@ -102,7 +102,9 @@
 body {
   margin: 0;
   font-family: var(--font-family-body);
-  background: linear-gradient(180deg, #fefdf9 0%, #f4eee2 30%, #e8ddc9 100%);
+  background-color: #f8f9fa;
+  background-image: radial-gradient(#d5c4ae 1px, transparent 1px);
+  background-size: 24px 24px;
   background-attachment: fixed;
   color: var(--color-on-background);
   -webkit-font-smoothing: antialiased;
