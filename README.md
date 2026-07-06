@@ -28,6 +28,13 @@ CrimeDNA features a dynamic, non-destructive **Filtering Engine** that powers ou
 3. **Hybrid Spatial Hotspot Detection**: Automatically executes **DBSCAN Spatial Clustering** on valid coordinate data. If coordinates are corrupted, it gracefully falls back to a strict 95th-percentile statistical frequency thresholding on localized address strings to flag true `Hotspot_Flag` instances.
 4. **Graph Intelligence Mapping**: Pre-computes structural syndicate links (`Syndicate_Link_Flag`) to feed directly into Neo4j for network investigation.
 
+## Recent UI/UX Enhancements (Mobile First)
+
+- **Immersive Mobile Dashboards**: Rebuilt the `Trends`, `MobileDashboard`, `CrimeMap`, and `NetworkGraph` views with a mobile-first, glassmorphic aesthetic.
+- **Geospatial & Network Visualization**: Upgraded the Crime Map to a fullscreen interactive layout using CartoDB Voyager tiles. Added an interactive physics-based, drag-and-drop network graph for relationship intelligence.
+- **Premium Intelligence Preloader**: Implemented a global, theme-aware animated preloader (with KSP & CrimeDNA branding) that seamlessly manages route transitions with a cinematic 2.5s delay.
+- **Aesthetic Overhauls**: Replaced hardcoded backgrounds with a global dotted radial-gradient pattern, fixed FAB shapes, added pill-shaped active navigation indicators, and vastly improved font legibility across charts.
+
 ## Dataset
 
 The raw FIR data used in this project is sourced from Kaggle:
@@ -39,7 +46,24 @@ Please download the dataset and place the CSV files inside the `datasets/` direc
 
 ```text
 CrimeDNA/
-├── client/                     # Zoho Catalyst React Frontend
+├── client/                     # React Frontend (Mobile-First)
+│   ├── public/                 # Static assets (KSP Logo, icons)
+│   ├── src/                    
+│   │   ├── api.ts              # Backend API Integration
+│   │   ├── components/         # Reusable UI Components
+│   │   │   ├── MobileHeader.tsx# Glassmorphic Dual-branded header
+│   │   │   ├── Navbar.tsx      # Responsive Sidebar/Bottom Nav
+│   │   │   ├── KpiCard.tsx     # Data Insight Cards
+│   │   │   └── Preloader.tsx   # Cinematic Intelligence Preloader
+│   │   ├── pages/              # Application Views
+│   │   │   ├── MobileDashboard.tsx # Immersive Mobile Overview
+│   │   │   ├── CrimeMap.tsx    # Fullscreen Spatial Intelligence (Leaflet)
+│   │   │   ├── NetworkGraph.tsx# Interactive Physics Node Graph
+│   │   │   ├── Trends.tsx      # Temporal Area Charts
+│   │   │   ├── Alerts.tsx      # Severity-based live feed
+│   │   │   └── FIRList.tsx     # Case Registry
+│   │   ├── App.css & index.css # Global styling, Grid Patterns
+│   │   └── utils.ts            # Helpers & Hooks
 ├── functions/                  # Zoho Catalyst Node.js Backend API
 │   └── crime_dna/              
 ├── data_processing/            # Data Processing & ML Pipeline
