@@ -81,6 +81,7 @@ export default function MobileDashboard({ data }: Props) {
               <Bar dataKey="value" fill="url(#colorCrimeMobile)" radius={[4, 4, 0, 0]} maxBarSize={30} />
             </BarChart>
           </ResponsiveContainer>
+          <div style={styles.chartInsight}>Distribution of the most frequent crime categories.</div>
         </div>
 
         <div style={styles.chartCard}>
@@ -98,11 +99,12 @@ export default function MobileDashboard({ data }: Props) {
               <Legend iconType="circle" wrapperStyle={{ fontSize: 11, color: '#191c1d' }} verticalAlign="bottom" height={36} />
             </PieChart>
           </ResponsiveContainer>
+          <div style={styles.chartInsight}>Breakdown of incidents by risk severity level.</div>
         </div>
 
         <div style={styles.chartCard}>
           <h3 style={styles.chartTitle}>District Distribution</h3>
-          <ResponsiveContainer width="100%" height={250}>
+          <ResponsiveContainer width="100%" height={Math.max(120, districtData.length * 40)}>
             <BarChart data={districtData} layout="vertical" margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
               <defs>
                 <linearGradient id="colorDistrictMobile" x1="0" y1="0" x2="1" y2="0">
@@ -121,6 +123,12 @@ export default function MobileDashboard({ data }: Props) {
               <Bar dataKey="value" fill="url(#colorDistrictMobile)" radius={[0, 4, 4, 0]} maxBarSize={20} />
             </BarChart>
           </ResponsiveContainer>
+          <div style={styles.chartInsight}>Geographical breakdown of cases across districts.</div>
+        </div>
+
+        {/* Watermark */}
+        <div style={styles.watermark}>
+          Developed by 404_Detectives
         </div>
       </div>
     </div>
@@ -131,7 +139,7 @@ const styles: Record<string, React.CSSProperties> = {
   container: {
     background: '#f8f9fa',
     minHeight: '100vh',
-    paddingBottom: 120, // space for bottom nav
+    paddingBottom: 25, // space for bottom nav
   },
   content: {
     padding: '0 20px',
@@ -144,7 +152,7 @@ const styles: Record<string, React.CSSProperties> = {
     fontFamily: 'var(--font-family-mono)',
     fontSize: 10,
     letterSpacing: 1.5,
-    color: '#837562',
+    color: '#ffffffff',
     fontWeight: 600,
     marginBottom: 4,
   },
@@ -260,5 +268,23 @@ const styles: Record<string, React.CSSProperties> = {
     fontWeight: 700, 
     color: '#191c1d', 
     marginBottom: 16 
+  },
+  chartInsight: {
+    fontFamily: 'var(--font-family-body)',
+    fontSize: 11,
+    color: '#837562',
+    marginTop: 12,
+    textAlign: 'center',
+    lineHeight: 1.4,
+  },
+  watermark: {
+    fontFamily: 'var(--font-family-body)',
+    fontSize: 10,
+    color: '#83756255',
+    textAlign: 'center',
+    marginTop: 24,
+    marginBottom: 8,
+    letterSpacing: 0.5,
+    textTransform: 'uppercase',
   }
 };
