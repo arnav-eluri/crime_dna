@@ -102,14 +102,11 @@
 body {
   margin: 0;
   font-family: var(--font-family-body);
-  background: var(--color-background);
+  background: linear-gradient(180deg, #fefdf9 0%, #f4eee2 30%, #e8ddc9 100%);
+  background-attachment: fixed;
   color: var(--color-on-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Abstract subtle gradient to make glassmorphism pop */
-  background-image: radial-gradient(circle at 15% 50%, rgba(202, 138, 4, 0.05), transparent 25%),
-                    radial-gradient(circle at 85% 30%, rgba(73, 75, 214, 0.03), transparent 25%);
-  background-attachment: fixed;
 }
 
 h1, h2, h3, h4, h5, h6 {

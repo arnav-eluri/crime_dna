@@ -1,7 +1,37 @@
 import React from 'react';
 import MobileHeader from '../components/MobileHeader';
+import { CrimeSummary } from '../types';
+import { formatCrimeName, formatDistrictName } from '../utils';
+import KpiCard from '../components/KpiCard';
+import {
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend,
+} from 'recharts';
 
-export default function MobileDashboard() {
+const COLORS = ['#2eD573', '#ffa502', '#ff4757', '#1e90ff', '#a29bfe', '#fd79a8', '#00cec9', '#e17055'];
+
+interface Props {
+  data: CrimeSummary;
+}
+
+export default function MobileDashboard({ data }: Props) {
+  const criticalAlerts = [...(data.alerts || [])].sort((a, b) => 
+    a.alert_level === 'CRITICAL' ? -1 : 1
+  );
+  const heroAlert = criticalAlerts.length > 0 ? criticalAlerts[0] : null;
+
+  const crimeChartData = Object.entries(data.crime_type_distribution || {})
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10)
+    .map(([name, value]) => ({ name: formatCrimeName(name), value }));
+
+  const severityPieData = Object.entries(data.severity_distribution || {}).map(([name, value]) => ({
+    name, value,
+  }));
+
+  const districtData = Object.entries(data.district_distribution || {}).map(([name, value]) => ({
+    name: formatDistrictName(name), value,
+  }));
+
   return (
     <div style={styles.container}>
       <MobileHeader />
@@ -12,81 +42,85 @@ export default function MobileDashboard() {
           <h1 style={styles.feedTitle}>Intelligence Feed</h1>
         </div>
 
-        {/* Hero Card */}
-        <div style={styles.heroCard}>
-          <div style={styles.heroContent}>
-            <div style={styles.liveTag}>
-              <div style={styles.liveDot}></div>
-              LIVE BEHAVIORAL MESH
-            </div>
-            <h2 style={styles.heroTitle}>Network Anomaly Detected in Sector 7</h2>
-            <div style={styles.heroActions}>
-              <button style={styles.launchBtn}>Launch Analysis</button>
-              <div style={styles.toggleBg}>
-                <div style={styles.toggleKnob}></div>
-              </div>
-            </div>
-          </div>
+        {/* KPI Dashboard Values */}
+        <div style={styles.sectionHeader}>
+          <h3 style={styles.sectionTitle}>Dashboard Values</h3>
+        </div>
+        <div style={styles.kpiGrid}>
+          <KpiCard title="Total FIRs" value={data.total_firs.toLocaleString()} icon="/img-1.png" color="#805600" subtitle="All registered cases" />
+          <KpiCard title="Active Cases" value={data.active_cases.toLocaleString()} icon="/img-2.png" color="#1e90ff" subtitle="Under investigation" />
+          <KpiCard title="Hotspots" value={data.hotspot_count} icon="/img-3.png" color="#ba1a1a" subtitle={`${data.spatiotemporal_hotspot_count} spatiotemporal`} />
+          <KpiCard title="Critical" value={data.critical_count} icon="/img-4.png" color="#d4af37" subtitle="High severity incidents" />
+          <KpiCard title="Anomalies" value={data.anomaly_count} icon="/img-5.png" color="#ffba46" subtitle="Statistical outliers detected" />
+          <KpiCard title="Alerts" value={data.alerts?.length || 0} icon="/img-6.png" color="#ba1a1a" subtitle={`${criticalAlerts.length} critical`} />
         </div>
 
-        {/* Priority Alerts */}
+        {/* Graphs section */}
         <div style={styles.sectionHeader}>
-          <h3 style={styles.sectionTitle}>Priority Alerts</h3>
-          <span style={styles.viewArchive}>View Archive</span>
+          <h3 style={styles.sectionTitle}>Analytics</h3>
         </div>
         
-        <div style={styles.alertsScroll}>
-          {/* Alert 1 */}
-          <div style={{ ...styles.alertCard, borderLeft: '4px solid #ba1a1a' }}>
-            <div style={{ ...styles.alertIconBg, background: '#ffdad6' }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#ba1a1a" stroke="#ba1a1a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                <line x1="12" y1="9" x2="12" y2="13"/>
-                <line x1="12" y1="17" x2="12.01" y2="17"/>
-              </svg>
-            </div>
-            <div style={styles.alertTitle}>Critical Breach</div>
-            <div style={styles.alertSub}>Secure Vault A-9</div>
-            <div style={styles.alertTime}>04:12 PM</div>
-          </div>
-          
-          {/* Alert 2 */}
-          <div style={{ ...styles.alertCard, borderLeft: '4px solid #805600' }}>
-            <div style={{ ...styles.alertIconBg, background: '#f5e4c3' }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#805600" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                <line x1="9" y1="9" x2="9.01" y2="9"/>
-                <line x1="15" y1="9" x2="15.01" y2="9"/>
-              </svg>
-            </div>
-            <div style={styles.alertTitle}>Positive ID</div>
-            <div style={styles.alertSub}>Target #8821-X</div>
-            <div style={styles.alertTime}>03:55 PM</div>
-          </div>
+        <div style={styles.chartCard}>
+          <h3 style={styles.chartTitle}>Top Crime Categories</h3>
+          <ResponsiveContainer width="100%" height={250}>
+            <BarChart data={crimeChartData} margin={{ top: 20, right: 10, left: -20, bottom: 50 }}>
+              <defs>
+                <linearGradient id="colorCrimeMobile" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#2eD573" stopOpacity={0.9}/>
+                  <stop offset="95%" stopColor="#2eD573" stopOpacity={0.2}/>
+                </linearGradient>
+              </defs>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(0,0,0,0.05)" />
+              <XAxis dataKey="name" tick={{ fill: '#514535', fontSize: 10 }} angle={-45} textAnchor="end" height={60} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: '#514535', fontSize: 10 }} axisLine={false} tickLine={false} />
+              <Tooltip
+                cursor={{ fill: 'rgba(0,0,0,0.02)' }}
+                contentStyle={{ background: '#ffffff', border: 'none', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}
+                labelStyle={{ color: '#191c1d', fontWeight: 600, marginBottom: 4 }}
+              />
+              <Bar dataKey="value" fill="url(#colorCrimeMobile)" radius={[4, 4, 0, 0]} maxBarSize={30} />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
 
-        {/* Active Case Load */}
-        <div style={styles.sectionHeader}>
-          <h3 style={styles.sectionTitle}>Active Case Load</h3>
+        <div style={styles.chartCard}>
+          <h3 style={styles.chartTitle}>Severity Distribution</h3>
+          <ResponsiveContainer width="100%" height={250}>
+            <PieChart margin={{ top: 0, right: 0, left: 0, bottom: 20 }}>
+              <Pie data={severityPieData} dataKey="value" cx="50%" cy="50%" innerRadius={50} outerRadius={80} paddingAngle={4} stroke="none">
+                {severityPieData.map((_, idx) => (
+                  <Cell key={idx} fill={COLORS[idx % COLORS.length]} style={{ outline: 'none' }} />
+                ))}
+              </Pie>
+              <Tooltip 
+                contentStyle={{ background: '#ffffff', border: 'none', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}
+              />
+              <Legend iconType="circle" wrapperStyle={{ fontSize: 11, color: '#191c1d' }} verticalAlign="bottom" height={36} />
+            </PieChart>
+          </ResponsiveContainer>
         </div>
-        
-        <div style={styles.caseCard}>
-          <div style={styles.caseImgPlaceholder}>
-             <img src="https://i.pravatar.cc/150?img=11" alt="Case target" style={styles.caseImg} />
-          </div>
-          <div style={styles.caseInfo}>
-            <div style={styles.caseHeader}>
-              <div style={styles.caseTitle}>Op. Golden Eye</div>
-              <div style={styles.caseBadge}>IN PROGRESS</div>
-            </div>
-            <div style={styles.caseDesc}>Cross-referencing dna_sequence_99.12</div>
-          </div>
-          <div style={styles.chevron}>
-             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a0a0a0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-               <polyline points="9 18 15 12 9 6"/>
-             </svg>
-          </div>
+
+        <div style={styles.chartCard}>
+          <h3 style={styles.chartTitle}>District Distribution</h3>
+          <ResponsiveContainer width="100%" height={250}>
+            <BarChart data={districtData} layout="vertical" margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+              <defs>
+                <linearGradient id="colorDistrictMobile" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="5%" stopColor="#1e90ff" stopOpacity={0.9}/>
+                  <stop offset="95%" stopColor="#1e90ff" stopOpacity={0.2}/>
+                </linearGradient>
+              </defs>
+              <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="rgba(0,0,0,0.05)" />
+              <XAxis type="number" tick={{ fill: '#514535', fontSize: 10 }} axisLine={false} tickLine={false} />
+              <YAxis dataKey="name" type="category" tick={{ fill: '#514535', fontSize: 10 }} width={70} axisLine={false} tickLine={false} />
+              <Tooltip
+                cursor={{ fill: 'rgba(0,0,0,0.02)' }}
+                contentStyle={{ background: '#ffffff', border: 'none', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}
+                labelStyle={{ color: '#191c1d', fontWeight: 600 }}
+              />
+              <Bar dataKey="value" fill="url(#colorDistrictMobile)" radius={[0, 4, 4, 0]} maxBarSize={20} />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
       </div>
     </div>
@@ -95,7 +129,7 @@ export default function MobileDashboard() {
 
 const styles: Record<string, React.CSSProperties> = {
   container: {
-    background: 'linear-gradient(180deg, #fefdf9 0%, #f4eee2 20%, #222325 100%)',
+    background: '#f8f9fa',
     minHeight: '100vh',
     paddingBottom: 120, // space for bottom nav
   },
@@ -207,110 +241,24 @@ const styles: Record<string, React.CSSProperties> = {
     color: '#191c1d',
     margin: 0,
   },
-  viewArchive: {
-    fontFamily: 'var(--font-family-body)',
-    fontSize: 12,
-    fontWeight: 600,
-    color: '#805600',
+  kpiGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+    gap: '12px',
+    marginBottom: '32px',
   },
-  alertsScroll: {
-    display: 'flex',
-    gap: 16,
-    overflowX: 'auto',
-    paddingBottom: 16,
-    margin: '0 -20px 16px',
-    padding: '0 20px 16px',
-  },
-  alertCard: {
+  chartCard: {
     background: '#ffffff',
     borderRadius: 16,
     padding: 16,
-    minWidth: 160,
     boxShadow: '0 8px 24px rgba(0,0,0,0.03)',
+    marginBottom: 20,
   },
-  alertIconBg: {
-    width: 40,
-    height: 40,
-    borderRadius: '50%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 16,
-  },
-  alertTitle: {
-    fontFamily: 'var(--font-family-display)',
-    fontWeight: 700,
-    fontSize: 15,
-    color: '#191c1d',
-    marginBottom: 4,
-  },
-  alertSub: {
-    fontFamily: 'var(--font-family-body)',
-    fontSize: 12,
-    color: '#514535',
-    marginBottom: 12,
-  },
-  alertTime: {
-    fontFamily: 'var(--font-family-mono)',
-    fontSize: 10,
-    color: '#837562',
-    letterSpacing: 1,
-  },
-  caseCard: {
-    background: '#ffffff',
-    borderRadius: 16,
-    padding: 16,
-    display: 'flex',
-    alignItems: 'center',
-    gap: 16,
-    boxShadow: '0 8px 24px rgba(0,0,0,0.03)',
-  },
-  caseImgPlaceholder: {
-    width: 60,
-    height: 60,
-    borderRadius: 12,
-    overflow: 'hidden',
-    background: '#eee',
-    flexShrink: 0,
-  },
-  caseImg: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-  },
-  caseInfo: {
-    flex: 1,
-  },
-  caseHeader: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: 4,
-  },
-  caseTitle: {
-    fontFamily: 'var(--font-family-display)',
-    fontWeight: 700,
-    fontSize: 15,
-    color: '#191c1d',
-  },
-  caseBadge: {
-    background: '#d8e3fb',
-    color: '#3c475a',
-    fontSize: 9,
-    fontFamily: 'var(--font-family-mono)',
-    padding: '2px 6px',
-    borderRadius: 4,
-    fontWeight: 600,
-  },
-  caseDesc: {
-    fontFamily: 'var(--font-family-body)',
-    fontSize: 12,
-    color: '#514535',
-    lineHeight: 1.4,
-  },
-  chevron: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+  chartTitle: { 
+    fontFamily: 'var(--font-family-display)', 
+    fontSize: 15, 
+    fontWeight: 700, 
+    color: '#191c1d', 
+    marginBottom: 16 
   }
 };

@@ -16,9 +16,7 @@ export default function MobileHeader() {
             <path d="M13.73 21a2 2 0 0 1-3.46 0" />
           </svg>
         </div>
-        <div style={styles.avatar}>
-          <img src="https://i.pravatar.cc/150?img=47" alt="User Avatar" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
-        </div>
+        <img src="/ksp_logo.jpeg" alt="KSP Logo" style={styles.kspLogo} />
       </div>
     </div>
   );
@@ -72,10 +70,11 @@ const styles: Record<string, React.CSSProperties> = {
     alignItems: 'center',
     justifyContent: 'center',
   },
-  avatar: {
+  kspLogo: {
     width: 32,
     height: 32,
     borderRadius: '50%',
-    background: '#ccc',
+    objectFit: 'cover',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
   }
 };

@@ -5,7 +5,8 @@ import KpiCard from '../components/KpiCard';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend,
 } from 'recharts';
-import { formatCrimeName, formatDistrictName } from '../utils';
+import { formatCrimeName, formatDistrictName, useMediaQuery } from '../utils';
+import MobileDashboard from './MobileDashboard';
 
 const COLORS = ['#2eD573', '#ffa502', '#ff4757', '#1e90ff', '#a29bfe', '#fd79a8', '#00cec9', '#e17055'];
 
@@ -13,6 +14,7 @@ export default function Dashboard() {
   const [data, setData] = useState<CrimeSummary | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
     api.summary().then(setData).catch(e => setError(e.message)).finally(() => setLoading(false));
@@ -21,6 +23,10 @@ export default function Dashboard() {
   if (loading) return <div style={styles.loading}>Loading dashboard...</div>;
   if (error) return <div style={styles.error}>Error: {error}</div>;
   if (!data) return <div style={styles.error}>No data available. Run the pipeline first.</div>;
+
+  if (isMobile) {
+    return <MobileDashboard data={data} />;
+  }
 
   const crimeChartData = Object.entries(data.crime_type_distribution || {})
     .sort((a, b) => b[1] - a[1])
@@ -40,24 +46,24 @@ export default function Dashboard() {
       <h1 style={styles.title}>Crime Intelligence Dashboard</h1>
 
       <div style={styles.kpiRow}>
-        <KpiCard title="Total FIRs" value={data.total_firs.toLocaleString()} icon="/img-1.png" color="#2eD573"
+        <KpiCard title="Total FIRs" value={data.total_firs.toLocaleString()} icon="/img-1.png" color="#805600"
           subtitle="All registered cases" />
         <KpiCard title="Active Cases" value={data.active_cases.toLocaleString()} icon="/img-2.png" color="#1e90ff"
           subtitle="Under investigation" />
-        <KpiCard title="Hotspots" value={data.hotspot_count} icon="/img-3.png" color="#ff4757"
+        <KpiCard title="Hotspots" value={data.hotspot_count} icon="/img-3.png" color="#ba1a1a"
           subtitle={`${data.spatiotemporal_hotspot_count} spatiotemporal`} />
-        <KpiCard title="Critical" value={data.critical_count} icon="/img-4.png" color="#ff6b81"
+        <KpiCard title="Critical" value={data.critical_count} icon="/img-4.png" color="#d4af37"
           subtitle="High severity incidents" />
       </div>
 
       <div style={styles.kpiRow}>
-        <KpiCard title="Anomalies" value={data.anomaly_count} icon="/img-5.png" color="#ffa502"
+        <KpiCard title="Anomalies" value={data.anomaly_count} icon="/img-5.png" color="#ffba46"
           subtitle="Statistical outliers detected" />
-        <KpiCard title="Alerts" value={data.alerts?.length || 0} icon="/img-6.png" color="#ff4757"
+        <KpiCard title="Alerts" value={data.alerts?.length || 0} icon="/img-6.png" color="#ba1a1a"
           subtitle={`${data.alerts?.filter(a => a.alert_level === 'CRITICAL').length || 0} critical`} />
-        <KpiCard title="Syndicate Links" value={data.syndicate_link_count} icon="/img-7.png" color="#a29bfe"
+        <KpiCard title="Syndicate Links" value={data.syndicate_link_count} icon="/img-7.png" color="#545f73"
           subtitle="Repeat offender networks" />
-        <KpiCard title="Risk Classes" value={Object.values(data.risk_class_distribution || {}).reduce((a, b) => a + b, 0)} icon="" color="#00cec9"
+        <KpiCard title="Risk Classes" value={Object.values(data.risk_class_distribution || {}).reduce((a, b) => a + b, 0)} icon="" color="#805600"
           subtitle="ML-classified risk levels" />
       </div>
 
@@ -150,20 +156,31 @@ export default function Dashboard() {
 }
 
 const styles: Record<string, React.CSSProperties> = {
-  container: { padding: 'var(--spacing-container-padding)', overflowX: 'hidden' },
-  title: { fontFamily: 'var(--font-family-display)', fontSize: 24, fontWeight: 700, color: 'var(--color-on-surface)', marginBottom: 24 },
+  container: { padding: '40px', overflowX: 'hidden' },
+  title: { 
+    fontFamily: 'var(--font-family-display)', 
+    fontSize: 32, 
+    fontWeight: 800, 
+    background: 'linear-gradient(90deg, var(--color-primary) 0%, #d4af37 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    marginBottom: 32,
+    letterSpacing: '-0.5px'
+  },
   loading: { padding: 40, color: 'var(--color-on-surface-variant)', fontSize: 16, textAlign: 'center' as const },
   error: { padding: 40, color: 'var(--color-error)', fontSize: 16 },
-  kpiRow: { display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' as const },
-  chartsRow: { display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' as const },
+  kpiRow: { display: 'flex', gap: 20, marginBottom: 24, flexWrap: 'wrap' as const },
+  chartsRow: { display: 'flex', gap: 20, marginBottom: 24, flexWrap: 'wrap' as const },
   chartCard: {
     flex: '1 1 300px',
     minWidth: 0,
-    background: 'var(--color-surface-container-lowest)',
+    background: 'linear-gradient(145deg, var(--color-surface-container-lowest) 0%, rgba(255,255,255,0.4) 100%)',
+    backdropFilter: 'blur(12px)',
     borderRadius: 'var(--radius-lg)',
-    padding: '20px 16px',
-    boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.04)',
-    border: '1px solid var(--color-surface-container-highest)',
+    padding: '24px',
+    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.04)',
+    border: '1px solid rgba(255,255,255,0.6)',
+    transition: 'all 0.3s ease',
   },
-  chartTitle: { fontFamily: 'var(--font-family-display)', fontSize: 16, fontWeight: 600, color: 'var(--color-on-surface)', marginBottom: 16 },
+  chartTitle: { fontFamily: 'var(--font-family-display)', fontSize: 18, fontWeight: 700, color: 'var(--color-on-surface)', marginBottom: 20 },
 };

@@ -1,13 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useMediaQuery } from '../utils';
 
 interface NavItem {
   label: string;
   path: string;
-  icon: string;
+  icon?: string;
+  isFab?: boolean;
+  svgIcon?: React.ReactNode;
 }
 
-const NAV_ITEMS: NavItem[] = [
+const DESKTOP_NAV_ITEMS: NavItem[] = [
   { label: 'Dashboard', path: '/', icon: '/img-1.png' },
   { label: 'Crime Map', path: '/map', icon: '/img-2.png' },
   { label: 'Trends', path: '/trends', icon: '/img-3.png' },
@@ -17,9 +20,20 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'FIR Records', path: '/firs', icon: '/img-7.png' },
 ];
 
+const MOBILE_NAV_ITEMS: NavItem[] = [
+  { label: 'Intelligence', path: '/', svgIcon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg> },
+  { label: 'Analysis', path: '/trends', svgIcon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="16" y1="12" x2="16" y2="16"></line><line x1="8" y1="10" x2="8" y2="16"></line></svg> },
+
+  { label: 'Network', path: '/network', svgIcon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg> },
+  { label: 'Geospatial', path: '/map', svgIcon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg> },
+];
+
 export default function Navbar() {
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  const navItems = isMobile ? MOBILE_NAV_ITEMS : DESKTOP_NAV_ITEMS;
+
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${isMobile ? 'sidebar-mobile' : ''}`}>
       <div className="sidebar-logo">
         <div style={styles.logoIcon}></div>
         <div>
@@ -28,16 +42,25 @@ export default function Navbar() {
         </div>
       </div>
       <nav className="sidebar-nav">
-        {NAV_ITEMS.map((item) => (
-          <NavLink
-            key={item.path}
-            to={item.path}
-            className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
-          >
-            {item.icon && <img src={item.icon} alt={item.label} className="nav-icon-img" />}
-            <span>{item.label}</span>
-          </NavLink>
-        ))}
+        {navItems.map((item) => {
+          if (item.isFab) {
+            return (
+              <div key={item.label} className="mobile-fab">
+                {item.svgIcon}
+              </div>
+            );
+          }
+          return (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+            >
+              {item.svgIcon ? <div className="nav-svg-icon">{item.svgIcon}</div> : item.icon && <img src={item.icon} alt={item.label} className="nav-icon-img" />}
+              <span>{item.label}</span>
+            </NavLink>
+          );
+        })}
       </nav>
       <div className="sidebar-footer">
         <img src="/ksp_logo.jpeg" alt="KSP Logo" style={styles.footerLogo} />
@@ -51,11 +74,6 @@ const styles: Record<string, React.CSSProperties> = {
   logoIcon: { fontSize: 28 },
   logoTitle: { fontFamily: 'var(--font-family-display)', fontSize: 20, fontWeight: 700, color: 'var(--color-primary)' },
   logoSub: { fontFamily: 'var(--font-family-body)', fontSize: 11, color: 'var(--color-on-surface-variant)', letterSpacing: 1 },
-  footerLogo: {
-    width: 64,
-    height: 64,
-    borderRadius: '50%',
-    objectFit: 'cover'
-  },
+  footerLogo: { width: 64, height: 64, borderRadius: '50%', objectFit: 'cover' },
   footerText: { fontFamily: 'var(--font-family-body)', fontSize: 11, color: 'var(--color-on-surface-variant)' },
 };

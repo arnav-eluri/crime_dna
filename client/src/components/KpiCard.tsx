@@ -10,12 +10,18 @@ interface KpiCardProps {
 
 export default function KpiCard({ title, value, subtitle, color = '#2eD573', icon }: KpiCardProps) {
   return (
-    <div style={{
+    <div className="shadow-hover" style={{
       ...styles.card,
-      borderLeft: `4px solid ${color}`,
+      borderTop: `4px solid ${color}`,
+      background: `linear-gradient(145deg, var(--color-surface-container-lowest) 0%, rgba(255,255,255,0.4) 100%)`,
+      backdropFilter: 'blur(12px)',
     }}>
       <div style={styles.header}>
-        {icon && <img src={icon} alt="icon" style={styles.iconImg} />}
+        {icon && (
+          <div style={styles.iconWrapper}>
+            <img src={icon} alt={title} style={styles.iconImg} />
+          </div>
+        )}
         <span style={styles.title}>{title}</span>
       </div>
       <div style={{ ...styles.value, color }}>{value}</div>
@@ -26,13 +32,15 @@ export default function KpiCard({ title, value, subtitle, color = '#2eD573', ico
 
 const styles: Record<string, React.CSSProperties> = {
   card: {
-    background: 'var(--color-surface-container-lowest)',
     borderRadius: 'var(--radius-lg)',
-    padding: '16px 20px',
+    padding: '20px 24px',
     minWidth: 140,
     flex: 1,
-    boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.04)',
-    border: '1px solid var(--color-surface-container-highest)',
+    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.04)',
+    border: '1px solid rgba(255,255,255,0.6)',
+    transition: 'all 0.3s ease',
+    position: 'relative',
+    overflow: 'hidden',
   },
   header: {
     display: 'flex',
@@ -40,25 +48,39 @@ const styles: Record<string, React.CSSProperties> = {
     gap: 8,
     marginBottom: 12,
   },
-  iconImg: { width: 36, height: 36, borderRadius: '50%', objectFit: 'cover' },
+  iconWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+  },
+  iconImg: { 
+    width: 42, 
+    height: 42, 
+    objectFit: 'contain',
+  },
   title: {
-    fontSize: 13,
+    fontSize: 12,
     color: 'var(--color-on-surface-variant)',
     textTransform: 'uppercase',
-    letterSpacing: 1,
+    letterSpacing: 0.5,
     fontFamily: 'var(--font-family-body)',
-    fontWeight: 600,
+    fontWeight: 700,
+    lineHeight: 1.2,
+    wordWrap: 'break-word',
   },
   value: {
     fontFamily: 'var(--font-family-display)',
-    fontSize: 36,
-    fontWeight: 700,
+    fontSize: 28,
+    fontWeight: 800,
     lineHeight: 1.1,
+    marginTop: 4,
   },
   subtitle: {
     fontFamily: 'var(--font-family-body)',
-    fontSize: 12,
+    fontSize: 11,
     color: 'var(--color-on-surface-variant)',
-    marginTop: 6,
+    marginTop: 8,
+    lineHeight: 1.3,
   },
 };
