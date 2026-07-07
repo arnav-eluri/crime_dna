@@ -1,25 +1,942 @@
 [
   {
     "district": "BAGALKOT",
-    "crime_rate_per_100k": 400.0,
-    "total_firs": 1000,
+    "crime_rate_per_100k": 11249.2,
+    "total_firs": 28123,
     "top_crimes": {
-      "KARNATAKA POLICE ACT 1963": 204,
-      "CRPC": 140,
-      "MOTOR VEHICLE ACCIDENTS FATAL": 121,
-      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 100,
-      "KARNATAKA STATE LOCAL ACT": 100
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 3998,
+      "KARNATAKA POLICE ACT 1963": 3717,
+      "CRPC": 2947,
+      "MOTOR VEHICLE ACCIDENTS FATAL": 2791,
+      "KARNATAKA STATE LOCAL ACT": 1971
     },
     "severity_breakdown": {
-      "LOW": 741,
-      "HIGH": 164,
-      "CRITICAL": 95
+      "LOW": 21610,
+      "HIGH": 4201,
+      "CRITICAL": 2312
     },
     "socioeconomic_indicators": {
       "population_density_per_km2": 250,
       "urbanization_percent": 28,
       "literacy_rate_percent": 68,
       "avg_annual_income_inr": 85000
+    }
+  },
+  {
+    "district": "BALLARI",
+    "crime_rate_per_100k": 9169.7,
+    "total_firs": 28426,
+    "top_crimes": {
+      "KARNATAKA POLICE ACT 1963": 5460,
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 2983,
+      "KARNATAKA STATE LOCAL ACT": 2734,
+      "CRPC": 2623,
+      "THEFT": 2031
+    },
+    "severity_breakdown": {
+      "LOW": 22296,
+      "HIGH": 4281,
+      "CRITICAL": 1849
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 310,
+      "urbanization_percent": 35,
+      "literacy_rate_percent": 72,
+      "avg_annual_income_inr": 92000
+    }
+  },
+  {
+    "district": "BELAGAVI CITY",
+    "crime_rate_per_100k": 3599.5,
+    "total_firs": 20877,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 3621,
+      "CRPC": 2359,
+      "THEFT": 1913,
+      "KARNATAKA POLICE ACT 1963": 1408,
+      "MISSING PERSON": 1372
+    },
+    "severity_breakdown": {
+      "LOW": 17024,
+      "HIGH": 2557,
+      "CRITICAL": 1296
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 580,
+      "urbanization_percent": 82,
+      "literacy_rate_percent": 85,
+      "avg_annual_income_inr": 135000
+    }
+  },
+  {
+    "district": "BELAGAVI DIST",
+    "crime_rate_per_100k": 20541.0,
+    "total_firs": 59569,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 10113,
+      "CRPC": 7053,
+      "KARNATAKA POLICE ACT 1963": 6507,
+      "MOTOR VEHICLE ACCIDENTS FATAL": 5356,
+      "KARNATAKA STATE LOCAL ACT": 4377
+    },
+    "severity_breakdown": {
+      "LOW": 47477,
+      "HIGH": 7207,
+      "CRITICAL": 4885
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 290,
+      "urbanization_percent": 32,
+      "literacy_rate_percent": 71,
+      "avg_annual_income_inr": 88000
+    }
+  },
+  {
+    "district": "BENGALURU CITY",
+    "crime_rate_per_100k": 141802.7,
+    "total_firs": 425408,
+    "top_crimes": {
+      "THEFT": 69988,
+      "CYBER CRIME": 64599,
+      "MISSING PERSON": 39234,
+      "PUBLIC SAFETY": 32222,
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 30107
+    },
+    "severity_breakdown": {
+      "LOW": 371028,
+      "HIGH": 44078,
+      "CRITICAL": 10302
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "BENGALURU DIST",
+    "crime_rate_per_100k": 21334.7,
+    "total_firs": 64004,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 12787,
+      "THEFT": 8055,
+      "MISSING PERSON": 7075,
+      "MOTOR VEHICLE ACCIDENTS FATAL": 4878,
+      "CASES OF HURT": 3831
+    },
+    "severity_breakdown": {
+      "LOW": 53562,
+      "HIGH": 7694,
+      "CRITICAL": 2748
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "BIDAR",
+    "crime_rate_per_100k": 12620.3,
+    "total_firs": 37861,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 7322,
+      "CASES OF HURT": 5254,
+      "CRPC": 4870,
+      "KARNATAKA POLICE ACT 1963": 3141,
+      "MOTOR VEHICLE ACCIDENTS FATAL": 2256
+    },
+    "severity_breakdown": {
+      "LOW": 31191,
+      "HIGH": 4388,
+      "CRITICAL": 2282
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "CHAMARAJANAGAR",
+    "crime_rate_per_100k": 7681.0,
+    "total_firs": 23043,
+    "top_crimes": {
+      "KARNATAKA STATE LOCAL ACT": 3526,
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 3183,
+      "CRPC": 2884,
+      "CASES OF HURT": 2348,
+      "MISSING PERSON": 1461
+    },
+    "severity_breakdown": {
+      "LOW": 18926,
+      "HIGH": 2709,
+      "CRITICAL": 1408
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "CHICKBALLAPURA",
+    "crime_rate_per_100k": 12181.7,
+    "total_firs": 36545,
+    "top_crimes": {
+      "KARNATAKA STATE LOCAL ACT": 5191,
+      "CRPC": 4271,
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 3671,
+      "CASES OF HURT": 3296,
+      "MISSING PERSON": 3224
+    },
+    "severity_breakdown": {
+      "LOW": 29705,
+      "HIGH": 4467,
+      "CRITICAL": 2373
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "CHIKKAMAGALURU",
+    "crime_rate_per_100k": 11828.3,
+    "total_firs": 35485,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 5839,
+      "CRPC": 3964,
+      "CASES OF HURT": 3850,
+      "KARNATAKA STATE LOCAL ACT": 3317,
+      "MISSING PERSON": 2256
+    },
+    "severity_breakdown": {
+      "LOW": 29642,
+      "HIGH": 4216,
+      "CRITICAL": 1627
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "CHITRADURGA",
+    "crime_rate_per_100k": 15918.0,
+    "total_firs": 47754,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 9786,
+      "KARNATAKA POLICE ACT 1963": 4499,
+      "CRPC": 4067,
+      "CASES OF HURT": 3814,
+      "KARNATAKA STATE LOCAL ACT": 3764
+    },
+    "severity_breakdown": {
+      "LOW": 39787,
+      "HIGH": 5477,
+      "CRITICAL": 2490
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "CID",
+    "crime_rate_per_100k": 57.3,
+    "total_firs": 172,
+    "top_crimes": {
+      "CYBER CRIME": 170,
+      "CHEATING": 1,
+      "POCSO": 1
+    },
+    "severity_breakdown": {
+      "LOW": 154,
+      "HIGH": 15,
+      "CRITICAL": 3
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "COASTAL SECURITY POLICE",
+    "crime_rate_per_100k": 71.0,
+    "total_firs": 213,
+    "top_crimes": {
+      "KARNATAKA STATE LOCAL ACT": 81,
+      "KARNATAKA POLICE ACT 1963": 65,
+      "NARCOTIC DRUGS & PSHYCOTROPIC SUBSTANCES": 37,
+      "CRPC": 14,
+      "PUBLIC SAFETY": 9
+    },
+    "severity_breakdown": {
+      "LOW": 203,
+      "HIGH": 9,
+      "CRITICAL": 1
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "DAKSHINA KANNADA",
+    "crime_rate_per_100k": 7041.7,
+    "total_firs": 21125,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 6038,
+      "CRPC": 2380,
+      "CASES OF HURT": 1671,
+      "MISSING PERSON": 1171,
+      "MOTOR VEHICLE ACCIDENTS FATAL": 1106
+    },
+    "severity_breakdown": {
+      "LOW": 18298,
+      "HIGH": 1967,
+      "CRITICAL": 860
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "DAVANAGERE",
+    "crime_rate_per_100k": 13013.7,
+    "total_firs": 39041,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 6194,
+      "KARNATAKA POLICE ACT 1963": 4052,
+      "MISSING PERSON": 3963,
+      "CRPC": 3476,
+      "THEFT": 3472
+    },
+    "severity_breakdown": {
+      "LOW": 31178,
+      "HIGH": 5293,
+      "CRITICAL": 2570
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "DHARWAD",
+    "crime_rate_per_100k": 4955.3,
+    "total_firs": 14866,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 2273,
+      "KARNATAKA POLICE ACT 1963": 1963,
+      "CRPC": 1539,
+      "MOTOR VEHICLE ACCIDENTS FATAL": 1506,
+      "KARNATAKA STATE LOCAL ACT": 1472
+    },
+    "severity_breakdown": {
+      "LOW": 11833,
+      "HIGH": 1886,
+      "CRITICAL": 1147
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "GADAG",
+    "crime_rate_per_100k": 6167.3,
+    "total_firs": 18502,
+    "top_crimes": {
+      "KARNATAKA POLICE ACT 1963": 3273,
+      "CRPC": 2483,
+      "KARNATAKA STATE LOCAL ACT": 1983,
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 1637,
+      "THEFT": 1632
+    },
+    "severity_breakdown": {
+      "LOW": 14914,
+      "HIGH": 2217,
+      "CRITICAL": 1371
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "HASSAN",
+    "crime_rate_per_100k": 19418.7,
+    "total_firs": 58256,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 13159,
+      "CASES OF HURT": 7398,
+      "CRPC": 6963,
+      "KARNATAKA STATE LOCAL ACT": 4060,
+      "MOTOR VEHICLE ACCIDENTS FATAL": 3474
+    },
+    "severity_breakdown": {
+      "LOW": 49732,
+      "HIGH": 5988,
+      "CRITICAL": 2536
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "HAVERI",
+    "crime_rate_per_100k": 9923.7,
+    "total_firs": 29771,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 4503,
+      "CRPC": 3919,
+      "KARNATAKA POLICE ACT 1963": 3686,
+      "THEFT": 2348,
+      "MISSING PERSON": 2118
+    },
+    "severity_breakdown": {
+      "LOW": 23077,
+      "HIGH": 3444,
+      "CRITICAL": 3250
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "HUBBALLI DHARWAD CITY",
+    "crime_rate_per_100k": 8029.0,
+    "total_firs": 24087,
+    "top_crimes": {
+      "KARNATAKA POLICE ACT 1963": 2941,
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 2842,
+      "CRPC": 2539,
+      "THEFT": 2375,
+      "MISSING PERSON": 1829
+    },
+    "severity_breakdown": {
+      "LOW": 20072,
+      "HIGH": 2970,
+      "CRITICAL": 1045
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "ISD BENGALURU",
+    "crime_rate_per_100k": 46.3,
+    "total_firs": 139,
+    "top_crimes": {
+      "KARNATAKA STATE LOCAL ACT": 123,
+      "NARCOTIC DRUGS & PSHYCOTROPIC SUBSTANCES": 8,
+      "EXPLOSIVES": 5,
+      "CYBER CRIME": 2,
+      "ARMS ACT  1959": 1
+    },
+    "severity_breakdown": {
+      "LOW": 137,
+      "HIGH": 2
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "K.G.F",
+    "crime_rate_per_100k": 3418.7,
+    "total_firs": 10256,
+    "top_crimes": {
+      "CRPC": 1938,
+      "CASES OF HURT": 1251,
+      "MISSING PERSON": 1015,
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 909,
+      "KARNATAKA STATE LOCAL ACT": 563
+    },
+    "severity_breakdown": {
+      "LOW": 8581,
+      "HIGH": 1150,
+      "CRITICAL": 525
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "KALABURAGI",
+    "crime_rate_per_100k": 10450.3,
+    "total_firs": 31351,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 4455,
+      "CRPC": 3932,
+      "KARNATAKA POLICE ACT 1963": 3541,
+      "CASES OF HURT": 3007,
+      "MOTOR VEHICLE ACCIDENTS FATAL": 2169
+    },
+    "severity_breakdown": {
+      "LOW": 24498,
+      "HIGH": 3942,
+      "CRITICAL": 2911
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "KALABURAGI CITY",
+    "crime_rate_per_100k": 6741.0,
+    "total_firs": 20223,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 3168,
+      "CRPC": 2505,
+      "THEFT": 2030,
+      "KARNATAKA POLICE ACT 1963": 1924,
+      "CASES OF HURT": 1444
+    },
+    "severity_breakdown": {
+      "LOW": 16109,
+      "HIGH": 2779,
+      "CRITICAL": 1335
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "KARNATAKA RAILWAYS",
+    "crime_rate_per_100k": 3296.0,
+    "total_firs": 9888,
+    "top_crimes": {
+      "THEFT": 7128,
+      "CRPC": 891,
+      "ROBBERY": 375,
+      "MISSING PERSON": 192,
+      "CASES OF HURT": 142
+    },
+    "severity_breakdown": {
+      "LOW": 9228,
+      "HIGH": 595,
+      "CRITICAL": 65
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "KODAGU",
+    "crime_rate_per_100k": 6415.7,
+    "total_firs": 19247,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 3391,
+      "CRPC": 2952,
+      "CASES OF HURT": 2805,
+      "MISSING PERSON": 1235,
+      "THEFT": 1148
+    },
+    "severity_breakdown": {
+      "LOW": 16445,
+      "HIGH": 2215,
+      "CRITICAL": 587
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "KOLAR",
+    "crime_rate_per_100k": 7882.7,
+    "total_firs": 23648,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 3690,
+      "MISSING PERSON": 2533,
+      "CASES OF HURT": 2439,
+      "CRPC": 1900,
+      "MOTOR VEHICLE ACCIDENTS FATAL": 1801
+    },
+    "severity_breakdown": {
+      "LOW": 18601,
+      "HIGH": 3148,
+      "CRITICAL": 1899
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "KOPPAL",
+    "crime_rate_per_100k": 8308.7,
+    "total_firs": 24926,
+    "top_crimes": {
+      "KARNATAKA POLICE ACT 1963": 4464,
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 3165,
+      "THEFT": 2230,
+      "KARNATAKA STATE LOCAL ACT": 1935,
+      "MOTOR VEHICLE ACCIDENTS FATAL": 1753
+    },
+    "severity_breakdown": {
+      "LOW": 18954,
+      "HIGH": 3929,
+      "CRITICAL": 2043
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "MANDYA",
+    "crime_rate_per_100k": 19900.3,
+    "total_firs": 59701,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 12758,
+      "CASES OF HURT": 7012,
+      "MISSING PERSON": 4952,
+      "KARNATAKA STATE LOCAL ACT": 4887,
+      "CRPC": 4678
+    },
+    "severity_breakdown": {
+      "LOW": 48798,
+      "HIGH": 8086,
+      "CRITICAL": 2817
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "MANGALURU CITY",
+    "crime_rate_per_100k": 10514.7,
+    "total_firs": 31544,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 7083,
+      "CRPC": 4059,
+      "NARCOTIC DRUGS & PSHYCOTROPIC SUBSTANCES": 2788,
+      "CASES OF HURT": 1712,
+      "THEFT": 1680
+    },
+    "severity_breakdown": {
+      "LOW": 27678,
+      "HIGH": 2823,
+      "CRITICAL": 1043
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "MYSURU CITY",
+    "crime_rate_per_100k": 10170.0,
+    "total_firs": 30510,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 5252,
+      "THEFT": 3715,
+      "MISSING PERSON": 3283,
+      "CASES OF HURT": 2674,
+      "CRPC": 2420
+    },
+    "severity_breakdown": {
+      "LOW": 25576,
+      "HIGH": 3917,
+      "CRITICAL": 1017
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "MYSURU DIST",
+    "crime_rate_per_100k": 16866.3,
+    "total_firs": 50599,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 8666,
+      "CASES OF HURT": 6109,
+      "KARNATAKA STATE LOCAL ACT": 5064,
+      "MISSING PERSON": 4313,
+      "CRPC": 4100
+    },
+    "severity_breakdown": {
+      "LOW": 41168,
+      "HIGH": 6573,
+      "CRITICAL": 2858
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "RAICHUR",
+    "crime_rate_per_100k": 12165.3,
+    "total_firs": 36496,
+    "top_crimes": {
+      "KARNATAKA POLICE ACT 1963": 5165,
+      "CRPC": 4552,
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 3261,
+      "KARNATAKA STATE LOCAL ACT": 2802,
+      "THEFT": 2499
+    },
+    "severity_breakdown": {
+      "LOW": 27995,
+      "HIGH": 4954,
+      "CRITICAL": 3547
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "RAMANAGARA",
+    "crime_rate_per_100k": 14744.0,
+    "total_firs": 44232,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 9257,
+      "CASES OF HURT": 4246,
+      "MISSING PERSON": 3956,
+      "THEFT": 3473,
+      "CRPC": 3237
+    },
+    "severity_breakdown": {
+      "LOW": 36811,
+      "HIGH": 5443,
+      "CRITICAL": 1978
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "SHIVAMOGGA",
+    "crime_rate_per_100k": 20446.0,
+    "total_firs": 61338,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 9851,
+      "CRPC": 6210,
+      "CASES OF HURT": 6013,
+      "MISSING PERSON": 5216,
+      "KARNATAKA POLICE ACT 1963": 4259
+    },
+    "severity_breakdown": {
+      "LOW": 50606,
+      "HIGH": 7052,
+      "CRITICAL": 3680
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "TUMAKURU",
+    "crime_rate_per_100k": 20517.7,
+    "total_firs": 61553,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 12900,
+      "MOTOR VEHICLE ACCIDENTS FATAL": 5351,
+      "KARNATAKA POLICE ACT 1963": 5205,
+      "CASES OF HURT": 5143,
+      "MISSING PERSON": 4641
+    },
+    "severity_breakdown": {
+      "LOW": 51332,
+      "HIGH": 7587,
+      "CRITICAL": 2634
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "UDUPI",
+    "crime_rate_per_100k": 9477.0,
+    "total_firs": 28431,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 8007,
+      "CRPC": 2856,
+      "KARNATAKA POLICE ACT 1963": 2054,
+      "MOTOR VEHICLE ACCIDENTS FATAL": 1849,
+      "CASES OF HURT": 1684
+    },
+    "severity_breakdown": {
+      "LOW": 24887,
+      "HIGH": 2677,
+      "CRITICAL": 867
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "UTTARA KANNADA",
+    "crime_rate_per_100k": 10896.7,
+    "total_firs": 32690,
+    "top_crimes": {
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 7060,
+      "CRPC": 3912,
+      "KARNATAKA POLICE ACT 1963": 3460,
+      "CASES OF HURT": 2585,
+      "MISSING PERSON": 2152
+    },
+    "severity_breakdown": {
+      "LOW": 28298,
+      "HIGH": 2951,
+      "CRITICAL": 1441
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "VIJAYANAGARA",
+    "crime_rate_per_100k": 8605.0,
+    "total_firs": 25815,
+    "top_crimes": {
+      "KARNATAKA POLICE ACT 1963": 4007,
+      "CRPC": 3068,
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 3029,
+      "KARNATAKA STATE LOCAL ACT": 2425,
+      "THEFT": 1757
+    },
+    "severity_breakdown": {
+      "LOW": 19893,
+      "HIGH": 3743,
+      "CRITICAL": 2179
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "VIJAYAPUR",
+    "crime_rate_per_100k": 13169.3,
+    "total_firs": 39508,
+    "top_crimes": {
+      "KARNATAKA POLICE ACT 1963": 5638,
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 4774,
+      "CRPC": 3978,
+      "KARNATAKA STATE LOCAL ACT": 3303,
+      "MOTOR VEHICLE ACCIDENTS FATAL": 3105
+    },
+    "severity_breakdown": {
+      "LOW": 30194,
+      "HIGH": 5788,
+      "CRITICAL": 3526
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
+    }
+  },
+  {
+    "district": "YADGIR",
+    "crime_rate_per_100k": 6503.7,
+    "total_firs": 19511,
+    "top_crimes": {
+      "CRPC": 2813,
+      "KARNATAKA POLICE ACT 1963": 2782,
+      "MOTOR VEHICLE ACCIDENTS NON-FATAL": 2215,
+      "KARNATAKA STATE LOCAL ACT": 1541,
+      "CASES OF HURT": 1414
+    },
+    "severity_breakdown": {
+      "LOW": 14731,
+      "HIGH": 2729,
+      "CRITICAL": 2051
+    },
+    "socioeconomic_indicators": {
+      "population_density_per_km2": 300,
+      "urbanization_percent": 50,
+      "literacy_rate_percent": 75,
+      "avg_annual_income_inr": 100000
     }
   }
 ]

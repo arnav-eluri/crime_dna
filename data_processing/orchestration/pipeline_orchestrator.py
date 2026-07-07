@@ -39,9 +39,7 @@ def load_real_data(limit=None):
         station_map = {}
         for idx, name in enumerate(df['UnitName'].unique()):
             station_map[name] = f"ST-{idx+1:03d}"
-        df['fir_number'] = df.groupby('UnitName').cumcount().apply(
-            lambda x: f"FIR-{df['UnitName'].iloc[df.groupby('UnitName').cumcount().eq(x).idxmax() if df.groupby('UnitName').cumcount().eq(x).any() else 0]}-{x+1:04d}"
-        )
+        df['fir_number'] = "FIR-" + df['UnitName'].astype(str) + "-" + (df.groupby('UnitName').cumcount() + 1).astype(str).str.zfill(4)
         df['station_name'] = df['UnitName']
         df['date_reported'] = pd.to_datetime(
             df['FIR_YEAR'].astype(str) + '-' + df['FIR_MONTH'].astype(str).str.zfill(2) + '-01',

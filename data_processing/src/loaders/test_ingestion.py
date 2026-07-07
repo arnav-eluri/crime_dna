@@ -12,8 +12,8 @@ def setup_db(conn):
     conn.executescript(schema_sql)
     conn.commit()
 
-def ingest_data(conn, limit=1000):
-    print(f"Reading up to {limit} rows from {CSV_FILE}...")
+def ingest_data(conn, limit=None):
+    print(f"Reading {f'up to {limit} rows' if limit else 'all rows'} from {CSV_FILE}...")
     df = pd.read_csv(CSV_FILE, nrows=limit)
     cursor = conn.cursor()
 
@@ -122,5 +122,5 @@ if __name__ == '__main__':
     print("Setting up database schema...")
     setup_db(conn)
     print("Starting ingestion...")
-    ingest_data(conn, limit=1000)
+    ingest_data(conn, limit=None)
     conn.close()

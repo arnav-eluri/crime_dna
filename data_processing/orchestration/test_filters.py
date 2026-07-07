@@ -32,13 +32,14 @@ def log_shape(func):
     return wrapper
 
 def main():
-    csv_path = 'datasets/FIR_Details_Data.csv'
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    csv_path = os.path.join(base_dir, 'datasets', 'FIR_Details_Data.csv')
     if not os.path.exists(csv_path):
         logging.error(f"Dataset not found at {csv_path}")
         return
 
-    logging.info("Loading raw data sample (10,000 rows)...")
-    df_raw = pd.read_csv(csv_path, nrows=10000)
+    logging.info("Loading full raw dataset...")
+    df_raw = pd.read_csv(csv_path)
     logging.info(f"Raw shape: {df_raw.shape}")
 
     engine = FilterEngine(df_raw)

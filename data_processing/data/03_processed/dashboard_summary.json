@@ -1,107 +1,147 @@
 {
-  "total_firs": 1000,
-  "active_cases": 650,
-  "hotspot_count": 214,
-  "spatiotemporal_hotspot_count": 233,
-  "critical_count": 95,
-  "anomaly_count": 519,
-  "syndicate_link_count": 328,
+  "total_firs": 1674734,
+  "active_cases": 1088577,
+  "hotspot_count": 451532,
+  "spatiotemporal_hotspot_count": 453858,
+  "critical_count": 85358,
+  "anomaly_count": 1235222,
+  "syndicate_link_count": 339184,
   "crime_type_distribution": {
-    "KARNATAKA POLICE ACT 1963": 204,
-    "CRPC": 140,
-    "MOTOR VEHICLE ACCIDENTS FATAL": 121,
-    "MOTOR VEHICLE ACCIDENTS NON-FATAL": 100,
-    "KARNATAKA STATE LOCAL ACT": 100,
-    "MOLESTATION": 54,
-    "MISSING PERSON": 42,
-    "CASES OF HURT": 29,
-    "RIOTS": 25,
-    "THEFT": 23,
-    "ATTEMPT TO MURDER": 16,
-    "POCSO": 14,
-    "BURGLARY - NIGHT": 13,
-    "CHEATING": 12,
-    "MURDER": 12,
-    "SCHEDULED CASTE AND THE SCHEDULED TRIBES": 10,
-    "CONSUMER": 8,
-    "KIDNAPPING AND ABDUCTION": 7,
-    "OFFENCES AGAINST PUBLIC SERVANTS (PUBLIC SERVANT IS A VICTIM)": 7,
-    "CRUELTY BY HUSBAND": 6
+    "MOTOR VEHICLE ACCIDENTS NON-FATAL": 242976,
+    "THEFT": 159021,
+    "CRPC": 137939,
+    "CASES OF HURT": 126211,
+    "MISSING PERSON": 124811,
+    "KARNATAKA POLICE ACT 1963": 107576,
+    "KARNATAKA STATE LOCAL ACT": 90742,
+    "MOTOR VEHICLE ACCIDENTS FATAL": 83040,
+    "CYBER CRIME": 78502,
+    "CHEATING": 48675,
+    "MOLESTATION": 42856,
+    "PUBLIC SAFETY": 42380,
+    "RIOTS": 36695,
+    "BURGLARY - NIGHT": 35729,
+    "NARCOTIC DRUGS & PSHYCOTROPIC SUBSTANCES": 27856,
+    "KIDNAPPING AND ABDUCTION": 23922,
+    "NEGLIGENT ACT": 22659,
+    "ATTEMPT TO MURDER": 20816,
+    "POCSO": 19854,
+    "CRUELTY BY HUSBAND": 19260
   },
   "severity_distribution": {
-    "LOW": 741,
-    "HIGH": 164,
-    "CRITICAL": 95
+    "LOW": 1392229,
+    "HIGH": 197147,
+    "CRITICAL": 85358
   },
   "district_distribution": {
-    "BAGALKOT": 1000
+    "BENGALURU CITY": 425408,
+    "BENGALURU DIST": 64004,
+    "TUMAKURU": 61553,
+    "SHIVAMOGGA": 61338,
+    "MANDYA": 59701,
+    "BELAGAVI DIST": 59569,
+    "HASSAN": 58256,
+    "MYSURU DIST": 50599,
+    "CHITRADURGA": 47754,
+    "RAMANAGARA": 44232,
+    "VIJAYAPUR": 39508,
+    "DAVANAGERE": 39041,
+    "BIDAR": 37861,
+    "CHICKBALLAPURA": 36545,
+    "RAICHUR": 36496,
+    "CHIKKAMAGALURU": 35485,
+    "UTTARA KANNADA": 32690,
+    "MANGALURU CITY": 31544,
+    "KALABURAGI": 31351,
+    "MYSURU CITY": 30510,
+    "HAVERI": 29771,
+    "UDUPI": 28431,
+    "BALLARI": 28426,
+    "BAGALKOT": 28123,
+    "VIJAYANAGARA": 25815,
+    "KOPPAL": 24926,
+    "HUBBALLI DHARWAD CITY": 24087,
+    "KOLAR": 23648,
+    "CHAMARAJANAGAR": 23043,
+    "DAKSHINA KANNADA": 21125,
+    "BELAGAVI CITY": 20877,
+    "KALABURAGI CITY": 20223,
+    "YADGIR": 19511,
+    "KODAGU": 19247,
+    "GADAG": 18502,
+    "DHARWAD": 14866,
+    "K.G.F": 10256,
+    "KARNATAKA RAILWAYS": 9888,
+    "COASTAL SECURITY POLICE": 213,
+    "CID": 172,
+    "ISD BENGALURU": 139
   },
   "risk_class_distribution": {
-    "0": 741,
-    "1": 164,
-    "2": 95
+    "0": 1392229,
+    "1": 197147,
+    "2": 85358
   },
   "monthly_trends": {
-    "2016-01": 15,
-    "2016-02": 29,
-    "2016-03": 14,
-    "2016-04": 14,
-    "2016-05": 21,
-    "2016-06": 18,
-    "2016-07": 18,
-    "2016-08": 30,
-    "2016-09": 16,
-    "2016-10": 18,
-    "2016-11": 8,
-    "2016-12": 10,
-    "2017-01": 15,
-    "2017-02": 19,
-    "2017-03": 21,
-    "2017-04": 14,
-    "2017-05": 21,
-    "2017-06": 25,
-    "2017-07": 24,
-    "2017-08": 13,
-    "2017-09": 12,
-    "2017-10": 11,
-    "2017-11": 11,
-    "2017-12": 11,
-    "2018-01": 20,
-    "2018-02": 41,
-    "2018-03": 17,
-    "2018-04": 25,
-    "2018-05": 14,
-    "2018-06": 14,
-    "2018-07": 22,
-    "2018-08": 6,
-    "2018-09": 7,
-    "2018-10": 12,
-    "2018-11": 7,
-    "2018-12": 12,
-    "2019-01": 5,
-    "2019-02": 4,
-    "2019-03": 12,
-    "2019-04": 12,
-    "2019-05": 5,
-    "2019-06": 11,
-    "2019-07": 12,
-    "2019-08": 8,
-    "2019-09": 4,
-    "2019-10": 13,
-    "2019-11": 7,
-    "2019-12": 13,
-    "2020-01": 4,
-    "2020-02": 12,
-    "2020-03": 19,
-    "2020-04": 14,
-    "2020-05": 14,
-    "2020-06": 6,
-    "2020-07": 6,
-    "2020-08": 3,
-    "2020-09": 16,
-    "2020-10": 15,
-    "2020-11": 17,
-    "2020-12": 8
+    "2016-01": 21040,
+    "2016-02": 20831,
+    "2016-03": 19387,
+    "2016-04": 17282,
+    "2016-05": 18315,
+    "2016-06": 17018,
+    "2016-07": 19416,
+    "2016-08": 22424,
+    "2016-09": 19116,
+    "2016-10": 18293,
+    "2016-11": 17888,
+    "2016-12": 16707,
+    "2017-01": 17136,
+    "2017-02": 18514,
+    "2017-03": 21817,
+    "2017-04": 22657,
+    "2017-05": 25976,
+    "2017-06": 26046,
+    "2017-07": 24370,
+    "2017-08": 19721,
+    "2017-09": 17196,
+    "2017-10": 18428,
+    "2017-11": 18481,
+    "2017-12": 16497,
+    "2018-01": 17861,
+    "2018-02": 26959,
+    "2018-03": 27355,
+    "2018-04": 29763,
+    "2018-05": 15137,
+    "2018-06": 15007,
+    "2018-07": 15053,
+    "2018-08": 14188,
+    "2018-09": 14151,
+    "2018-10": 14636,
+    "2018-11": 14769,
+    "2018-12": 14568,
+    "2019-01": 14424,
+    "2019-02": 13825,
+    "2019-03": 16163,
+    "2019-04": 14681,
+    "2019-05": 15559,
+    "2019-06": 15628,
+    "2019-07": 15423,
+    "2019-08": 13714,
+    "2019-09": 13117,
+    "2019-10": 14531,
+    "2019-11": 14318,
+    "2019-12": 14103,
+    "2020-01": 13944,
+    "2020-02": 15062,
+    "2020-03": 14982,
+    "2020-04": 9570,
+    "2020-05": 12434,
+    "2020-06": 12971,
+    "2020-07": 12433,
+    "2020-08": 13447,
+    "2020-09": 14754,
+    "2020-10": 13582,
+    "2020-11": 13580,
+    "2020-12": 13788
   },
   "hotspot_locations": [
     {
@@ -248,424 +288,425 @@
   "alerts": [
     {
       "district": "BAGALKOT",
-      "crime_category": "KARNATAKA POLICE ACT 1963",
-      "alert_level": "CRITICAL",
-      "current_count": 204,
-      "historical_avg": 1.0,
-      "percent_change": 1000.0,
-      "trend_direction": "up"
-    },
-    {
-      "district": "BAGALKOT",
-      "crime_category": "MOTOR VEHICLE ACCIDENTS FATAL",
-      "alert_level": "CRITICAL",
-      "current_count": 121,
-      "historical_avg": 1.0,
-      "percent_change": 600.0,
-      "trend_direction": "up"
-    },
-    {
-      "district": "BAGALKOT",
       "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
       "alert_level": "CRITICAL",
-      "current_count": 100,
+      "current_count": 3998,
       "historical_avg": 1.0,
-      "percent_change": 300.0,
+      "percent_change": 644700.0,
       "trend_direction": "up"
     },
     {
-      "district": "BAGALKOT",
-      "crime_category": "CASES OF HURT",
+      "district": "BALLARI",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
       "alert_level": "CRITICAL",
-      "current_count": 29,
+      "current_count": 2983,
       "historical_avg": 1.0,
-      "percent_change": 200.0,
+      "percent_change": 644700.0,
       "trend_direction": "up"
     },
     {
-      "district": "BAGALKOT",
-      "crime_category": "MISSING PERSON",
+      "district": "BELAGAVI CITY",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
       "alert_level": "CRITICAL",
-      "current_count": 42,
+      "current_count": 3621,
       "historical_avg": 1.0,
-      "percent_change": 100.0,
+      "percent_change": 644700.0,
       "trend_direction": "up"
     },
     {
-      "district": "BAGALKOT",
-      "crime_category": "ANIMAL",
-      "alert_level": "ELEVATED",
-      "current_count": 1,
+      "district": "BELAGAVI DIST",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 10113,
       "historical_avg": 1.0,
-      "percent_change": -100.0,
-      "trend_direction": "down"
+      "percent_change": 644700.0,
+      "trend_direction": "up"
     },
     {
-      "district": "BAGALKOT",
-      "crime_category": "ARSON",
-      "alert_level": "ELEVATED",
-      "current_count": 2,
+      "district": "BENGALURU CITY",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 30107,
       "historical_avg": 1.0,
-      "percent_change": -100.0,
-      "trend_direction": "down"
+      "percent_change": 644700.0,
+      "trend_direction": "up"
     },
     {
-      "district": "BAGALKOT",
-      "crime_category": "ATTEMPTING TO COMMIT OFFENCES",
-      "alert_level": "ELEVATED",
-      "current_count": 1,
+      "district": "BENGALURU DIST",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 12787,
       "historical_avg": 1.0,
-      "percent_change": -100.0,
-      "trend_direction": "down"
+      "percent_change": 644700.0,
+      "trend_direction": "up"
     },
     {
-      "district": "BAGALKOT",
-      "crime_category": "BURGLARY - DAY",
-      "alert_level": "ELEVATED",
-      "current_count": 2,
+      "district": "BIDAR",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 7322,
       "historical_avg": 1.0,
-      "percent_change": -100.0,
-      "trend_direction": "down"
+      "percent_change": 644700.0,
+      "trend_direction": "up"
     },
     {
-      "district": "BAGALKOT",
-      "crime_category": "BURGLARY - NIGHT",
-      "alert_level": "ELEVATED",
-      "current_count": 13,
+      "district": "CHAMARAJANAGAR",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 3183,
       "historical_avg": 1.0,
-      "percent_change": -100.0,
-      "trend_direction": "down"
+      "percent_change": 644700.0,
+      "trend_direction": "up"
     },
     {
-      "district": "BAGALKOT",
-      "crime_category": "CHILDREN ACT",
-      "alert_level": "ELEVATED",
-      "current_count": 2,
+      "district": "CHICKBALLAPURA",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 3671,
       "historical_avg": 1.0,
-      "percent_change": -100.0,
-      "trend_direction": "down"
+      "percent_change": 644700.0,
+      "trend_direction": "up"
     },
     {
-      "district": "BAGALKOT",
-      "crime_category": "COMMUNAL / RELIGION",
-      "alert_level": "ELEVATED",
-      "current_count": 2,
+      "district": "CHIKKAMAGALURU",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 5839,
       "historical_avg": 1.0,
-      "percent_change": -100.0,
-      "trend_direction": "down"
+      "percent_change": 644700.0,
+      "trend_direction": "up"
     },
     {
-      "district": "BAGALKOT",
-      "crime_category": "CONSUMER",
-      "alert_level": "ELEVATED",
-      "current_count": 8,
+      "district": "CHITRADURGA",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 9786,
       "historical_avg": 1.0,
-      "percent_change": -100.0,
-      "trend_direction": "down"
+      "percent_change": 644700.0,
+      "trend_direction": "up"
     },
     {
-      "district": "BAGALKOT",
-      "crime_category": "CRIMES RELATED TO WOMEN",
-      "alert_level": "ELEVATED",
-      "current_count": 2,
+      "district": "DAKSHINA KANNADA",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 6038,
       "historical_avg": 1.0,
-      "percent_change": -100.0,
-      "trend_direction": "down"
+      "percent_change": 644700.0,
+      "trend_direction": "up"
     },
     {
-      "district": "BAGALKOT",
-      "crime_category": "CRIMINAL BREACH OF TRUST",
-      "alert_level": "ELEVATED",
-      "current_count": 2,
+      "district": "DAVANAGERE",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 6194,
       "historical_avg": 1.0,
-      "percent_change": -100.0,
-      "trend_direction": "down"
+      "percent_change": 644700.0,
+      "trend_direction": "up"
     },
     {
-      "district": "BAGALKOT",
-      "crime_category": "CRIMINAL CONSPIRACY",
-      "alert_level": "ELEVATED",
-      "current_count": 1,
+      "district": "DHARWAD",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 2273,
       "historical_avg": 1.0,
-      "percent_change": -100.0,
-      "trend_direction": "down"
+      "percent_change": 644700.0,
+      "trend_direction": "up"
     },
     {
-      "district": "BAGALKOT",
-      "crime_category": "CRIMINAL INTIMIDATION",
-      "alert_level": "ELEVATED",
-      "current_count": 5,
+      "district": "GADAG",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 1637,
       "historical_avg": 1.0,
-      "percent_change": -100.0,
-      "trend_direction": "down"
+      "percent_change": 644700.0,
+      "trend_direction": "up"
     },
     {
-      "district": "BAGALKOT",
-      "crime_category": "CRIMINAL TRESPASS",
-      "alert_level": "ELEVATED",
-      "current_count": 2,
+      "district": "HASSAN",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 13159,
       "historical_avg": 1.0,
-      "percent_change": -100.0,
-      "trend_direction": "down"
+      "percent_change": 644700.0,
+      "trend_direction": "up"
     },
     {
-      "district": "BAGALKOT",
-      "crime_category": "CRPC",
-      "alert_level": "ELEVATED",
-      "current_count": 140,
+      "district": "HAVERI",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 4503,
       "historical_avg": 1.0,
-      "percent_change": -100.0,
-      "trend_direction": "down"
+      "percent_change": 644700.0,
+      "trend_direction": "up"
     },
     {
-      "district": "BAGALKOT",
-      "crime_category": "CRUELTY BY HUSBAND",
-      "alert_level": "ELEVATED",
-      "current_count": 6,
+      "district": "HUBBALLI DHARWAD CITY",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 2842,
       "historical_avg": 1.0,
-      "percent_change": -100.0,
-      "trend_direction": "down"
+      "percent_change": 644700.0,
+      "trend_direction": "up"
+    },
+    {
+      "district": "K.G.F",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 909,
+      "historical_avg": 1.0,
+      "percent_change": 644700.0,
+      "trend_direction": "up"
+    },
+    {
+      "district": "KALABURAGI",
+      "crime_category": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "alert_level": "CRITICAL",
+      "current_count": 4455,
+      "historical_avg": 1.0,
+      "percent_change": 644700.0,
+      "trend_direction": "up"
     }
   ],
   "spatiotemporal_clusters": [
     {
-      "lat": 16.056361,
-      "lng": 75.943909,
+      "lat": 12.971511,
+      "lng": 77.575504,
       "time_bucket": "NIGHT",
-      "frequency": 35,
+      "frequency": 2269,
       "crime_categories": {
-        "KARNATAKA POLICE ACT 1963": 12,
-        "MOTOR VEHICLE ACCIDENTS FATAL": 4,
-        "MISSING PERSON": 3
+        "THEFT": 513,
+        "CHEATING": 294,
+        "CASES OF HURT": 160
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 16.055231,
-      "lng": 75.953662,
+      "lat": 12.96469,
+      "lng": 77.5829,
       "time_bucket": "NIGHT",
-      "frequency": 19,
+      "frequency": 2076,
       "crime_categories": {
-        "KARNATAKA POLICE ACT 1963": 7,
-        "MOTOR VEHICLE ACCIDENTS NON-FATAL": 2,
-        "CRIMINAL INTIMIDATION": 2
+        "THEFT": 437,
+        "PUBLIC SAFETY": 301,
+        "NARCOTIC DRUGS & PSHYCOTROPIC SUBSTANCES": 149
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 16.043274,
-      "lng": 75.940423,
+      "lat": 12.958699,
+      "lng": 77.57167,
       "time_bucket": "NIGHT",
-      "frequency": 16,
+      "frequency": 1243,
       "crime_categories": {
-        "KARNATAKA POLICE ACT 1963": 5,
-        "MISSING PERSON": 4,
-        "MOLESTATION": 1
+        "THEFT": 241,
+        "PUBLIC SAFETY": 154,
+        "MISSING PERSON": 121
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 15.940025,
-      "lng": 75.917794,
+      "lat": 13.018755,
+      "lng": 77.555527,
       "time_bucket": "NIGHT",
-      "frequency": 15,
+      "frequency": 1215,
       "crime_categories": {
-        "KARNATAKA POLICE ACT 1963": 5,
-        "MOLESTATION": 2,
-        "MOTOR VEHICLE ACCIDENTS FATAL": 2
+        "CYBER CRIME": 617,
+        "PUBLIC SAFETY": 235,
+        "MOTOR VEHICLE ACCIDENTS NON-FATAL": 140
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 16.020779,
-      "lng": 75.881059,
+      "lat": 13.0137,
+      "lng": 77.5339,
       "time_bucket": "NIGHT",
-      "frequency": 11,
+      "frequency": 1204,
       "crime_categories": {
-        "THEFT": 3,
-        "ATTEMPT TO MURDER": 2,
-        "CHEATING": 2
+        "MISSING PERSON": 247,
+        "THEFT": 188,
+        "CASES OF HURT": 102
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 15.937514,
-      "lng": 75.914504,
+      "lat": 12.967038,
+      "lng": 77.574542,
       "time_bucket": "NIGHT",
-      "frequency": 10,
+      "frequency": 1163,
       "crime_categories": {
-        "KARNATAKA POLICE ACT 1963": 4,
-        "MISSING PERSON": 3,
-        "CHEATING": 2
+        "PUBLIC SAFETY": 390,
+        "THEFT": 236,
+        "NARCOTIC DRUGS & PSHYCOTROPIC SUBSTANCES": 51
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 16.091968,
-      "lng": 75.873126,
+      "lat": 12.975632,
+      "lng": 77.556213,
       "time_bucket": "NIGHT",
-      "frequency": 10,
+      "frequency": 1110,
       "crime_categories": {
-        "MOTOR VEHICLE ACCIDENTS NON-FATAL": 5,
-        "MOTOR VEHICLE ACCIDENTS FATAL": 4,
-        "DEATHS DUE TO RASHNESS/NEGLIGENCE": 1
+        "THEFT": 207,
+        "MISSING PERSON": 137,
+        "CHEATING": 81
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 16.10198,
-      "lng": 75.867421,
+      "lat": 12.947046,
+      "lng": 77.5406356,
       "time_bucket": "NIGHT",
-      "frequency": 10,
+      "frequency": 1099,
       "crime_categories": {
-        "KARNATAKA POLICE ACT 1963": 5,
-        "MISSING PERSON": 2,
-        "BURGLARY - NIGHT": 1
+        "THEFT": 352,
+        "MISSING PERSON": 145,
+        "CASES OF HURT": 75
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 16.100974,
-      "lng": 75.863888,
+      "lat": 13.01037,
+      "lng": 77.70276,
       "time_bucket": "NIGHT",
-      "frequency": 9,
+      "frequency": 1051,
       "crime_categories": {
-        "KARNATAKA POLICE ACT 1963": 4,
-        "MOTOR VEHICLE ACCIDENTS NON-FATAL": 2,
-        "MOTOR VEHICLE ACCIDENTS FATAL": 2
+        "THEFT": 315,
+        "MISSING PERSON": 135,
+        "BURGLARY - NIGHT": 78
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 16.109557,
-      "lng": 75.868217,
+      "lat": 12.971599,
+      "lng": 77.594566,
       "time_bucket": "NIGHT",
-      "frequency": 8,
+      "frequency": 1035,
       "crime_categories": {
-        "KARNATAKA POLICE ACT 1963": 4,
-        "KARNATAKA STATE LOCAL ACT": 2,
-        "INSULTING MODESTY OF WOMEN (EVE TEASING)": 1
+        "CYBER CRIME": 284,
+        "THEFT": 112,
+        "MOTOR VEHICLE ACCIDENTS NON-FATAL": 94
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 15.978069,
-      "lng": 75.907997,
+      "lat": 13.01438487,
+      "lng": 77.60540576,
       "time_bucket": "NIGHT",
-      "frequency": 6,
+      "frequency": 957,
       "crime_categories": {
-        "CRIMINAL INTIMIDATION": 2,
-        "MISSING PERSON": 1,
-        "KARNATAKA STATE LOCAL ACT": 1
+        "NARCOTIC DRUGS & PSHYCOTROPIC SUBSTANCES": 178,
+        "MISSING PERSON": 173,
+        "THEFT": 140
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 16.054967,
-      "lng": 75.950667,
+      "lat": 12.996207,
+      "lng": 77.580181,
       "time_bucket": "NIGHT",
-      "frequency": 6,
+      "frequency": 904,
       "crime_categories": {
-        "MOLESTATION": 2,
-        "KARNATAKA POLICE ACT 1963": 1,
-        "CHEATING": 1
+        "THEFT": 143,
+        "CHEATING": 93,
+        "MISSING PERSON": 89
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 16.083112,
-      "lng": 75.91674,
+      "lat": 12.988956,
+      "lng": 77.539115,
       "time_bucket": "NIGHT",
-      "frequency": 6,
+      "frequency": 856,
       "crime_categories": {
-        "MOTOR VEHICLE ACCIDENTS FATAL": 3,
-        "MOLESTATION": 2,
-        "BURGLARY - NIGHT": 1
+        "CYBER CRIME": 300,
+        "THEFT": 135,
+        "CHEATING": 83
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 16.109622,
-      "lng": 75.931844,
+      "lat": 0.12879639,
+      "lng": 0.77611646,
       "time_bucket": "NIGHT",
-      "frequency": 6,
+      "frequency": 852,
       "crime_categories": {
-        "RIOTS": 2,
-        "SCHEDULED CASTE AND THE SCHEDULED TRIBES": 1,
-        "CASES OF HURT": 1
+        "MOTOR VEHICLE ACCIDENTS NON-FATAL": 479,
+        "PUBLIC SAFETY": 208,
+        "NEGLIGENT ACT": 107
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 16.135827,
-      "lng": 75.919221,
+      "lat": 12.972541,
+      "lng": 77.56122,
       "time_bucket": "NIGHT",
-      "frequency": 6,
+      "frequency": 807,
       "crime_categories": {
-        "MOTOR VEHICLE ACCIDENTS FATAL": 3,
-        "KARNATAKA POLICE ACT 1963": 1,
-        "MOTOR VEHICLE ACCIDENTS NON-FATAL": 1
+        "MISSING PERSON": 199,
+        "THEFT": 101,
+        "NARCOTIC DRUGS & PSHYCOTROPIC SUBSTANCES": 72
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 15.868249,
-      "lng": 75.950888,
+      "lat": 12.937701,
+      "lng": 77.567033,
       "time_bucket": "NIGHT",
-      "frequency": 5,
+      "frequency": 778,
       "crime_categories": {
-        "MOLESTATION": 2,
-        "CASES OF HURT": 1,
-        "BURGLARY - NIGHT": 1
-      },
-      "severity_level": "CRITICAL"
-    },
-    {
-      "lat": 16.061612,
-      "lng": 75.925439,
-      "time_bucket": "NIGHT",
-      "frequency": 5,
-      "crime_categories": {
-        "MOTOR VEHICLE ACCIDENTS FATAL": 2,
-        "MOTOR VEHICLE ACCIDENTS NON-FATAL": 1,
-        "KARNATAKA STATE LOCAL ACT": 1
+        "THEFT": 169,
+        "NEGLIGENT ACT": 76,
+        "CHEATING": 72
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 16.141122,
-      "lng": 75.910169,
+      "lat": 12.9457989942741,
+      "lng": 77.528173875044,
       "time_bucket": "NIGHT",
-      "frequency": 5,
+      "frequency": 778,
       "crime_categories": {
-        "KARNATAKA STATE LOCAL ACT": 1,
-        "CASES OF HURT": 1,
-        "CRIMINAL CONSPIRACY": 1
+        "THEFT": 178,
+        "NARCOTIC DRUGS & PSHYCOTROPIC SUBSTANCES": 78,
+        "MISSING PERSON": 74
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 15.93417,
-      "lng": 75.879748,
+      "lat": 12.948122,
+      "lng": 77.619095,
       "time_bucket": "NIGHT",
-      "frequency": 4,
+      "frequency": 766,
       "crime_categories": {
-        "MOTOR VEHICLE ACCIDENTS FATAL": 2,
-        "MOTOR VEHICLE ACCIDENTS NON-FATAL": 2
+        "THEFT": 137,
+        "MISSING PERSON": 101,
+        "CASES OF HURT": 99
       },
       "severity_level": "LOW"
     },
     {
-      "lat": 15.934547,
-      "lng": 75.886343,
+      "lat": 12.952646,
+      "lng": 77.574323,
       "time_bucket": "NIGHT",
-      "frequency": 4,
+      "frequency": 756,
       "crime_categories": {
-        "MOTOR VEHICLE ACCIDENTS FATAL": 2,
-        "MURDER": 1,
-        "CHILDREN ACT": 1
+        "THEFT": 167,
+        "CHEATING": 82,
+        "MOTOR VEHICLE ACCIDENTS NON-FATAL": 65
       },
-      "severity_level": "HIGH"
+      "severity_level": "LOW"
+    },
+    {
+      "lat": 13.03591466,
+      "lng": 77.52081383,
+      "time_bucket": "NIGHT",
+      "frequency": 744,
+      "crime_categories": {
+        "PUBLIC SAFETY": 175,
+        "MOTOR VEHICLE ACCIDENTS NON-FATAL": 133,
+        "THEFT": 116
+      },
+      "severity_level": "LOW"
     }
   ]
 }

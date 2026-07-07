@@ -79,8 +79,8 @@ app.get('/api/hotspots', (req, res) => {
   res.json({
     hotspot_count: summary.hotspot_count || 0,
     spatiotemporal_hotspot_count: summary.spatiotemporal_hotspot_count || 0,
-    locations: (summary.hotspot_locations || []).slice(0, 50),
-    clusters: (summary.spatiotemporal_clusters || []).slice(0, 50)
+    locations: summary.hotspot_locations || [],
+    clusters: summary.spatiotemporal_clusters || []
   });
 });
 
@@ -114,7 +114,7 @@ app.get('/api/spatiotemporal', (req, res) => {
   const summary = readJSON('dashboard_summary.json');
   if (!summary) return res.status(404).json({ error: 'No spatiotemporal data found.' });
   res.json({
-    clusters: (summary.spatiotemporal_clusters || []).slice(0, 100),
+    clusters: summary.spatiotemporal_clusters || [],
     total_clusters: summary.spatiotemporal_hotspot_count || 0
   });
 });

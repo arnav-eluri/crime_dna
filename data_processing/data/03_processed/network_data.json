@@ -1,159 +1,139 @@
 {
   "nodes": [
     {
-      "id": "KARNATAKA POLICE ACT 1963",
+      "id": "THEFT",
       "group": "crime_type",
-      "size": 204
+      "size": 159021
     },
     {
-      "id": "BAGALKOT",
+      "id": "BENGALURU CITY",
       "group": "district",
-      "size": 1000
+      "size": 425408
     },
     {
-      "id": "CRPC",
+      "id": "CYBER CRIME",
       "group": "crime_type",
-      "size": 140
-    },
-    {
-      "id": "MOTOR VEHICLE ACCIDENTS FATAL",
-      "group": "crime_type",
-      "size": 121
-    },
-    {
-      "id": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
-      "group": "crime_type",
-      "size": 100
-    },
-    {
-      "id": "KARNATAKA STATE LOCAL ACT",
-      "group": "crime_type",
-      "size": 100
-    },
-    {
-      "id": "MOLESTATION",
-      "group": "crime_type",
-      "size": 54
+      "size": 78502
     },
     {
       "id": "MISSING PERSON",
       "group": "crime_type",
-      "size": 42
-    },
-    {
-      "id": "CASES OF HURT",
-      "group": "crime_type",
-      "size": 29
-    },
-    {
-      "id": "RIOTS",
-      "group": "crime_type",
-      "size": 25
-    },
-    {
-      "id": "THEFT",
-      "group": "crime_type",
-      "size": 23
-    },
-    {
-      "id": "ATTEMPT TO MURDER",
-      "group": "crime_type",
-      "size": 16
-    },
-    {
-      "id": "POCSO",
-      "group": "crime_type",
-      "size": 14
-    },
-    {
-      "id": "BURGLARY - NIGHT",
-      "group": "crime_type",
-      "size": 13
-    },
-    {
-      "id": "CHEATING",
-      "group": "crime_type",
-      "size": 12
-    },
-    {
-      "id": "MURDER",
-      "group": "crime_type",
-      "size": 12
-    },
-    {
-      "id": "SCHEDULED CASTE AND THE SCHEDULED TRIBES",
-      "group": "crime_type",
-      "size": 10
-    },
-    {
-      "id": "CONSUMER",
-      "group": "crime_type",
-      "size": 8
-    },
-    {
-      "id": "KIDNAPPING AND ABDUCTION",
-      "group": "crime_type",
-      "size": 7
-    },
-    {
-      "id": "OFFENCES AGAINST PUBLIC SERVANTS (PUBLIC SERVANT IS A VICTIM)",
-      "group": "crime_type",
-      "size": 7
-    },
-    {
-      "id": "CRUELTY BY HUSBAND",
-      "group": "crime_type",
-      "size": 6
-    },
-    {
-      "id": "ELECTION",
-      "group": "crime_type",
-      "size": 5
-    },
-    {
-      "id": "DEATHS DUE TO RASHNESS/NEGLIGENCE",
-      "group": "crime_type",
-      "size": 5
-    },
-    {
-      "id": "CRIMINAL INTIMIDATION",
-      "group": "crime_type",
-      "size": 5
+      "size": 124811
     },
     {
       "id": "PUBLIC SAFETY",
       "group": "crime_type",
-      "size": 4
+      "size": 42380
     },
     {
-      "id": "REPRESENTATION OF PEOPLE ACT 1951 & 1988",
+      "id": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
       "group": "crime_type",
-      "size": 3
+      "size": 242976
     },
     {
-      "id": "EXPOSURE AND ABANDONMENT OF CHILD",
+      "id": "CASES OF HURT",
       "group": "crime_type",
-      "size": 3
+      "size": 126211
     },
     {
-      "id": "SUICIDE",
+      "id": "CHEATING",
       "group": "crime_type",
-      "size": 3
+      "size": 48675
     },
     {
-      "id": "FORGERY",
+      "id": "NARCOTIC DRUGS & PSHYCOTROPIC SUBSTANCES",
       "group": "crime_type",
-      "size": 2
+      "size": 27856
     },
     {
-      "id": "ARSON",
+      "id": "NEGLIGENT ACT",
       "group": "crime_type",
-      "size": 2
+      "size": 22659
     },
     {
-      "id": "CRIMES RELATED TO WOMEN",
+      "id": "HASSAN",
+      "group": "district",
+      "size": 58256
+    },
+    {
+      "id": "TUMAKURU",
+      "group": "district",
+      "size": 61553
+    },
+    {
+      "id": "BENGALURU DIST",
+      "group": "district",
+      "size": 64004
+    },
+    {
+      "id": "MANDYA",
+      "group": "district",
+      "size": 59701
+    },
+    {
+      "id": "CRPC",
       "group": "crime_type",
-      "size": 2
+      "size": 137939
+    },
+    {
+      "id": "BELAGAVI DIST",
+      "group": "district",
+      "size": 59569
+    },
+    {
+      "id": "SHIVAMOGGA",
+      "group": "district",
+      "size": 61338
+    },
+    {
+      "id": "CHITRADURGA",
+      "group": "district",
+      "size": 47754
+    },
+    {
+      "id": "RAMANAGARA",
+      "group": "district",
+      "size": 44232
+    },
+    {
+      "id": "MYSURU DIST",
+      "group": "district",
+      "size": 50599
+    },
+    {
+      "id": "UDUPI",
+      "group": "district",
+      "size": 28431
+    },
+    {
+      "id": "KIDNAPPING AND ABDUCTION",
+      "group": "crime_type",
+      "size": 23922
+    },
+    {
+      "id": "BURGLARY - NIGHT",
+      "group": "crime_type",
+      "size": 35729
+    },
+    {
+      "id": "BIDAR",
+      "group": "district",
+      "size": 37861
+    },
+    {
+      "id": "KARNATAKA RAILWAYS",
+      "group": "district",
+      "size": 9888
+    },
+    {
+      "id": "MANGALURU CITY",
+      "group": "district",
+      "size": 31544
+    },
+    {
+      "id": "UTTARA KANNADA",
+      "group": "district",
+      "size": 32690
     },
     {
       "id": "SYNDICATE_BAGALKOT",
@@ -163,154 +143,154 @@
   ],
   "edges": [
     {
-      "source": "KARNATAKA POLICE ACT 1963",
-      "target": "BAGALKOT",
-      "weight": 204
+      "source": "THEFT",
+      "target": "BENGALURU CITY",
+      "weight": 69988
     },
     {
-      "source": "CRPC",
-      "target": "BAGALKOT",
-      "weight": 140
-    },
-    {
-      "source": "MOTOR VEHICLE ACCIDENTS FATAL",
-      "target": "BAGALKOT",
-      "weight": 121
-    },
-    {
-      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
-      "target": "BAGALKOT",
-      "weight": 100
-    },
-    {
-      "source": "KARNATAKA STATE LOCAL ACT",
-      "target": "BAGALKOT",
-      "weight": 100
-    },
-    {
-      "source": "MOLESTATION",
-      "target": "BAGALKOT",
-      "weight": 54
+      "source": "CYBER CRIME",
+      "target": "BENGALURU CITY",
+      "weight": 64599
     },
     {
       "source": "MISSING PERSON",
-      "target": "BAGALKOT",
-      "weight": 42
-    },
-    {
-      "source": "CASES OF HURT",
-      "target": "BAGALKOT",
-      "weight": 29
-    },
-    {
-      "source": "RIOTS",
-      "target": "BAGALKOT",
-      "weight": 25
-    },
-    {
-      "source": "THEFT",
-      "target": "BAGALKOT",
-      "weight": 23
-    },
-    {
-      "source": "ATTEMPT TO MURDER",
-      "target": "BAGALKOT",
-      "weight": 16
-    },
-    {
-      "source": "POCSO",
-      "target": "BAGALKOT",
-      "weight": 14
-    },
-    {
-      "source": "BURGLARY - NIGHT",
-      "target": "BAGALKOT",
-      "weight": 13
-    },
-    {
-      "source": "CHEATING",
-      "target": "BAGALKOT",
-      "weight": 12
-    },
-    {
-      "source": "MURDER",
-      "target": "BAGALKOT",
-      "weight": 12
-    },
-    {
-      "source": "SCHEDULED CASTE AND THE SCHEDULED TRIBES",
-      "target": "BAGALKOT",
-      "weight": 10
-    },
-    {
-      "source": "CONSUMER",
-      "target": "BAGALKOT",
-      "weight": 8
-    },
-    {
-      "source": "KIDNAPPING AND ABDUCTION",
-      "target": "BAGALKOT",
-      "weight": 7
-    },
-    {
-      "source": "OFFENCES AGAINST PUBLIC SERVANTS (PUBLIC SERVANT IS A VICTIM)",
-      "target": "BAGALKOT",
-      "weight": 7
-    },
-    {
-      "source": "CRUELTY BY HUSBAND",
-      "target": "BAGALKOT",
-      "weight": 6
-    },
-    {
-      "source": "ELECTION",
-      "target": "BAGALKOT",
-      "weight": 5
-    },
-    {
-      "source": "DEATHS DUE TO RASHNESS/NEGLIGENCE",
-      "target": "BAGALKOT",
-      "weight": 5
-    },
-    {
-      "source": "CRIMINAL INTIMIDATION",
-      "target": "BAGALKOT",
-      "weight": 5
+      "target": "BENGALURU CITY",
+      "weight": 39234
     },
     {
       "source": "PUBLIC SAFETY",
-      "target": "BAGALKOT",
-      "weight": 4
+      "target": "BENGALURU CITY",
+      "weight": 32222
     },
     {
-      "source": "REPRESENTATION OF PEOPLE ACT 1951 & 1988",
-      "target": "BAGALKOT",
-      "weight": 3
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "BENGALURU CITY",
+      "weight": 30107
     },
     {
-      "source": "EXPOSURE AND ABANDONMENT OF CHILD",
-      "target": "BAGALKOT",
-      "weight": 3
+      "source": "CASES OF HURT",
+      "target": "BENGALURU CITY",
+      "weight": 23116
     },
     {
-      "source": "SUICIDE",
-      "target": "BAGALKOT",
-      "weight": 3
+      "source": "CHEATING",
+      "target": "BENGALURU CITY",
+      "weight": 22716
     },
     {
-      "source": "FORGERY",
-      "target": "BAGALKOT",
-      "weight": 2
+      "source": "NARCOTIC DRUGS & PSHYCOTROPIC SUBSTANCES",
+      "target": "BENGALURU CITY",
+      "weight": 16247
     },
     {
-      "source": "ARSON",
-      "target": "BAGALKOT",
-      "weight": 2
+      "source": "NEGLIGENT ACT",
+      "target": "BENGALURU CITY",
+      "weight": 15141
     },
     {
-      "source": "CRIMES RELATED TO WOMEN",
-      "target": "BAGALKOT",
-      "weight": 2
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "HASSAN",
+      "weight": 13159
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "TUMAKURU",
+      "weight": 12900
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "BENGALURU DIST",
+      "weight": 12787
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "MANDYA",
+      "weight": 12758
+    },
+    {
+      "source": "CRPC",
+      "target": "BENGALURU CITY",
+      "weight": 10878
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "BELAGAVI DIST",
+      "weight": 10113
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "SHIVAMOGGA",
+      "weight": 9851
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "CHITRADURGA",
+      "weight": 9786
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "RAMANAGARA",
+      "weight": 9257
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "MYSURU DIST",
+      "weight": 8666
+    },
+    {
+      "source": "THEFT",
+      "target": "BENGALURU DIST",
+      "weight": 8055
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "UDUPI",
+      "weight": 8007
+    },
+    {
+      "source": "KIDNAPPING AND ABDUCTION",
+      "target": "BENGALURU CITY",
+      "weight": 7924
+    },
+    {
+      "source": "BURGLARY - NIGHT",
+      "target": "BENGALURU CITY",
+      "weight": 7890
+    },
+    {
+      "source": "CASES OF HURT",
+      "target": "HASSAN",
+      "weight": 7398
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "BIDAR",
+      "weight": 7322
+    },
+    {
+      "source": "THEFT",
+      "target": "KARNATAKA RAILWAYS",
+      "weight": 7128
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "MANGALURU CITY",
+      "weight": 7083
+    },
+    {
+      "source": "MISSING PERSON",
+      "target": "BENGALURU DIST",
+      "weight": 7075
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "UTTARA KANNADA",
+      "weight": 7060
+    },
+    {
+      "source": "CRPC",
+      "target": "BELAGAVI DIST",
+      "weight": 7053
     },
     {
       "source": "SYNDICATE_BAGALKOT",
