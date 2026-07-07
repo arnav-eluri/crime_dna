@@ -221,4 +221,4 @@ def build_spatiotemporal_summary(df: pd.DataFrame) -> list:
                 'severity_level': group['Severity_Level'].mode().iloc[0] if 'Severity_Level' in group.columns and not group['Severity_Level'].mode().empty else 'LOW'
             })
 
-    return sorted(summary, key=lambda x: x['frequency'], reverse=True)[:50]
+    return sorted(summary, key=lambda x: x['frequency'], reverse=True)

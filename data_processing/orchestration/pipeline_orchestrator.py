@@ -200,7 +200,7 @@ def export_dashboard_summary(df, alerts=None, spatiotemporal=None):
     if 'Hotspot_Flag' in df.columns:
         hotspots = df[df['Hotspot_Flag'] == 1]
         if not hotspots.empty and 'Latitude' in hotspots.columns and 'Longitude' in hotspots.columns:
-            for _, row in hotspots.head(20).iterrows():
+            for _, row in hotspots.head(1000).iterrows():
                 hotspot_locations.append({
                     'lat': float(row['Latitude']) if pd.notna(row['Latitude']) else 0,
                     'lng': float(row['Longitude']) if pd.notna(row['Longitude']) else 0,
@@ -232,8 +232,8 @@ def export_dashboard_summary(df, alerts=None, spatiotemporal=None):
         'risk_class_distribution': {str(k): int(v) for k, v in risk_dist.items()},
         'monthly_trends': {str(k): int(v) for k, v in severity_over_time.items()},
         'hotspot_locations': hotspot_locations,
-        'alerts': alerts[:20] if alerts else [],
-        'spatiotemporal_clusters': spatiotemporal[:20] if spatiotemporal else [],
+        'alerts': alerts[:500] if alerts else [],
+        'spatiotemporal_clusters': spatiotemporal if spatiotemporal else [],
     }
 
     with open(SUMMARY_OUTPUT_PATH, 'w') as f:

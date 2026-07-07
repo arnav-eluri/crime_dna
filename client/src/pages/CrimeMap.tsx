@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../api';
 import { SpatiotemporalCluster } from '../types';
-import { MapContainer, TileLayer, CircleMarker, Tooltip } from 'react-leaflet';
+import { MapContainer, TileLayer, useMap } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet.heat';
 import 'leaflet/dist/leaflet.css';
 import { useMediaQuery } from '../utils';
 import MobileHeader from '../components/MobileHeader';
@@ -11,6 +13,35 @@ const SEVERITY_COLORS: Record<string, string> = {
   HIGH: '#ffa502',
   LOW: '#2eD573',
 };
+
+function HeatmapLayer({ data }: { data: SpatiotemporalCluster[] }) {
+  const map = useMap();
+  
+  useEffect(() => {
+    if (!map || !data || data.length === 0) return;
+    
+    const maxFreq = Math.max(...data.map(c => c.frequency), 1);
+    const points = data.map(c => [c.lat, c.lng, (c.frequency / maxFreq)]);
+    
+    // @ts-ignore - leaflet.heat types might be missing or incomplete
+    const heat = L.heatLayer(points, {
+      radius: 20,
+      blur: 15,
+      maxZoom: 11,
+      gradient: {
+        0.4: '#2eD573', 
+        0.7: '#ffa502', 
+        1.0: '#ff4757'  
+      }
+    }).addTo(map);
+    
+    return () => {
+      map.removeLayer(heat);
+    };
+  }, [map, data]);
+  
+  return null;
+}
 
 export default function CrimeMap() {
   const [clusters, setClusters] = useState<SpatiotemporalCluster[]>([]);
@@ -24,41 +55,20 @@ export default function CrimeMap() {
       .finally(() => setLoading(false));
   }, []);
 
-  const maxFreq = Math.max(...clusters.map(c => c.frequency), 1);
   const criticalCount = clusters.filter(c => c.severity_level === 'CRITICAL').length;
 
-  // Default to Bangalore coordinates if no data
-  const center: [number, number] = [12.9716, 77.5946];
+  // Default to Karnataka center coordinates
+  const center: [number, number] = [15.3173, 75.7139];
 
   return (
     <div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0 }}>
-        <MapContainer center={center} zoom={11} style={{ width: '100%', height: '100%' }} zoomControl={false}>
+        <MapContainer center={center} zoom={7} style={{ width: '100%', height: '100%' }} zoomControl={false}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
           />
-          {clusters.map((c, i) => (
-            <CircleMarker
-              key={i}
-              center={[c.lat, c.lng]}
-              radius={5 + (c.frequency / maxFreq) * 20}
-              pathOptions={{
-                color: SEVERITY_COLORS[c.severity_level] || '#8395a7',
-                fillColor: SEVERITY_COLORS[c.severity_level] || '#8395a7',
-                fillOpacity: 0.6,
-                weight: 2
-              }}
-            >
-              <Tooltip>
-                <div style={{ fontFamily: 'var(--font-family-body)', fontSize: 12 }}>
-                  <strong style={{ color: SEVERITY_COLORS[c.severity_level] }}>{c.severity_level} RISK</strong><br />
-                  Frequency: {c.frequency}<br />
-                  Time: {c.time_bucket}
-                </div>
-              </Tooltip>
-            </CircleMarker>
-          ))}
+          <HeatmapLayer data={clusters} />
         </MapContainer>
       </div>
 
