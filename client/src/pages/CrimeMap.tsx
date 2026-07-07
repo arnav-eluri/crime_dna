@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { api } from '../api';
 import { SpatiotemporalCluster } from '../types';
-import { MapContainer, TileLayer, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, useMap, useMapEvents, CircleMarker, Tooltip } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet.heat';
 import 'leaflet/dist/leaflet.css';
@@ -43,6 +43,58 @@ function HeatmapLayer({ data }: { data: SpatiotemporalCluster[] }) {
   return null;
 }
 
+function DynamicCrimeLayer({ data }: { data: SpatiotemporalCluster[] }) {
+  const map = useMap();
+  const [zoom, setZoom] = useState(map.getZoom());
+  const [bounds, setBounds] = useState(map.getBounds());
+
+  useMapEvents({
+    zoomend: () => {
+      setZoom(map.getZoom());
+      setBounds(map.getBounds());
+    },
+    moveend: () => {
+      setBounds(map.getBounds());
+    }
+  });
+
+  const maxFreq = useMemo(() => Math.max(...data.map(c => c.frequency), 1), [data]);
+
+  // When zoomed out, use the highly performant canvas heatmap
+  if (zoom < 10) {
+    return <HeatmapLayer data={data} />;
+  }
+
+  // When zoomed in, filter points to current bounds to prevent SVG lag, and show interactive markers
+  const visibleData = data.filter(c => bounds.contains([c.lat, c.lng]));
+
+  return (
+    <>
+      {visibleData.map((c, i) => (
+        <CircleMarker
+          key={`${c.lat}-${c.lng}-${c.time_bucket}-${i}`}
+          center={[c.lat, c.lng]}
+          radius={5 + (c.frequency / maxFreq) * 20}
+          pathOptions={{
+            color: SEVERITY_COLORS[c.severity_level] || '#8395a7',
+            fillColor: SEVERITY_COLORS[c.severity_level] || '#8395a7',
+            fillOpacity: 0.6,
+            weight: 2
+          }}
+        >
+          <Tooltip>
+            <div style={{ fontFamily: 'var(--font-family-body)', fontSize: 12 }}>
+              <strong style={{ color: SEVERITY_COLORS[c.severity_level] }}>{c.severity_level} RISK</strong><br />
+              Frequency: {c.frequency}<br />
+              Time: {c.time_bucket}
+            </div>
+          </Tooltip>
+        </CircleMarker>
+      ))}
+    </>
+  );
+}
+
 export default function CrimeMap() {
   const [clusters, setClusters] = useState<SpatiotemporalCluster[]>([]);
   const [loading, setLoading] = useState(true);
@@ -68,7 +120,7 @@ export default function CrimeMap() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
           />
-          <HeatmapLayer data={clusters} />
+          <DynamicCrimeLayer data={clusters} />
         </MapContainer>
       </div>
 
