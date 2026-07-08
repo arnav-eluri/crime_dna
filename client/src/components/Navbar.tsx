@@ -48,7 +48,7 @@ export default function Navbar() {
 
   return (
     <div className={`sidebar ${isMobile ? 'sidebar-mobile' : ''}`}>
-      <div className="sidebar-logo" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="sidebar-logo">
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <div style={styles.logoIcon}></div>
           <div>
@@ -57,9 +57,10 @@ export default function Navbar() {
           </div>
         </div>
         {!isMobile && (
-          <div className="notranslate shadow-hover" style={{ cursor: 'pointer', fontWeight: '600', fontSize: '13px', color: 'var(--color-on-surface)', backgroundColor: 'var(--color-surface-container-high)', padding: '6px 12px', borderRadius: '100px', display: 'flex', alignItems: 'center', gap: '6px', border: '1px solid var(--color-outline-variant)', letterSpacing: '0.5px', transition: 'all 0.2s ease' }} onClick={toggleLanguage} title="Translate">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-            {isKn ? 'EN' : 'ಕನ್ನಡ'}
+          <div className="notranslate shadow-hover" style={{ flexShrink: 0, whiteSpace: 'nowrap', cursor: 'pointer', fontWeight: '600', fontSize: '11px', color: '#191c1d', backgroundColor: 'transparent', padding: '4px 8px', borderRadius: '100px', display: 'flex', alignItems: 'center', gap: '4px', border: '1.2px solid #191c1d', transition: 'all 0.2s ease' }} onClick={toggleLanguage} title="Translate">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <span style={{ paddingTop: '1px' }}>{isKn ? 'English' : 'ಕನ್ನಡ'}</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </div>
         )}
       </div>

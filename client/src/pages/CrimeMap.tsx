@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { api } from '../api';
 import { SpatiotemporalCluster } from '../types';
-import { MapContainer, TileLayer, useMap, useMapEvents, CircleMarker, Tooltip } from 'react-leaflet';
+import { MapContainer, TileLayer, useMap, useMapEvents, CircleMarker, Tooltip, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet.heat';
 import 'leaflet/dist/leaflet.css';
@@ -89,6 +89,35 @@ function DynamicCrimeLayer({ data }: { data: SpatiotemporalCluster[] }) {
               Time: {c.time_bucket}
             </div>
           </Tooltip>
+          <Popup>
+            <div style={{ fontFamily: 'var(--font-family-body)', fontSize: 13, minWidth: 220 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+                <div style={{ width: 12, height: 12, borderRadius: '50%', backgroundColor: SEVERITY_COLORS[c.severity_level] }}></div>
+                <strong style={{ color: SEVERITY_COLORS[c.severity_level], fontSize: 14 }}>{c.severity_level} RISK</strong>
+              </div>
+              
+              <p style={{ margin: '0 0 12px 0', color: '#514535', lineHeight: 1.4 }}>
+                This location is colored <b>{c.severity_level === 'LOW' ? 'green' : c.severity_level === 'HIGH' ? 'orange' : 'red'}</b> because it has a {c.severity_level.toLowerCase()} severity index, indicating {c.severity_level === 'LOW' ? 'minor infractions or non-violent incidents' : c.severity_level === 'HIGH' ? 'elevated crime rates requiring attention' : 'critical, high-priority emergency incidents'}.
+              </p>
+              
+              <strong style={{ color: '#191c1d', fontSize: 12, textTransform: 'uppercase' }}>Related Cases in Cluster:</strong>
+              <ul style={{ margin: '6px 0', paddingLeft: 16, color: '#514535' }}>
+                {Object.entries(c.crime_categories || {})
+                  .sort((a, b) => b[1] - a[1])
+                  .slice(0, 4)
+                  .map(([type, count]) => (
+                    <li key={type} style={{ marginBottom: 4 }}>
+                      {type} <b>({count})</b>
+                    </li>
+                  ))}
+              </ul>
+              
+              <div style={{ marginTop: 12, paddingTop: 8, borderTop: '1px solid #eee', fontSize: 11, color: '#837562' }}>
+                Total recorded incidents: {c.frequency}<br/>
+                Timeframe: {c.time_bucket}
+              </div>
+            </div>
+          </Popup>
         </CircleMarker>
       ))}
     </>
@@ -125,7 +154,7 @@ export default function CrimeMap() {
       </div>
 
       {/* Top Header Layer */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, pointerEvents: 'none' }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 9999, pointerEvents: 'none' }}>
         <div style={{ pointerEvents: 'auto' }}>
           {isMobile ? <MobileHeader /> : (
             <div style={{ padding: '40px 40px 0' }}>
