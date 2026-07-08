@@ -32,14 +32,36 @@ export default function Navbar() {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const navItems = isMobile ? MOBILE_NAV_ITEMS : DESKTOP_NAV_ITEMS;
 
+  const currentCookie = document.cookie.match(/(^|;\s*)googtrans=([^;]*)/);
+  const isKn = currentCookie && currentCookie[2] === '/en/kn';
+
+  const toggleLanguage = () => {
+    if (isKn) {
+      document.cookie = "googtrans=/en/en; path=/";
+      document.cookie = "googtrans=/en/en; path=/; domain=" + window.location.hostname;
+    } else {
+      document.cookie = "googtrans=/en/kn; path=/";
+      document.cookie = "googtrans=/en/kn; path=/; domain=" + window.location.hostname;
+    }
+    window.location.reload();
+  };
+
   return (
     <div className={`sidebar ${isMobile ? 'sidebar-mobile' : ''}`}>
-      <div className="sidebar-logo">
-        <div style={styles.logoIcon}></div>
-        <div>
-          <div style={styles.logoTitle}>CrimeDNA</div>
-          <div style={styles.logoSub}>Intelligence Platform</div>
+      <div className="sidebar-logo" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={styles.logoIcon}></div>
+          <div>
+            <div style={styles.logoTitle}>CrimeDNA</div>
+            <div style={styles.logoSub}>Intelligence Platform</div>
+          </div>
         </div>
+        {!isMobile && (
+          <div className="notranslate shadow-hover" style={{ cursor: 'pointer', fontWeight: '600', fontSize: '13px', color: 'var(--color-on-surface)', backgroundColor: 'var(--color-surface-container-high)', padding: '6px 12px', borderRadius: '100px', display: 'flex', alignItems: 'center', gap: '6px', border: '1px solid var(--color-outline-variant)', letterSpacing: '0.5px', transition: 'all 0.2s ease' }} onClick={toggleLanguage} title="Translate">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            {isKn ? 'EN' : 'ಕನ್ನಡ'}
+          </div>
+        )}
       </div>
       <nav className="sidebar-nav">
         {navItems.map((item) => {

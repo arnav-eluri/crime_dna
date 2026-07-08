@@ -49,8 +49,8 @@
   --color-surface-variant: #e1e3e4;
 
   /* Typography */
-  --font-family-display: 'Hanken Grotesk', sans-serif;
-  --font-family-body: 'Inter', sans-serif;
+  --font-family-display: 'Hanken Grotesk', 'Anek Kannada', sans-serif;
+  --font-family-body: 'Inter', 'Anek Kannada', sans-serif;
   --font-family-mono: 'JetBrains Mono', monospace;
   
   --font-size-display-lg: 48px;
@@ -109,6 +109,20 @@ body {
   color: var(--color-on-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  top: 0 !important;
+}
+
+/* Hide Google Translate Toolbar */
+.VIpgJd-Zvi9od-aZ2wEe-wOHMyf,
+.VIpgJd-Zvi9od-ORHb-OEVmcd,
+#goog-gt-tt,
+.skiptranslate iframe,
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+* {
+  word-break: break-word;
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -41,6 +41,9 @@ const styles: Record<string, React.CSSProperties> = {
     transition: 'all 0.3s ease',
     position: 'relative',
     overflow: 'hidden',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
   header: {
     display: 'flex',
@@ -71,10 +74,14 @@ const styles: Record<string, React.CSSProperties> = {
   },
   value: {
     fontFamily: 'var(--font-family-display)',
-    fontSize: 28,
+    fontSize: 'clamp(20px, 3.5vw, 28px)',
     fontWeight: 800,
     lineHeight: 1.1,
     marginTop: 4,
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    display: 'block',
   },
   subtitle: {
     fontFamily: 'var(--font-family-body)',

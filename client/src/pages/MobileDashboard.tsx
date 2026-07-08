@@ -47,12 +47,12 @@ export default function MobileDashboard({ data }: Props) {
           <h3 style={styles.sectionTitle}>Dashboard Values</h3>
         </div>
         <div style={styles.kpiGrid}>
-          <KpiCard title="Total FIRs" value={data.total_firs.toLocaleString()} icon="/img-1.png" color="#805600" subtitle="All registered cases" />
-          <KpiCard title="Active Cases" value={data.active_cases.toLocaleString()} icon="/img-2.png" color="#1e90ff" subtitle="Under investigation" />
-          <KpiCard title="Hotspots" value={data.hotspot_count} icon="/img-3.png" color="#ba1a1a" subtitle={`${data.spatiotemporal_hotspot_count} spatiotemporal`} />
-          <KpiCard title="Critical" value={data.critical_count} icon="/img-4.png" color="#d4af37" subtitle="High severity incidents" />
-          <KpiCard title="Anomalies" value={data.anomaly_count} icon="/img-5.png" color="#ffba46" subtitle="Statistical outliers detected" />
-          <KpiCard title="Alerts" value={data.alerts?.length || 0} icon="/img-6.png" color="#ba1a1a" subtitle={`${criticalAlerts.length} critical`} />
+          <KpiCard title="Total FIRs" value={data.total_firs?.toLocaleString()} icon="/img-1.png" color="#805600" subtitle="All registered cases" />
+          <KpiCard title="Active Cases" value={data.active_cases?.toLocaleString()} icon="/img-2.png" color="#1e90ff" subtitle="Under investigation" />
+          <KpiCard title="Hotspots" value={data.hotspot_count?.toLocaleString()} icon="/img-3.png" color="#ba1a1a" subtitle={`${data.spatiotemporal_hotspot_count?.toLocaleString()} spatiotemporal`} />
+          <KpiCard title="Critical" value={data.critical_count?.toLocaleString()} icon="/img-4.png" color="#d4af37" subtitle="High severity incidents" />
+          <KpiCard title="Anomalies" value={data.anomaly_count?.toLocaleString()} icon="/img-5.png" color="#ffba46" subtitle="Statistical outliers detected" />
+          <KpiCard title="Alerts" value={data.alerts?.length?.toLocaleString() || '0'} icon="/img-6.png" color="#ba1a1a" subtitle={`${criticalAlerts.length?.toLocaleString()} critical`} />
         </div>
 
         {/* Graphs section */}
@@ -251,7 +251,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   kpiGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
     gap: '12px',
     marginBottom: '32px',
   },
