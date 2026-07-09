@@ -305,7 +305,7 @@ export default function NetworkGraph() {
       </div>
         
       {/* Bottom Floating Educational Panel */}
-      <div style={{ position: 'absolute', bottom: isMobile ? 80 : 40, left: 0, right: 0, zIndex: 10, pointerEvents: 'none', display: 'flex', justifyContent: isMobile ? 'center' : 'flex-start' }}>
+      <div style={{ position: 'absolute', bottom: isMobile ? 110 : 40, left: 0, right: 0, zIndex: 10, pointerEvents: 'none', display: 'flex', justifyContent: isMobile ? 'center' : 'flex-start' }}>
         <div style={{ ...styles.floatingPanel, margin: isMobile ? '0 12px' : '0 40px', width: isMobile ? 'calc(100% - 24px)' : 'auto', maxWidth: 450, padding: isMobile ? '16px' : '20px' }}>
           <div style={styles.feedLabel}>HOW IT WORKS</div>
           <h2 style={styles.panelTitle}>Network Analysis</h2>

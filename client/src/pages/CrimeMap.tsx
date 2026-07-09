@@ -165,7 +165,7 @@ export default function CrimeMap() {
       </div>
         
       {/* Bottom Floating Panel */}
-      <div style={{ position: 'absolute', bottom: isMobile ? 90 : 40, left: 0, right: 0, zIndex: 10, pointerEvents: 'none', display: 'flex', justifyContent: isMobile ? 'center' : 'flex-start' }}>
+      <div style={{ position: 'absolute', bottom: isMobile ? 110 : 40, left: 0, right: 0, zIndex: 10, pointerEvents: 'none', display: 'flex', justifyContent: isMobile ? 'center' : 'flex-start' }}>
         <div style={{ ...styles.floatingPanel, margin: isMobile ? '0 16px' : '0 40px', width: isMobile ? 'calc(100% - 32px)' : 'auto', maxWidth: 400 }}>
           <div style={styles.feedLabel}>LIVE SPATIAL INTEL</div>
           <h2 style={styles.panelTitle}>Geospatial Analysis</h2>

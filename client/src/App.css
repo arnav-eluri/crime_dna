@@ -242,7 +242,7 @@ select option {
   .sidebar {
     width: 100%;
     min-height: auto;
-    height: 70px;
+    height: 80px;
     flex-direction: row;
     top: auto;
     bottom: 0;
@@ -272,7 +272,7 @@ select option {
   .sidebar-nav-item {
     flex-direction: column;
     padding: 8px 4px 6px;
-    gap: 4px;
+    gap: 6px;
     font-size: 11px;
     text-align: center;
     min-width: 60px;
@@ -290,8 +290,9 @@ select option {
 
   .sidebar-nav-item.active span {
     opacity: 1;
-    max-height: 14px;
+    max-height: 30px;
     font-weight: 700;
+    overflow: visible;
   }
 
   .sidebar-nav-item.active {
