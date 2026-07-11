@@ -46,15 +46,10 @@ function HeatmapLayer({ data }: { data: SpatiotemporalCluster[] }) {
 function DynamicCrimeLayer({ data }: { data: SpatiotemporalCluster[] }) {
   const map = useMap();
   const [zoom, setZoom] = useState(map.getZoom());
-  const [bounds, setBounds] = useState(map.getBounds());
 
   useMapEvents({
     zoomend: () => {
       setZoom(map.getZoom());
-      setBounds(map.getBounds());
-    },
-    moveend: () => {
-      setBounds(map.getBounds());
     }
   });
 
@@ -65,12 +60,9 @@ function DynamicCrimeLayer({ data }: { data: SpatiotemporalCluster[] }) {
     return <HeatmapLayer data={data} />;
   }
 
-  // When zoomed in, filter points to current bounds to prevent SVG lag, and show interactive markers
-  const visibleData = data.filter(c => bounds.contains([c.lat, c.lng]));
-
   return (
     <>
-      {visibleData.map((c, i) => (
+      {data.map((c, i) => (
         <CircleMarker
           key={`${c.lat}-${c.lng}-${c.time_bucket}-${i}`}
           center={[c.lat, c.lng]}
