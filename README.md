@@ -42,6 +42,91 @@ The raw FIR data used in this project is sourced from Kaggle:
 
 Please download the dataset and place the CSV files inside the `datasets/` directory before running the pipelines.
 
+## Recent Performance Optimizations
+
+- **Map Canvas Rendering**: Transitioned the Leaflet `DynamicCrimeLayer` from DOM-heavy SVG nodes to an optimized HTML5 Canvas (`preferCanvas={true}`). Removed expensive React-level `moveend` event listeners and manual bounds filtering. This allows Leaflet to natively cull off-screen points, bypassing expensive React VDOM diffing, resulting in buttery smooth 60fps panning even with tens of thousands of data points.
+
+## Architecture & Design
+
+### High Level Design (HLD)
+
+The HLD illustrates the end-to-end data flow from raw FIR ingestion through the Python ML pipeline, into Zoho Catalyst, and finally served to the React Frontend.
+
+```mermaid
+graph TD
+    subgraph Frontend [Client UI - React]
+        UI[Mobile-First Dashboard]
+        Map[Geospatial Map - Leaflet Canvas]
+        Net[Network Graph - D3]
+    end
+
+    subgraph Backend [Zoho Catalyst API]
+        API[Node.js Serverless Functions]
+        DB[(Catalyst Data Store)]
+    end
+
+    subgraph DataPipeline [Data & ML Pipeline - Python]
+        ETL[Ingestion & Validation]
+        ML[DBSCAN & Predictive Risk]
+        Neo[(Neo4j Graph DB)]
+    end
+
+    UI <-->|REST API| API
+    Map <-->|GeoJSON/Clusters| API
+    Net <-->|Graph Data| API
+    
+    API <--> DB
+    API <--> Neo
+    
+    Raw[Raw FIR Datasets] --> ETL
+    ETL --> ML
+    ML --> DB
+    ML --> Neo
+```
+
+### Low Level Design (LLD)
+
+#### 1. Map Rendering Optimization Logic
+This sequence diagram shows how the frontend map component optimizes the rendering of massive geospatial datasets.
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant CrimeMap (React)
+    participant LeafletCanvas
+    participant API
+
+    User->>CrimeMap (React): Open Map View
+    CrimeMap (React)->>API: GET /spatiotemporal clusters
+    API-->>CrimeMap (React): Return Geo Data (10k+ points)
+    
+    CrimeMap (React)->>LeafletCanvas: Render MapContainer (preferCanvas=true)
+    
+    alt Zoom < 10
+        LeafletCanvas->>LeafletCanvas: Render HeatmapLayer (WebGL/Canvas)
+    else Zoom >= 10
+        LeafletCanvas->>LeafletCanvas: Render CircleMarkers directly to Canvas
+    end
+    
+    User->>LeafletCanvas: Pan Map (moveend)
+    Note right of LeafletCanvas: Canvas internally culls off-screen points<br/>Zero React re-renders for smooth 60fps
+```
+
+#### 2. Multi-Layer Filtering Engine
+This flowchart details the data processing pipeline's filtering and ML clustering logic.
+
+```mermaid
+flowchart LR
+    A[Raw FIR Data] --> B{Ingestion Validation}
+    B -- Valid --> C[Median Imputation & Clamping]
+    C --> D[Severity Scoring & Risk Class]
+    D --> E{Spatial Coordinates Valid?}
+    E -- Yes --> F[DBSCAN Spatial Clustering]
+    E -- No --> G[95th-Percentile Address Frequency]
+    F --> H[Export to Catalyst & Neo4j]
+    G --> H
+```
+
 ## Enterprise File Structure (Zoho Catalyst & Data Pipeline)
 
 ```text
