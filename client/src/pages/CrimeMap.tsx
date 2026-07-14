@@ -43,6 +43,76 @@ function HeatmapLayer({ data }: { data: SpatiotemporalCluster[] }) {
   return null;
 }
 
+function NativeMarkersLayer({ data, maxFreq }: { data: SpatiotemporalCluster[], maxFreq: number }) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (!map || !data) return;
+    
+    const group = L.featureGroup();
+    
+    data.forEach((c) => {
+      const color = SEVERITY_COLORS[c.severity_level] || '#8395a7';
+      const radius = 5 + (c.frequency / maxFreq) * 20;
+      
+      const marker = L.circleMarker([c.lat, c.lng], {
+        radius,
+        color,
+        fillColor: color,
+        fillOpacity: 0.6,
+        weight: 2
+      });
+
+      const severityText = c.severity_level === 'LOW' ? 'minor infractions or non-violent incidents' : c.severity_level === 'HIGH' ? 'elevated crime rates requiring attention' : 'critical, high-priority emergency incidents';
+      const colorText = c.severity_level === 'LOW' ? 'green' : c.severity_level === 'HIGH' ? 'orange' : 'red';
+      
+      const categoriesHtml = Object.entries(c.crime_categories || {})
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 4)
+        .map(([type, count]) => `<li style="margin-bottom: 4px;">${type} <b>(${count})</b></li>`)
+        .join('');
+
+      marker.bindTooltip(`
+        <div style="font-family: var(--font-family-body); font-size: 12px;">
+          <strong style="color: ${color}">${c.severity_level} RISK</strong><br />
+          Frequency: ${c.frequency}<br />
+          Time: ${c.time_bucket}
+        </div>
+      `);
+
+      marker.bindPopup(`
+        <div style="font-family: var(--font-family-body); font-size: 13px; min-width: 220px;">
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background-color: ${color}"></div>
+            <strong style="color: ${color}; font-size: 14px;">${c.severity_level} RISK</strong>
+          </div>
+          <p style="margin: 0 0 12px 0; color: #514535; line-height: 1.4;">
+            This location is colored <b>${colorText}</b> because it has a ${c.severity_level.toLowerCase()} severity index, indicating ${severityText}.
+          </p>
+          <strong style="color: #191c1d; font-size: 12px; text-transform: uppercase;">Related Cases in Cluster:</strong>
+          <ul style="margin: 6px 0; padding-left: 16px; color: #514535;">
+            ${categoriesHtml}
+          </ul>
+          <div style="margin-top: 12px; padding-top: 8px; border-top: 1px solid #eee; font-size: 11px; color: #837562;">
+            Total recorded incidents: ${c.frequency}<br/>
+            Timeframe: ${c.time_bucket}
+          </div>
+        </div>
+      `);
+
+      group.addLayer(marker);
+    });
+
+    group.addTo(map);
+
+    return () => {
+      map.removeLayer(group);
+    };
+  }, [map, data, maxFreq]);
+
+  return null;
+}
+
 function DynamicCrimeLayer({ data }: { data: SpatiotemporalCluster[] }) {
   const map = useMap();
   const [zoom, setZoom] = useState(map.getZoom());
@@ -60,60 +130,8 @@ function DynamicCrimeLayer({ data }: { data: SpatiotemporalCluster[] }) {
     return <HeatmapLayer data={data} />;
   }
 
-  return (
-    <>
-      {data.map((c, i) => (
-        <CircleMarker
-          key={`${c.lat}-${c.lng}-${c.time_bucket}-${i}`}
-          center={[c.lat, c.lng]}
-          radius={5 + (c.frequency / maxFreq) * 20}
-          pathOptions={{
-            color: SEVERITY_COLORS[c.severity_level] || '#8395a7',
-            fillColor: SEVERITY_COLORS[c.severity_level] || '#8395a7',
-            fillOpacity: 0.6,
-            weight: 2
-          }}
-        >
-          <Tooltip>
-            <div style={{ fontFamily: 'var(--font-family-body)', fontSize: 12 }}>
-              <strong style={{ color: SEVERITY_COLORS[c.severity_level] }}>{c.severity_level} RISK</strong><br />
-              Frequency: {c.frequency}<br />
-              Time: {c.time_bucket}
-            </div>
-          </Tooltip>
-          <Popup>
-            <div style={{ fontFamily: 'var(--font-family-body)', fontSize: 13, minWidth: 220 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-                <div style={{ width: 12, height: 12, borderRadius: '50%', backgroundColor: SEVERITY_COLORS[c.severity_level] }}></div>
-                <strong style={{ color: SEVERITY_COLORS[c.severity_level], fontSize: 14 }}>{c.severity_level} RISK</strong>
-              </div>
-              
-              <p style={{ margin: '0 0 12px 0', color: '#514535', lineHeight: 1.4 }}>
-                This location is colored <b>{c.severity_level === 'LOW' ? 'green' : c.severity_level === 'HIGH' ? 'orange' : 'red'}</b> because it has a {c.severity_level.toLowerCase()} severity index, indicating {c.severity_level === 'LOW' ? 'minor infractions or non-violent incidents' : c.severity_level === 'HIGH' ? 'elevated crime rates requiring attention' : 'critical, high-priority emergency incidents'}.
-              </p>
-              
-              <strong style={{ color: '#191c1d', fontSize: 12, textTransform: 'uppercase' }}>Related Cases in Cluster:</strong>
-              <ul style={{ margin: '6px 0', paddingLeft: 16, color: '#514535' }}>
-                {Object.entries(c.crime_categories || {})
-                  .sort((a, b) => b[1] - a[1])
-                  .slice(0, 4)
-                  .map(([type, count]) => (
-                    <li key={type} style={{ marginBottom: 4 }}>
-                      {type} <b>({count})</b>
-                    </li>
-                  ))}
-              </ul>
-              
-              <div style={{ marginTop: 12, paddingTop: 8, borderTop: '1px solid #eee', fontSize: 11, color: '#837562' }}>
-                Total recorded incidents: {c.frequency}<br/>
-                Timeframe: {c.time_bucket}
-              </div>
-            </div>
-          </Popup>
-        </CircleMarker>
-      ))}
-    </>
-  );
+  // When zoomed in, bypass React DOM completely and use native Leaflet canvas markers
+  return <NativeMarkersLayer data={data} maxFreq={maxFreq} />;
 }
 
 export default function CrimeMap() {
