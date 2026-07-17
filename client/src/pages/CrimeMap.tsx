@@ -43,7 +43,6 @@ function HeatmapLayer({ data }: { data: SpatiotemporalCluster[] }) {
   return null;
 }
 
-<<<<<<< HEAD
 function NativeMarkersLayer({ data, maxFreq }: { data: SpatiotemporalCluster[], maxFreq: number }) {
   const map = useMap();
 
@@ -215,7 +214,6 @@ export default function CrimeMap() {
   return (
     <div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0 }}>
-<<<<<<< HEAD
         <MapContainer center={center} zoom={7} style={{ width: '100%', height: '100%' }} zoomControl={false} preferCanvas={true}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
