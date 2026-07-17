@@ -28,5 +28,3 @@ datasets/
 .idea/
 .vscode/
 *.swp
-node_modules/
-dist/
