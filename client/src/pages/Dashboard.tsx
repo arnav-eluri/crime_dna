@@ -3,12 +3,36 @@ import { api } from '../api';
 import { CrimeSummary } from '../types';
 import KpiCard from '../components/KpiCard';
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend, LabelList
 } from 'recharts';
 import { formatCrimeName, formatDistrictName, useMediaQuery } from '../utils';
 import MobileDashboard from './MobileDashboard';
 
 const COLORS = ['#2eD573', '#ffa502', '#ff4757', '#1e90ff', '#a29bfe', '#fd79a8', '#00cec9', '#e17055'];
+
+const CustomXAxisTick = ({ x, y, payload }: any) => {
+  const words = payload.value.split(' ');
+  let line1 = payload.value;
+  let line2 = '';
+  
+  if (words.length > 2) {
+    const mid = Math.ceil(words.length / 2);
+    line1 = words.slice(0, mid).join(' ');
+    line2 = words.slice(mid).join(' ');
+  } else if (words.length === 2 && payload.value.length > 12) {
+    line1 = words[0];
+    line2 = words[1];
+  }
+
+  return (
+    <g transform={`translate(${x},${y})`}>
+      <text x={0} y={0} dy={24} textAnchor="middle" fill="var(--color-on-surface-variant)" fontSize={11} fontWeight={600}>
+        <tspan x={0} dy={0}>{line1}</tspan>
+        {line2 && <tspan x={0} dy={14}>{line2}</tspan>}
+      </text>
+    </g>
+  );
+};
 
 export default function Dashboard() {
   const [data, setData] = useState<CrimeSummary | null>(null);
@@ -32,10 +56,6 @@ export default function Dashboard() {
     .sort((a, b) => b[1] - a[1])
     .slice(0, 10)
     .map(([name, value]) => ({ name: formatCrimeName(name), value }));
-
-  const severityPieData = Object.entries(data.severity_distribution || {}).map(([name, value]) => ({
-    name, value,
-  }));
 
   const districtData = Object.entries(data.district_distribution || {}).map(([name, value]) => ({
     name: formatDistrictName(name), value,
@@ -79,34 +99,31 @@ export default function Dashboard() {
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
-              <XAxis dataKey="name" tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 10 }} angle={-45} textAnchor="end" height={60} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 11 }} axisLine={false} tickLine={false} />
+              <XAxis dataKey="name" tick={<CustomXAxisTick />} interval={0} height={80} axisLine={false} tickLine={false} />
+              <YAxis 
+                tickFormatter={(val) => val >= 1000 ? `${(val / 1000).toFixed(0)}k` : val} 
+                tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 11, fontWeight: 600 }} 
+                axisLine={false} 
+                tickLine={false} 
+              />
               <Tooltip
                 cursor={{ fill: 'rgba(255,255,255,0.02)' }}
                 contentStyle={{ background: 'var(--color-surface-container-lowest)', border: '1px solid var(--color-surface-container-highest)', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}
                 labelStyle={{ color: 'var(--color-on-surface)', fontWeight: 600, marginBottom: 4 }}
               />
-              <Bar dataKey="value" fill="url(#colorCrime)" radius={[6, 6, 0, 0]} maxBarSize={40} />
+              <Bar 
+                dataKey="value" 
+                fill="url(#colorCrime)" 
+                radius={[50, 50, 0, 0]} 
+                maxBarSize={40} 
+                background={{ fill: 'rgba(0,0,0,0.04)', radius: [50, 50, 0, 0] }} 
+              >
+                <LabelList dataKey="value" position="top" fill="var(--color-on-surface-variant)" fontSize={10} fontWeight="600" formatter={(val: number) => val >= 1000 ? (val / 1000).toFixed(1) + 'k' : val} />
+              </Bar>
             </BarChart>
           </ResponsiveContainer>
         </div>
 
-        <div style={styles.chartCard}>
-          <h3 style={styles.chartTitle}>Severity Distribution</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart margin={{ top: 0, right: 0, left: 0, bottom: 20 }}>
-              <Pie data={severityPieData} dataKey="value" cx="50%" cy="50%" innerRadius={70} outerRadius={100} paddingAngle={4} stroke="none">
-                {severityPieData.map((_, idx) => (
-                  <Cell key={idx} fill={COLORS[idx % COLORS.length]} style={{ outline: 'none' }} />
-                ))}
-              </Pie>
-              <Tooltip 
-                contentStyle={{ background: 'var(--color-surface-container-lowest)', border: '1px solid var(--color-surface-container-highest)', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}
-              />
-              <Legend iconType="circle" wrapperStyle={{ fontSize: 12, color: 'var(--color-on-surface)' }} verticalAlign="bottom" height={36} />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
       </div>
 
       <div style={styles.chartsRow}>

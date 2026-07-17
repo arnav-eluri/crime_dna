@@ -1,10 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../api';
 import {
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar,
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar,
 } from 'recharts';
 import { formatCrimeName, formatDistrictName, useMediaQuery } from '../utils';
 import MobileHeader from '../components/MobileHeader';
+
+const CustomTrendTick = ({ x, y, payload }: any) => {
+  // payload.value format is usually "YYYY-MM"
+  const parts = payload.value.split('-');
+  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const m = parseInt(parts[1], 10) - 1;
+  const monthStr = !isNaN(m) && monthNames[m] ? monthNames[m] : parts[1];
+  const yearStr = parts[0] ? parts[0].slice(-2) : "";
+
+  return (
+    <g transform={`translate(${x},${y})`}>
+      <circle cx={0} cy={14} r={12} fill="#ffffff" stroke="#e0e0e0" strokeWidth={1} />
+      <text x={0} y={14} dy={3} textAnchor="middle" fill="#888" fontSize={10} fontWeight="bold">
+        {monthStr}
+      </text>
+      <text x={0} y={36} textAnchor="middle" fill="#aaa" fontSize={10}>
+        '{yearStr}
+      </text>
+    </g>
+  );
+};
+
+const CustomActiveDot = (props: any) => {
+  const { cx, cy } = props;
+  return (
+    <g>
+      <circle cx={cx} cy={cy} r={16} fill="#d35400" fillOpacity={0.2} />
+      <circle cx={cx} cy={cy} r={6} fill="#d35400" stroke="#fff" strokeWidth={2} />
+    </g>
+  );
+};
 
 export default function Trends() {
   const [trends, setTrends] = useState<any>(null);
@@ -46,22 +77,17 @@ export default function Trends() {
         <div style={styles.chartCard}>
           <h3 style={styles.chartTitle}>Monthly FIR Trends (Last 24 months)</h3>
           <ResponsiveContainer width="100%" height={250}>
-            <AreaChart data={monthlyData} margin={{ top: 10, right: 10, left: -20, bottom: 20 }}>
-              <defs>
-                <linearGradient id="colorMonthly" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#ca8a04" stopOpacity={0.4}/>
-                  <stop offset="95%" stopColor="#ca8a04" stopOpacity={0}/>
-                </linearGradient>
-              </defs>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(0,0,0,0.05)" />
-              <XAxis dataKey="period" tick={{ fill: '#514535', fontSize: 12 }} angle={-45} textAnchor="end" height={60} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: '#514535', fontSize: 12 }} axisLine={false} tickLine={false} />
+            <LineChart data={monthlyData} margin={{ top: 20, right: 20, left: 0, bottom: 30 }}>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#ebebeb" />
+              <XAxis dataKey="period" tick={<CustomTrendTick />} interval="preserveStartEnd" height={60} axisLine={false} tickLine={false} tickMargin={10} />
+              <YAxis tick={{ fill: '#888', fontSize: 11 }} axisLine={false} tickLine={false} width={40} />
               <Tooltip
-                contentStyle={{ background: '#ffffff', border: 'none', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}
-                labelStyle={{ color: '#191c1d', fontWeight: 600, marginBottom: 4 }}
+                cursor={{ stroke: '#ebebeb', strokeWidth: 2 }}
+                contentStyle={{ background: '#ffffff', border: '1px solid #e0e0e0', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.05)' }}
+                labelStyle={{ color: '#888', fontWeight: 600, marginBottom: 4 }}
               />
-              <Area type="monotone" dataKey="count" stroke="#ca8a04" strokeWidth={3} fillOpacity={1} fill="url(#colorMonthly)" activeDot={{ r: 6 }} />
-            </AreaChart>
+              <Line type="monotone" dataKey="count" stroke="#d35400" strokeWidth={3} dot={false} activeDot={<CustomActiveDot />} />
+            </LineChart>
           </ResponsiveContainer>
           <div style={styles.chartInsight}>Track the volume of FIRs filed over the last two years to identify seasonal patterns and anomalies.</div>
         </div>

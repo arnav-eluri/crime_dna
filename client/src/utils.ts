@@ -17,8 +17,7 @@ export const formatCrimeName = (name: string): string => {
   if (upper.includes('POCSO')) return 'POCSO';
 
   // Capitalize first letters for any other crime type
-  const titleCased = name.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-  return titleCased.length > 15 ? titleCased.substring(0, 15) + '...' : titleCased;
+  return name.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 };
 
 export const formatDistrictName = (name: string): string => {
