@@ -26,7 +26,7 @@ const CustomXAxisTick = ({ x, y, payload }: any) => {
 
   return (
     <g transform={`translate(${x},${y})`}>
-      <text x={0} y={0} dy={24} textAnchor="middle" fill="var(--color-on-surface-variant)" fontSize={11} fontWeight={600}>
+      <text x={0} y={0} dy={32} textAnchor="middle" fill="var(--color-on-surface-variant)" fontSize={11} fontWeight={600}>
         <tspan x={0} dy={0}>{line1}</tspan>
         {line2 && <tspan x={0} dy={14}>{line2}</tspan>}
       </text>
@@ -57,9 +57,12 @@ export default function Dashboard() {
     .slice(0, 10)
     .map(([name, value]) => ({ name: formatCrimeName(name), value }));
 
-  const districtData = Object.entries(data.district_distribution || {}).map(([name, value]) => ({
-    name: formatDistrictName(name), value,
-  }));
+  const districtData = Object.entries(data.district_distribution || {})
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10)
+    .map(([name, value]) => ({
+      name: formatDistrictName(name), value,
+    }));
 
   return (
     <div style={styles.container}>
@@ -90,16 +93,16 @@ export default function Dashboard() {
       <div style={styles.chartsRow}>
         <div style={styles.chartCard}>
           <h3 style={styles.chartTitle}>Top Crime Categories</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={crimeChartData} margin={{ top: 20, right: 10, left: -20, bottom: 50 }}>
+          <ResponsiveContainer width="100%" height={260}>
+            <BarChart data={crimeChartData} margin={{ top: 25, right: 10, left: -20, bottom: 0 }}>
               <defs>
                 <linearGradient id="colorCrime" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#2eD573" stopOpacity={0.9}/>
-                  <stop offset="95%" stopColor="#2eD573" stopOpacity={0.2}/>
+                  <stop offset="0%" stopColor="#34d399" stopOpacity={1}/>
+                  <stop offset="100%" stopColor="#059669" stopOpacity={0.8}/>
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
-              <XAxis dataKey="name" tick={<CustomXAxisTick />} interval={0} height={80} axisLine={false} tickLine={false} />
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(0,0,0,0.03)" />
+              <XAxis dataKey="name" tick={<CustomXAxisTick />} interval={0} height={65} axisLine={false} tickLine={false} tickMargin={10} />
               <YAxis 
                 tickFormatter={(val) => val >= 1000 ? `${(val / 1000).toFixed(0)}k` : val} 
                 tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 11, fontWeight: 600 }} 
@@ -107,18 +110,18 @@ export default function Dashboard() {
                 tickLine={false} 
               />
               <Tooltip
-                cursor={{ fill: 'rgba(255,255,255,0.02)' }}
-                contentStyle={{ background: 'var(--color-surface-container-lowest)', border: '1px solid var(--color-surface-container-highest)', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}
-                labelStyle={{ color: 'var(--color-on-surface)', fontWeight: 600, marginBottom: 4 }}
+                cursor={{ fill: 'rgba(0,0,0,0.02)' }}
+                contentStyle={{ background: '#ffffff', border: 'none', borderRadius: 12, boxShadow: '0 8px 32px rgba(0,0,0,0.08)' }}
+                labelStyle={{ color: '#111827', fontWeight: 700, marginBottom: 4 }}
               />
               <Bar 
                 dataKey="value" 
                 fill="url(#colorCrime)" 
-                radius={[50, 50, 0, 0]} 
-                maxBarSize={40} 
-                background={{ fill: 'rgba(0,0,0,0.04)', radius: [50, 50, 0, 0] }} 
+                radius={[8, 8, 0, 0]} 
+                maxBarSize={48} 
+                animationDuration={1500}
               >
-                <LabelList dataKey="value" position="top" fill="var(--color-on-surface-variant)" fontSize={10} fontWeight="600" formatter={(val: number) => val >= 1000 ? (val / 1000).toFixed(1) + 'k' : val} />
+                <LabelList dataKey="value" position="top" fill="#6b7280" fontSize={11} fontWeight="600" formatter={(val: number) => val >= 1000 ? (val / 1000).toFixed(1) + 'k' : val} />
               </Bar>
             </BarChart>
           </ResponsiveContainer>
@@ -129,41 +132,53 @@ export default function Dashboard() {
       <div style={styles.chartsRow}>
         <div style={styles.chartCard}>
           <h3 style={styles.chartTitle}>District Distribution</h3>
-          <ResponsiveContainer width="100%" height={250}>
-            <BarChart data={districtData} layout="vertical" margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
+          <ResponsiveContainer width="100%" height={260}>
+            <BarChart data={districtData} layout="vertical" margin={{ top: 5, right: 30, left: 10, bottom: 5 }}>
               <defs>
                 <linearGradient id="colorDistrict" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="5%" stopColor="#1e90ff" stopOpacity={0.9}/>
-                  <stop offset="95%" stopColor="#1e90ff" stopOpacity={0.2}/>
+                  <stop offset="0%" stopColor="#818cf8" stopOpacity={0.8}/>
+                  <stop offset="100%" stopColor="#4f46e5" stopOpacity={1}/>
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="rgba(255,255,255,0.05)" />
-              <XAxis type="number" tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 11 }} axisLine={false} tickLine={false} />
-              <YAxis dataKey="name" type="category" tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 10 }} width={80} axisLine={false} tickLine={false} />
+              <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="rgba(0,0,0,0.03)" />
+              <XAxis type="number" tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 11, fontWeight: 600 }} axisLine={false} tickLine={false} />
+              <YAxis dataKey="name" type="category" tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 11, fontWeight: 600 }} width={90} axisLine={false} tickLine={false} />
               <Tooltip
-                cursor={{ fill: 'rgba(255,255,255,0.02)' }}
-                contentStyle={{ background: 'var(--color-surface-container-lowest)', border: '1px solid var(--color-surface-container-highest)', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}
-                labelStyle={{ color: 'var(--color-on-surface)', fontWeight: 600 }}
+                cursor={{ fill: 'rgba(0,0,0,0.02)' }}
+                contentStyle={{ background: '#ffffff', border: 'none', borderRadius: 12, boxShadow: '0 8px 32px rgba(0,0,0,0.08)' }}
+                labelStyle={{ color: '#111827', fontWeight: 700 }}
               />
-              <Bar dataKey="value" fill="url(#colorDistrict)" radius={[0, 6, 6, 0]} maxBarSize={32} />
+              <Bar 
+                dataKey="value" 
+                fill="url(#colorDistrict)" 
+                radius={[0, 8, 8, 0]} 
+                maxBarSize={32}
+                animationDuration={1500}
+              >
+                <LabelList dataKey="value" position="right" fill="#6b7280" fontSize={11} fontWeight="600" formatter={(val: number) => val >= 1000 ? (val / 1000).toFixed(1) + 'k' : val} />
+              </Bar>
             </BarChart>
           </ResponsiveContainer>
         </div>
 
         <div style={styles.chartCard}>
           <h3 style={styles.chartTitle}>Risk Class Distribution</h3>
-          <ResponsiveContainer width="100%" height={250}>
+          <ResponsiveContainer width="100%" height={260}>
             <PieChart margin={{ top: 0, right: 0, left: 0, bottom: 20 }}>
-              <Pie data={Object.entries(data.risk_class_distribution || {}).map(([k, v]) => ({ name: ['Low', 'High', 'Critical'][Number(k)] || k, value: v }))}
-                dataKey="value" cx="50%" cy="50%" innerRadius={60} outerRadius={85} paddingAngle={4} stroke="none">
+              <Pie 
+                data={Object.entries(data.risk_class_distribution || {}).map(([k, v]) => ({ name: ['Low', 'High', 'Critical'][Number(k)] || k, value: v }))}
+                dataKey="value" cx="50%" cy="50%" innerRadius={60} outerRadius={85} paddingAngle={4} stroke="none"
+                animationDuration={1500}
+              >
                 {Object.entries(data.risk_class_distribution || {}).map((_, idx) => (
-                  <Cell key={idx} fill={['#2eD573', '#ffa502', '#ff4757'][idx] || '#8395a7'} style={{ outline: 'none' }} />
+                  <Cell key={idx} fill={['#10b981', '#f59e0b', '#ef4444'][idx] || '#8395a7'} style={{ outline: 'none' }} />
                 ))}
               </Pie>
               <Tooltip 
-                contentStyle={{ background: 'var(--color-surface-container-lowest)', border: '1px solid var(--color-surface-container-highest)', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}
+                contentStyle={{ background: '#ffffff', border: 'none', borderRadius: 12, boxShadow: '0 8px 32px rgba(0,0,0,0.08)' }}
+                itemStyle={{ color: '#111827', fontWeight: 600 }}
               />
-              <Legend iconType="circle" wrapperStyle={{ fontSize: 12, color: 'var(--color-on-surface)' }} verticalAlign="bottom" height={36} />
+              <Legend iconType="circle" wrapperStyle={{ fontSize: 12, color: 'var(--color-on-surface)', fontWeight: 500 }} verticalAlign="bottom" height={36} />
             </PieChart>
           </ResponsiveContainer>
         </div>
