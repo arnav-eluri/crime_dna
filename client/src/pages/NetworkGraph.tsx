@@ -14,6 +14,7 @@ export default function NetworkGraph() {
   const svgRef = useRef<SVGSVGElement>(null);
   const [data, setData] = useState<NetworkData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [selectedNode, setSelectedNode] = useState<any>(null);
   const isMobile = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
@@ -128,6 +129,7 @@ export default function NetworkGraph() {
       const startDrag = (e: any) => {
         draggedNode = node;
         g.style.cursor = 'grabbing';
+        setSelectedNode(node);
       };
       g.addEventListener('mousedown', startDrag);
       g.addEventListener('touchstart', startDrag, { passive: true });
@@ -303,6 +305,29 @@ export default function NetworkGraph() {
           )}
         </div>
       </div>
+
+      {/* Crime Linkage Card Overlay */}
+      {selectedNode && (
+        <div style={{ position: 'absolute', top: isMobile ? 80 : 120, right: isMobile ? 12 : 40, zIndex: 20, width: isMobile ? 'calc(100% - 24px)' : 350, ...styles.floatingPanel }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div style={styles.feedLabel}>CRIME LINKAGE CARD</div>
+            <button onClick={() => setSelectedNode(null)} style={{ background: 'none', border: 'none', fontSize: 16, cursor: 'pointer', padding: 4, color: '#837562' }}>✕</button>
+          </div>
+          <h2 style={{ ...styles.panelTitle, marginBottom: 4 }}>{selectedNode.id}</h2>
+          <span style={{ fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 12, background: 'rgba(0,0,0,0.05)', color: GROUP_COLORS[selectedNode.group] || '#191c1d' }}>
+            {String(selectedNode.group).toUpperCase()}
+          </span>
+          
+          <div style={{ marginTop: 20, background: 'rgba(255,255,255,0.6)', padding: 12, borderRadius: 8, border: '1px solid rgba(0,0,0,0.05)' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#837562', marginBottom: 8, letterSpacing: 0.5 }}>LINKAGE BASIS & DETAILS</div>
+            <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: '#514535', lineHeight: 1.6 }}>
+              <li><strong>Association:</strong> {selectedNode.size} connected entities</li>
+              <li><strong>Behavioral Match:</strong> Modus Operandi & time-window similarity</li>
+              <li><strong>Geospatial:</strong> High-density clustering in proximity</li>
+            </ul>
+          </div>
+        </div>
+      )}
         
       {/* Bottom Floating Educational Panel */}
       <div style={{ position: 'absolute', bottom: isMobile ? 110 : 40, left: 0, right: 0, zIndex: 10, pointerEvents: 'none', display: 'flex', justifyContent: isMobile ? 'center' : 'flex-start' }}>
