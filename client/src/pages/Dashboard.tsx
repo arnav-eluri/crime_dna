@@ -133,37 +133,6 @@ export default function Dashboard() {
 
       <div style={styles.chartsRow}>
         <div style={styles.chartCard}>
-          <h3 style={styles.chartTitle}>District Distribution</h3>
-          <ResponsiveContainer width="100%" height={260}>
-            <BarChart data={districtData} layout="vertical" margin={{ top: 5, right: 30, left: 10, bottom: 5 }}>
-              <defs>
-                <linearGradient id="colorDistrict" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="#818cf8" stopOpacity={0.8}/>
-                  <stop offset="100%" stopColor="#4f46e5" stopOpacity={1}/>
-                </linearGradient>
-              </defs>
-              <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="rgba(0,0,0,0.03)" />
-              <XAxis type="number" tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 11, fontWeight: 600 }} axisLine={false} tickLine={false} />
-              <YAxis dataKey="name" type="category" tick={{ fill: 'var(--color-on-surface-variant)', fontSize: 11, fontWeight: 600 }} width={90} axisLine={false} tickLine={false} />
-              <Tooltip
-                cursor={{ fill: 'rgba(0,0,0,0.02)' }}
-                contentStyle={{ background: '#ffffff', border: 'none', borderRadius: 12, boxShadow: '0 8px 32px rgba(0,0,0,0.08)' }}
-                labelStyle={{ color: '#111827', fontWeight: 700 }}
-              />
-              <Bar 
-                dataKey="value" 
-                fill="url(#colorDistrict)" 
-                radius={[0, 8, 8, 0]} 
-                maxBarSize={32}
-                animationDuration={1500}
-              >
-                <LabelList dataKey="value" position="right" fill="#6b7280" fontSize={11} fontWeight="600" formatter={(val: number) => val >= 1000 ? (val / 1000).toFixed(1) + 'k' : val} />
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-
-        <div style={styles.chartCard}>
           <h3 style={styles.chartTitle}>Risk Class Distribution</h3>
           <ResponsiveContainer width="100%" height={260}>
             <PieChart margin={{ top: 0, right: 0, left: 0, bottom: 20 }}>

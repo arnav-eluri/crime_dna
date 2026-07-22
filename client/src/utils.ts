@@ -5,11 +5,13 @@ export const formatCrimeName = (name: string): string => {
   const upper = name.toUpperCase();
   
   if (upper.includes('KARNATAKA POLICE ACT')) return 'KSP Act';
-  if (upper.includes('KARNATAKA STATE LOCAL ACTS')) return 'Local Acts';
-  if (upper.includes('MOTOR VEHICLE ACCIDENTS NON')) return 'MVA (Non-Fatal)';
-  if (upper.includes('MOTOR VEHICLE ACCIDENTS FATAL')) return 'MVA (Fatal)';
+  if (upper.includes('KARNATAKA STATE LOCAL ACT')) return 'Local Acts';
+  if (upper.includes('MOTOR VEHICLE ACCIDENTS NON')) return 'Accident (Minor)';
+  if (upper.includes('MOTOR VEHICLE ACCIDENTS FATAL')) return 'Accident (Fatal)';
+  if (upper.includes('MVA (NON-FATAL)')) return 'Accident (Minor)';
+  if (upper.includes('MVA (FATAL)')) return 'Accident (Fatal)';
   if (upper === 'CRPC') return 'CrPC';
-  if (upper.includes('CASES OF HURT')) return 'Hurt';
+  if (upper.includes('CASES OF HURT')) return 'Hurt/Assault';
   if (upper.includes('MISSING PERSON')) return 'Missing Person';
   if (upper.includes('MOLESTATION')) return 'Molestation';
   if (upper.includes('THEFT')) return 'Theft';

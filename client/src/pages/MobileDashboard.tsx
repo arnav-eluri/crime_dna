@@ -62,8 +62,8 @@ export default function MobileDashboard({ data }: Props) {
         
         <div style={styles.chartCard}>
           <h3 style={styles.chartTitle}>Top Crime Categories</h3>
-          <ResponsiveContainer width="100%" height={250}>
-            <BarChart data={crimeChartData} margin={{ top: 20, right: 10, left: -20, bottom: 50 }}>
+          <ResponsiveContainer width="100%" height={320}>
+            <BarChart data={crimeChartData} margin={{ top: 20, right: 10, left: -20, bottom: 0 }}>
               <defs>
                 <linearGradient id="colorCrimeMobile" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#2eD573" stopOpacity={0.9}/>
@@ -71,7 +71,7 @@ export default function MobileDashboard({ data }: Props) {
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(0,0,0,0.05)" />
-              <XAxis dataKey="name" tick={{ fill: '#514535', fontSize: 12 }} angle={-45} textAnchor="end" height={60} axisLine={false} tickLine={false} />
+              <XAxis dataKey="name" tick={{ fill: '#514535', fontSize: 12 }} angle={-45} textAnchor="end" height={130} axisLine={false} tickLine={false} />
               <YAxis tick={{ fill: '#514535', fontSize: 12 }} axisLine={false} tickLine={false} />
               <Tooltip
                 cursor={{ fill: 'rgba(0,0,0,0.02)' }}
@@ -88,42 +88,19 @@ export default function MobileDashboard({ data }: Props) {
           <h3 style={styles.chartTitle}>Severity Distribution</h3>
           <ResponsiveContainer width="100%" height={250}>
             <PieChart margin={{ top: 0, right: 0, left: 0, bottom: 20 }}>
-              <Pie data={severityPieData} dataKey="value" cx="50%" cy="50%" innerRadius={50} outerRadius={80} paddingAngle={4} stroke="none">
-                {severityPieData.map((_, idx) => (
-                  <Cell key={idx} fill={COLORS[idx % COLORS.length]} style={{ outline: 'none' }} />
+              <Pie data={Object.entries(data.risk_class_distribution || {}).map(([k, v]) => ({ name: ['Low', 'High', 'Critical'][Number(k)] || k, value: v }))} dataKey="value" cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={2} stroke="none">
+                {Object.entries(data.risk_class_distribution || {}).map((_, idx) => (
+                  <Cell key={idx} fill={['#10b981', '#f59e0b', '#ef4444'][idx] || '#8395a7'} />
                 ))}
               </Pie>
-              <Tooltip 
+              <Tooltip
                 contentStyle={{ background: '#ffffff', border: 'none', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}
+                itemStyle={{ color: '#514535', fontWeight: 500 }}
               />
-              <Legend iconType="circle" wrapperStyle={{ fontSize: 13, color: '#191c1d' }} verticalAlign="bottom" height={36} />
+              <Legend verticalAlign="bottom" height={36} iconType="circle" wrapperStyle={{ fontSize: 12, color: '#514535' }} />
             </PieChart>
           </ResponsiveContainer>
           <div style={styles.chartInsight}>Breakdown of incidents by risk severity level.</div>
-        </div>
-
-        <div style={styles.chartCard}>
-          <h3 style={styles.chartTitle}>District Distribution</h3>
-          <ResponsiveContainer width="100%" height={Math.max(120, districtData.length * 40)}>
-            <BarChart data={districtData} layout="vertical" margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-              <defs>
-                <linearGradient id="colorDistrictMobile" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="5%" stopColor="#1e90ff" stopOpacity={0.9}/>
-                  <stop offset="95%" stopColor="#1e90ff" stopOpacity={0.2}/>
-                </linearGradient>
-              </defs>
-              <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="rgba(0,0,0,0.05)" />
-              <XAxis type="number" tick={{ fill: '#514535', fontSize: 12 }} axisLine={false} tickLine={false} />
-              <YAxis dataKey="name" type="category" tick={{ fill: '#514535', fontSize: 12 }} width={80} axisLine={false} tickLine={false} />
-              <Tooltip
-                cursor={{ fill: 'rgba(0,0,0,0.02)' }}
-                contentStyle={{ background: '#ffffff', border: 'none', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}
-                labelStyle={{ color: '#191c1d', fontWeight: 600 }}
-              />
-              <Bar dataKey="value" fill="url(#colorDistrictMobile)" radius={[0, 4, 4, 0]} maxBarSize={20} />
-            </BarChart>
-          </ResponsiveContainer>
-          <div style={styles.chartInsight}>Geographical breakdown of cases across districts.</div>
         </div>
 
         {/* Watermark */}
