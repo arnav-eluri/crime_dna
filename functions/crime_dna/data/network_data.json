@@ -1,0 +1,346 @@
+{
+  "nodes": [
+    {
+      "id": "THEFT",
+      "group": "crime_type",
+      "size": 159021
+    },
+    {
+      "id": "BENGALURU CITY",
+      "group": "district",
+      "size": 425408
+    },
+    {
+      "id": "CYBER CRIME",
+      "group": "crime_type",
+      "size": 78502
+    },
+    {
+      "id": "MISSING PERSON",
+      "group": "crime_type",
+      "size": 124811
+    },
+    {
+      "id": "PUBLIC SAFETY",
+      "group": "crime_type",
+      "size": 42380
+    },
+    {
+      "id": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "group": "crime_type",
+      "size": 242976
+    },
+    {
+      "id": "CASES OF HURT",
+      "group": "crime_type",
+      "size": 126211
+    },
+    {
+      "id": "CHEATING",
+      "group": "crime_type",
+      "size": 48675
+    },
+    {
+      "id": "NARCOTIC DRUGS & PSHYCOTROPIC SUBSTANCES",
+      "group": "crime_type",
+      "size": 27856
+    },
+    {
+      "id": "NEGLIGENT ACT",
+      "group": "crime_type",
+      "size": 22659
+    },
+    {
+      "id": "HASSAN",
+      "group": "district",
+      "size": 58256
+    },
+    {
+      "id": "TUMAKURU",
+      "group": "district",
+      "size": 61553
+    },
+    {
+      "id": "BENGALURU DIST",
+      "group": "district",
+      "size": 64004
+    },
+    {
+      "id": "MANDYA",
+      "group": "district",
+      "size": 59701
+    },
+    {
+      "id": "CRPC",
+      "group": "crime_type",
+      "size": 137939
+    },
+    {
+      "id": "BELAGAVI DIST",
+      "group": "district",
+      "size": 59569
+    },
+    {
+      "id": "SHIVAMOGGA",
+      "group": "district",
+      "size": 61338
+    },
+    {
+      "id": "CHITRADURGA",
+      "group": "district",
+      "size": 47754
+    },
+    {
+      "id": "RAMANAGARA",
+      "group": "district",
+      "size": 44232
+    },
+    {
+      "id": "MYSURU DIST",
+      "group": "district",
+      "size": 50599
+    },
+    {
+      "id": "UDUPI",
+      "group": "district",
+      "size": 28431
+    },
+    {
+      "id": "KIDNAPPING AND ABDUCTION",
+      "group": "crime_type",
+      "size": 23922
+    },
+    {
+      "id": "BURGLARY - NIGHT",
+      "group": "crime_type",
+      "size": 35729
+    },
+    {
+      "id": "BIDAR",
+      "group": "district",
+      "size": 37861
+    },
+    {
+      "id": "KARNATAKA RAILWAYS",
+      "group": "district",
+      "size": 9888
+    },
+    {
+      "id": "MANGALURU CITY",
+      "group": "district",
+      "size": 31544
+    },
+    {
+      "id": "UTTARA KANNADA",
+      "group": "district",
+      "size": 32690
+    },
+    {
+      "id": "SYNDICATE_BAGALKOT",
+      "group": "syndicate",
+      "size": 3
+    }
+  ],
+  "edges": [
+    {
+      "source": "THEFT",
+      "target": "BENGALURU CITY",
+      "weight": 69988
+    },
+    {
+      "source": "CYBER CRIME",
+      "target": "BENGALURU CITY",
+      "weight": 64599
+    },
+    {
+      "source": "MISSING PERSON",
+      "target": "BENGALURU CITY",
+      "weight": 39234
+    },
+    {
+      "source": "PUBLIC SAFETY",
+      "target": "BENGALURU CITY",
+      "weight": 32222
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "BENGALURU CITY",
+      "weight": 30107
+    },
+    {
+      "source": "CASES OF HURT",
+      "target": "BENGALURU CITY",
+      "weight": 23116
+    },
+    {
+      "source": "CHEATING",
+      "target": "BENGALURU CITY",
+      "weight": 22716
+    },
+    {
+      "source": "NARCOTIC DRUGS & PSHYCOTROPIC SUBSTANCES",
+      "target": "BENGALURU CITY",
+      "weight": 16247
+    },
+    {
+      "source": "NEGLIGENT ACT",
+      "target": "BENGALURU CITY",
+      "weight": 15141
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "HASSAN",
+      "weight": 13159
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "TUMAKURU",
+      "weight": 12900
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "BENGALURU DIST",
+      "weight": 12787
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "MANDYA",
+      "weight": 12758
+    },
+    {
+      "source": "CRPC",
+      "target": "BENGALURU CITY",
+      "weight": 10878
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "BELAGAVI DIST",
+      "weight": 10113
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "SHIVAMOGGA",
+      "weight": 9851
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "CHITRADURGA",
+      "weight": 9786
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "RAMANAGARA",
+      "weight": 9257
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "MYSURU DIST",
+      "weight": 8666
+    },
+    {
+      "source": "THEFT",
+      "target": "BENGALURU DIST",
+      "weight": 8055
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "UDUPI",
+      "weight": 8007
+    },
+    {
+      "source": "KIDNAPPING AND ABDUCTION",
+      "target": "BENGALURU CITY",
+      "weight": 7924
+    },
+    {
+      "source": "BURGLARY - NIGHT",
+      "target": "BENGALURU CITY",
+      "weight": 7890
+    },
+    {
+      "source": "CASES OF HURT",
+      "target": "HASSAN",
+      "weight": 7398
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "BIDAR",
+      "weight": 7322
+    },
+    {
+      "source": "THEFT",
+      "target": "KARNATAKA RAILWAYS",
+      "weight": 7128
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "MANGALURU CITY",
+      "weight": 7083
+    },
+    {
+      "source": "MISSING PERSON",
+      "target": "BENGALURU DIST",
+      "weight": 7075
+    },
+    {
+      "source": "MOTOR VEHICLE ACCIDENTS NON-FATAL",
+      "target": "UTTARA KANNADA",
+      "weight": 7060
+    },
+    {
+      "source": "CRPC",
+      "target": "BELAGAVI DIST",
+      "weight": 7053
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "KARNATAKA POLICE ACT 1963",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "KARNATAKA POLICE ACT 1963",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "CRUELTY BY HUSBAND",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "KARNATAKA POLICE ACT 1963",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "CRPC",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "CRPC",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "CRPC",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "CRPC",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "CRPC",
+      "weight": 2
+    },
+    {
+      "source": "SYNDICATE_BAGALKOT",
+      "target": "CRPC",
+      "weight": 2
+    }
+  ]
+}

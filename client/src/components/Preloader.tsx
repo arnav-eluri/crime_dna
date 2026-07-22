@@ -45,7 +45,7 @@ export default function Preloader({ children }: { children: React.ReactNode }) {
         }}>
           {/* Dual Logos */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 24 }}>
-            <img src="/ksp_logo.jpeg" alt="KSP Logo" style={{
+            <img src="./ksp_logo.jpeg" alt="KSP Logo" style={{
               width: 56, height: 56, borderRadius: '50%', objectFit: 'cover',
               boxShadow: '0 8px 32px rgba(128, 86, 0, 0.2)',
               animation: loading ? 'pulse-glow 2s infinite' : 'none'

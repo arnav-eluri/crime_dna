@@ -24,7 +24,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const DATA_DIR = path.join(__dirname, '..', '..', 'data_processing', 'data', '03_processed');
+const DATA_DIR = path.join(__dirname, 'data');
 
 function readJSON(filename) {
   const filepath = path.join(DATA_DIR, filename);

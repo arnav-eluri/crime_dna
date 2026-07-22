@@ -63,29 +63,31 @@ export default function Dashboard() {
     .map(([name, value]) => ({
       name: formatDistrictName(name), value,
     }));
+    
+  const criticalAlerts = data.alerts?.filter(a => a.alert_level === 'CRITICAL') || [];
 
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>Crime Intelligence Dashboard</h1>
 
       <div style={styles.kpiRow}>
-        <KpiCard title="Total FIRs" value={data.total_firs?.toLocaleString()} icon="/img-1.png" color="#805600"
-          subtitle="All registered cases" />
-        <KpiCard title="Active Cases" value={data.active_cases?.toLocaleString()} icon="/img-2.png" color="#1e90ff"
-          subtitle="Under investigation" />
-        <KpiCard title="Hotspots" value={data.hotspot_count?.toLocaleString()} icon="/img-3.png" color="#ba1a1a"
-          subtitle={`${data.spatiotemporal_hotspot_count?.toLocaleString()} spatiotemporal`} />
-        <KpiCard title="Critical" value={data.critical_count?.toLocaleString()} icon="/img-4.png" color="#d4af37"
-          subtitle="High severity incidents" />
+        <KpiCard title="Total FIRs" value={data.total_firs?.toLocaleString()} icon="./img-1.png" color="#805600"
+          subtitle="All registered cases" delay={0.1} />
+        <KpiCard title="Active Cases" value={data.active_cases?.toLocaleString()} icon="./img-2.png" color="#1e90ff"
+          subtitle="Under investigation" delay={0.2} />
+        <KpiCard title="Hotspots" value={data.hotspot_count?.toLocaleString()} icon="./img-3.png" color="#ba1a1a"
+          subtitle={`${data.spatiotemporal_hotspot_count?.toLocaleString()} spatiotemporal`} delay={0.3} />
+        <KpiCard title="Critical" value={data.critical_count?.toLocaleString()} icon="./img-4.png" color="#d4af37"
+          subtitle="High severity incidents" delay={0.4} />
       </div>
 
-      <div style={styles.kpiRow}>
-        <KpiCard title="Anomalies" value={data.anomaly_count?.toLocaleString()} icon="/img-5.png" color="#ffba46"
-          subtitle="Statistical outliers detected" />
-        <KpiCard title="Alerts" value={data.alerts?.length?.toLocaleString() || '0'} icon="/img-6.png" color="#ba1a1a"
-          subtitle={`${data.alerts?.filter(a => a.alert_level === 'CRITICAL').length?.toLocaleString() || '0'} critical`} />
-        <KpiCard title="Syndicate Links" value={data.syndicate_link_count?.toLocaleString()} icon="/img-7.png" color="#545f73"
-          subtitle="Repeat offender networks" />
+      <div className="kpi-grid" style={{ ...styles.kpiRow, marginTop: '24px' }}>
+        <KpiCard title="Anomalies" value={data.anomaly_count?.toLocaleString()} icon="./img-5.png" color="#ffba46"
+          subtitle="Statistical outliers detected" delay={0.5} />
+        <KpiCard title="Alerts" value={data.alerts?.length?.toLocaleString() || '0'} icon="./img-6.png" color="#ba1a1a"
+          subtitle={`${criticalAlerts.length?.toLocaleString()} critical`} delay={0.6} />
+        <KpiCard title="Syndicate Links" value={data.syndicate_link_count?.toLocaleString()} icon="./img-7.png" color="#545f73"
+          subtitle="Organized crime connections" delay={0.7} />
         <KpiCard title="Risk Classes" value={Object.values(data.risk_class_distribution || {}).reduce((a, b) => a + b, 0)?.toLocaleString()} icon="" color="#805600"
           subtitle="ML-classified risk levels" />
       </div>

@@ -11,13 +11,13 @@ interface NavItem {
 }
 
 const DESKTOP_NAV_ITEMS: NavItem[] = [
-  { label: 'Dashboard', path: '/', icon: '/img-1.png' },
-  { label: 'Crime Map', path: '/map', icon: '/img-2.png' },
-  { label: 'Trends', path: '/trends', icon: '/img-3.png' },
-  { label: 'Alerts', path: '/alerts', icon: '/img-4.png' },
-  { label: 'Severity', path: '/severity', icon: '/img-5.png' },
-  { label: 'Network Graph', path: '/network', icon: '/img-6.png' },
-  { label: 'FIR Records', path: '/firs', icon: '/img-7.png' },
+  { label: 'Dashboard', path: '/', icon: './img-1.png' },
+  { label: 'Crime Map', path: '/map', icon: './img-2.png' },
+  { label: 'Trends', path: '/trends', icon: './img-3.png' },
+  { label: 'Alerts', path: '/alerts', icon: './img-4.png' },
+  { label: 'Severity', path: '/severity', icon: './img-5.png' },
+  { label: 'Network Graph', path: '/network', icon: './img-6.png' },
+  { label: 'FIR Records', path: '/firs', icon: './img-7.png' },
 ];
 
 const MOBILE_NAV_ITEMS: NavItem[] = [
@@ -36,12 +36,21 @@ export default function Navbar() {
   const isKn = currentCookie && currentCookie[2] === '/en/kn';
 
   const toggleLanguage = () => {
+    const domains = [
+      '',
+      `domain=${window.location.hostname}`,
+      `domain=.${window.location.hostname}`,
+      `domain=.${window.location.hostname.split('.').slice(-2).join('.')}`
+    ];
     if (isKn) {
-      document.cookie = "googtrans=/en/en; path=/";
-      document.cookie = "googtrans=/en/en; path=/; domain=" + window.location.hostname;
+      domains.forEach(d => {
+        document.cookie = `googtrans=/en/en; path=/; ${d}`;
+        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; ${d}`;
+      });
     } else {
-      document.cookie = "googtrans=/en/kn; path=/";
-      document.cookie = "googtrans=/en/kn; path=/; domain=" + window.location.hostname;
+      domains.forEach(d => {
+        document.cookie = `googtrans=/en/kn; path=/; ${d}`;
+      });
     }
     window.location.reload();
   };
@@ -86,7 +95,7 @@ export default function Navbar() {
         })}
       </nav>
       <div className="sidebar-footer">
-        <img src="/ksp_logo.jpeg" alt="KSP Logo" style={styles.footerLogo} />
+        <img src="./ksp_logo.jpeg" alt="KSP Logo" style={styles.footerLogo} />
         <div style={styles.footerText}>Karnataka State Police</div>
       </div>
     </div>

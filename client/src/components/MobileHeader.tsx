@@ -6,12 +6,21 @@ export default function MobileHeader() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleLanguage = () => {
+    const domains = [
+      '',
+      `domain=${window.location.hostname}`,
+      `domain=.${window.location.hostname}`,
+      `domain=.${window.location.hostname.split('.').slice(-2).join('.')}`
+    ];
     if (isKn) {
-      document.cookie = "googtrans=/en/en; path=/";
-      document.cookie = "googtrans=/en/en; path=/; domain=" + window.location.hostname;
+      domains.forEach(d => {
+        document.cookie = `googtrans=/en/en; path=/; ${d}`;
+        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; ${d}`;
+      });
     } else {
-      document.cookie = "googtrans=/en/kn; path=/";
-      document.cookie = "googtrans=/en/kn; path=/; domain=" + window.location.hostname;
+      domains.forEach(d => {
+        document.cookie = `googtrans=/en/kn; path=/; ${d}`;
+      });
     }
     window.location.reload();
   };
@@ -40,7 +49,7 @@ export default function MobileHeader() {
               <button onClick={() => setDrawerOpen(false)} style={styles.closeBtn}>&times;</button>
             </div>
             <div style={styles.drawerContent}>
-              <img src="/ksp_logo.jpeg" alt="KSP Logo" style={styles.drawerKspLogo} />
+              <img src="./ksp_logo.jpeg" alt="KSP Logo" style={styles.drawerKspLogo} />
               <div style={styles.drawerText}>
                 <strong>CrimeDNA Intelligence Platform</strong><br />
                 Developed by 404_Detectives for the Karnataka State Police.
