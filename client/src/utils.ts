@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 export const formatCrimeName = (name: string): string => {
   if (!name) return 'Unknown';
   const upper = name.toUpperCase();
@@ -24,8 +26,6 @@ export const formatDistrictName = (name: string): string => {
   if (!name) return 'Unknown';
   return name.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 };
-
-import { useState, useEffect } from 'react';
 
 export function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(false);

@@ -23,7 +23,7 @@
   },
   "scripts": {
     "dev": "npx concurrently \"vite\" \"node ../functions/crime_dna/index.js\"",
-    "build": "vite build",
+    "build": "vite build && node -e \"require('fs').copyFileSync('client-package.json', 'build/client-package.json')\"",
     "preview": "vite preview"
   },
   "eslintConfig": {
