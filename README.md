@@ -1,4 +1,4 @@
-# 404 Detectives - Datathon
+# Crime DNA 
 
 <div align="center">
   <img src="./images/ksp_logo.jpeg" alt="KSP Logo" width="20%" />
