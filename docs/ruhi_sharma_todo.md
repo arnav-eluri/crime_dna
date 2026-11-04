@@ -20,7 +20,7 @@ An AI-powered conversational agent that leverages Speech-to-Text (STT) for audio
 - **Speech-to-Text (STT)**: OpenAI Whisper, Google Cloud Speech-to-Text, or Azure Speech Services.
 - **Text-to-Speech (TTS)**: Google Cloud TTS, Azure TTS, or ElevenLabs (with Kannada support).
 - **LLM / Analytics Engine**: LangChain / LlamaIndex integration inside Catalyst functions.
-- **Database**: Existing Zoho Catalyst Data Store / Neo4j Database.
+- **Database**: Existing Zoho Catalyst Data Store or Neo4j Database.
 
 ---
 
