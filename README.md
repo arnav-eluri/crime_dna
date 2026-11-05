@@ -28,7 +28,7 @@ CrimeDNA features a dynamic, non-destructive **Filtering Engine** that powers ou
 1. **Ingestion Validation**: Prevents data loss via median-imputation and mathematical clamping rather than destructive row-dropping.
 2. **Predictive Risk Classification**: Computes a robust `Severity_Score` weighted heavily by IPC codes (e.g. Murder, NDPS, POCSO) and victim multipliers to generate a `Predicted_Risk_Class`.
 3. **Hybrid Spatial Hotspot Detection**: Automatically executes **DBSCAN Spatial Clustering** on valid coordinate data. If coordinates are corrupted, it gracefully falls back to a strict 95th-percentile statistical frequency thresholding on localized address strings to flag true `Hotspot_Flag` instances.
-4. **Graph Intelligence Mapping**: Pre-computes structural syndicate links (`Syndicate_Link_Flag`) to feed directly into Neo4j for network investigation.
+4. **Graph Intelligence Mapping**: Pre-computes structural syndicate links (`Syndicate_Link_Flag`) to feed into the network graph visualization.
 
 ### Spatiotemporal & Anomaly Intelligence
 
@@ -36,7 +36,7 @@ CrimeDNA features a dynamic, non-destructive **Filtering Engine** that powers ou
 - **Anomaly Detection**: Uses Isolation Forest (for datasets with 10+ crime categories) or Z-score thresholding to flag statistically anomalous crime spikes.
 - **Trend Alerts**: Compares recent 3-month crime counts against historical averages to generate CRITICAL/ELEVATED alerts for emerging trends.
 - **Forecasting**: Linear regression trend extrapolation for the top 5 crime categories, projecting 6-month forward predictions.
-- **Socioeconomic Correlation**: Maps crime rates against mock socioeconomic indicators (population density, literacy, urbanization) per district.
+- **Socioeconomic Correlation**: Maps crime rates against socioeconomic indicators (population density, literacy, urbanization) for 32 Karnataka districts.
 
 ---
 
@@ -54,26 +54,25 @@ graph TD
 
     subgraph Backend [Zoho Catalyst API]
         API[Node.js Serverless Functions]
-        DB[(Catalyst Data Store)]
     end
 
     subgraph DataPipeline [Data & ML Pipeline - Python]
         ETL[Ingestion & Validation]
         ML[DBSCAN & Predictive Risk]
-        Neo[(Neo4j Graph DB)]
+        DB[(SQLite)]
+        JSON[JSON Artifacts]
     end
 
     UI <-->|REST API| API
     Map <-->|GeoJSON/Clusters| API
     Net <-->|Graph Data| API
 
-    API <--> DB
-    API <--> Neo
+    API --> JSON
 
     Raw[Raw FIR Datasets] --> ETL
     ETL --> ML
     ML --> DB
-    ML --> Neo
+    ML --> JSON
 ```
 
 ### Low Level Design (LLD)
@@ -144,7 +143,7 @@ sequenceDiagram
 The raw FIR data used in this project is sourced from Kaggle:
 [FIR Details - Karnataka Police Dataset](https://www.kaggle.com/datasets/vanshangaria/fir-details-karnataka-police)
 
-Please download the dataset and place the CSV files inside the `data_processing/datasets/` directory before running the pipelines.
+Download the dataset and place the CSV file at `data_processing/datasets/FIR_Details_Data.csv` before running with `--source real`.
 
 ---
 
@@ -163,21 +162,21 @@ A comprehensive Python pipeline with 11 stages:
 | 5 | `graph_filters.py` | Syndicate link detection (3+ accused), location recurrence counting, modus operandi clustering |
 | 6 | `ml_filters.py` | Historical archive flagging, noise flagging, DBSCAN hotspot labeling with statistical fallback, risk class mapping |
 | 7 | `alert_generator.py` | Spatiotemporal clustering, Isolation Forest anomaly detection, trend-based alert generation, summary builders |
-| 8 | `pipeline_orchestrator.py` | Orchestrates all stages, builds network/forecast/socioeconomic data, exports dashboard summaries |
+| 8 | `pipeline_orchestrator.py` | Orchestrates all stages, builds network/forecast/socioeconomic data, exports dashboard JSON artifacts |
 | 9 | `main.py` | CLI entry point with argparse (`--run`, `--all`, `--generate-mock`, `--source`, `--limit`, `--no-analysis`, `--no-classification`) |
 | 10 | `database_operations.py` | SQLAlchemy ORM models (Station, Fir, FilteredCrime) with SQLite persistence |
-| 11 | `schema.sql` | Full police FIR database schema (26 tables) based on ER diagram |
+| 11 | `filter_engine.py` | Dynamic multi-layer filter engine composing pure `df → df` transforms |
 
 **Key Features:**
 - **Non-destructive filtering**: Never drops rows; uses imputation and flagging instead
 - **District coordinate lookup**: 30+ Karnataka districts with lat/lng mappings for coordinate imputation
 - **Hybrid hotspot detection**: DBSCAN clustering with 95th-percentile statistical fallback
+- **Socioeconomic data**: Real district-level indicators for all 32 major Karnataka districts
 - **Mock data generation**: 300 synthetic FIRs across 3 stations with realistic crime templates
-- **Test suite**: `test_filters.py` with shape logging decorator for pipeline validation
 
 ### 2. Backend API (`functions/crime_dna/`)
 
-A Node.js Express API deployed on Zoho Catalyst with 14 endpoints:
+A Node.js Express API deployed on Zoho Catalyst with 16 endpoints:
 
 | Endpoint | Description |
 |----------|-------------|
@@ -198,11 +197,6 @@ A Node.js Express API deployed on Zoho Catalyst with 14 endpoints:
 | `GET /api/firs` | Paginated, filterable FIR records |
 | `GET /api/firs/:id` | Single FIR detail with linked entities |
 
-**Services:**
-- `chat.service.js` - Chatbot service for querying dashboard data
-- `stt.service.js` - Speech-to-text service (placeholder for future integration)
-- `response.service.js` - Response formatting service (placeholder)
-
 ### 3. Frontend Dashboard (`client/`)
 
 A mobile-first React dashboard with TypeScript and Vite:
@@ -210,222 +204,174 @@ A mobile-first React dashboard with TypeScript and Vite:
 | Page | Features |
 |------|----------|
 | **Dashboard** | KPI cards (7 metrics), crime category bar chart, risk class pie chart, responsive layout with mobile fallback |
-| **Crime Map** | Fullscreen Leaflet map with CartoDB Voyager tiles, heatmap layer (zoom < 10), native canvas markers (zoom >= 10), severity-colored popups, spatiotemporal cluster visualization |
-| **Network Graph** | Interactive SVG physics-based force graph with drag-and-drop, hover highlighting, node grouping (crime type/district/syndicate), crime linkage card overlay |
+| **Crime Map** | Fullscreen Leaflet map with CartoDB Voyager tiles, heatmap layer (zoom < 10), native canvas markers (zoom >= 10), severity-colored popups |
+| **Network Graph** | Interactive SVG physics-based force graph with drag-and-drop, hover highlighting, node grouping by crime type/district/syndicate |
 | **Trends** | Monthly FIR trend line chart (24 months), crime type distribution bar chart, district comparison chart |
 | **Alerts** | Filterable alert cards (CRITICAL/ELEVATED/NORMAL), district chips, trend indicators with percentage change |
 | **Severity** | KPI cards, severity bar chart, severity pie chart, ML-based risk class distribution |
 | **FIR Records** | Paginated table with search, crime type/severity filters, sortable columns |
 
-**Components:**
-- `Preloader.tsx` - Cinematic 2.5s preloader with KSP & CrimeDNA branding, floating animation, scan bar
-- `Navbar.tsx` - Desktop sidebar + mobile bottom navigation with bilingual toggle (English/Kannada)
-- `MobileHeader.tsx` - Mobile header with language toggle and project info drawer
-- `KpiCard.tsx` - Animated KPI card with icon, gradient background, glassmorphism
-- `AlertCard.tsx` - Alert card with severity badge, trend direction, historical average
-
-**UI/UX Features:**
-- Glassmorphic design with backdrop blur
-- Global dotted radial-gradient background pattern
-- CSS variables for theming (Material 3 color scheme)
-- Responsive breakpoints (768px mobile threshold)
-- SVG icons with inline React components
-- Custom scrollbar styling
-- CSS animations (pulse, float, scan-bar, blink)
-
-### 4. Configuration & Deployment
-
-- `catalyst.json` - Zoho Catalyst deployment config (functions + client build)
-- `.catalystrc` - Catalyst project/environment settings (CrimeDNA project, Development env)
-- `requirements.txt` - Python dependencies (pandas, scikit-learn, sqlalchemy, numpy, scipy)
-- `package.json` - Node.js dependencies (express, zcatalyst-sdk-node)
-- Vite config with TypeScript, React plugin, canvas rendering
-
 ---
 
-## Enterprise File Structure
-
-```text
-CrimeDNA/
-├── client/                     # React Frontend (Mobile-First, TypeScript)
-│   ├── public/                 # Static assets (KSP Logo, icons, favicon)
-│   ├── src/
-│   │   ├── api.ts              # Backend API Integration (14 endpoints)
-│   │   ├── App.tsx             # React Router setup (7 routes)
-│   │   ├── App.css             # Global styles, sidebar, responsive nav
-│   │   ├── index.css           # CSS variables, typography, glassmorphism
-│   │   ├── index.tsx           # React root entry
-│   │   ├── types.ts            # TypeScript interfaces (10 types)
-│   │   ├── utils.ts            # Helpers: crime/district formatting, media query hook
-│   │   ├── components/         # Reusable UI Components
-│   │   │   ├── Preloader.tsx   # Cinematic intelligence preloader
-│   │   │   ├── Navbar.tsx      # Desktop sidebar + mobile bottom nav
-│   │   │   ├── MobileHeader.tsx# Mobile header with language toggle
-│   │   │   ├── KpiCard.tsx     # Animated KPI metric card
-│   │   │   └── AlertCard.tsx   # Severity alert card with trend
-│   │   └── pages/              # Application Views (7 pages)
-│   │       ├── Dashboard.tsx   # Desktop dashboard with charts
-│   │       ├── MobileDashboard.tsx # Mobile-optimized dashboard
-│   │       ├── CrimeMap.tsx    # Fullscreen Leaflet map with heatmap
-│   │       ├── NetworkGraph.tsx# SVG physics-based network graph
-│   │       ├── Trends.tsx      # Temporal trend analysis charts
-│   │       ├── Alerts.tsx      # Filterable alert feed
-│   │       ├── Severity.tsx    # Severity & risk analysis
-│   │       └── FIRList.tsx     # Paginated FIR registry
-│   ├── vite.config.ts          # Vite + React plugin config
-│   ├── tsconfig.json           # TypeScript configuration
-│   ├── package.json            # Dependencies & scripts
-│   └── build/                  # Production build output
-├── functions/                  # Zoho Catalyst Node.js Backend API
-│   └── crime_dna/
-│       ├── index.js            # Express server with 14 REST endpoints
-│       ├── package.json        # Dependencies (express, zcatalyst-sdk)
-│       ├── catalyst-config.json# Catalyst function config
-│       ├── data/               # Pipeline output JSON files
-│       │   ├── dashboard_summary.json
-│       │   ├── network_data.json
-│       │   ├── forecast_data.json
-│       │   └── socioeconomic_data.json
-│       └── services/           # Service modules
-│           ├── chat.service.js # Chatbot data query service
-│           ├── stt.service.js  # Speech-to-text service (placeholder)
-│           └── response.service.js # Response formatting (placeholder)
-├── data_processing/            # Data Processing & ML Pipeline (Python)
-│   ├── orchestration/          # Pipeline orchestration & CLI
-│   │   ├── main.py             # CLI entry point (argparse)
-│   │   ├── pipeline_orchestrator.py # 11-stage pipeline orchestrator
-│   │   └── test_filters.py     # Multi-layer filter test suite
-│   ├── src/
-│   │   ├── ingestion/          # Data ingestion & cleaning
-│   │   │   ├── cleaner.py      # Non-destructive cleaning (imputation, clamping)
-│   │   │   ├── validator.py    # (Placeholder)
-│   │   │   ├── deduplicator.py # (Placeholder)
-│   │   │   └── filtering/      # Filtering sub-package
-│   │   │       ├── data_processing.py  # CSV loading, aggregation, ML classification
-│   │   │       ├── data_generation.py  # Mock FIR data generator
-│   │   │       ├── database_operations.py # SQLAlchemy ORM models & CRUD
-│   │   │       └── config.py   # Configuration (paths, stations, categories)
-│   │   ├── features/           # Feature engineering & ML
-│   │   │   ├── analytical_filters.py  # Severity scoring, time buckets
-│   │   │   ├── graph_filters.py       # Syndicate links, location recurrence
-│   │   │   ├── ml_filters.py          # DBSCAN, hotspot/risk labeling
-│   │   │   ├── alert_generator.py     # Spatiotemporal, anomaly, trend alerts
-│   │   │   └── graph_builder.py       # (Empty - planned)
-│   │   ├── loaders/            # Database loaders
-│   │   │   ├── schema.sql      # 26-table police FIR schema
-│   │   │   ├── sqlite_loader.py # (Empty - planned)
-│   │   │   ├── neo4j_loader.py  # (Empty - planned)
-│   │   │   └── test_ingestion.py # SQLite ingestion test script
-│   │   └── utils/
-│   │       ├── filter_engine.py       # Dynamic multi-layer filter engine
-│   │       └── dashboard_filters.py   # Operational dashboard query filters
-│   ├── requirements.txt        # Python dependencies
-│   └── data/                   # Pipeline output (gitignored)
-│       ├── crime_pipeline.db   # SQLite database
-│       ├── 02_staging/         # Staging data
-│       └── 03_processed/       # Processed JSON outputs
-├── docs/                       # Project documentation
-│   ├── aryan_keshri_todo.md    # PDF dossier export feature spec
-│   └── ruhi_sharma_todo.md     # Bilingual voice chatbot feature spec
-├── images/                     # Project images & diagrams
-│   ├── ksp_logo.jpeg           # Karnataka State Police logo
-│   ├── flowchart.png           # CrimeDNA workflow diagram
-│   └── img-1.png through img-7.png # Dashboard icons
-├── catalyst.json               # Zoho Catalyst deployment config
-├── .catalystrc                 # Catalyst environment settings
-├── Police_FIR_ER_Diagram.pdf   # Entity Relationship diagram
-├── .gitignore
-└── README.md
-```
-
----
-
-## How to Use
+## Quick Start
 
 ### Prerequisites
 
-- Python 3.10+ with pip
-- Node.js 18+ with npm
-- Zoho Catalyst CLI (for deployment)
-- Kaggle FIR dataset (download from the link above)
+- Python 3.10+
+- Node.js 18+
 
-### 1. Set Up Python Pipeline
+### One-command setup (Windows)
 
-```bash
-cd data_processing
-pip install -r requirements.txt
+From the repo root, run:
+
+```powershell
+.\dev.ps1
 ```
 
-### 2. Run the Pipeline (Mock Data)
+This single script:
+1. Installs Python dependencies
+2. Generates mock FIR data and runs the full 11-stage pipeline
+3. Installs Node dependencies (if not already present)
+4. Opens `http://localhost:5173` in your browser
+5. Starts the Vite dev server (port 5173) and Express API (port 3000) together
 
-```bash
-cd data_processing
-python orchestration/main.py --all
+**Options:**
+
+```powershell
+# Skip pipeline if data already exists
+.\dev.ps1 -SkipPipeline
+
+# Use real Kaggle dataset, limit rows for speed
+.\dev.ps1 -Real -Limit 5000
 ```
 
-### 3. Run the Pipeline (Real Data)
+### Manual steps (if needed)
 
-```bash
-cd data_processing
-# Place FIR_Details_Data.csv in datasets/
-python orchestration/main.py --run --source real --limit 50000
-```
+```powershell
+# 1. Python pipeline only
+cd data_processing/orchestration
+python main.py --all --no-classification
 
-### 4. Run the Filter Test Suite
-
-```bash
-cd data_processing
-python orchestration/test_filters.py
-```
-
-### 5. Run the Legacy SQLite Ingestion Test
-
-```bash
-cd data_processing
-python src/loaders/test_ingestion.py
-```
-
-### 6. Start the Frontend & Backend (Development)
-
-```bash
-# Terminal 1: Start the API server
-cd functions/crime_dna
-node index.js
-
-# Terminal 2: Start the React dev server
+# 2. UI only (after pipeline has run)
 cd client
+npm install
 npm run dev
 ```
 
-### 7. Build for Production
-
-```bash
-cd client
-npm run build
-```
-
-### CLI Options
+### Pipeline CLI reference
 
 ```
 python orchestration/main.py --help
 
 Options:
-  --run              Run the full intelligence pipeline
-  --all              Generate mock data and run the full pipeline
-  --generate-mock    Generate mock FIR CSV datasets only
-  --source [real|mock]  Data source (default: real)
-  --limit N          Number of rows to load from real dataset
-  --no-analysis      Skip analytical, graph, ML, and alert layers
-  --no-classification  Skip ML category classification
+  --run                Run the full intelligence pipeline
+  --all                Generate mock data and run the full pipeline
+  --generate-mock      Generate mock FIR CSV datasets only
+  --source [real|mock] Data source (default: real)
+  --limit N            Number of rows to load from real dataset
+  --no-analysis        Skip analytical, graph, ML, and alert layers
+  --no-classification  Skip ML category classification (use if labeled_crimes.csv is absent)
+```
+
+---
+
+## File Structure
+
+```text
+CrimeDNA/
+├── dev.ps1                     # One-command dev launcher (pipeline + UI)
+├── client/                     # React Frontend (Mobile-First, TypeScript)
+│   ├── public/                 # Static assets (KSP Logo, icons, favicon)
+│   ├── src/
+│   │   ├── api.ts              # Backend API integration (16 endpoints)
+│   │   ├── App.tsx             # React Router setup (7 routes)
+│   │   ├── App.css             # Global styles, sidebar, responsive nav
+│   │   ├── index.css           # CSS variables, typography, glassmorphism
+│   │   ├── index.tsx           # React root entry
+│   │   ├── types.ts            # TypeScript interfaces
+│   │   ├── utils.ts            # Helpers: crime/district formatting, media query hook
+│   │   ├── components/
+│   │   │   ├── Preloader.tsx   # Cinematic intelligence preloader
+│   │   │   ├── Navbar.tsx      # Desktop sidebar + mobile bottom nav
+│   │   │   ├── MobileHeader.tsx
+│   │   │   ├── KpiCard.tsx     # Animated KPI metric card
+│   │   │   └── AlertCard.tsx   # Severity alert card with trend
+│   │   └── pages/
+│   │       ├── Dashboard.tsx
+│   │       ├── MobileDashboard.tsx
+│   │       ├── CrimeMap.tsx
+│   │       ├── NetworkGraph.tsx
+│   │       ├── Trends.tsx
+│   │       ├── Alerts.tsx
+│   │       ├── Severity.tsx
+│   │       └── FIRList.tsx
+│   ├── vite.config.ts
+│   ├── tsconfig.json
+│   └── package.json
+├── functions/                  # Zoho Catalyst Node.js Backend API
+│   └── crime_dna/
+│       ├── index.js            # Express server (16 REST endpoints)
+│       ├── package.json
+│       ├── data/               # Pipeline output JSON (served by API)
+│       │   ├── dashboard_summary.json
+│       │   ├── network_data.json
+│       │   ├── forecast_data.json
+│       │   └── socioeconomic_data.json
+│       └── services/
+│           ├── chat.service.js
+│           ├── stt.service.js
+│           └── response.service.js
+├── data_processing/            # Python ML Pipeline
+│   ├── orchestration/
+│   │   ├── main.py             # CLI entry point
+│   │   ├── pipeline_orchestrator.py  # 11-stage pipeline
+│   │   └── test_filters.py     # Filter test suite
+│   ├── src/
+│   │   ├── ingestion/
+│   │   │   ├── cleaner.py
+│   │   │   └── filtering/
+│   │   │       ├── data_processing.py   # CSV loading, aggregation, ML classification
+│   │   │       ├── data_generation.py   # Mock FIR generator
+│   │   │       ├── database_operations.py  # SQLAlchemy ORM (Station, Fir, FilteredCrime)
+│   │   │       └── config.py            # Paths, stations, categories
+│   │   ├── features/
+│   │   │   ├── analytical_filters.py   # Severity scoring, time buckets
+│   │   │   ├── graph_filters.py        # Syndicate links, location recurrence
+│   │   │   ├── ml_filters.py           # DBSCAN, hotspot/risk labeling
+│   │   │   ├── alert_generator.py      # Spatiotemporal, anomaly, trend alerts
+│   │   │   └── graph_builder.py        # Adjacency list builder utility
+│   │   ├── loaders/
+│   │   │   ├── sqlite_loader.py        # Bulk DataFrame → SQLite loader
+│   │   │   └── neo4j_loader.py         # (Placeholder)
+│   │   └── utils/
+│   │       ├── filter_engine.py        # Composable df→df filter engine
+│   │       └── dashboard_filters.py    # Operational dashboard query filters
+│   ├── requirements.txt
+│   └── data/                   # Pipeline output (gitignored)
+│       ├── crime_pipeline.db
+│       └── 03_processed/       # JSON artifacts consumed by API
+├── docs/
+│   ├── SCHEMA.md               # SQLite schema + JSON artifact reference
+│   ├── API_REFERENCE.md        # Full API endpoint reference
+│   ├── DATA_FLOW.md            # End-to-end data flow documentation
+│   ├── HLD.md                  # High-level design document
+│   ├── LLD.md                  # Low-level design document
+│   ├── PIPELINE_COMMANDS.md    # Pipeline CLI command reference
+│   ├── aryan_keshri_todo.md    # PDF dossier export feature spec
+│   └── ruhi_sharma_todo.md     # Bilingual voice chatbot feature spec
+├── images/
+├── catalyst.json
+├── .catalystrc
+└── README.md
 ```
 
 ---
 
 ## Performance Optimizations
 
-- **Map Canvas Rendering**: Leaflet `DynamicCrimeLayer` uses `preferCanvas={true}` to render via HTML5 Canvas instead of DOM-heavy SVG nodes. Removed expensive React-level `moveend` event listeners, allowing Leaflet to natively cull off-screen points for 60fps panning with tens of thousands of data points.
-- **Network Graph**: Custom SVG physics simulation with requestAnimationFrame, avoiding heavy D3 library overhead while maintaining interactive drag-and-drop.
-- **Preloader**: Cinematic 2.5s delay with floating animation and scan bar, ensuring smooth route transitions without layout shift.
+- **Map Canvas Rendering**: Leaflet uses `preferCanvas={true}` to render via HTML5 Canvas. Leaflet natively culls off-screen points for 60fps panning with tens of thousands of data points.
+- **Network Graph**: Custom SVG physics simulation with `requestAnimationFrame`, avoiding heavy D3 library overhead while maintaining interactive drag-and-drop.
+- **Pre-computation Architecture**: The API is a thin JSON file-server — all analysis is done at pipeline time, so every endpoint responds in under 10ms regardless of dataset size.
 
 ---
 
@@ -453,7 +399,7 @@ Options:
 
 1. **Arnav Eluri** - Reva University, Bengaluru, KA
    - Python data pipeline architecture, ML feature engineering, orchestration
-2. **Aryan Keshri** - Acharaya Institute of Technology, Bengaluru, KA
+2. **Aryan Keshri** - Acharya Institute of Technology, Bengaluru, KA
    - Frontend React dashboard, network graph visualization, PDF export planning
 3. **Ruhi Sharma** - Reva University, Bengaluru, KA
    - Backend API design, voice chatbot architecture planning
