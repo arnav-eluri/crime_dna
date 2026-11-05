@@ -74,8 +74,6 @@ npm run dev
 | [`docs/API_REFERENCE.md`](docs/API_REFERENCE.md) | All 16 REST endpoints with request/response details |
 | [`docs/PIPELINE_COMMANDS.md`](docs/PIPELINE_COMMANDS.md) | Full CLI reference for `main.py` |
 | [`docs/SCHEMA.md`](docs/SCHEMA.md) | SQLite schema and JSON artifact reference |
-| [`docs/aryan_keshri_todo.md`](docs/aryan_keshri_todo.md) | PDF dossier export feature spec |
-| [`docs/ruhi_sharma_todo.md`](docs/ruhi_sharma_todo.md) | Bilingual voice chatbot feature spec |
 
 ---
 
@@ -98,11 +96,7 @@ CrimeDNA/
 
 ## Contributors
 
-1. **Arnav Eluri** — Reva University, Bengaluru, KA
-   - Python data pipeline architecture, ML feature engineering, orchestration
-2. **Aryan Keshri** — Acharya Institute of Technology, Bengaluru, KA
-   - Frontend React dashboard, network graph visualization, PDF export planning
-3. **Ruhi Sharma** — Reva University, Bengaluru, KA
-   - Backend API design, voice chatbot architecture planning
-4. **Spandana S R** — Reva University, Bengaluru, KA
-   - Data ingestion, cleaning, and validation logic
+1. **Arnav Eluri** — Reva University, Bengaluru
+2. **Aryan Keshri** — Acharya Institute of Technology, Bengaluru
+3. **Ruhi Sharma** — Reva University, Bengaluru
+4. **Spandana S R** — Reva University, Bengaluru
