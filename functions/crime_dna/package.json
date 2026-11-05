@@ -6,6 +6,6 @@
 	"description": "CrimeDNA Intelligence API — serves analysis results to the React frontend",
 	"dependencies": {
 		"express": "^5.2.1",
-		"zcatalyst-sdk-node": "latest"
+		"zcatalyst-sdk-node": "3.4.0"
 	}
 }

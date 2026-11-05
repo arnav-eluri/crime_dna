@@ -26,6 +26,22 @@ app.use((req, res, next) => {
 
 const DATA_DIR = path.join(__dirname, 'data');
 
+// Assigns district proportionally to match the actual distribution rather than round-robin
+function assignDistrict(index, total, districtDist) {
+  if (!districtDist) return 'UNKNOWN';
+  const keys = Object.keys(districtDist);
+  if (!keys.length) return 'UNKNOWN';
+  const vals = Object.values(districtDist);
+  const sum = vals.reduce((a, b) => a + b, 0);
+  const position = (index % Math.max(total, 1)) / Math.max(total, 1);
+  let cumulative = 0;
+  for (let i = 0; i < keys.length; i++) {
+    cumulative += vals[i] / sum;
+    if (position < cumulative) return keys[i];
+  }
+  return keys[keys.length - 1];
+}
+
 function readJSON(filename) {
   const filepath = path.join(DATA_DIR, filename);
   try {
@@ -174,6 +190,7 @@ app.get('/api/firs', (req, res) => {
   const { district, crime_type, severity, page = 1, limit = 50 } = req.query;
   let firs = [];
   if (data.hotspot_locations) {
+    const total = data.hotspot_locations.length;
     firs = data.hotspot_locations.map((loc, i) => ({
       id: i + 1,
       fir_number: `FIR-${String(i + 1).padStart(6, '0')}`,
@@ -181,7 +198,7 @@ app.get('/api/firs', (req, res) => {
       severity: loc.severity || 'LOW',
       latitude: loc.lat,
       longitude: loc.lng,
-      district: data.district_distribution ? Object.keys(data.district_distribution)[i % Math.max(1, Object.keys(data.district_distribution).length)] : 'UNKNOWN'
+      district: assignDistrict(i, total, data.district_distribution)
     }));
   }
   if (district) firs = firs.filter(f => f.district.toUpperCase() === district.toUpperCase());
@@ -211,10 +228,10 @@ app.get('/api/firs/:id', (req, res) => {
       severity: loc.severity || 'LOW',
       latitude: loc.lat,
       longitude: loc.lng,
-      district: data.district_distribution ? Object.keys(data.district_distribution)[(id - 1) % Math.max(1, Object.keys(data.district_distribution).length)] : 'UNKNOWN',
+      district: assignDistrict(id - 1, data.hotspot_locations.length, data.district_distribution),
       linked_entities: {
-        victims: Math.floor(Math.random() * 5) + 1,
-        accused: Math.floor(Math.random() * 3) + 1,
+        victims: (id % 5) + 1,
+        accused: (id % 3) + 1,
         is_hotspot: loc.frequency > 1
       }
     });

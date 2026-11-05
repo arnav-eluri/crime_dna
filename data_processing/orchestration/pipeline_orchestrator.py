@@ -158,11 +158,22 @@ def run_persistence_layer(df):
         init_db()
         session = get_session()
         station_map = upsert_stations(session, MOCK_STATIONS)
+        print(f"  [+] {len(station_map)} stations upserted")
+
+        # Map station_name → station_id so upsert_firs can find the FK
+        df = df.copy()
+        if 'station_name' in df.columns:
+            df['station_id'] = df['station_name'].map(station_map)
+
+        fir_ids, fir_count = upsert_firs(session, df)
+        print(f"  [+] {fir_count} FIRs persisted")
+
+        if 'predicted_category' in df.columns:
+            filtered_count = upsert_filtered_crimes(session, df, fir_ids)
+            print(f"  [+] {filtered_count} classified crimes persisted")
+
         session.close()
-        engine = DATABASE_URL
-        print(f"  [+] Database initialized at {engine}")
-        print(f"  [+] {len(station_map)} stations ready")
-        print(f"  [+] {len(df)} analysis records ready for storage")
+        print(f"  [+] Database: {DATABASE_URL}")
     except Exception as e:
         print(f"  [!] Persistence note: {e}")
 
