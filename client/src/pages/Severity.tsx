@@ -15,12 +15,14 @@ const RISK_LABELS = ['Low Risk', 'High Risk', 'Critical Risk'];
 export default function Severity() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    api.severity().then(setData).catch(() => {}).finally(() => setLoading(false));
+    api.severity().then(setData).catch(e => setError(e.message || 'Failed to load severity data')).finally(() => setLoading(false));
   }, []);
 
   if (loading) return <div style={styles.loading}>Loading severity data...</div>;
+  if (error) return <div style={styles.error}>Error: {error}</div>;
   if (!data) return <div style={styles.error}>No severity data available.</div>;
 
   const severityChartData = Object.entries(data.severity_distribution || {}).map(([name, value]) => ({

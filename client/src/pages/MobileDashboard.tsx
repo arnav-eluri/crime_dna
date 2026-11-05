@@ -14,10 +14,9 @@ interface Props {
 }
 
 export default function MobileDashboard({ data }: Props) {
-  const criticalAlerts = [...(data.alerts || [])].sort((a, b) => 
-    a.alert_level === 'CRITICAL' ? -1 : 1
+  const criticalAlerts = [...(data.alerts || [])].sort((a, b) =>
+    a.alert_level === 'CRITICAL' && b.alert_level !== 'CRITICAL' ? -1 : 1
   );
-  const heroAlert = criticalAlerts.length > 0 ? criticalAlerts[0] : null;
 
   const crimeChartData = Object.entries(data.crime_type_distribution || {})
     .sort((a, b) => b[1] - a[1])
@@ -139,79 +138,6 @@ const styles: Record<string, React.CSSProperties> = {
     fontWeight: 700,
     color: '#191c1d',
     margin: 0,
-  },
-  heroCard: {
-    background: 'linear-gradient(135deg, #fbf7ef 0%, #ebd4a8 50%, #c4aa79 100%)',
-    borderRadius: 24,
-    padding: 24,
-    boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
-    marginBottom: 32,
-    position: 'relative',
-    overflow: 'hidden',
-    height: 240,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-  },
-  heroContent: {
-    position: 'relative',
-    zIndex: 2,
-  },
-  liveTag: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: 6,
-    fontFamily: 'var(--font-family-mono)',
-    fontSize: 10,
-    color: 'rgba(255,255,255,0.9)',
-    letterSpacing: 1,
-    marginBottom: 12,
-  },
-  liveDot: {
-    width: 8,
-    height: 8,
-    background: '#ffba46',
-    borderRadius: '50%',
-    boxShadow: '0 0 8px rgba(255, 186, 70, 0.8)',
-  },
-  heroTitle: {
-    fontFamily: 'var(--font-family-display)',
-    fontSize: 24,
-    fontWeight: 700,
-    color: '#ffffff',
-    lineHeight: 1.2,
-    margin: '0 0 20px 0',
-  },
-  heroActions: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 16,
-  },
-  launchBtn: {
-    background: '#ffffff',
-    color: '#805600',
-    border: 'none',
-    padding: '10px 16px',
-    borderRadius: 12,
-    fontFamily: 'var(--font-family-body)',
-    fontWeight: 700,
-    fontSize: 14,
-    cursor: 'pointer',
-  },
-  toggleBg: {
-    background: 'rgba(255,255,255,0.3)',
-    borderRadius: 20,
-    width: 50,
-    height: 28,
-    display: 'flex',
-    alignItems: 'center',
-    padding: 2,
-  },
-  toggleKnob: {
-    width: 24,
-    height: 24,
-    background: '#ffffff',
-    borderRadius: '50%',
   },
   sectionHeader: {
     display: 'flex',

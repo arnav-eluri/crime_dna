@@ -6,12 +6,13 @@ export default function Alerts() {
   const [alerts, setAlerts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [filterLevel, setFilterLevel] = useState<string>('ALL');
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     api.alerts().then(alertData => {
       setAlerts(alertData.alerts || []);
     })
-      .catch(() => {})
+      .catch(e => setError(e.message || 'Failed to load alerts'))
       .finally(() => setLoading(false));
   }, []);
 
@@ -32,7 +33,11 @@ export default function Alerts() {
         </div>
       </div>
 
-      {alerts.length === 0 && !loading && (
+      {error && (
+        <div style={{ ...styles.empty, color: '#ff4757' }}>Error: {error}</div>
+      )}
+
+      {alerts.length === 0 && !loading && !error && (
         <div style={styles.empty}>
           No active alerts. Crime patterns are within normal ranges across all districts.
         </div>

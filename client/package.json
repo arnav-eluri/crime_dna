@@ -3,11 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.24",
-    "@types/leaflet.heat": "^0.2.5",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "leaflet": "^1.9.4",
@@ -18,8 +13,7 @@
     "react-router-dom": "^7.18.1",
     "recharts": "^2.15.0",
     "typescript": "^4.9.5",
-    "web-vitals": "^1.1.2",
-    "zcatalyst-cli-plugin-react": "^0.0.4"
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
     "dev": "npx concurrently \"vite\" \"node ../functions/crime_dna/index.js\"",
@@ -45,10 +39,16 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.14",
     "@types/leaflet": "^1.9.21",
+    "@types/leaflet.heat": "^0.2.5",
     "@types/node": "^20.17.0",
-    "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^6.0.3",
-    "vite": "^8.1.3"
+    "concurrently": "^9.1.2",
+    "vite": "^8.1.3",
+    "zcatalyst-cli-plugin-react": "^0.0.4"
   }
 }

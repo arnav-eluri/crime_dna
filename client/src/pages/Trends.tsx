@@ -40,13 +40,15 @@ const CustomActiveDot = (props: any) => {
 export default function Trends() {
   const [trends, setTrends] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const isMobile = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
-    api.trends().then(setTrends).catch(() => {}).finally(() => setLoading(false));
+    api.trends().then(setTrends).catch(e => setError(e.message || 'Failed to load trends')).finally(() => setLoading(false));
   }, []);
 
   if (loading) return <div style={styles.loading}>Loading trends...</div>;
+  if (error) return <div style={styles.error}>Error: {error}</div>;
   if (!trends) return <div style={styles.error}>No trend data available.</div>;
 
   const monthlyData = Object.entries((trends.monthly_trends || {}) as Record<string, number>)

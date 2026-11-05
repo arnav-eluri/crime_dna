@@ -14,11 +14,12 @@ export default function NetworkGraph() {
   const svgRef = useRef<SVGSVGElement>(null);
   const [data, setData] = useState<NetworkData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [selectedNode, setSelectedNode] = useState<any>(null);
   const isMobile = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
-    api.network().then(setData).catch(() => {}).finally(() => setLoading(false));
+    api.network().then(setData).catch(e => setError(e.message || 'Failed to load network data')).finally(() => setLoading(false));
   }, []);
 
   useEffect(() => {
@@ -280,6 +281,7 @@ export default function NetworkGraph() {
   }, [data, isMobile]);
 
   if (loading) return <div style={styles.loadingOverlay}>Initializing neural link...</div>;
+  if (error) return <div style={styles.loadingOverlay}>Error: {error}</div>;
   if (!data || data.nodes.length === 0) return (
     <div style={styles.emptyOverlay}>
       <div style={styles.emptyCard}>

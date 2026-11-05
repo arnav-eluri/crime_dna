@@ -16,8 +16,15 @@ export default function FIRList() {
   const [filterType, setFilterType] = useState('');
   const [filterSeverity, setFilterSeverity] = useState('');
   const [search, setSearch] = useState('');
+  const [crimeTypes, setCrimeTypes] = useState<string[]>([]);
 
   const limit = 25;
+
+  useEffect(() => {
+    api.trends().then(d => {
+      setCrimeTypes(Object.keys(d.crime_type_distribution || {}).sort());
+    }).catch(() => {});
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -56,13 +63,13 @@ export default function FIRList() {
           onChange={e => setSearch(e.target.value)}
           style={styles.searchInput}
         />
-        <select value={filterType} onChange={e => setFilterType(e.target.value)} style={styles.select}>
+        <select value={filterType} onChange={e => { setFilterType(e.target.value); setPage(1); }} style={styles.select}>
           <option value="">All Crime Types</option>
-          {Array.from(new Set(firs.map(f => f.crime_type))).map(t => (
+          {crimeTypes.map(t => (
             <option key={t} value={t}>{t}</option>
           ))}
         </select>
-        <select value={filterSeverity} onChange={e => setFilterSeverity(e.target.value)} style={styles.select}>
+        <select value={filterSeverity} onChange={e => { setFilterSeverity(e.target.value); setPage(1); }} style={styles.select}>
           <option value="">All Severities</option>
           <option value="CRITICAL">Critical</option>
           <option value="HIGH">High</option>

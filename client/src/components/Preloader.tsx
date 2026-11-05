@@ -4,14 +4,12 @@ import { useLocation } from 'react-router-dom';
 export default function Preloader({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   const [loading, setLoading] = useState(true);
-  const [displayLocation, setDisplayLocation] = useState(location);
 
   useEffect(() => {
     setLoading(true);
-    
+
     const timer = setTimeout(() => {
       setLoading(false);
-      setDisplayLocation(location);
     }, 2000);
 
     return () => clearTimeout(timer);

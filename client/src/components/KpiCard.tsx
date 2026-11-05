@@ -6,15 +6,17 @@ interface KpiCardProps {
   subtitle?: string;
   color?: string;
   icon?: string;
+  delay?: number;
 }
 
-export default function KpiCard({ title, value, subtitle, color = '#2eD573', icon }: KpiCardProps) {
+export default function KpiCard({ title, value, subtitle, color = '#2eD573', icon, delay }: KpiCardProps) {
   return (
     <div className="shadow-hover" style={{
       ...styles.card,
       borderTop: `4px solid ${color}`,
       background: `linear-gradient(145deg, var(--color-surface-container-lowest) 0%, rgba(255,255,255,0.4) 100%)`,
       backdropFilter: 'blur(12px)',
+      animationDelay: delay ? `${delay}s` : undefined,
     }}>
       <div style={styles.header}>
         {icon && (
