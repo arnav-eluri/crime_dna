@@ -1,0 +1,101 @@
+fir_number,date_reported,crime_time,description,status,station_name
+FIR-002-0001,2026-07-09,16:48,Domestic violence complaint registered by victim at Shopping Mall,Under Investigation,Sector 12 Police Station
+FIR-002-0002,2025-11-14,08:57,"Extortion threat received by shopkeeper at Railway Station, demanded Rs.25,000",Closed,Sector 12 Police Station
+FIR-002-0003,2026-03-25,22:01,"Pharmaceutical drug abuse case at Market Square, 6 injections seized",Under Investigation,Sector 12 Police Station
+FIR-002-0004,2026-03-04,17:33,"Vehicle theft reported from Bus Terminal, car valued at Rs.75,000",Closed,Sector 12 Police Station
+FIR-002-0005,2026-03-12,04:19,"Trespassing complaint filed at Shopping Mall, suspect identified",Pending Review,Sector 12 Police Station
+FIR-002-0006,2025-11-07,00:01,"Housebreaking at Residential Colony, 5 suspects entered during daytime",Under Investigation,Sector 12 Police Station
+FIR-002-0007,2026-10-27,06:01,"Storehouse theft of goods worth Rs.75,000 at Hospital Road",Under Investigation,Sector 12 Police Station
+FIR-002-0008,2026-01-24,07:30,"Forgery of financial documents at School Zone, fake signatures detected",Open,Sector 12 Police Station
+FIR-002-0009,2026-01-30,04:30,"Vehicle theft reported from Main Road, car valued at Rs.2,00,000",Open,Sector 12 Police Station
+FIR-002-0010,2026-08-21,09:44,"Identity theft reported from Bus Terminal, social media accounts hacked",Closed,Sector 12 Police Station
+FIR-002-0011,2026-01-08,12:28,Unauthorized network intrusion detected at Residential Colony,Pending Review,Sector 12 Police Station
+FIR-002-0012,2026-02-14,08:52,"Online banking fraud of Rs.50,000 via phishing link sent to Shopping Mall",Under Investigation,Sector 12 Police Station
+FIR-002-0013,2026-02-15,20:24,"Housebreaking at Bus Terminal, 6 suspects entered during daytime",Closed,Sector 12 Police Station
+FIR-002-0014,2026-09-04,20:36,Cyber stalking case filed by victim residing at Main Road,Pending Review,Sector 12 Police Station
+FIR-002-0015,2026-01-11,08:00,"Fatal overdose case investigated at Railway Station, substance identified",Under Investigation,Sector 12 Police Station
+FIR-002-0016,2025-11-10,20:32,"Jewelry theft from residence at Bus Terminal, valuables worth Rs.50,000",Under Investigation,Sector 12 Police Station
+FIR-002-0017,2025-11-30,14:01,"Loan default fraud of Rs.5,00,000 reported at School Zone",Open,Sector 12 Police Station
+FIR-002-0018,2026-05-23,10:25,Unauthorized network intrusion detected at Industrial Area,Under Investigation,Sector 12 Police Station
+FIR-002-0019,2026-02-17,13:05,"Insurance fraud investigation launched at Shopping Mall, false claim of Rs.2,00,000",Open,Sector 12 Police Station
+FIR-002-0020,2026-05-19,04:43,"Construction material theft from site at Industrial Area, loss of Rs.5,00,000",Pending Review,Sector 12 Police Station
+FIR-002-0021,2026-06-12,16:12,"Trespassing complaint filed at Hospital Road, suspect identified",Open,Sector 12 Police Station
+FIR-002-0022,2026-01-10,04:04,"Drug peddling near school zone at Industrial Area, 4 juveniles involved",Open,Sector 12 Police Station
+FIR-002-0023,2026-02-08,04:53,"Office break-in at Residential Colony, electronics worth Rs.5,00,000 stolen",Closed,Sector 12 Police Station
+FIR-002-0024,2026-06-28,03:40,"Bank fraud of Rs.1,00,000 detected at Shopping Mall, account compromised",Closed,Sector 12 Police Station
+FIR-002-0025,2025-12-11,08:33,"Vandalism of public property at Main Road, estimated damage Rs.75,000",Under Investigation,Sector 12 Police Station
+FIR-002-0026,2026-09-24,08:07,"Attempted murder case filed, victim attacked with a sharp weapon at Hospital Road",Open,Sector 12 Police Station
+FIR-002-0027,2026-02-15,07:44,"Pharmaceutical drug abuse case at Market Square, 3 injections seized",Under Investigation,Sector 12 Police Station
+FIR-002-0028,2026-02-28,19:15,"Construction material theft from site at Railway Station, loss of Rs.10,00,000",Closed,Sector 12 Police Station
+FIR-002-0029,2025-12-05,17:01,"Drug peddling near school zone at Temple Street, 6 juveniles involved",Under Investigation,Sector 12 Police Station
+FIR-002-0030,2026-09-18,15:22,Unauthorized network intrusion detected at Temple Street,Pending Review,Sector 12 Police Station
+FIR-002-0031,2026-07-08,22:02,"Vandalism of public property at Temple Street, estimated damage Rs.10,00,000",Open,Sector 12 Police Station
+FIR-002-0032,2026-10-11,05:22,"Bicycle theft from Residential Colony, CCTV footage under review",Under Investigation,Sector 12 Police Station
+FIR-002-0033,2026-06-01,06:39,Domestic violence complaint registered by victim at Temple Street,Closed,Sector 12 Police Station
+FIR-002-0034,2025-12-30,02:53,"Chain snatching incident at Residential Colony, accused fled on motorcycle",Closed,Sector 12 Police Station
+FIR-002-0035,2026-07-15,18:34,"Dacoity at Hospital Road, group of 6 individuals looted the premises",Under Investigation,Sector 12 Police Station
+FIR-002-0036,2026-08-31,15:55,"Fake online store fraud, victims lost Rs.75,000, operated from Shopping Mall",Under Investigation,Sector 12 Police Station
+FIR-002-0037,2026-09-13,16:49,"Ponzi scheme worth Rs.2,00,000 uncovered in Bus Terminal, 4 investors affected",Under Investigation,Sector 12 Police Station
+FIR-002-0038,2026-09-09,10:19,Smuggling of controlled substances across border near Industrial Area,Under Investigation,Sector 12 Police Station
+FIR-002-0039,2026-01-23,23:47,"Drug trafficking ring busted at Residential Colony, 3 kg of contraband seized",Open,Sector 12 Police Station
+FIR-002-0040,2026-01-12,05:52,"Cocaine trafficking via courier, package intercepted at Main Road",Open,Sector 12 Police Station
+FIR-002-0041,2026-08-13,22:55,"Loan default fraud of Rs.1,00,000 reported at Hospital Road",Closed,Sector 12 Police Station
+FIR-002-0042,2026-10-09,08:29,"Fake online store fraud, victims lost Rs.25,000, operated from Temple Street",Under Investigation,Sector 12 Police Station
+FIR-002-0043,2026-07-13,19:44,"SIM swapping fraud reported at Industrial Area, bank accounts drained of Rs.50,000",Pending Review,Sector 12 Police Station
+FIR-002-0044,2026-11-01,11:20,"Cryptocurrency scam worth Rs.75,000 at Hospital Road, 2 victims identified",Pending Review,Sector 12 Police Station
+FIR-002-0045,2026-10-29,02:44,"Vehicle theft reported from Railway Station, car valued at Rs.5,00,000",Pending Review,Sector 12 Police Station
+FIR-002-0046,2026-03-31,14:49,"Money laundering operation busted at School Zone, Rs.75,000 seized",Closed,Sector 12 Police Station
+FIR-002-0047,2026-09-12,06:51,"Jewelry theft from residence at Main Road, valuables worth Rs.5,00,000",Open,Sector 12 Police Station
+FIR-002-0048,2026-10-24,14:40,"Phishing attack targeted employees at Market Square, credentials stolen",Under Investigation,Sector 12 Police Station
+FIR-002-0049,2026-10-30,09:31,"Phishing attack targeted employees at Main Road, credentials stolen",Under Investigation,Sector 12 Police Station
+FIR-002-0050,2025-12-03,04:28,"Embezzlement of company funds amounting to Rs.75,000 at Residential Colony",Pending Review,Sector 12 Police Station
+FIR-002-0051,2026-08-11,18:19,Smuggling of controlled substances across border near School Zone,Open,Sector 12 Police Station
+FIR-002-0052,2026-07-03,00:32,"Online banking fraud of Rs.2,00,000 via phishing link sent to Residential Colony",Pending Review,Sector 12 Police Station
+FIR-002-0053,2026-09-05,23:31,Ganja cultivation discovered in farmland near Temple Street,Open,Sector 12 Police Station
+FIR-002-0054,2025-12-28,12:01,"Insurance fraud investigation launched at Bus Terminal, false claim of Rs.50,000",Under Investigation,Sector 12 Police Station
+FIR-002-0055,2026-09-21,09:15,"Fatal overdose case investigated at Temple Street, substance identified",Open,Sector 12 Police Station
+FIR-002-0056,2026-03-21,14:10,"Attempted murder case filed, victim attacked with a sharp weapon at Market Square",Under Investigation,Sector 12 Police Station
+FIR-002-0057,2026-06-29,08:34,"SIM swapping fraud reported at Residential Colony, bank accounts drained of Rs.50,000",Closed,Sector 12 Police Station
+FIR-002-0058,2026-08-29,10:03,"Identity theft reported from Industrial Area, social media accounts hacked",Pending Review,Sector 12 Police Station
+FIR-002-0059,2025-11-06,20:57,Cyber stalking case filed by victim residing at Shopping Mall,Pending Review,Sector 12 Police Station
+FIR-002-0060,2026-01-31,12:22,Domestic violence complaint registered by victim at Hospital Road,Closed,Sector 12 Police Station
+FIR-002-0061,2026-05-11,12:31,"Ponzi scheme worth Rs.25,000 uncovered in Hospital Road, 5 investors affected",Pending Review,Sector 12 Police Station
+FIR-002-0062,2026-03-20,08:48,"Vehicle theft reported from Shopping Mall, car valued at Rs.75,000",Pending Review,Sector 12 Police Station
+FIR-002-0063,2026-04-01,23:45,"Office break-in at Residential Colony, electronics worth Rs.75,000 stolen",Closed,Sector 12 Police Station
+FIR-002-0064,2026-02-16,22:32,"Housebreaking at Bus Terminal, 2 suspects entered during daytime",Open,Sector 12 Police Station
+FIR-002-0065,2026-10-30,09:26,Smuggling of controlled substances across border near Shopping Mall,Open,Sector 12 Police Station
+FIR-002-0066,2026-03-21,19:42,"Jewelry theft from residence at School Zone, valuables worth Rs.2,00,000",Open,Sector 12 Police Station
+FIR-002-0067,2026-09-10,21:01,"Forgery of financial documents at Shopping Mall, fake signatures detected",Pending Review,Sector 12 Police Station
+FIR-002-0068,2025-11-06,19:24,"Dacoity at Hospital Road, group of 6 individuals looted the premises",Pending Review,Sector 12 Police Station
+FIR-002-0069,2026-05-01,02:59,"Fatal overdose case investigated at Railway Station, substance identified",Closed,Sector 12 Police Station
+FIR-002-0070,2026-01-20,13:56,"Ransomware attack on systems at Temple Street, demand of Rs.2,00,000 in Bitcoin",Closed,Sector 12 Police Station
+FIR-002-0071,2026-04-16,22:30,"Storehouse theft of goods worth Rs.2,00,000 at School Zone",Open,Sector 12 Police Station
+FIR-002-0072,2026-07-10,02:12,"Housebreaking at Railway Station, 3 suspects entered during daytime",Open,Sector 12 Police Station
+FIR-002-0073,2025-11-26,15:59,"Possession of narcotics found on suspect at Residential Colony, Rs.1,00,000 worth",Open,Sector 12 Police Station
+FIR-002-0074,2025-12-19,15:25,"Pharmaceutical drug abuse case at School Zone, 3 injections seized",Open,Sector 12 Police Station
+FIR-002-0075,2026-09-07,16:22,"Fake online store fraud, victims lost Rs.2,00,000, operated from Bus Terminal",Closed,Sector 12 Police Station
+FIR-002-0076,2026-05-04,22:45,"Possession of narcotics found on suspect at Hospital Road, Rs.10,00,000 worth",Open,Sector 12 Police Station
+FIR-002-0077,2025-11-21,14:39,"Construction material theft from site at Hospital Road, loss of Rs.1,00,000",Closed,Sector 12 Police Station
+FIR-002-0078,2026-02-21,21:07,"Fake online store fraud, victims lost Rs.25,000, operated from Bus Terminal",Under Investigation,Sector 12 Police Station
+FIR-002-0079,2026-01-17,06:16,"Bicycle theft from Market Square, CCTV footage under review",Pending Review,Sector 12 Police Station
+FIR-002-0080,2026-01-11,21:25,"Pharmaceutical drug abuse case at Market Square, 2 injections seized",Open,Sector 12 Police Station
+FIR-002-0081,2026-03-20,05:18,"Burglary at Main Road, valuables worth Rs.2,00,000 stolen",Open,Sector 12 Police Station
+FIR-002-0082,2025-12-31,17:02,"Ransomware attack on systems at Residential Colony, demand of Rs.10,00,000 in Bitcoin",Pending Review,Sector 12 Police Station
+FIR-002-0083,2026-06-23,09:49,"Money laundering operation busted at School Zone, Rs.1,00,000 seized",Pending Review,Sector 12 Police Station
+FIR-002-0084,2025-12-31,19:32,"Forgery of financial documents at Main Road, fake signatures detected",Under Investigation,Sector 12 Police Station
+FIR-002-0085,2026-05-25,23:12,"Bank fraud of Rs.1,00,000 detected at Hospital Road, account compromised",Open,Sector 12 Police Station
+FIR-002-0086,2026-01-02,16:04,"Loan default fraud of Rs.1,00,000 reported at Temple Street",Under Investigation,Sector 12 Police Station
+FIR-002-0087,2026-09-06,16:22,"Forgery of financial documents at Bus Terminal, fake signatures detected",Pending Review,Sector 12 Police Station
+FIR-002-0088,2026-03-26,09:16,"Storehouse theft of goods worth Rs.10,00,000 at Industrial Area",Pending Review,Sector 12 Police Station
+FIR-002-0089,2026-06-07,08:23,Smuggling of controlled substances across border near Market Square,Closed,Sector 12 Police Station
+FIR-002-0090,2026-11-04,03:20,"Storehouse theft of goods worth Rs.50,000 at Railway Station",Pending Review,Sector 12 Police Station
+FIR-002-0091,2026-07-17,06:55,"Homicide investigation at Shopping Mall, body discovered in the morning",Under Investigation,Sector 12 Police Station
+FIR-002-0092,2026-09-17,20:52,"Trespassing complaint filed at Residential Colony, suspect identified",Under Investigation,Sector 12 Police Station
+FIR-002-0093,2025-12-29,02:02,"Construction material theft from site at Industrial Area, loss of Rs.5,00,000",Closed,Sector 12 Police Station
+FIR-002-0094,2025-11-14,05:57,Illegal drug manufacturing lab discovered at Main Road,Under Investigation,Sector 12 Police Station
+FIR-002-0095,2025-12-17,03:22,"SIM swapping fraud reported at Bus Terminal, bank accounts drained of Rs.1,00,000",Pending Review,Sector 12 Police Station
+FIR-002-0096,2026-03-05,13:50,"Burglary at Industrial Area, valuables worth Rs.10,00,000 stolen",Under Investigation,Sector 12 Police Station
+FIR-002-0097,2025-12-15,07:09,"Ransomware attack on systems at Market Square, demand of Rs.10,00,000 in Bitcoin",Under Investigation,Sector 12 Police Station
+FIR-002-0098,2025-12-18,05:16,"Cheque bouncing case filed for amount Rs.50,000 at Bus Terminal",Closed,Sector 12 Police Station
+FIR-002-0099,2026-10-13,14:10,"Vehicle theft reported from Residential Colony, car valued at Rs.2,00,000",Open,Sector 12 Police Station
+FIR-002-0100,2025-11-12,10:58,"Drug peddling near school zone at Hospital Road, 2 juveniles involved",Pending Review,Sector 12 Police Station

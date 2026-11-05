@@ -1,125 +1,123 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../api';
 import AlertCard from '../components/AlertCard';
+import {
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend,
+} from 'recharts';
+
+type Level = 'ALL' | 'CRITICAL' | 'ELEVATED' | 'NORMAL';
+
+const darkTooltip = {
+  contentStyle: { background: '#1C1D24', border: '1px solid #252630', borderRadius: 8, fontSize: 12 },
+  labelStyle: { color: '#B0B3C8', fontWeight: 600 },
+  itemStyle: { color: '#ECEDF5' },
+};
+const axisStyle = { fill: '#7A7D92', fontSize: 11 };
 
 export default function Alerts() {
   const [alerts, setAlerts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [filterLevel, setFilterLevel] = useState<string>('ALL');
+  const [filterLevel, setFilterLevel] = useState<Level>('ALL');
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    api.alerts().then(alertData => {
-      setAlerts(alertData.alerts || []);
-    })
+    api.alerts()
+      .then(d => setAlerts(d.alerts || []))
       .catch(e => setError(e.message || 'Failed to load alerts'))
       .finally(() => setLoading(false));
   }, []);
 
   const filtered = filterLevel === 'ALL' ? alerts : alerts.filter(a => a.alert_level === filterLevel);
+  const counts = {
+    critical: alerts.filter(a => a.alert_level === 'CRITICAL').length,
+    elevated: alerts.filter(a => a.alert_level === 'ELEVATED').length,
+    total: alerts.length,
+  };
 
-  const criticalAlerts = alerts.filter(a => a.alert_level === 'CRITICAL');
-  const elevatedAlerts = alerts.filter(a => a.alert_level === 'ELEVATED');
-  const districts = Array.from(new Set(alerts.map(a => a.district)));
+  // District alert distribution (top 10 by total alerts)
+  const districtAlertData = Object.values(
+    alerts.reduce((acc: any, a) => {
+      const key = a.district;
+      if (!acc[key]) acc[key] = { name: key.replace(/ (DIST|CITY)$/, ''), CRITICAL: 0, ELEVATED: 0, NORMAL: 0 };
+      acc[key][a.alert_level as 'CRITICAL' | 'ELEVATED' | 'NORMAL']++;
+      return acc;
+    }, {} as any)
+  ).sort((a: any, b: any) => (b.CRITICAL + b.ELEVATED + b.NORMAL) - (a.CRITICAL + a.ELEVATED + a.NORMAL))
+   .slice(0, 10) as any[];
+
+  const filterBtnStyle = (active: boolean, color?: string): React.CSSProperties => ({
+    padding: '7px 16px',
+    borderRadius: 'var(--r-md)',
+    border: `1px solid ${active ? (color ?? 'var(--accent)') : 'var(--border)'}`,
+    background: active ? (color ? `${color}1A` : 'var(--accent-dim)') : 'var(--bg-card)',
+    color: active ? (color ?? 'var(--accent)') : 'var(--text-lo)',
+    fontFamily: 'var(--font-body)',
+    fontSize: 'var(--text-sm)',
+    fontWeight: active ? 600 : 500,
+    cursor: 'pointer',
+    transition: 'all 0.15s',
+  });
 
   return (
-    <div style={styles.container}>
-      <div style={styles.header}>
-        <h1 style={styles.title}>Emerging Trend Alerts</h1>
-        <div style={styles.stats}>
-          <span style={{ ...styles.statBadge, background: '#ff4757' }}>{criticalAlerts.length} Critical</span>
-          <span style={{ ...styles.statBadge, background: '#ffa502' }}>{elevatedAlerts.length} Elevated</span>
-          <span style={{ ...styles.statBadge, background: '#576574' }}>{alerts.length} Total</span>
+    <div className="page">
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
+        <h1 className="page-title" style={{ marginBottom: 0 }}>Trend Alerts</h1>
+        <div style={{ display: 'flex', gap: 8 }}>
+          <span style={{ padding: '4px 10px', borderRadius: 'var(--r-sm)', background: 'rgba(217,64,64,0.12)', color: 'var(--critical)', fontFamily: 'var(--font-mono)', fontSize: 11, fontWeight: 600 }}>
+            {counts.critical} critical
+          </span>
+          <span style={{ padding: '4px 10px', borderRadius: 'var(--r-sm)', background: 'rgba(224,144,32,0.12)', color: 'var(--elevated)', fontFamily: 'var(--font-mono)', fontSize: 11, fontWeight: 600 }}>
+            {counts.elevated} elevated
+          </span>
+          <span style={{ padding: '4px 10px', borderRadius: 'var(--r-sm)', background: 'var(--bg-card)', color: 'var(--text-lo)', fontFamily: 'var(--font-mono)', fontSize: 11, fontWeight: 600, border: '1px solid var(--border)' }}>
+            {counts.total} total
+          </span>
         </div>
       </div>
 
-      {error && (
-        <div style={{ ...styles.empty, color: '#ff4757' }}>Error: {error}</div>
-      )}
-
-      {alerts.length === 0 && !loading && !error && (
-        <div style={styles.empty}>
-          No active alerts. Crime patterns are within normal ranges across all districts.
+      {/* District alert distribution chart */}
+      {!loading && districtAlertData.length > 0 && (
+        <div className="chart-card" style={{ marginBottom: 20 }}>
+          <div className="chart-title">Alert Distribution by District</div>
+          <ResponsiveContainer width="100%" height={Math.max(200, districtAlertData.length * 30)}>
+            <BarChart data={districtAlertData} layout="vertical" margin={{ top: 5, right: 30, left: 10, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#252630" />
+              <XAxis type="number" tick={axisStyle} axisLine={false} tickLine={false} allowDecimals={false} />
+              <YAxis dataKey="name" type="category" tick={{ ...axisStyle, fontSize: 11 }} width={100} axisLine={false} tickLine={false} />
+              <Tooltip {...darkTooltip} cursor={{ fill: 'rgba(255,255,255,0.03)' }} />
+              <Legend iconType="circle" wrapperStyle={{ fontSize: 12, color: 'var(--text-mid)', paddingTop: 8 }} />
+              <Bar dataKey="CRITICAL" stackId="a" fill="#D94040" fillOpacity={0.85} maxBarSize={16} />
+              <Bar dataKey="ELEVATED" stackId="a" fill="#E09020" fillOpacity={0.85} maxBarSize={16} />
+              <Bar dataKey="NORMAL"   stackId="a" fill="#2AB4A0" fillOpacity={0.85} maxBarSize={16} radius={[0, 4, 4, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
       )}
 
-      <div style={styles.filters}>
-        <button onClick={() => setFilterLevel('ALL')}
-          style={{ ...styles.filterBtn, ...(filterLevel === 'ALL' ? styles.filterBtnActive : {}) }}>
-          All
-        </button>
-        <button onClick={() => setFilterLevel('CRITICAL')}
-          style={{ ...styles.filterBtn, ...(filterLevel === 'CRITICAL' ? styles.filterBtnActive : {}), borderColor: '#ff4757' }}>
-          Critical
-        </button>
-        <button onClick={() => setFilterLevel('ELEVATED')}
-          style={{ ...styles.filterBtn, ...(filterLevel === 'ELEVATED' ? styles.filterBtnActive : {}), borderColor: '#ffa502' }}>
-          Elevated
-        </button>
+      {error && <div className="state-msg state-err">Error: {error}</div>}
+
+      <div style={{ display: 'flex', gap: 8, marginBottom: 20 }}>
+        <button onClick={() => setFilterLevel('ALL')}      style={filterBtnStyle(filterLevel === 'ALL')}>All</button>
+        <button onClick={() => setFilterLevel('CRITICAL')} style={filterBtnStyle(filterLevel === 'CRITICAL', '#D94040')}>Critical</button>
+        <button onClick={() => setFilterLevel('ELEVATED')} style={filterBtnStyle(filterLevel === 'ELEVATED', '#E09020')}>Elevated</button>
+        <button onClick={() => setFilterLevel('NORMAL')}   style={filterBtnStyle(filterLevel === 'NORMAL',   '#2AB4A0')}>Normal</button>
       </div>
 
       {loading ? (
-        <div style={styles.loading}>Loading alerts...</div>
+        <div className="state-msg">Loading alerts...</div>
+      ) : filtered.length === 0 && !error ? (
+        <div className="state-msg">No alerts match this filter. Crime patterns are within normal ranges.</div>
       ) : (
-        <div style={styles.grid}>
-          {filtered.map((alert, idx) => (
-            <AlertCard
-              key={idx}
-              district={alert.district}
-              crimeCategory={alert.crime_category}
-              alertLevel={alert.alert_level}
-              currentCount={alert.current_count}
-              historicalAvg={alert.historical_avg}
-              percentChange={alert.percent_change}
-              trendDirection={alert.trend_direction}
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+          {filtered.map((alert, i) => (
+            <AlertCard key={i}
+              district={alert.district} crimeCategory={alert.crime_category} alertLevel={alert.alert_level}
+              currentCount={alert.current_count} historicalAvg={alert.historical_avg}
+              percentChange={alert.percent_change} trendDirection={alert.trend_direction}
             />
           ))}
-        </div>
-      )}
-
-      {criticalAlerts.length > 0 && (
-        <div style={styles.section}>
-          <h3 style={styles.sectionTitle}>Affected Districts</h3>
-          <div style={styles.districtList}>
-            {districts.map(d => (
-              <div key={d} style={styles.districtChip}>
-                {d}
-                <span style={{ ...styles.districtCount, color: criticalAlerts.some(a => a.district === d) ? '#ff4757' : '#ffa502' }}>
-                  {alerts.filter(a => a.district === d).length} alerts
-                </span>
-              </div>
-            ))}
-          </div>
         </div>
       )}
     </div>
   );
 }
-
-const styles: Record<string, React.CSSProperties> = {
-  container: { padding: 'var(--spacing-container-padding)' },
-  header: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20, flexWrap: 'wrap' as const, gap: 12 },
-  title: { fontFamily: 'var(--font-family-display)', fontSize: 28, fontWeight: 700, color: 'var(--color-on-surface)', margin: 0 },
-  stats: { display: 'flex', gap: 8 },
-  statBadge: { padding: '4px 12px', borderRadius: 'var(--radius-default)', fontSize: 12, fontWeight: 600, color: '#fff', fontFamily: 'var(--font-family-mono)' },
-  empty: { padding: 40, color: 'var(--color-on-surface-variant)', fontSize: 14, textAlign: 'center' as const, fontFamily: 'var(--font-family-body)' },
-  loading: { padding: 40, color: 'var(--color-on-surface-variant)', fontSize: 16, textAlign: 'center' as const, fontFamily: 'var(--font-family-body)' },
-  filters: { display: 'flex', gap: 8, marginBottom: 20 },
-  filterBtn: {
-    padding: '8px 16px', borderRadius: 'var(--radius-default)', border: '1px solid var(--color-surface-container-highest)',
-    background: 'var(--color-surface-container-lowest)', color: 'var(--color-on-surface-variant)', cursor: 'pointer', 
-    fontFamily: 'var(--font-family-body)', fontSize: 13, transition: 'all 0.2s', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.02)'
-  },
-  filterBtnActive: { background: 'var(--color-primary-container)', color: 'var(--color-on-primary-container)', borderColor: 'var(--color-primary-container)', fontWeight: 600, boxShadow: '0px 4px 8px rgba(202, 138, 4, 0.2)' },
-  grid: { display: 'flex', gap: 16, flexWrap: 'wrap' as const },
-  section: { marginTop: 32 },
-  sectionTitle: { fontFamily: 'var(--font-family-display)', fontSize: 18, fontWeight: 600, color: 'var(--color-on-surface)', marginBottom: 12 },
-  districtList: { display: 'flex', gap: 12, flexWrap: 'wrap' as const },
-  districtChip: {
-    padding: '10px 16px', borderRadius: 'var(--radius-default)', background: 'var(--color-surface-container-lowest)',
-    color: 'var(--color-on-surface)', fontSize: 14, display: 'flex', flexDirection: 'column', gap: 4,
-    border: '1px solid var(--color-surface-container-highest)', fontFamily: 'var(--font-family-body)',
-    boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.02)'
-  },
-  districtCount: { fontFamily: 'var(--font-family-mono)', fontSize: 11, fontWeight: 600 },
-};

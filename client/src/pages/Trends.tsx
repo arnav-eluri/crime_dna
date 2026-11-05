@@ -1,172 +1,142 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../api';
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar,
+  AreaChart, Area, ComposedChart, Bar,
+  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Treemap,
 } from 'recharts';
-import { formatCrimeName, formatDistrictName, useMediaQuery } from '../utils';
-import MobileHeader from '../components/MobileHeader';
+import { formatCrimeName, formatDistrictName } from '../utils';
 
-const CustomTrendTick = ({ x, y, payload }: any) => {
-  // payload.value format is usually "YYYY-MM"
-  const parts = payload.value.split('-');
-  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const m = parseInt(parts[1], 10) - 1;
-  const monthStr = !isNaN(m) && monthNames[m] ? monthNames[m] : parts[1];
-  const yearStr = parts[0] ? parts[0].slice(-2) : "";
+const TREE_COLORS = ['#CC6B00','#2AB4A0','#6B7FCC','#D94040','#8B6CC0','#E09020','#3A9BD5','#5DB87A','#F0A060','#E05070','#50C0B0','#A070D0','#60B040','#C09030'];
 
-  return (
-    <g transform={`translate(${x},${y})`}>
-      <circle cx={0} cy={14} r={12} fill="#ffffff" stroke="#e0e0e0" strokeWidth={1} />
-      <text x={0} y={14} dy={3} textAnchor="middle" fill="#888" fontSize={10} fontWeight="bold">
-        {monthStr}
-      </text>
-      <text x={0} y={36} textAnchor="middle" fill="#aaa" fontSize={10}>
-        '{yearStr}
-      </text>
-    </g>
-  );
+const darkTooltip = {
+  contentStyle: { background: '#1C1D24', border: '1px solid #252630', borderRadius: 8, fontSize: 12 },
+  labelStyle: { color: '#B0B3C8', fontWeight: 600 },
+  itemStyle: { color: '#ECEDF5' },
 };
+const axisStyle = { fill: '#7A7D92', fontSize: 11 };
 
-const CustomActiveDot = (props: any) => {
-  const { cx, cy } = props;
+function TreemapCell(props: any) {
+  const { x, y, width, height, name, value, index, depth } = props;
+  if (depth === 0 || width < 10 || height < 10) return null;
+  const color = TREE_COLORS[index % TREE_COLORS.length];
+  const maxChars = Math.max(4, Math.floor(width / 7));
   return (
     <g>
-      <circle cx={cx} cy={cy} r={16} fill="#d35400" fillOpacity={0.2} />
-      <circle cx={cx} cy={cy} r={6} fill="#d35400" stroke="#fff" strokeWidth={2} />
+      <rect x={x + 1} y={y + 1} width={width - 2} height={height - 2} fill={color} fillOpacity={0.85} rx={3} />
+      {width > 50 && height > 28 && (
+        <text x={x + 7} y={y + 17} fill="#ECEDF5" fontSize={Math.min(11, width / 9)} fontWeight={600} style={{ pointerEvents: 'none' }}>
+          {name.length > maxChars ? name.slice(0, maxChars - 1) + '…' : name}
+        </text>
+      )}
+      {width > 50 && height > 44 && (
+        <text x={x + 7} y={y + 32} fill="rgba(236,237,245,0.6)" fontSize={10} style={{ pointerEvents: 'none' }}>
+          {value >= 1000 ? `${(value / 1000).toFixed(0)}k` : value}
+        </text>
+      )}
     </g>
   );
-};
+}
+
+function LollipopBar(props: any) {
+  const { x, y, width, height } = props;
+  const cy = y + height / 2;
+  return (
+    <g>
+      <line x1={x} y1={cy} x2={x + width} y2={cy} stroke="#2AB4A0" strokeWidth={1.5} strokeOpacity={0.5} />
+      <circle cx={x + width} cy={cy} r={5} fill="#2AB4A0" fillOpacity={0.9} />
+    </g>
+  );
+}
 
 export default function Trends() {
   const [trends, setTrends] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const isMobile = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
     api.trends().then(setTrends).catch(e => setError(e.message || 'Failed to load trends')).finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <div style={styles.loading}>Loading trends...</div>;
-  if (error) return <div style={styles.error}>Error: {error}</div>;
-  if (!trends) return <div style={styles.error}>No trend data available.</div>;
+  if (loading) return <div className="page state-msg">Loading trends...</div>;
+  if (error)   return <div className="page state-msg state-err">Error: {error}</div>;
+  if (!trends) return <div className="page state-msg">No trend data available.</div>;
 
   const monthlyData = Object.entries((trends.monthly_trends || {}) as Record<string, number>)
-    .sort(([a], [b]) => a.localeCompare(b))
-    .slice(-24)
+    .sort(([a], [b]) => a.localeCompare(b)).slice(-24)
     .map(([period, count]) => ({ period, count }));
 
-  const crimeData = Object.entries((trends.crime_type_distribution || {}) as Record<string, number>)
+  const crimeTreeData = Object.entries((trends.crime_type_distribution || {}) as Record<string, number>)
     .sort((a, b) => b[1] - a[1])
-    .slice(0, 8)
     .map(([name, value]) => ({ name: formatCrimeName(name), value }));
 
   const districtData = Object.entries((trends.district_distribution || {}) as Record<string, number>)
+    .sort((a, b) => b[1] - a[1]).slice(0, 12)
     .map(([name, value]) => ({ name: formatDistrictName(name), value }));
 
   return (
-    <div style={{ ...styles.container, paddingBottom: isMobile ? 25 : 40, background: 'transparent' }}>
-      {isMobile ? <MobileHeader /> : <h1 style={{ ...styles.title, padding: '40px 40px 0' }}>Trend Analysis</h1>}
+    <div className="page">
+      <h1 className="page-title">Trend Analysis</h1>
 
-      <div style={isMobile ? styles.mobileContent : { padding: '0 40px' }}>
-        {isMobile && (
-          <div style={styles.feedHeader}>
-            <div style={styles.feedLabel}>ANALYTICS ENGINE</div>
-            <h1 style={styles.feedTitle}>Trend Analysis</h1>
-          </div>
-        )}
+      {/* Area chart */}
+      <div className="chart-card" style={{ marginBottom: 16 }}>
+        <div className="chart-title">Monthly FIR Volume — last 24 months</div>
+        <ResponsiveContainer width="100%" height={240}>
+          <AreaChart data={monthlyData} margin={{ top: 10, right: 20, left: 0, bottom: 36 }}>
+            <defs>
+              <linearGradient id="trendsAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%"  stopColor="#CC6B00" stopOpacity={0.4} />
+                <stop offset="95%" stopColor="#CC6B00" stopOpacity={0.02} />
+              </linearGradient>
+            </defs>
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#252630" />
+            <XAxis dataKey="period" tick={{ fill: '#55576A', fontSize: 9 }} axisLine={false} tickLine={false} height={48}
+              tickFormatter={v => { const p = v.split('-'); const m = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+p[1]] ?? ''; return `${m}'${p[0].slice(-2)}`; }} />
+            <YAxis tick={axisStyle} axisLine={false} tickLine={false} width={40}
+              tickFormatter={v => v >= 1000 ? `${(v / 1000).toFixed(0)}k` : v} />
+            <Tooltip {...darkTooltip} />
+            <Area type="monotone" dataKey="count" stroke="#CC6B00" strokeWidth={2.5} fill="url(#trendsAreaGrad)" dot={false}
+              activeDot={{ r: 5, fill: '#CC6B00', stroke: '#0C0D10', strokeWidth: 2 }} />
+          </AreaChart>
+        </ResponsiveContainer>
+        <div style={{ fontSize: 12, color: 'var(--text-lo)', marginTop: 8, textAlign: 'center' }}>
+          Identify seasonal patterns and long-term crime volume trends.
+        </div>
+      </div>
 
-        <div style={styles.chartCard}>
-          <h3 style={styles.chartTitle}>Monthly FIR Trends (Last 24 months)</h3>
-          <ResponsiveContainer width="100%" height={250}>
-            <LineChart data={monthlyData} margin={{ top: 20, right: 20, left: 0, bottom: 30 }}>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#ebebeb" />
-              <XAxis dataKey="period" tick={<CustomTrendTick />} interval="preserveStartEnd" height={60} axisLine={false} tickLine={false} tickMargin={10} />
-              <YAxis tick={{ fill: '#888', fontSize: 11 }} axisLine={false} tickLine={false} width={40} />
-              <Tooltip
-                cursor={{ stroke: '#ebebeb', strokeWidth: 2 }}
-                contentStyle={{ background: '#ffffff', border: '1px solid #e0e0e0', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.05)' }}
-                labelStyle={{ color: '#888', fontWeight: 600, marginBottom: 4 }}
-              />
-              <Line type="monotone" dataKey="count" stroke="#d35400" strokeWidth={3} dot={false} activeDot={<CustomActiveDot />} />
-            </LineChart>
+      {/* Treemap + Lollipop */}
+      <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+        <div className="chart-card" style={{ flex: '1 1 360px' }}>
+          <div className="chart-title">Crime Type Distribution</div>
+          <ResponsiveContainer width="100%" height={340}>
+            <Treemap data={crimeTreeData} dataKey="value" content={<TreemapCell />}>
+              <Tooltip {...darkTooltip} formatter={(v: any) => [Number(v).toLocaleString(), 'FIRs']} />
+            </Treemap>
           </ResponsiveContainer>
-          <div style={styles.chartInsight}>Track the volume of FIRs filed over the last two years to identify seasonal patterns and anomalies.</div>
+          <div style={{ fontSize: 12, color: 'var(--text-lo)', marginTop: 8, textAlign: 'center' }}>
+            Cell area proportional to FIR count.
+          </div>
         </div>
 
-        <div style={styles.chartsRow}>
-          <div style={styles.chartCard}>
-            <h3 style={styles.chartTitle}>Crime Type Distribution</h3>
-            <ResponsiveContainer width="100%" height={250}>
-              <BarChart data={crimeData} layout="vertical" margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
-                <defs>
-                  <linearGradient id="colorCrimeTrend" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="5%" stopColor="#805600" stopOpacity={0.9}/>
-                    <stop offset="95%" stopColor="#805600" stopOpacity={0.4}/>
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="rgba(0,0,0,0.05)" />
-                <XAxis type="number" tick={{ fill: '#514535', fontSize: 12 }} axisLine={false} tickLine={false} />
-                <YAxis dataKey="name" type="category" tick={{ fill: '#514535', fontSize: 12 }} width={80} axisLine={false} tickLine={false} />
-                <Tooltip
-                  cursor={{ fill: 'rgba(0,0,0,0.02)' }}
-                  contentStyle={{ background: '#ffffff', border: 'none', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}
-                  labelStyle={{ color: '#191c1d', fontWeight: 600 }}
-                />
-                <Bar dataKey="value" fill="url(#colorCrimeTrend)" radius={[0, 4, 4, 0]} maxBarSize={20} />
-              </BarChart>
-            </ResponsiveContainer>
-            <div style={styles.chartInsight}>Understand which crime categories are most prevalent across all jurisdictions to inform preventative measures.</div>
-          </div>
-
-          <div style={styles.chartCard}>
-            <h3 style={styles.chartTitle}>District Comparison</h3>
-            <ResponsiveContainer width="100%" height={Math.max(120, districtData.length * 40)}>
-              <BarChart data={districtData} layout="vertical" margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
-                <defs>
-                  <linearGradient id="colorDistrictTrend" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="5%" stopColor="#ffba46" stopOpacity={0.9}/>
-                    <stop offset="95%" stopColor="#ffba46" stopOpacity={0.2}/>
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="rgba(0,0,0,0.05)" />
-                <XAxis type="number" tick={{ fill: '#514535', fontSize: 12 }} axisLine={false} tickLine={false} />
-                <YAxis dataKey="name" type="category" tick={{ fill: '#514535', fontSize: 12 }} width={80} axisLine={false} tickLine={false} />
-                <Tooltip
-                  cursor={{ fill: 'rgba(0,0,0,0.02)' }}
-                  contentStyle={{ background: '#ffffff', border: 'none', borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}
-                  labelStyle={{ color: '#191c1d', fontWeight: 600 }}
-                />
-                <Bar dataKey="value" fill="url(#colorDistrictTrend)" radius={[0, 4, 4, 0]} maxBarSize={20} />
-              </BarChart>
-            </ResponsiveContainer>
-            <div style={styles.chartInsight}>Compare total crime volume across different districts to identify high-risk zones and allocate resources effectively.</div>
+        <div className="chart-card" style={{ flex: '1 1 300px' }}>
+          <div className="chart-title">District Comparison</div>
+          <ResponsiveContainer width="100%" height={Math.max(300, districtData.length * 32)}>
+            <ComposedChart data={districtData} layout="vertical" margin={{ top: 5, right: 50, left: 10, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#252630" />
+              <XAxis type="number" tick={axisStyle} axisLine={false} tickLine={false}
+                tickFormatter={v => v >= 1000 ? `${(v / 1000).toFixed(0)}k` : v} />
+              <YAxis dataKey="name" type="category" tick={{ ...axisStyle, fontSize: 11 }} width={96} axisLine={false} tickLine={false} />
+              <Tooltip {...darkTooltip} cursor={{ fill: 'rgba(255,255,255,0.03)' }}
+                formatter={(v: any) => [Number(v).toLocaleString(), 'FIRs']} />
+              <Bar dataKey="value" maxBarSize={14} shape={<LollipopBar />}
+                label={{ position: 'right', fill: '#7A7D92', fontSize: 10,
+                  formatter: (v: any) => v >= 1000 ? `${(v / 1000).toFixed(0)}k` : v }} />
+            </ComposedChart>
+          </ResponsiveContainer>
+          <div style={{ fontSize: 12, color: 'var(--text-lo)', marginTop: 8, textAlign: 'center' }}>
+            Bengaluru City's outlier status reflects resource demand.
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-const styles: Record<string, React.CSSProperties> = {
-  container: { minHeight: '100vh', overflowX: 'hidden' },
-  mobileContent: { padding: '0 20px' },
-  feedHeader: { marginTop: 10, marginBottom: 20 },
-  feedLabel: { fontFamily: 'var(--font-family-mono)', fontSize: 10, letterSpacing: 1.5, color: '#837562', fontWeight: 600, marginBottom: 4 },
-  feedTitle: { fontFamily: 'var(--font-family-display)', fontSize: 24, fontWeight: 700, color: '#191c1d', margin: 0 },
-  title: { fontFamily: 'var(--font-family-display)', fontSize: 24, fontWeight: 700, color: 'var(--color-on-surface)', marginBottom: 24 },
-  loading: { padding: 40, color: 'var(--color-on-surface-variant)', fontSize: 16, textAlign: 'center' as const, fontFamily: 'var(--font-family-body)' },
-  error: { padding: 40, color: 'var(--color-error)', fontSize: 16, fontFamily: 'var(--font-family-body)' },
-  chartsRow: { display: 'flex', gap: 16, flexWrap: 'wrap' as const },
-  chartCard: {
-    flex: '1 1 300px',
-    minWidth: 0,
-    background: '#ffffff',
-    borderRadius: 16,
-    padding: '20px 16px',
-    marginBottom: 20,
-    boxShadow: '0 8px 24px rgba(0,0,0,0.03)',
-  },
-  chartTitle: { fontFamily: 'var(--font-family-display)', fontSize: 15, fontWeight: 700, color: '#191c1d', marginBottom: 16 },
-  chartInsight: { fontFamily: 'var(--font-family-body)', fontSize: 13, color: '#837562', marginTop: 16, textAlign: 'center', lineHeight: 1.5 }
-};

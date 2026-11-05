@@ -4,7 +4,6 @@ import Dashboard from './pages/Dashboard';
 import CrimeMap from './pages/CrimeMap';
 import Trends from './pages/Trends';
 import Alerts from './pages/Alerts';
-import Severity from './pages/Severity';
 import NetworkGraph from './pages/NetworkGraph';
 import FIRList from './pages/FIRList';
 import Preloader from './components/Preloader';
@@ -22,9 +21,8 @@ function App() {
               <Route path="/map" element={<CrimeMap />} />
               <Route path="/trends" element={<Trends />} />
               <Route path="/alerts" element={<Alerts />} />
-              <Route path="/severity" element={<Severity />} />
-              <Route path="/network" element={<NetworkGraph />} />
               <Route path="/firs" element={<FIRList />} />
+              <Route path="/network" element={<NetworkGraph />} />
             </Routes>
           </Preloader>
         </main>

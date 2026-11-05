@@ -1,8 +1,7 @@
-#!/usr/bin/env pwsh
-# dev.ps1 — one-shot: run pipeline, then start UI
+# dev.ps1 - one-shot: run pipeline, then start UI
 # Usage: .\dev.ps1
-#        .\dev.ps1 --skip-pipeline   (skip if data already exists)
-#        .\dev.ps1 --real --limit 5000 (use real Kaggle CSV, limit rows)
+#        .\dev.ps1 -SkipPipeline      (skip if data already exists)
+#        .\dev.ps1 -Real -Limit 5000  (use real Kaggle CSV, limit rows)
 
 param(
     [switch]$SkipPipeline,
@@ -10,23 +9,22 @@ param(
     [int]$Limit = 0
 )
 
-$root = $PSScriptRoot
+$root           = $PSScriptRoot
 $dataProcessing = Join-Path $root "data_processing"
 $orchestration  = Join-Path $dataProcessing "orchestration"
 $clientDir      = Join-Path $root "client"
 
-# ── helpers ──────────────────────────────────────────────────────────────────
 function Step($msg) { Write-Host "`n==> $msg" -ForegroundColor Cyan }
 function Ok($msg)   { Write-Host "    [OK] $msg" -ForegroundColor Green }
 function Err($msg)  { Write-Host "    [ERR] $msg" -ForegroundColor Red; exit 1 }
 
-# ── 1. Python deps ────────────────────────────────────────────────────────────
+# --- 1. Python deps ---
 Step "Installing Python dependencies"
 pip install -q -r (Join-Path $dataProcessing "requirements.txt")
 if ($LASTEXITCODE -ne 0) { Err "pip install failed" }
 Ok "Python deps ready"
 
-# ── 2. Pipeline ───────────────────────────────────────────────────────────────
+# --- 2. Pipeline ---
 if (-not $SkipPipeline) {
     Step "Running data pipeline"
 
@@ -45,12 +43,27 @@ if (-not $SkipPipeline) {
     Pop-Location
 
     if ($exitCode -ne 0) { Err "Pipeline failed (exit $exitCode)" }
-    Ok "Pipeline complete — artifacts written to data_processing/data/03_processed/"
+    Ok "Pipeline complete - artifacts written to data_processing/data/03_processed/"
+
+    # Only sync to API when using real data — mock output is hollow and would erase real data
+    if ($Real) {
+        Step "Syncing pipeline output to API"
+        $src  = Join-Path $dataProcessing "data\03_processed"
+        $dest = Join-Path $root "functions\crime_dna\data"
+        if (Test-Path $src) {
+            Copy-Item "$src\*.json" $dest -Force
+            Ok "Synced *.json -> functions/crime_dna/data/"
+        } else {
+            Write-Host "    [WARN] No processed output found at $src" -ForegroundColor Yellow
+        }
+    } else {
+        Write-Host "    [NOTE] Mock run - API data not synced (use -Real to regenerate API data)" -ForegroundColor DarkGray
+    }
 } else {
-    Step "Skipping pipeline (--skip-pipeline flag)"
+    Step "Skipping pipeline (-SkipPipeline flag set)"
 }
 
-# ── 3. Node deps ──────────────────────────────────────────────────────────────
+# --- 3. Node deps ---
 Step "Checking Node dependencies"
 if (-not (Test-Path (Join-Path $clientDir "node_modules"))) {
     Push-Location $clientDir
@@ -62,7 +75,7 @@ if (-not (Test-Path (Join-Path $clientDir "node_modules"))) {
     Ok "node_modules already present"
 }
 
-# ── 4. Open browser then start dev server ─────────────────────────────────────
+# --- 4. Open browser then start dev server ---
 Step "Starting UI (Vite + API)"
 Write-Host "    Frontend : http://localhost:5173" -ForegroundColor Yellow
 Write-Host "    API      : http://localhost:3000" -ForegroundColor Yellow

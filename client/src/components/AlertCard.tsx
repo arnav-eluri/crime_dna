@@ -10,78 +10,57 @@ interface AlertCardProps {
   trendDirection: string;
 }
 
-const LEVEL_COLORS: Record<string, string> = {
-  CRITICAL: '#ff4757',
-  ELEVATED: '#ffa502',
-  NORMAL: '#2eD573',
+const LEVEL: Record<string, { color: string; dimColor: string }> = {
+  CRITICAL: { color: '#D94040', dimColor: 'rgba(217,64,64,0.12)' },
+  ELEVATED: { color: '#E09020', dimColor: 'rgba(224,144,32,0.12)' },
+  NORMAL:   { color: '#2AB4A0', dimColor: 'rgba(42,180,160,0.12)' },
 };
 
 export default function AlertCard({
   district, crimeCategory, alertLevel, currentCount, historicalAvg, percentChange, trendDirection,
 }: AlertCardProps) {
-  const color = LEVEL_COLORS[alertLevel] || '#2eD573';
+  const { color, dimColor } = LEVEL[alertLevel] || LEVEL.NORMAL;
   const isUp = trendDirection === 'up';
 
   return (
     <div style={{
-      ...styles.card,
-      borderLeft: `4px solid ${color}`,
-      animation: alertLevel === 'CRITICAL' ? 'pulse 2s infinite' : 'none',
+      background: 'var(--bg-card)',
+      border: '1px solid var(--border)',
+      borderLeft: `3px solid ${color}`,
+      borderRadius: 'var(--r-lg)',
+      padding: '16px 18px',
+      flex: '1 0 260px',
+      minWidth: 0,
+      maxWidth: 400,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 8,
     }}>
-      <div style={styles.header}>
-        <span style={{ ...styles.badge, background: color }}>{alertLevel}</span>
-        <span style={styles.district}>{district}</span>
-      </div>
-      <div style={styles.category}>{crimeCategory}</div>
-      <div style={styles.stats}>
-        <span style={{ ...styles.stat, color }}>
-          {currentCount} incidents
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <span style={{
+          display: 'inline-flex', alignItems: 'center', padding: '2px 8px',
+          borderRadius: 'var(--r-sm)', background: dimColor, color,
+          fontFamily: 'var(--font-mono)', fontSize: 10, fontWeight: 600, letterSpacing: '0.5px',
+        }}>
+          {alertLevel}
         </span>
-        <span style={styles.arrow}>{isUp ? '↑' : '↓'}</span>
-        <span style={{ ...styles.change, color: isUp ? '#ff4757' : '#2eD573' }}>
-          {percentChange > 0 ? '+' : ''}{percentChange.toFixed(1)}%
+        <span style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--text-hi)' }}>{district}</span>
+      </div>
+
+      <div style={{ fontSize: 'var(--text-sm)', color: 'var(--text-lo)' }}>{crimeCategory}</div>
+
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 20, fontWeight: 500, color }}>
+          {currentCount.toLocaleString()}
+        </span>
+        <span style={{ fontSize: 'var(--text-sm)', color: 'var(--text-lo)' }}>incidents</span>
+        <span style={{
+          fontFamily: 'var(--font-mono)', fontSize: 10, fontWeight: 600, marginLeft: 'auto',
+          letterSpacing: '0.04em', color: isUp ? 'var(--critical)' : 'var(--normal)',
+        }}>
+          {isUp ? '↑ RISING' : '↓ STABLE'}
         </span>
       </div>
-      <div style={styles.avg}>Historical avg: {historicalAvg.toFixed(1)}/month</div>
     </div>
   );
 }
-
-const styles: Record<string, React.CSSProperties> = {
-  card: {
-    background: 'var(--color-surface-container-lowest)',
-    borderRadius: 'var(--radius-lg)',
-    padding: '16px 20px',
-    minWidth: 260,
-    flex: '1 0 260px',
-    boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.04)',
-    border: '1px solid var(--color-surface-container-highest)',
-  },
-  header: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 10,
-    marginBottom: 8,
-  },
-  badge: {
-    padding: '2px 10px',
-    borderRadius: 'var(--radius-sm)',
-    fontFamily: 'var(--font-family-mono)',
-    fontSize: 11,
-    fontWeight: 700,
-    color: '#fff',
-    letterSpacing: 1,
-  },
-  district: { fontFamily: 'var(--font-family-display)', fontSize: 14, fontWeight: 600, color: 'var(--color-on-surface)' },
-  category: { fontFamily: 'var(--font-family-body)', fontSize: 12, color: 'var(--color-on-surface-variant)', marginBottom: 10 },
-  stats: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 8,
-    marginBottom: 4,
-  },
-  stat: { fontFamily: 'var(--font-family-display)', fontSize: 18, fontWeight: 700 },
-  arrow: { fontFamily: 'var(--font-family-display)', fontSize: 16, fontWeight: 700 },
-  change: { fontFamily: 'var(--font-family-display)', fontSize: 14, fontWeight: 600 },
-  avg: { fontFamily: 'var(--font-family-body)', fontSize: 11, color: 'var(--color-on-surface-variant)' },
-};

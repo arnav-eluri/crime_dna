@@ -2,35 +2,60 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useMediaQuery } from '../utils';
 
-interface NavItem {
-  label: string;
-  path: string;
-  icon?: string;
-  isFab?: boolean;
-  svgIcon?: React.ReactNode;
-}
+const IconDashboard = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+    <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+  </svg>
+);
 
-const DESKTOP_NAV_ITEMS: NavItem[] = [
-  { label: 'Dashboard', path: '/', icon: './img-1.png' },
-  { label: 'Crime Map', path: '/map', icon: './img-2.png' },
-  { label: 'Trends', path: '/trends', icon: './img-3.png' },
-  { label: 'Alerts', path: '/alerts', icon: './img-4.png' },
-  { label: 'Severity', path: '/severity', icon: './img-5.png' },
-  { label: 'Network Graph', path: '/network', icon: './img-6.png' },
-  { label: 'FIR Records', path: '/firs', icon: './img-7.png' },
-];
+const IconMap = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/>
+    <line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/>
+  </svg>
+);
 
-const MOBILE_NAV_ITEMS: NavItem[] = [
-  { label: 'Intelligence', path: '/', svgIcon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg> },
-  { label: 'Analysis', path: '/trends', svgIcon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="16" y1="12" x2="16" y2="16"></line><line x1="8" y1="10" x2="8" y2="16"></line></svg> },
+const IconAlerts = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+    <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+  </svg>
+);
 
-  { label: 'Network', path: '/network', svgIcon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg> },
-  { label: 'Geospatial', path: '/map', svgIcon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg> },
+const IconTrends = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+  </svg>
+);
+
+const IconFIR = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+    <polyline points="14 2 14 8 20 8"/>
+    <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+    <polyline points="10 9 9 9 8 9"/>
+  </svg>
+);
+
+const IconGlobe = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <line x1="2" y1="12" x2="22" y2="12"/>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+  </svg>
+);
+
+const NAV_ITEMS = [
+  { label: 'Dashboard',  path: '/',       Icon: IconDashboard },
+  { label: 'Crime Map',  path: '/map',    Icon: IconMap },
+  { label: 'Alerts',     path: '/alerts', Icon: IconAlerts },
+  { label: 'Trends',     path: '/trends', Icon: IconTrends },
+  { label: 'FIR Records',path: '/firs',   Icon: IconFIR },
 ];
 
 export default function Navbar() {
   const isMobile = useMediaQuery('(max-width: 768px)');
-  const navItems = isMobile ? MOBILE_NAV_ITEMS : DESKTOP_NAV_ITEMS;
 
   const currentCookie = document.cookie.match(/(^|;\s*)googtrans=([^;]*)/);
   const isKn = currentCookie && currentCookie[2] === '/en/kn';
@@ -40,7 +65,7 @@ export default function Navbar() {
       '',
       `domain=${window.location.hostname}`,
       `domain=.${window.location.hostname}`,
-      `domain=.${window.location.hostname.split('.').slice(-2).join('.')}`
+      `domain=.${window.location.hostname.split('.').slice(-2).join('.')}`,
     ];
     if (isKn) {
       domains.forEach(d => {
@@ -56,56 +81,47 @@ export default function Navbar() {
   };
 
   return (
-    <div className={`sidebar ${isMobile ? 'sidebar-mobile' : ''}`}>
-      <div className="sidebar-logo">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <div style={styles.logoIcon}></div>
+    <div className="sidebar">
+      {!isMobile && (
+        <div className="sidebar-logo">
+          <div className="sidebar-logo-mark">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/>
+            </svg>
+          </div>
           <div>
-            <div style={styles.logoTitle}>CrimeDNA</div>
-            <div style={styles.logoSub}>Intelligence Platform</div>
+            <div className="sidebar-logo-title">CrimeDNA</div>
+            <div className="sidebar-logo-sub">Intelligence Platform</div>
           </div>
         </div>
-        {!isMobile && (
-          <div className="notranslate shadow-hover" style={{ flexShrink: 0, whiteSpace: 'nowrap', cursor: 'pointer', fontWeight: '600', fontSize: '11px', color: '#191c1d', backgroundColor: 'transparent', padding: '4px 8px', borderRadius: '100px', display: 'flex', alignItems: 'center', gap: '4px', border: '1.2px solid #191c1d', transition: 'all 0.2s ease' }} onClick={toggleLanguage} title="Translate">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-            <span style={{ paddingTop: '1px' }}>{isKn ? 'English' : 'ಕನ್ನಡ'}</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </div>
-        )}
-      </div>
+      )}
+
       <nav className="sidebar-nav">
-        {navItems.map((item) => {
-          if (item.isFab) {
-            return (
-              <div key={item.label} className="mobile-fab">
-                {item.svgIcon}
-              </div>
-            );
-          }
-          return (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
-            >
-              {item.svgIcon ? <div className="nav-svg-icon">{item.svgIcon}</div> : item.icon && <img src={item.icon} alt={item.label} className="nav-icon-img" />}
-              <span>{item.label}</span>
-            </NavLink>
-          );
-        })}
+        {NAV_ITEMS.map(({ label, path, Icon }) => (
+          <NavLink
+            key={path}
+            to={path}
+            end={path === '/'}
+            className={({ isActive }) => `sidebar-nav-item${isActive ? ' active' : ''}`}
+          >
+            <Icon />
+            <span>{label}</span>
+          </NavLink>
+        ))}
       </nav>
-      <div className="sidebar-footer">
-        <img src="./ksp_logo.jpeg" alt="KSP Logo" style={styles.footerLogo} />
-        <div style={styles.footerText}>Karnataka State Police</div>
-      </div>
+
+      {!isMobile && (
+        <div className="sidebar-footer">
+          <div className="sidebar-footer-org">
+            <img src="./ksp_logo.jpeg" alt="KSP" className="sidebar-footer-logo" />
+            <div className="sidebar-footer-text">Karnataka State Police<br />SCRB Division</div>
+          </div>
+          <button className="lang-toggle notranslate" onClick={toggleLanguage}>
+            <IconGlobe />
+            {isKn ? 'English' : 'ಕನ್ನಡ'}
+          </button>
+        </div>
+      )}
     </div>
   );
 }
-
-const styles: Record<string, React.CSSProperties> = {
-  logoIcon: { fontSize: 28 },
-  logoTitle: { fontFamily: 'var(--font-family-display)', fontSize: 20, fontWeight: 700, color: 'var(--color-primary)' },
-  logoSub: { fontFamily: 'var(--font-family-body)', fontSize: 11, color: 'var(--color-on-surface-variant)', letterSpacing: 1 },
-  footerLogo: { width: 64, height: 64, borderRadius: '50%', objectFit: 'cover' },
-  footerText: { fontFamily: 'var(--font-family-body)', fontSize: 11, color: 'var(--color-on-surface-variant)' },
-};

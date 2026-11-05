@@ -81,20 +81,20 @@ function NativeMarkersLayer({ data, maxFreq }: { data: SpatiotemporalCluster[], 
       `);
 
       marker.bindPopup(`
-        <div style="font-family: var(--font-family-body); font-size: 13px; min-width: 220px;">
+        <div style="font-family: sans-serif; font-size: 13px; min-width: 220px; background: #1C1D24; color: #ECEDF5; padding: 4px;">
           <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
             <div style="width: 12px; height: 12px; border-radius: 50%; background-color: ${color}"></div>
             <strong style="color: ${color}; font-size: 14px;">${c.severity_level} RISK</strong>
           </div>
-          <p style="margin: 0 0 12px 0; color: #514535; line-height: 1.4;">
-            This location is colored <b>${colorText}</b> because it has a ${c.severity_level.toLowerCase()} severity index, indicating ${severityText}.
+          <p style="margin: 0 0 12px 0; color: #B0B3C8; line-height: 1.4;">
+            Severity index: <b>${c.severity_level.toLowerCase()}</b> — ${severityText}.
           </p>
-          <strong style="color: #191c1d; font-size: 12px; text-transform: uppercase;">Related Cases in Cluster:</strong>
-          <ul style="margin: 6px 0; padding-left: 16px; color: #514535;">
+          <strong style="color: #7A7D92; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;">Cases in Cluster</strong>
+          <ul style="margin: 6px 0; padding-left: 16px; color: #B0B3C8;">
             ${categoriesHtml}
           </ul>
-          <div style="margin-top: 12px; padding-top: 8px; border-top: 1px solid #eee; font-size: 11px; color: #837562;">
-            Total recorded incidents: ${c.frequency}<br/>
+          <div style="margin-top: 12px; padding-top: 8px; border-top: 1px solid #252630; font-size: 11px; color: #7A7D92;">
+            Total incidents: ${c.frequency}<br/>
             Timeframe: ${c.time_bucket}
           </div>
         </div>
@@ -218,30 +218,30 @@ export default function CrimeMap() {
 }
 
 const styles: Record<string, React.CSSProperties> = {
-  title: { fontFamily: 'var(--font-family-display)', fontSize: 24, fontWeight: 700, color: '#191c1d', margin: 0, textShadow: '0 2px 10px rgba(255,255,255,0.8)' },
+  title: { fontFamily: 'var(--font-display)', fontSize: 24, fontWeight: 700, color: '#ECEDF5', margin: 0 },
   floatingPanel: {
-    background: 'rgba(255, 255, 255, 0.85)',
+    background: 'rgba(28,29,36,0.92)',
     backdropFilter: 'blur(12px)',
     WebkitBackdropFilter: 'blur(12px)',
     padding: '20px',
     borderRadius: 16,
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
     pointerEvents: 'auto',
-    border: '1px solid rgba(255,255,255,0.5)',
+    border: '1px solid #252630',
     maxWidth: 400,
   },
-  feedLabel: { fontFamily: 'var(--font-family-mono)', fontSize: 10, letterSpacing: 1.5, color: '#837562', fontWeight: 600, marginBottom: 4 },
-  panelTitle: { fontFamily: 'var(--font-family-display)', fontSize: 18, fontWeight: 700, color: '#191c1d', margin: '0 0 12px 0' },
-  insightText: { fontFamily: 'var(--font-family-body)', fontSize: 13, color: '#514535', margin: '0 0 16px 0', lineHeight: 1.5 },
-  insightTextMicro: { fontFamily: 'var(--font-family-body)', fontSize: 10, color: '#837562', marginTop: 12, fontStyle: 'italic' },
-  legend: { display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' as const, background: 'rgba(0,0,0,0.03)', padding: '8px 12px', borderRadius: 8 },
-  legendItem: { display: 'flex', alignItems: 'center', gap: 6, fontFamily: 'var(--font-family-mono)', fontSize: 11, color: '#191c1d', fontWeight: 600 },
+  feedLabel: { fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: 1.5, color: '#7A7D92', fontWeight: 600, marginBottom: 4 },
+  panelTitle: { fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 700, color: '#ECEDF5', margin: '0 0 12px 0' },
+  insightText: { fontFamily: 'var(--font-body)', fontSize: 13, color: '#B0B3C8', margin: '0 0 16px 0', lineHeight: 1.5 },
+  insightTextMicro: { fontFamily: 'var(--font-body)', fontSize: 10, color: '#7A7D92', marginTop: 12, fontStyle: 'italic' },
+  legend: { display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' as const, background: 'rgba(255,255,255,0.04)', padding: '8px 12px', borderRadius: 8 },
+  legendItem: { display: 'flex', alignItems: 'center', gap: 6, fontFamily: 'var(--font-mono)', fontSize: 11, color: '#ECEDF5', fontWeight: 600 },
   legendDot: { width: 8, height: 8, borderRadius: '50%' },
   loadingOverlay: {
     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
     display: 'flex', alignItems: 'center', justifyContent: 'center',
-    color: '#191c1d', fontSize: 14, fontFamily: 'var(--font-family-mono)', fontWeight: 600, letterSpacing: 1,
-    background: 'rgba(255, 255, 255, 0.9)', zIndex: 1000, backdropFilter: 'blur(8px)'
+    color: '#ECEDF5', fontSize: 13, fontFamily: 'var(--font-family-mono)', fontWeight: 600, letterSpacing: 1,
+    background: 'rgba(12,13,16,0.92)', zIndex: 1000,
   },
   emptyOverlay: {
     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
@@ -249,7 +249,7 @@ const styles: Record<string, React.CSSProperties> = {
     zIndex: 1000, pointerEvents: 'none'
   },
   emptyCard: {
-    background: 'white', padding: 24, borderRadius: 16, boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
-    textAlign: 'center', maxWidth: 300, pointerEvents: 'auto'
+    background: '#1C1D24', border: '1px solid #252630', padding: 24, borderRadius: 12,
+    textAlign: 'center', maxWidth: 300, pointerEvents: 'auto', color: '#ECEDF5'
   }
 };
