@@ -9,7 +9,6 @@ LABELED_DATA_PATH = os.path.join(BASE_DIR, "data", "labeled_crimes.csv")
 SUMMARY_OUTPUT_PATH = os.path.join(BASE_DIR, "data", "03_processed", "dashboard_summary.json")
 RAW_DATASET_PATH = os.path.join(BASE_DIR, "datasets", "FIR_Details_Data.csv")
 STAGING_DB_PATH = os.path.join(BASE_DIR, "data", "02_staging", "crime_pipeline_test.db")
-SCHEMA_PATH = os.path.join(BASE_DIR, "src", "loaders", "schema.sql")
 
 TARGET_CATEGORIES = [
     "Violent",

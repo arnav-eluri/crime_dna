@@ -7,7 +7,7 @@ import numpy as np
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src.ingestion.cleaner import remove_duplicates, handle_missing_values, standardize_strings, remove_invalid_records
-from src.features.analytical_filters import filter_by_crime_category, generate_time_buckets, calculate_severity_score, filter_by_geography
+from src.features.analytical_filters import generate_time_buckets, calculate_severity_score
 from src.features.graph_filters import identify_repeat_offenders, location_recurrence, co_occurrence_filter
 from src.features.ml_filters import time_window_flag, noise_flag_filter, hotspot_labeler, risk_labeler
 from src.features.alert_generator import spatiotemporal_clustering, anomaly_detection, trend_alerts, build_alerts_summary, build_spatiotemporal_summary
@@ -34,7 +34,8 @@ def load_real_data(limit=None):
     if 'District_Name' in df.columns:
         df['District_Name'] = df['District_Name'].astype(str).str.strip().str.upper()
     if 'description' not in df.columns and 'Place of Offence' in df.columns:
-        df['description'] = df['Place of Offence'].fillna('') + ' - ' + df['CrimeHead_Name'].fillna('')
+        head_col = df['CrimeHead_Name'].fillna('') if 'CrimeHead_Name' in df.columns else ''
+        df['description'] = df['Place of Offence'].fillna('') + ' - ' + head_col
     if 'station_name' not in df.columns and 'UnitName' in df.columns:
         station_map = {}
         for idx, name in enumerate(df['UnitName'].unique()):
@@ -402,6 +403,34 @@ def build_socioeconomic_data(df):
         'BALLARI': {'population_density': 310, 'urbanization_pct': 35, 'literacy_rate': 72, 'avg_income': 92000},
         'BELAGAVI CITY': {'population_density': 580, 'urbanization_pct': 82, 'literacy_rate': 85, 'avg_income': 135000},
         'BELAGAVI DIST': {'population_density': 290, 'urbanization_pct': 32, 'literacy_rate': 71, 'avg_income': 88000},
+        'BENGALURU CITY': {'population_density': 4381, 'urbanization_pct': 98, 'literacy_rate': 89, 'avg_income': 320000},
+        'BENGALURU DIST': {'population_density': 4381, 'urbanization_pct': 98, 'literacy_rate': 89, 'avg_income': 320000},
+        'BENGALURU RURAL': {'population_density': 320, 'urbanization_pct': 42, 'literacy_rate': 80, 'avg_income': 145000},
+        'BIDAR': {'population_density': 270, 'urbanization_pct': 30, 'literacy_rate': 67, 'avg_income': 78000},
+        'CHAMARAJANAGAR': {'population_density': 190, 'urbanization_pct': 20, 'literacy_rate': 63, 'avg_income': 72000},
+        'CHIKKABALLAPURA': {'population_density': 280, 'urbanization_pct': 25, 'literacy_rate': 73, 'avg_income': 82000},
+        'CHIKKAMAGALURU': {'population_density': 100, 'urbanization_pct': 30, 'literacy_rate': 78, 'avg_income': 95000},
+        'CHITRADURGA': {'population_density': 170, 'urbanization_pct': 27, 'literacy_rate': 69, 'avg_income': 80000},
+        'DAKSHINA KANNADA': {'population_density': 390, 'urbanization_pct': 55, 'literacy_rate': 88, 'avg_income': 160000},
+        'DAVANGERE': {'population_density': 350, 'urbanization_pct': 44, 'literacy_rate': 76, 'avg_income': 105000},
+        'DHARWAD': {'population_density': 420, 'urbanization_pct': 65, 'literacy_rate': 83, 'avg_income': 130000},
+        'GADAG': {'population_density': 230, 'urbanization_pct': 35, 'literacy_rate': 74, 'avg_income': 88000},
+        'HASSAN': {'population_density': 190, 'urbanization_pct': 28, 'literacy_rate': 76, 'avg_income': 92000},
+        'HAVERI': {'population_density': 260, 'urbanization_pct': 30, 'literacy_rate': 73, 'avg_income': 82000},
+        'KALABURAGI': {'population_density': 300, 'urbanization_pct': 38, 'literacy_rate': 65, 'avg_income': 80000},
+        'KODAGU': {'population_density': 135, 'urbanization_pct': 26, 'literacy_rate': 82, 'avg_income': 118000},
+        'KOLAR': {'population_density': 320, 'urbanization_pct': 30, 'literacy_rate': 72, 'avg_income': 88000},
+        'KOPPAL': {'population_density': 220, 'urbanization_pct': 25, 'literacy_rate': 63, 'avg_income': 74000},
+        'MANDYA': {'population_density': 310, 'urbanization_pct': 27, 'literacy_rate': 74, 'avg_income': 90000},
+        'MYSURU': {'population_density': 490, 'urbanization_pct': 60, 'literacy_rate': 82, 'avg_income': 145000},
+        'RAICHUR': {'population_density': 230, 'urbanization_pct': 28, 'literacy_rate': 59, 'avg_income': 72000},
+        'RAMANAGARA': {'population_density': 290, 'urbanization_pct': 28, 'literacy_rate': 73, 'avg_income': 88000},
+        'SHIVAMOGGA': {'population_density': 230, 'urbanization_pct': 42, 'literacy_rate': 80, 'avg_income': 108000},
+        'TUMAKURU': {'population_density': 260, 'urbanization_pct': 33, 'literacy_rate': 74, 'avg_income': 92000},
+        'UDUPI': {'population_density': 390, 'urbanization_pct': 48, 'literacy_rate': 88, 'avg_income': 148000},
+        'UTTARA KANNADA': {'population_density': 60, 'urbanization_pct': 25, 'literacy_rate': 81, 'avg_income': 95000},
+        'VIJAYAPURA': {'population_density': 270, 'urbanization_pct': 33, 'literacy_rate': 67, 'avg_income': 82000},
+        'YADGIR': {'population_density': 220, 'urbanization_pct': 20, 'literacy_rate': 55, 'avg_income': 68000},
     }
 
     result = []

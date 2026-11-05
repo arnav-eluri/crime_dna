@@ -138,7 +138,7 @@ def trend_alerts(df: pd.DataFrame, window_months: int = 3) -> pd.DataFrame:
             continue
 
         recent_count = len(recent)
-        hist_months = max(len(historical), 1)
+        hist_months = max(historical['period'].nunique(), 1)
         historical_avg = len(historical) / hist_months
 
         df.loc[crime_mask, 'Historical_Avg'] = round(historical_avg, 2)
@@ -166,7 +166,7 @@ def trend_alerts(df: pd.DataFrame, window_months: int = 3) -> pd.DataFrame:
 def build_alerts_summary(df: pd.DataFrame) -> list:
     alerts = []
     required = {'Alert_Level', 'Percent_Change', 'CrimeGroup_Name', 'District_Name', 'Trend_Direction', 'Historical_Avg'}
-    if not required.intersection(df.columns):
+    if not required.issubset(df.columns):
         return alerts
 
     grouped = df.groupby(['District_Name', 'CrimeGroup_Name', 'Alert_Level']).agg(

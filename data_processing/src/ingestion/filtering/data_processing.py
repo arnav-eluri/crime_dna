@@ -118,9 +118,9 @@ def classify_and_filter(pipeline, df, text_column="description"):
     texts = df[text_column].fillna("")
 
     if texts.empty:
-        df["predicted_category"] = None
-        df["confidence"] = None
-        return df, df.iloc[0:0]
+        df["predicted_category"] = 'UNKNOWN'
+        df["confidence"] = 0.0
+        return df.iloc[0:0], df
 
     probabilities = pipeline.predict_proba(texts)
     predictions = pipeline.predict(texts)

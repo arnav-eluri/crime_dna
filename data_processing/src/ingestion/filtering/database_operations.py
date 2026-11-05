@@ -85,7 +85,10 @@ def upsert_firs(session, df):
             continue
         raw_date = row["date_reported"]
         if isinstance(raw_date, str):
-            parsed_date = date.fromisoformat(raw_date)
+            try:
+                parsed_date = date.fromisoformat(raw_date)
+            except ValueError:
+                continue
         else:
             parsed_date = raw_date
 

@@ -1,3 +1,4 @@
+import datetime
 import pandas as pd
 import numpy as np
 from sklearn.cluster import DBSCAN
@@ -5,8 +6,7 @@ from sklearn.cluster import DBSCAN
 def time_window_flag(df: pd.DataFrame, years: int = 10) -> pd.DataFrame:
     """Flags records older than N years instead of destructively filtering them."""
     if 'FIR_YEAR' in df.columns:
-        # Assuming current year is 2026
-        current_year = 2026
+        current_year = datetime.datetime.now().year
         min_year = current_year - years
         df['Is_Historical_Archive'] = (df['FIR_YEAR'] < min_year).astype(int)
     return df
